@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Plant',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Plant</b>',
+    'logo_img' => 'img/logo/logo_santa_luiza.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -233,80 +233,88 @@ return [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
+        // can - verifica se a pessoa logada pode acessar 
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Home',
+            'url'         => 'home',
+            'icon'        => 'fas fa-house-user',
+         //   'label'       => 4,
+         //   'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
+            'text'       => 'Meu Perfil',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url'  => 'site/profile/profile',
+            'icon' => 'fas fa-fw fa-user',
+        ],[
+            'text'        => 'Galeria de fotos',
+            'url'         => 'site/galeria/galeria',
+            'icon'        => 'fas fa-house-user',
+         //   'label'       => 4,
+         //   'label_color' => 'success',
         ],
+        
+        ['header' => 'Conta corrente'],
+        
+
         [
-            'text'       => 'information',
+            'text'       => 'Registrar Despesas',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'url'        => 'financeiro/despesa/index',
+            'icon'        => 'fas fa-calendar-minus',
+
         ],
+
+        [
+            'text'       => 'Registrar Receitas',
+            'icon_color' => 'cyan',
+            'url'        => 'financeiro/receita/index',
+            'icon'        => 'fas fa-calendar-plus', 
+
+        ],
+
+        [
+            'text'       => 'Registrar Investimentos',
+            'icon_color' => 'cyan',
+            'url'        => 'financeiro/investimento/index',
+            'icon'        => 'fas fa-calendar-minus',
+
+        ],
+
+        [
+            'text'       => 'Fluxo de Caixa',
+            'icon_color' => 'cyan',
+            'url'        => 'financeiro/fluxoDeCaixa',
+            'icon'        => 'fas fa-chart-line', 
+        ],
+
+
+        ['header' => 'Configurações'],
+        [
+            'text'       => 'Tipo de atividades',
+            'icon_color' => 'green',
+            'url'  => '/type_activity',
+            'icon'        => 'fas fa-money-bill-wave',
+        ],  
+
+        [
+            'text'       => 'Manutenção',
+            'icon_color' => 'green',
+            'url'  => 'admin/manutencao/index',
+            'icon'        => 'fas fa-money-bill-wave',
+        ],  
+
+        [
+            'text'       => 'Consulta',
+            'icon_color' => 'green',
+            'url'  => 'admin/manutencao/consulta',
+            'icon'        => 'fas fa-money-bill-wave',
+        ],  
+        
     ],
+
 
     /*
     |--------------------------------------------------------------------------
