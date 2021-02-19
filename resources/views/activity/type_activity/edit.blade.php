@@ -33,11 +33,11 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Editando os tipos de atividades: {{ $type_activity->id }}
-                    <a class="float-right" href="/type_activity">Listar Tipo de atividades</a>
+                    Atividades Nr : {{ $type_activity->id }}
+                    <a class="float-right" href="/type_activity">Lista</a>
                 </div>
             </div>
         </div>
@@ -54,16 +54,29 @@
 @endif
 
     <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-12">
 
     <!-- porque nao suporta o metodo POST se store é post-->
         <form action="{{ route('type_activity.update' ,[ 'type_activity' => $type_activity->id ])}}" method="POST"  enctype="multipart/form-data">
 
-        @method('PATCH')
-        @include('activity.type_activity.form')
-
+            @method('PATCH')
+            @include('activity.type_activity.form')
 
         </form>
+
+        <form action="{{ route('type_activity.show' ,[ 'type_activity' => $type_activity->id ])}}" method="POST"  enctype="multipart/form-data">
+
+            @method('POST')
+          
+                 <div class="form-group">
+                 {!! csrf_field() !!}                      
+          
+                     <div class="form-group">
+                          <button type="submit" class="btn btn-outline-danger" >Deletar...</button>
+                     </div>
+                 </div>
+             </form>
+          
     </div>
 </div>
 </div>

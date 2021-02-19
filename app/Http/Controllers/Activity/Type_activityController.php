@@ -100,9 +100,7 @@ class Type_activityController extends Controller
 
       //  $user_login_id = auth()->user()->id;
       //  $user = auth()->user();
-
-      $type_activity = auth()->user()->type_activity()->get();
-
+    
 
         return view('activity.type_activity.show', compact('type_activity' ));
 
@@ -151,9 +149,11 @@ class Type_activityController extends Controller
      */
     public function destroy(type_activity $type_activity)
     {
+
+
         $type_activity->delete();
 
-        return redirect('type_activity');
+        return redirect('/type_activity');
     }
 
     private function validateRequest()

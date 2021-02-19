@@ -31,29 +31,59 @@
 
 @section('content')
 
-<
+@extends('adminlte::page')
 
+@section('title', 'Atividades')
 
-<div class="container">
-
-
-    <div class="row justify-content-center">
-    <div class="col-8">
-
-
-<div class="card">
-  <div class="card-body">
-                <p><strong>Número:  </strong>{{ $type_activity->id}}</p>
-            </div>
-
-            <div class="form-group">
-                <p><strong>Código:  </strong>{{ $type_activity->code}}</p>
-                <p><strong>Descrição:  </strong>{{ $type_activity->description}}</p>
-                <p><strong>Nota:  </strong>{{ $type_activity->note}}</p>
-            </div>
-    </div>
-    </div>
+@section('content_header')  
+<div class="row">     
+  
+    <h1 class="ml-2  text-center">Excluir Atividade</h1>
 </div>
+@stop
+
+@section('content')
+   
+
+
+   <!-- Fim do Formulario de despesa_conta --> 
+   <form action="{{ route('type_activity.destroy',[ 'type_activity' => $type_activity->id ])}}" method="POST"  enctype="multipart/form-data">
+
+    @method('DELETE')
+  
+         <div class="form-group">
+         {!! csrf_field() !!}  
+
+
+  <div class="form-group">
+
+    <div class="container">
+        <div class="row">
+          <div class="bolder">Descrição:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $type_activity->description}}</div>
+        </div>
+        <div class="bg-light">Observação</div>
+        <div class="row">
+            <textarea class="form-control" rows="3" >{{$type_activity->note }} </textarea>
+        </div>
+    </div>
+
+    <p></p>
+  
+           
+  
+             <div class="form-group">
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
+                  <a href="{{ url('/home') }}" class="float-right" >Voltar </a> 
+             </div>
+         </div>
+     </form>
+
+</div>
+</div>
+<a href="#" id="ancora"></a>
 
 
 @endsection

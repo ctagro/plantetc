@@ -31,25 +31,21 @@
                 @endif
                 </div>
 
-                <div class="form-group">
+            <div class="form-group">
 
-                    <label for="note">Nota</label>
-                    <input type="text" name="note" value="{{old('note') ?? $type_activity->note }}" class="form-control">
-                    @if($errors->has('note'))
-                            <h6 class="text-danger" >Digite a Nota</h6> 
-                    @endif
-                </div>
+                <label for="note">Observações</label>
+                <textarea class="form-control" rows="3" placeholder="Observação..." name="note" > {{old('note') ?? $type_activity->note }} </textarea>
+                   
+            </div>
 
 
             @csrf
-            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-            <p class="text-right"> <a href="{{ url('/home') }}" class="text-right">Voltar </a> </p>
-        </div>
-
-     </div>
-
-</div>
-
+                <div class="card">
+                    <div class="card-header">
+                        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                        <a href="{{ url('/home') }}" class="float-right" >Voltar </a> 
+                    </div>
+                </div>
 </div>
 
 
