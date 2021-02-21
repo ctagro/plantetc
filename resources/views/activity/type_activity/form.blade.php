@@ -4,14 +4,7 @@
  <div class='table-responsive'>
 
             <input type="hidden" name="id" value="{{$type_activity->id }}" class="form-control py-3">
- 
-            <div class="form-group">
-                <label for="code">Código</label>
-                <input type="text" name="code" value="{{old('code') ?? $type_activity->code }}" class="form-control">
-                @if($errors->has('code'))
-                        <h6 class="text-danger" >Digite o código</h6> 
-                @endif
-            </div>
+
 
 
             <div class="form-group">
@@ -23,13 +16,6 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <label for="in_uso" >Em uso (S / N)</label>
-                <input type="text" name="in_uso" value="{{old('in_uso') ?? $type_activity->in_uso }}" class="form-control">
-                @if($errors->has('in_uso'))
-                        <h6 class="text-danger" >Escolha a opção S ou N</h6> 
-                @endif
-                </div>
 
             <div class="form-group">
 
@@ -38,6 +24,18 @@
                    
             </div>
 
+        
+               <!-- Para ativar o uploud de imagens -->
+
+               <div class="form-group">
+                @if (auth()->user()->image != null)
+                <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                @endif
+                <label for="image">Sua foto</label>
+                <input type="file" class="form-control"  name='image' >
+            </div>
+
+         
 
             @csrf
                 <div class="card">

@@ -64,15 +64,19 @@
         <div class="row">
           <div class="form-control">{{ $type_activity->description}}</div>
         </div>
+        <br>
         <div class="bg-light">Observação</div>
         <div class="row">
             <textarea class="form-control" rows="3" >{{$type_activity->note }} </textarea>
         </div>
+        <br>
+        <div class="row">
+          Imagem :
+          <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+        </div>
     </div>
-
+    
     <p></p>
-  
-           
   
              <div class="form-group">
                   <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>

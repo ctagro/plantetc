@@ -17,9 +17,9 @@ class CreateTypeActivitiesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('code',2);
             $table->text('description',15);
-            $table->enum('in_uso',['S','N']);
+            $table->boolean('active')->default(true);
+            $table->string('image', 100)->nullable();
             $table->longtext('note');
             $table->timestamps();
         });

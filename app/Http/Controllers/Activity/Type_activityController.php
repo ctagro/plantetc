@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Activity;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Redirect;
@@ -26,7 +27,6 @@ class Type_activityController extends Controller
 
     $type_activities = auth()->user()->type_activity()->get();
 
-    // dd($type_activities);
 
         return view('activity.type_activity.index', ['type_activities' => $type_activities]);
     }
@@ -41,6 +41,7 @@ class Type_activityController extends Controller
 
 
         $user = auth()->user();
+       
 
         $type_activity = new \App\Models\Type_activity([
 
@@ -58,20 +59,57 @@ class Type_activityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storetype_activity(Request $request)
+    public function store(Request $request)
     {
+
+        $data = $request->all();
+       // dd($request->file('image'));
+        //dd($request->file('image'));
+        $string = 'true';
+        $data['active'] = settype($string, 'boolean');
+
+        $data['user_id'] = auth()->user()->id;
+
+        if ($request->file('image')->isValid()) {
+          
+            //cria um nome para a imagem concatenado id e nome do user
+                $name = 'type_activity_'.time();   // tirar os espacos com o kebab_case
+                $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
+                $nameFile = "{$name}.{$extenstion}"; // concatenando
+                $data['image'] = $nameFile;
+               //dd($data['image']);
+
+               $upload = $request->file('image')->storeAs('type_activities', $nameFile);
+
+            //dd($upload);
+
+            //   $data['image'] = $request->file('image')->storeAs('type_activities', $nameFile); // fazendo o upload
+  
+             //  dd($name,$nameFile,$data['image']);                                   // users será o nome da pasta que armazena a image
+          }
+
+
+  
+      
+        //$request['image'] = 'img/logo/mountain.png';
+      
+        
+
+
         // instaciando $despesa com objeto do Model Despesa
+      
+       // $data = $this->validateRequest();
 
-        $data = $this->validateRequest();
+        //dd($data);
 
-       // dd($data);
+       //dd($data);
         
         $type_activity = new type_activity();
 
         // Chamando a objeto a funcao do model despesa e passando o array 
         // capiturado no formulario da view financeiro/despesa
 
-        $response = $type_activity->storetype_activity($request->all());
+        $response = $type_activity->storetype_activity($data);
 
 
 
@@ -130,10 +168,36 @@ class Type_activityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(type_activity $type_activity)
+    public function update(Request $request, Type_activity $type_activity)
     {
+       //dd($type_activity);
+       
+       //$data = $type_activity;
+       $dataRequest = $request; 
 
-        $data = $this->validateRequest();
+       //dd( $dataRequest['user_id'],$type_activity['image']);
+
+       //dd($data['image'], $request);
+
+       //$data['image'] = $request()->type_activiy()->image;
+
+       //dd($data['image']);
+
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {
+          
+        //dd($data['image'], 'entrou no if');
+
+        $nameFile = $type_activity['image'];
+
+        $upload = $request->file('image')->storeAs('type_activities', $nameFile);
+    }
+
+    $data['description'] = $dataRequest['description'];
+    //$data['user_id'] = $dataRequest['user_id'];
+    $data['active'] = $dataRequest['active'];
+    $data['note'] = $dataRequest['note'];
+    $data['image'] = $type_activity['image'];
+  
 
         $type_activity -> update($data);
 
@@ -149,9 +213,14 @@ class Type_activityController extends Controller
      */
     public function destroy(type_activity $type_activity)
     {
+         $path = 'type_activities/'.$type_activity['image'];
 
+         //dd($path);
+         
+         Storage::delete($path);
 
         $type_activity->delete();
+      
 
         return redirect('/type_activity');
     }
@@ -161,10 +230,12 @@ class Type_activityController extends Controller
 
         return request()->validate([
 
-            'code'=> 'required',
+        
             'description' => 'required',
-            'in_uso'=> 'required',
+            'active'=> 'required',
             'note' => 'required',
+            'image' => 'requered',
+            
             
        ]);
 

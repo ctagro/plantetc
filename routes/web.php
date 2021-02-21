@@ -21,11 +21,15 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 
+Route::get('site/profile/profile', [App\Http\Controllers\Site\UserController::class, 'profile'])->name('profile')-> middleware('auth');
+Route::post('site/profile/profile', [App\Http\Controllers\Site\UserController::class, 'profileUpdate'])->name('profile.update')-> middleware('auth');
 
-Route::get('/type_activity/create', [App\Http\Controllers\Activity\Type_activityController::class,'create'])->name('type_activity.create');
-Route::post('/type_activity/store', [App\Http\Controllers\Activity\Type_activityController::class,'storetype_activity'])->name('type_activity.store');
-Route::get('/type_activity', [App\Http\Controllers\Activity\Type_activityController::class,'index'])->name('type_activity.index')-> middleware('auth');
-Route::post('type_activity/{type_activity}', [App\Http\Controllers\Activity\Type_activityController::class,'show'])->name('type_activity.show');
-Route::get('type_activity/{type_activity}/edit', [App\Http\Controllers\Activity\Type_activityController::class,'edit'])->name('type_activity.edit');
-Route::patch('type_activity/{type_activity}', [App\Http\Controllers\Activity\Type_activityController::class,'update'])->name('type_activity.update');
-Route::delete('/type_activity/{type_activity}', [App\Http\Controllers\Activity\Type_activityController::class,'destroy'])->name('type_activity.destroy');
+Route::namespace('Activity')->group(function () {
+    Route::get('type_activity/create', 'Type_activityController@create')->name('type_activity.create');
+    Route::post('type_activity/store', 'Type_activityController@store')->name('type_activity.store');
+    Route::get('type_activity', 'Type_activityController@index')->name('type_activity.index')-> middleware('auth');
+    Route::post('type_activity/{type_activity}', 'Type_activityController@show')->name('type_activity.show');
+    Route::get('type_activity/{type_activity}/edit', 'Type_activityController@edit')->name('type_activity.edit');
+    Route::patch('type_activity/{type_activity}', 'Type_activityController@update')->name('type_activity.update');
+    Route::delete('type_activity/{type_activity}', 'Type_activityController@destroy')->name('type_activity.destroy');
+});

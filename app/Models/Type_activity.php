@@ -13,9 +13,9 @@ class Type_activity extends Model
 {
     protected $fillable = [
         'user_id',
-        'code',
         'description',
-        'in_uso',
+        'active',
+        'image',
         'note'
     
 ];
@@ -23,12 +23,14 @@ class Type_activity extends Model
 public function storetype_activity(array $data): Array
     {
 
-            $type_activity = auth()->user()->type_activity()->create([
-               
-               
-                'code'            => $data['code'],
+        //dd($data);
+
+            $type_activity = auth()->user()->Type_activity()->create([         
+                
+            //    'user_id'           => $data['user_id'],
                 'description'     => $data['description'],
-                'in_uso'          => $data['in_uso'],
+                'active'          => $data['active'],
+                'image'          => $data['image'],
                 'note'          => $data['note']
 
          ]);
