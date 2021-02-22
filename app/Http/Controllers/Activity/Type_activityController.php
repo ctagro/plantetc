@@ -59,18 +59,26 @@ class Type_activityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Type_activity $type_activity)
     {
-
+       
         $data = $request->all();
-       // dd($request->file('image'));
-        //dd($request->file('image'));
+
+        $data['user_id'] = auth()->user()->id;
+
+        if($data['note'] === null)
+                $data['note'] = "";
+
         $string = 'true';
         $data['active'] = settype($string, 'boolean');
 
         $data['user_id'] = auth()->user()->id;
-
-        if ($request->file('image')->isValid()) {
+ 
+        if ($request->file('image') === null){
+            $data['image'] = 'type_activity_avatar.png';
+            }
+        else{
+            if ($request->file('image')->isValid() && $request->file('image')->isValid()) {
           
             //cria um nome para a imagem concatenado id e nome do user
                 $name = 'type_activity_'.time();   // tirar os espacos com o kebab_case
@@ -80,38 +88,16 @@ class Type_activityController extends Controller
                //dd($data['image']);
 
                $upload = $request->file('image')->storeAs('type_activities', $nameFile);
+            }
 
-            //dd($upload);
-
-            //   $data['image'] = $request->file('image')->storeAs('type_activities', $nameFile); // fazendo o upload
-  
-             //  dd($name,$nameFile,$data['image']);                                   // users será o nome da pasta que armazena a image
-          }
-
-
-  
-      
-        //$request['image'] = 'img/logo/mountain.png';
-      
-        
-
-
-        // instaciando $despesa com objeto do Model Despesa
-      
-       // $data = $this->validateRequest();
-
-        //dd($data);
-
-       //dd($data);
-        
+        }
+     
         $type_activity = new type_activity();
 
-        // Chamando a objeto a funcao do model despesa e passando o array 
-        // capiturado no formulario da view financeiro/despesa
+        // Chamando a objeto a funcao do model  e passando o array 
+        // capiturado no formulario da view 
 
         $response = $type_activity->storetype_activity($data);
-
-
 
         if ($response['sucess'])
 
@@ -136,13 +122,7 @@ class Type_activityController extends Controller
     public function show(type_activity $type_activity)
     {
 
-      //  $user_login_id = auth()->user()->id;
-      //  $user = auth()->user();
-    
-
         return view('activity.type_activity.show', compact('type_activity' ));
-
-
 
     }
 
@@ -170,30 +150,18 @@ class Type_activityController extends Controller
      */
     public function update(Request $request, Type_activity $type_activity)
     {
-       //dd($type_activity);
-       
-       //$data = $type_activity;
+
        $dataRequest = $request; 
 
-       //dd( $dataRequest['user_id'],$type_activity['image']);
-
-       //dd($data['image'], $request);
-
-       //$data['image'] = $request()->type_activiy()->image;
-
-       //dd($data['image']);
 
     if ($request->hasFile('image') && $request->file('image')->isValid()) {
           
-        //dd($data['image'], 'entrou no if');
-
         $nameFile = $type_activity['image'];
 
         $upload = $request->file('image')->storeAs('type_activities', $nameFile);
     }
 
     $data['description'] = $dataRequest['description'];
-    //$data['user_id'] = $dataRequest['user_id'];
     $data['active'] = $dataRequest['active'];
     $data['note'] = $dataRequest['note'];
     $data['image'] = $type_activity['image'];
@@ -215,9 +183,8 @@ class Type_activityController extends Controller
     {
          $path = 'type_activities/'.$type_activity['image'];
 
-         //dd($path);
-         
-         Storage::delete($path);
+        if($path != "type_activities/type_activity_avatar.png")
+            Storage::delete($path);
 
         $type_activity->delete();
       

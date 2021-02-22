@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Type_activity;
+use App\Models\Activity;
 
 class User extends Authenticatable
 {
@@ -41,5 +42,10 @@ class User extends Authenticatable
     public function type_activity()
     {
         return $this->hasMany(Type_activity::class);
+    }
+
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
     }
 }

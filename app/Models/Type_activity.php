@@ -27,13 +27,13 @@ public function storetype_activity(array $data): Array
 
             $type_activity = auth()->user()->Type_activity()->create([         
                 
-            //    'user_id'           => $data['user_id'],
-                'description'     => $data['description'],
-                'active'          => $data['active'],
+            
+                'description'    => $data['description'],
+                'active'         => $data['active'],
                 'image'          => $data['image'],
-                'note'          => $data['note']
+                'note'           => $data['note']
 
-         ]);
+            ]);
 
  
        if($type_activity){

@@ -32,7 +32,7 @@
                 <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
                 @endif
                 <label for="image">Sua foto</label>
-                <input type="file" class="form-control"  name='image' >
+                <input type="file" class="form-control"  name='image' value='type_activity_avatar.png'>
             </div>
 
          
@@ -41,7 +41,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-                        <a href="{{ url('/home') }}" class="float-right" >Voltar </a> 
+                        <a href="{{ url('/type_activity') }}" class="float-right" >Voltar </a> 
                     </div>
                 </div>
 </div>

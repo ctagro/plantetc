@@ -39,7 +39,7 @@
             
                 <div class="card-header">
                   Tipo de atividades
-                  <a class="float-right" href="{{url('type_activity/create')}}">Cadastrar</a>
+                  <a class="float-right" href="{{url('activity/create')}}">Cadastrar</a>
                 </div>
            
                 @if(Session::has('mensagem_sucesso'))
@@ -48,24 +48,41 @@
 
                 <table class="table">
 
-                  <th>Descrição</th>
-                  <th>Observações<optgroup></optgroup></th>
+                  <th>date</th>
+                  <th>Atividade</th>
+                  <th>Funcionário</th>
+                  <th>Horas trab</th>
+
+
+                
 
                     <tbody>
 
-                      @foreach($type_activities as $type_activity)
+                     
+
+                      @foreach($activitiess as $activities)
 
                         <tr>
                           <td>  
-                          <a href= "{{ route('type_activity.edit' ,[ 'type_activity' => $type_activity->id  ])}}" >{{ $type_activity -> description}}</a>
+                          <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id  ])}}" >{{ $activities->date}}</a>
                           </td>
                           <td>
-                            <textarea class="form-control" rows="1" cols= "33" > {{$type_activity->note }} </textarea>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id ])}}" >{{ $activities->type_activities_id}}</a>
                           </td>
-        
+                          <td>  
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id  ])}}" >{{ $activities->worker}}</a>
+                          </td>
+                          <td>  
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id ])}}" >{{ number_format($activities->work_hours, 2 , ',', '.')  }}</a>
+                          </td>
+                          
+                           
+                        </td>
+                    
+                        
                           <td >
             
-                            <form id="delete-form"  method="POST" action="{{ route('type_activity.destroy' ,[ 'type_activity' => $type_activity->id ])}}", style = 'display: inline;'> 
+                            <form id="delete-form"  method="POST" action="{{ route('activity.destroy' ,[ 'activity' => $activities->id ])}}", style = 'display: inline;'> 
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}                 
                             </form>

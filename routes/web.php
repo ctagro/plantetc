@@ -25,6 +25,15 @@ Route::get('site/profile/profile', [App\Http\Controllers\Site\UserController::cl
 Route::post('site/profile/profile', [App\Http\Controllers\Site\UserController::class, 'profileUpdate'])->name('profile.update')-> middleware('auth');
 
 Route::namespace('Activity')->group(function () {
+    Route::get('activity/create', 'ActivityController@create')->name('activity.create');
+    Route::post('activity/store', 'ActivityController@store')->name('activity.store');
+    Route::get('activity', 'ActivityController@index')->name('activity.index')-> middleware('auth');
+    Route::post('activity/{activity}', 'ActivityController@show')->name('activity.show');
+    Route::get('activity/{activity}/edit', 'ActivityController@edit')->name('activity.edit');
+    Route::patch('activity/{activity}', 'ActivityController@update')->name('activity.update');
+    Route::delete('activity/{activity}', 'ActivityController@destroy')->name('activity.destroy');
+
+
     Route::get('type_activity/create', 'Type_activityController@create')->name('type_activity.create');
     Route::post('type_activity/store', 'Type_activityController@store')->name('type_activity.store');
     Route::get('type_activity', 'Type_activityController@index')->name('type_activity.index')-> middleware('auth');

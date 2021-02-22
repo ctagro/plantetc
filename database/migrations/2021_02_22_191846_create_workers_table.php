@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivitiesTable extends Migration
+class CreateWorkersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,17 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('workers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('type_activity_id');
-            $table->date('date');
-            $table->text('crop',15);
-            $table->text('product',15);
-            $table->unsignedBigInteger('worker_id');
-            $table->time('start_time');
-            $table->time('final_time');
-            $table->double('worked_hours',10,2);
+            $table->text('name',50);
+            $table->text('nikename',50);
+            $table->date('admission');
+            $table->double('salary',10,2);
+            $table->double('hourly_wage',10,2);
             $table->boolean('active')->default(true);
-            $table->longtext('note');
             $table->timestamps();
-            
         });
     }
 
@@ -39,6 +34,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('workers');
     }
 }

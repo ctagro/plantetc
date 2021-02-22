@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tipo de atividades</title>
+    <title>Atividades</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -47,7 +47,7 @@
 
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('type_activity.destroy',[ 'type_activity' => $type_activity->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('activity.destroy',[ 'activity' => $activity->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -58,29 +58,55 @@
   <div class="form-group">
 
     <div class="container">
+
         <div class="row">
-          <div class="bolder">Descrição:</div>
+          <div class="bolder">Atividade:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $type_activity->description}}</div>
+          <div class="form-control">{{ $activity->id}}</div>
         </div>
-        <br>
+
+        <div class="row">
+          <div class="bolder">Data:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $activity->date}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Área</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $activity->crop}}</div>
+        </div>
+        
+        <div class="row">
+          <div class="bolder">Funcionário</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $activity->worker}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Tempo de atividade</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $activity->worked_hours}}</div>
+        </div>
+
+
         <div class="bg-light">Observação</div>
         <div class="row">
-            <textarea class="form-control" rows="3" >{{$type_activity->note }} </textarea>
+            <textarea class="form-control" rows="3" >{{$activity->note }} </textarea>
         </div>
         <br>
-        <div class="row">
-          Imagem :
-          <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
-        </div>
-    </div>
+
     
     <p></p>
   
              <div class="form-group">
                   <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
-                  <a href="{{ url('/type_activity') }}" class="float-right" >Voltar </a> 
+                  <a href="{{ url('/activity') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

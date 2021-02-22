@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tipo de atividades</title>
+    <title>Despesas</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,53 +36,64 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            
+            <div class="card">
                 <div class="card-header">
-                  Tipo de atividades
-                  <a class="float-right" href="{{url('type_activity/create')}}">Cadastrar</a>
+                Origens
+                <a class="float-right" href="{{url('origems/create')}}">Cadastrar novo origem</a>
+
                 </div>
-           
+                <div class="card-body">
                 @if(Session::has('mensagem_sucesso'))
-                       <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
+
+                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
+
                 @endif
 
-                <table class="table">
+                  <table class="table">
 
-                  <th>Descrição</th>
-                  <th>Observações<optgroup></optgroup></th>
+                  <th>Ativo</th>
+                  <th>Código</th>
+                  <th>Descrição<optgroup></optgroup></th>
+
 
                     <tbody>
 
-                      @foreach($type_activities as $type_activity)
+                    @foreach($origems as $origem)
 
-                        <tr>
-                          <td>  
-                          <a href= "{{ route('type_activity.edit' ,[ 'type_activity' => $type_activity->id  ])}}" >{{ $type_activity -> description}}</a>
-                          </td>
-                          <td>
-                            <textarea class="form-control" rows="1" cols= "33" > {{$type_activity->note }} </textarea>
-                          </td>
-        
-                          <td >
-            
-                            <form id="delete-form"  method="POST" action="{{ route('type_activity.destroy' ,[ 'type_activity' => $type_activity->id ])}}", style = 'display: inline;'> 
+                      <tr>
+
+                        <td>{{$origem -> em_uso}}</td>
+                        <td>{{$origem -> codigo}}</td>
+                        <td>{{$origem -> descricao}}</td>
+
+
+                        <!-- <td>{{$origem-> id}}</td> -->
+                        <td >
+                            <a href= "{{ route('origems.edit' ,[ 'origem' => $origem->id ])}}" class="btn btn-primary btn-sm">Editar</a>
+
+                           <form id="delete-form"  method="POST" action="{{ route('origems.destroy' ,[ 'origem' => $origem->id ])}}", style = 'display: inline;'> 
                               {{ csrf_field() }}
-                              {{ method_field('DELETE') }}                 
+                              {{ method_field('DELETE') }}
+                          
+                      <!--     <button type="submit" class="btn btn-danger btn-sm inline danger">Excluir</button>
+                      -->
+                     
                             </form>
-                          </td>
+
+
+                        </td>
                         </tr>
                       @endforeach
+
                     </tbody>
-                  </table>                  
-       
+                  </table>
+                  
+
+                </div>
+            </div>
         </div>
     </div>
-    <div class="card">
-      <div class="card-header">
-          <a href="{{ url('/home') }}" class="float-right" >Voltar </a> 
-      </div>
-    </div>
 </div>
-
+<p class="text-right"> <a href="{{ url('/home') }}" class="text-right">Voltar </a> </p>
 </div>
 @endsection

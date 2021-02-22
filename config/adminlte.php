@@ -268,9 +268,9 @@ return [
         ],
 
         [
-            'text'       => 'Registrar Receitas',
+            'text'       => 'Registrar Atividades',
             'icon_color' => 'cyan',
-            'url'        => 'financeiro/receita/index',
+            'url'        => '/activity',
             'icon'        => 'fas fa-calendar-plus', 
 
         ],

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Cache\ArrayLock;
+use App\Models\Type_activity;
 use Carbon\Carbon;
 use DateTime;
 use DB;
@@ -15,12 +17,17 @@ class Activity extends Model
     protected $fillable = [ 
 
         
-        'user_id',
-        'type_activities_id',
-        'date',
-        'product',
-        'worker',
-        'labor'
+        'user_id'               ,  
+        'type_activities_id'    ,        
+        'date'                  , 
+        'crop'                  ,   
+        'product'               ,      
+        'worker'                ,      
+        'start_time'            ,       
+        'final_time'            ,         
+        'worked_hours'          ,         
+        'active'                ,        
+        'note'                  ,       
     ];
 
       /*********************************
@@ -43,20 +50,27 @@ class Activity extends Model
 
     public function storeActivity(array $data): Array
     {
-
+        //dd($data,$data['type_activity_id']);
 
  // recebe o array do controller Despesa -> storeDespesa e grava na tabela
 
        
-            $activity = auth()->user()->activity()->create([
+            $activity = auth()->user()->Activity()->create([
             
-                'type_activities_id'     => $data['type_activities_id'], 
-                'date'          => $data['date'],
-                'product'         => $data['product'],
-                'worker'         => $data['worker'],
-                'labor'         => $data['labor'],
+
+                'type_activities_id'    => $data['type_activities_id'],
+                'date'                  => $data['date'],
+                'crop'                  => $data['crop'],
+                'product'               => $data['product'],
+                'worker'                => $data['worker'],
+                'start_time'            => $data['start_time'],
+                'final_time'            => $data['final_time'],
+                'worked_hours'          => $data['worked_hours'],
+                'active'                => $data['active'],
+                'note'                  => $data['note'],  
 
                 ]);
+        
    
        if($activity){
 
