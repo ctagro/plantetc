@@ -1,45 +1,58 @@
 
  
+ 
  <div class='table-responsive'>
 
-            <input type="hidden" name="id" value="{{$origem->id }}" class="form-control py-3">
- 
-            <div class="form-group">
-                <label for="codigo">Código da Área</label>
-                <input type="text" name="codigo" value="{{old('codigo') ?? $origem->codigo }}" class="form-control">
-                @if($errors->has('codigo'))
-                        <h6 class="text-danger" >Digite codigo da Área</h6> 
-                @endif
-            </div>
+            <input type="hidden" name="id" value="{{$worker->id }}" class="form-control py-3">
+
 
 
             <div class="form-group">
 
-                <label for="descricao">Descricao</label>
-                <input type="text" name="descricao" value="{{old('descricao') ?? $origem->descricao }}" class="form-control">
-                @if($errors->has('descricao'))
-                        <h6 class="text-danger" >Digite a Descrição</h6> 
+                <label for="name">Nome</label>
+                <input type="text" name="name" value="{{old('name') ?? $worker->name }}" class="form-control">
+                @if($errors->has('name'))
+                        <h6 class="text-danger" >Digite o Nome</h6> 
                 @endif
             </div>
 
             <div class="form-group">
-                <label for="descricao" >Em uso (S / N)</label>
-                <input type="text" name="em_uso" value="{{old('em_uso') ?? $origem->em_uso }}" class="form-control">
-                @if($errors->has('em_uso'))
-                        <h6 class="text-danger" >Escolha a opção S ou N</h6> 
-                @endif
-                </div>
 
+                @if(!Request::is('*/edit'))
+                   
+                    <input type="date" name="admission"  value="{{old('$admission(d/m/y)') ?? $worker->admission }}"  class="form-control py-3" placeholder="$data">
+                    @if($errors->has('admission'))
+                            <h6 class="text-danger" >Digite a Admissão</h6> 
+                    @endif
+    
+                @else
+                    <?php $data = $worker->admission?>
+                <label for="admission">Data : {{$data}}</label>
+                    <input type="date" name="admission" id ="admission" value="{{old('$admission(d/m/Y)') ?? $worker->admission}}"  class="form-control py-3" placeholder="$data">             
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label>Salario: </label>
+                <input type="number"  name="salary" value="{{old('salary') ?? $worker->salary }}"  placeholder="0.00" step="0.01" >
+                  @if($errors->has('valor'))
+                      <h6 class="text-danger" >Digite o Salário</h6> 
+                  @endif
+              </div> 
+
+        
+               <!-- Para ativar o uploud de imagens -->
+
+              
+         
 
             @csrf
-            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-            <p class="text-right"> <a href="{{ url('/home') }}" class="text-right">Voltar </a> </p>
-        </div>
-
-     </div>
-
-</div>
-
+                <div class="card">
+                    <div class="card-header">
+                        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                        <a href="{{ url('/worker') }}" class="float-right" >Voltar </a> 
+                    </div>
+                </div>
 </div>
 
 

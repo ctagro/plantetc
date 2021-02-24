@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Despesas</title>
+    <title>Funcionários</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,28 +31,65 @@
 
 @section('content')
 
-<
+@extends('adminlte::page')
 
+@section('title', 'Atividades')
 
-<div class="container">
-
-
-    <div class="row justify-content-center">
-    <div class="col-8">
-
-
-<div class="card">
-  <div class="card-body">
-                <p><strong>Número:  </strong>{{ $origem->id}}</p>
-            </div>
-
-            <div class="form-group">
-                <p><strong>Código:  </strong>{{ $origem->codigo}}</p>
-                <p><strong>Descrição:  </strong>{{ $origem->descricao}}</p>
-            </div>
-    </div>
-    </div>
+@section('content_header')  
+<div class="row">     
+  
+    <h1 class="ml-2  text-center">Excluir Atividade</h1>
 </div>
+@stop
+
+@section('content')
+   
+
+
+   <!-- Fim do Formulario de despesa_conta --> 
+   <form action="{{ route('worker.destroy',[ 'worker' => $worker->id ])}}" method="POST"  enctype="multipart/form-data">
+
+    @method('DELETE')
+  
+         <div class="form-group">
+         {!! csrf_field() !!}  
+
+
+  <div class="form-group">
+
+    <div class="container">
+
+        <div class="row">
+          <div class="bolder">Nome:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $worker->name}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Admisssão:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $worker->admission}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Salário:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $worker->salary}}</div>
+        </div>
+      
+             <div class="form-group">
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>
+                  <a href="{{ url('/worker') }}" class="float-right" >Voltar </a> 
+             </div>
+         </div>
+     </form>
+
+</div>
+</div>
+<a href="#" id="ancora"></a>
 
 
 @endsection

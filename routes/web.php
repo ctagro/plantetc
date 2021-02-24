@@ -41,4 +41,12 @@ Route::namespace('Activity')->group(function () {
     Route::get('type_activity/{type_activity}/edit', 'Type_activityController@edit')->name('type_activity.edit');
     Route::patch('type_activity/{type_activity}', 'Type_activityController@update')->name('type_activity.update');
     Route::delete('type_activity/{type_activity}', 'Type_activityController@destroy')->name('type_activity.destroy');
+
+    Route::get('worker/create', 'WorkerController@create')->name('worker.create');
+    Route::post('worker/store', 'WorkerController@store')->name('worker.store');
+    Route::get('worker', 'WorkerController@index')->name('worker.index')-> middleware('auth');
+    Route::post('worker/{worker}', 'WorkerController@show')->name('worker.show');
+    Route::get('worker/{worker}/edit', 'WorkerController@edit')->name('worker.edit');
+    Route::patch('worker/{worker}', 'WorkerController@update')->name('worker.update');
+    Route::delete('worker/{worker}', 'WorkerController@destroy')->name('worker.destroy');
 });

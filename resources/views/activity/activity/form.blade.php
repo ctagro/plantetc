@@ -1,16 +1,5 @@
 
-<!-- 'user_id'                         ,  
- 'type_activities_id'    ,        
- 'date'                  , 
- 'crop'                  ,   
- 'product'               ,      
- 'worker'                ,      
- 'start_time'            ,       
- 'final_time'            ,         
- 'worked_hours'          ,         
- 'active'                ,        
- 'note'                  ,  
--->
+
  <div class='table-responsive'>
 
             <input type="hidden" name="id" value="{{$activity->id }}" class="form-control py-3">
@@ -18,14 +7,14 @@
               
                 <div class="form-group">
                 <!--    <label for="type_activities_id">Escolha a type_activity</label> -->
-                    <select name="type_activities_id"  id="type_activities_id" class="form-control">
-                        @foreach($type_activitiess as $type_activities)
+                    <select name="type_activity_id"  id="type_activity_id" class="form-control">
+                        @foreach($type_activitys as $type_activity)
 
-                          <option value="{{$type_activities->id}}" {{ $type_activities->id == $activity->type_activities_id ? 'selected' : ''}}>{{$type_activities->description}} </option> 
+                          <option value="{{$type_activity->id}}" {{ $type_activity->id == $activity->type_activity_id ? 'selected' : ''}}>{{$type_activity->description}} </option> 
                             
                         @endforeach
                     </select>
-                    @if($errors->has('type_activities_id'))
+                    @if($errors->has('type_activity_id'))
                         <h6 class="text-danger" >Escolha a Atividade</h6> 
                     @endif
                 </div>
@@ -54,12 +43,22 @@
                         @endif
                     </div>
                     
+                    
+                    
                     <div class="form-group">
-                        <input type="txt" name="worker" value="{{old('worker') ?? $activity->worker }}" class="form-control py-3" placeholder="Funcionário">
-                        @if($errors->has('worker'))
-                            <h6 class="text-danger" >Digite o nome do funcionário</h6> 
-                        @endif
-                    </div>
+                        <!--    <label for="work_id">Escolha o funcionário</label> -->
+                            <select name="worker_id"  id="worker_id" class="form-control">
+                                @foreach($workers as $worker)
+                                    
+                                    <p>{{$worker->id}}</p>
+                                        <option value="{{$worker->id}}" {{ $worker->id == $activity->worker_id ? 'selected' : ''}}>{{$worker->name}} </option>
+                                    
+                                @endforeach
+                            </select>
+                            @if($errors->has('worker'))
+                                <h6 class="text-danger" >Digite o nome do funcionário</h6> 
+                            @endif
+                        </div>
 
                     <div class="form-group">
                         <input type="txt" name="product" value="{{old('product') ?? $activity->product }}" class="form-control py-3" placeholder="Produto usado">
@@ -71,6 +70,8 @@
                 </div>
 
 
+{{-- Hora de inico e fim da atividade inabilitada
+     Para habilitar: remover os inputs hidden abaixo e ativar os inputs desse comentario
 
                     <div class="form-group">
                         <label>Hora de início da atividade: </label>
@@ -87,14 +88,23 @@
                               <h6 class="text-danger" >Digite o horario do inicio</h6> 
                           @endif
                       </div> 
+--}}
+
+
+<input type="hidden" name="start_time" value="00:00" class="form-control py-3">
+<input type="hidden" name="final_time" value="00:00" class="form-control py-3">        
+
+
 
                       <div class="form-group">
                         <label>Tempo da atividade: </label>
                         <input type="number"  name="worked_hours" value="{{old('valor') ?? $activity->worked_hours }}"  placeholder="0.00" step="0.01" >
-                          @if($errors->has('valor'))
-                              <h6 class="text-danger" >Digite tempo da atividade</h6> 
+                          @if($errors->has('worked_hours'))
+                              <h6 class="text-danger" >Digite tempo de atividade</h6> 
                           @endif
                       </div> 
+
+
 
             <div class="form-group">
 

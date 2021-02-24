@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Despesas</title>
+    <title>Funcionários</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,11 +33,11 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Editando o origem: {{ $origem->numero }}
-                    <a class="float-right" href="/origems">Listar origems</a>
+                    Atividades Nr : {{ $worker->id }}
+                    <a class="float-right" href="/worker">Lista</a>
                 </div>
             </div>
         </div>
@@ -54,16 +54,29 @@
 @endif
 
     <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-12">
 
     <!-- porque nao suporta o metodo POST se store é post-->
-        <form action="{{ route('origems.update' ,[ 'origem' => $origem->id ])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('worker.update' ,[ 'worker' => $worker->id ])}}" method="POST"  enctype="multipart/form-data">
 
-        @method('PATCH')
-        @include('origems.form')
-
+            @method('PATCH')
+            @include('activity.worker.form')
 
         </form>
+
+        <form action="{{ route('worker.show' ,[ 'worker' => $worker->id ])}}" method="POST"  enctype="multipart/form-data">
+
+            @method('POST')
+          
+                 <div class="form-group">
+                 {!! csrf_field() !!}                      
+          
+                     <div class="form-group">
+                          <button type="submit" class="btn btn-outline-danger" >Deletar...</button>
+                     </div>
+                 </div>
+             </form>
+          
     </div>
 </div>
 </div>

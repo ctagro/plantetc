@@ -17,11 +17,11 @@ class CreateActivitiesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('type_activity_id');
+            $table->unsignedBigInteger('type_activity_id')->nullable();
             $table->date('date');
             $table->text('crop',15);
             $table->text('product',15);
-            $table->unsignedBigInteger('worker_id');
+            $table->unsignedBigInteger('worker_id')->nullable();
             $table->time('start_time');
             $table->time('final_time');
             $table->double('worked_hours',10,2);

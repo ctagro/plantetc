@@ -300,9 +300,9 @@ return [
         ],  
 
         [
-            'text'       => 'Manutenção',
+            'text'       => 'Funcionários',
             'icon_color' => 'green',
-            'url'  => 'admin/manutencao/index',
+            'url'  => '/worker',
             'icon'        => 'fas fa-money-bill-wave',
         ],  
 

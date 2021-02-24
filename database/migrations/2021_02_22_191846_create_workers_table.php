@@ -18,11 +18,8 @@ class CreateWorkersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('name',50);
-            $table->text('nikename',50);
             $table->date('admission');
             $table->double('salary',10,2);
-            $table->double('hourly_wage',10,2);
-            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

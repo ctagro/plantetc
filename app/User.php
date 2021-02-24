@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Type_activity;
 use App\Models\Activity;
+use App\Models\Worker;
 
 class User extends Authenticatable
 {
@@ -47,5 +48,11 @@ class User extends Authenticatable
     public function activity()
     {
         return $this->hasMany(Activity::class);
+    }
+
+
+    public function worker()
+    {
+        return $this->hasMany(Worker::class);
     }
 }

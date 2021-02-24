@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\Activity;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use DateTime;
-use Redirect;
-use Illuminate\Support\Facades\DB;
-use App\Models\Type_activity;
-use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use App\User;
+use App\Models\Activity;
+use App\Models\Type_activity;
+use App\Models\Worker;
+use DateTime;
+use Redirect;
+
 
 
 class ActivityController extends Controller
@@ -29,17 +31,16 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        //dd('index');
    
-    $activitiess = auth()->user()->activity()->get();
+    $activitys = auth()->user()->activity()->get();
 
-    $type_activitiess = auth()->user()->type_activity()->get();
+    $type_activitys = auth()->user()->type_activity()->get();
 
-    //.$type_activities = Type_activity::all();
+    $workers = auth()->user()->worker()->get();
 
-      //dd($type_activitiess);   
+    //dd($workers,$type_activitys);  
 
-        return view('activity.activity.index',compact('activitiess','type_activitiess'));
+        return view('activity.activity.index',compact('activitys','type_activitys','workers'));
     }
 
     /**
@@ -53,18 +54,22 @@ class ActivityController extends Controller
 
         $user = auth()->user();
 
-        $type_activitiess = auth()->user()->type_activity()->get();
+        $activitys = auth()->user()->activity()->get();
 
-        //dd($type_activities);
+        $type_activitys = auth()->user()->type_activity()->get();
 
-        $activity = new \App\Models\Activity([
+        $workers = auth()->user()->worker()->get();
 
         
 
+        $activity = new \App\Models\Activity([
 
         ]);
 
-        return view('activity.activity.create',compact('activity','type_activitiess'));
+        //dd($workers,$type_activitys);
+        //dd($type_activitiess, $workers, $activitiess, $activity, "create");
+
+        return view('activity.activity.create',compact('activity','activitys','type_activitys','workers'));
        
     }
 
@@ -79,23 +84,18 @@ class ActivityController extends Controller
     {
         $data = $request->all();
 
-        dd($data);
+        //dd($data);
 
         $data['user_id'] = auth()->user()->id;
 
         if($data['note'] === null)
-                $data['note'] = "";
+            $data['note'] = "";
 
         $string = 'true';
         $data['active'] = settype($string, 'boolean');
 
 
-        
-       // $data('worked_hours') = $data('final_time') - $data('start_time');
-
-      // $data['worked_hours'] = $data['final_time'] - ($data['start_time']);
-
-      // dd($data, $data['worked_hours']);
+      //dd($data, $data['worked_hours']);
        // $data = $this->validateRequest();
 
         $activity = new activity();
@@ -152,12 +152,16 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity) {
 
-        $type_activitiess = auth()->user()->type_activity()->get();
+        $type_activitys = auth()->user()->type_activity()->get();
+
+        $type_activitys = auth()->user()->type_activity()->get();
+
+        $workers = auth()->user()->worker()->get();
 
         $user = auth()->user();
 
 
-        return view('activity.activity.edit',compact('activity','type_activitiess'));
+        return view('activity.activity.edit',compact('activity','type_activitys','workers'));
     }
 
     /**
@@ -171,6 +175,10 @@ class ActivityController extends Controller
     {
 
         $dataRequest = $request; 
+
+        //dd($dataRequest['type_activity_id'],$activity);
+
+        
 
         if ($dataRequest['date'] == null){
             $dataP = explode('/',$activity->date);
@@ -186,16 +194,15 @@ class ActivityController extends Controller
         $string = 'true';
         $dataRequest['active'] = settype($string, 'boolean');
 
-        $data['type_activities_id']    = $dataRequest['type_activities_id'];
         $data['crop']                  = $dataRequest['crop'];
         $data['product']               = $dataRequest['product'];
-        $data['worker']                = $dataRequest['worker'];
+        $data['worker_id']             = $dataRequest['worker_id'];
         $data['start_time']            = $dataRequest['start_time'];
         $data['final_time']            = $dataRequest['final_time'];
         $data['worked_hours']          = $dataRequest['worked_hours'];
-        
+        $data['type_activity_id']      = $dataRequest['type_activity_id'];
 
-       // dd($data);
+       //dd($data);
 
         $activity -> update($data);
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Cache\ArrayLock;
 use App\Models\Type_activity;
+use App\Models\Worker;
 use Carbon\Carbon;
 use DateTime;
 use DB;
@@ -18,11 +19,11 @@ class Activity extends Model
 
         
         'user_id'               ,  
-        'type_activities_id'    ,        
+        'type_activity_id'    ,        
         'date'                  , 
         'crop'                  ,   
         'product'               ,      
-        'worker'                ,      
+        'worker_id'                ,      
         'start_time'            ,       
         'final_time'            ,         
         'worked_hours'          ,         
@@ -58,16 +59,17 @@ class Activity extends Model
             $activity = auth()->user()->Activity()->create([
             
 
-                'type_activities_id'    => $data['type_activities_id'],
+               
                 'date'                  => $data['date'],
                 'crop'                  => $data['crop'],
                 'product'               => $data['product'],
-                'worker'                => $data['worker'],
+                'worker_id'             => $data['worker_id'],
                 'start_time'            => $data['start_time'],
                 'final_time'            => $data['final_time'],
                 'worked_hours'          => $data['worked_hours'],
                 'active'                => $data['active'],
                 'note'                  => $data['note'],  
+                'type_activity_id'      => $data['type_activity_id'],
 
                 ]);
         

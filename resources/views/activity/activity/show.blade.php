@@ -63,7 +63,7 @@
           <div class="bolder">Atividade:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->id}}</div>
+          <div class="form-control">{{ $activity->type_activity->description}}</div>
         </div>
 
         <div class="row">
@@ -84,7 +84,7 @@
           <div class="bolder">Funcionário</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->worker}}</div>
+          <div class="form-control">{{ $activity->worker_id}}</div>
         </div>
 
         <div class="row">

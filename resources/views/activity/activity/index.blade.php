@@ -60,20 +60,20 @@
 
                      
 
-                      @foreach($activitiess as $activities)
+                      @foreach($activitys as $activity)
 
                         <tr>
                           <td>  
-                          <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id  ])}}" >{{ $activities->date}}</a>
+                          <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id  ])}}" >{{ $activity->date}}</a>
                           </td>
                           <td>
-                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id ])}}" >{{ $activities->type_activities_id}}</a>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->type_activity->description}}</a>
+                          </td>
+                          <td>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->worker_id}}</a>
                           </td>
                           <td>  
-                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id  ])}}" >{{ $activities->worker}}</a>
-                          </td>
-                          <td>  
-                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activities->id ])}}" >{{ number_format($activities->work_hours, 2 , ',', '.')  }}</a>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ number_format($activity->work_hours, 2 , ',', '.')  }}</a>
                           </td>
                           
                            
@@ -82,7 +82,7 @@
                         
                           <td >
             
-                            <form id="delete-form"  method="POST" action="{{ route('activity.destroy' ,[ 'activity' => $activities->id ])}}", style = 'display: inline;'> 
+                            <form id="delete-form"  method="POST" action="{{ route('activity.destroy' ,[ 'activity' => $activity->id ])}}", style = 'display: inline;'> 
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}                 
                             </form>
