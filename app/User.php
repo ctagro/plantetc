@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Type_activity;
 use App\Models\Activity;
 use App\Models\Worker;
+use App\Models\Account;
 
 class User extends Authenticatable
 {
@@ -54,5 +55,12 @@ class User extends Authenticatable
     public function worker()
     {
         return $this->hasMany(Worker::class);
+    }  
+    
+    public function account()
+    {
+        return $this->hasMany(account::class);
     }
+
+
 }

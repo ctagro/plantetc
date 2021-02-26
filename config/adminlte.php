@@ -262,7 +262,7 @@ return [
         [
             'text'       => 'Registrar Despesas',
             'icon_color' => 'cyan',
-            'url'        => 'financeiro/despesa/index',
+            'url'        => '/account',
             'icon'        => 'fas fa-calendar-minus',
 
         ],

@@ -50,3 +50,13 @@ Route::namespace('Activity')->group(function () {
     Route::patch('worker/{worker}', 'WorkerController@update')->name('worker.update');
     Route::delete('worker/{worker}', 'WorkerController@destroy')->name('worker.destroy');
 });
+
+Route::namespace('Finance')->group(function () {
+    Route::get('account/create', 'AccountController@create')->name('account.create');
+    Route::post('account/store', 'AccountController@store')->name('account.store');
+    Route::get('account', 'AccountController@index')->name('account.index')-> middleware('auth');
+    Route::get('account/{account}', 'AccountController@show')->name('account.show');
+    Route::get('account/{account}/edit', 'AccountController@edit')->name('account.edit');
+    Route::patch('account/{account}', 'AccountController@update')->name('account.update');
+    Route::delete('account/{account}', 'AccountController@destroy')->name('account.destroy');
+});
