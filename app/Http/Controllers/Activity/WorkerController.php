@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\Activity;
 use App\User;
-use App\Models\worker;
+use App\Models\Worker;
 use Redirect;
 
 class WorkerController extends Controller
