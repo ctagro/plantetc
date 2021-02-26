@@ -72,16 +72,6 @@ class WorkerController extends Controller
       $data['user_id'] = auth()->user()->id;
 
     
-
-      /*    if($data['nikename'] === null)
-                $data['nikename'] = "";
-
-        if($data['hourly_wage'] === null)
-                $data['hourly_wage'] = 0;
-
-        $string = 'true';
-        $data['active'] = settype($string, 'boolean');
-*/
         
         $worker = new worker();
 
