@@ -35,15 +35,20 @@
 
 @section('title', 'Atividades')
 
-@section('content_header')  
-<div class="row">     
-  
-    <h1 class="ml-2  text-center">Excluir Atividade</h1>
-</div>
-@stop
-
 @section('content')
-   
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header">
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/type_activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Confirmar a exclusão
+              </div>
+          </div>
+      </div>
+  </div>
+</div>   
 
 
    <!-- Fim do Formulario de despesa_conta --> 

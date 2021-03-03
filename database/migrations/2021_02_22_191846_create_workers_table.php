@@ -21,6 +21,8 @@ class CreateWorkersTable extends Migration
             $table->date('admission');
             $table->double('salary',10,2);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -4,6 +4,7 @@
  <div class='table-responsive'>
 
             <input type="hidden" name="id" value="{{$type_activity->id }}" class="form-control py-3">
+            <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3">
 
 
 
@@ -20,18 +21,17 @@
             <div class="form-group">
 
                 <label for="note">Observações</label>
-                <textarea class="form-control" rows="3" placeholder="Observação..." name="note" > {{old('note') ?? $type_activity->note }} </textarea>
+                <textarea class="form-control" rows="3" placeholder="Observação..." name="note" > {{old('note') ? $type_activity->note : "..."}} </textarea>
                    
             </div>
-
-        
+    
                <!-- Para ativar o uploud de imagens -->
 
                <div class="form-group">
                 @if (auth()->user()->image != null)
                 <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
                 @endif
-                <label for="image">Sua foto</label>
+                <label for="image">Imagem</label>
                 <input type="file" class="form-control"  name='image' value='type_activity_avatar.png'>
             </div>
 

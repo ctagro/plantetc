@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Despesas</title>
+    <title>Movimentacao</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,18 +27,24 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Despesas')
+@section('title', 'Movimentações')
 
-@section('content_header')  
-<div class="row">     
-     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-    <h1 class="ml-2  text-center">Registrar Despesas</h1>
-</div>
-@stop
+
 
 @section('content')
 
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    Registrar movimentação financeira
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Inicio da Tabela dos registros -->
 
@@ -51,8 +57,8 @@
                             <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Descrição</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tipo</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Conta</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Conta</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
                         </tr>
@@ -71,11 +77,11 @@
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type}}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting }}</a>
-                                    </td>
-                                    <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->crop }}</a>
                                     </td>
+                                    <td>
+                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting }}</a>
+                                    </td>  
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
                                     </td>
@@ -94,7 +100,6 @@
                     <?php $account->crop = Null ?>
                     <?php $account->amount = Null ?>
                     <?php $account->note = Null ?>
-                    <?php $account->active = Null ?>      
                 @endif
              
             </div>

@@ -28,16 +28,22 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Despesas')
-
-@section('content_header')  
-<div class="row">     
-     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-    <h1 class="ml-2  text-center">Modificar Despesas</h1>
-</div>
-@stop
+@section('title', 'Contas')
 
 @section('content')
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    Editar movimentação financeira
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
    
 
     <form action="{{ route('account.update' ,[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
@@ -50,7 +56,7 @@
              @include('finance.account.form')
 
                  <div class="form-group">
-                      <button type="submit" class="btn btn-danger btn-block">Registrar a despesa</button>
+                      <button type="submit" class="btn btn-danger btn-block">Atualizar a Movimentação</button>
                  </div>
              </div>
 

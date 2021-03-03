@@ -8,13 +8,15 @@ use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Type_activity extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'user_id',
         'description',
-        'active',
         'image',
         'note'
     
@@ -29,7 +31,6 @@ public function storetype_activity(array $data): Array
                 
             
                 'description'    => $data['description'],
-                'active'         => $data['active'],
                 'image'          => $data['image'],
                 'note'           => $data['note']
 
@@ -60,10 +61,6 @@ public function storetype_activity(array $data): Array
     }
 
 
-public function activity()
-    {
-        return $this->belongsTo(Activity::class);
-    }
 
     public function user()
     {

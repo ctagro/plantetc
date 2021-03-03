@@ -37,10 +37,20 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             
-                <div class="card-header">
-                  Funcionários
-                  <a class="float-right" href="{{url('worker/create')}}">Cadastrar</a>
-                </div>
+      
+                <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-md-12">
+                          <div class="card">
+                              <div class="card-header">
+                                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/worker_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                                Funcionários
+                                <a class="float-right" href="{{url('worker/create')}}">Cadastrar</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>   
            
                 @if(Session::has('mensagem_sucesso'))
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>

@@ -37,17 +37,29 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             
-                <div class="card-header">
-                  Tipo de atividades
-                  <a class="float-right" href="{{url('type_activity/create')}}">Cadastrar</a>
+          <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/type_activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                            Tipo de atividades
+                           <a class="float-right" href="{{url('type_activity/create')}}">Cadastrar</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+          </div>  
+          
+          
+    
            
                 @if(Session::has('mensagem_sucesso'))
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
                 <table class="table">
-
+                  <th> </th>
                   <th>Descrição</th>
                   <th>Observações<optgroup></optgroup></th>
 
@@ -56,6 +68,13 @@
                       @foreach($type_activities as $type_activity)
 
                         <tr>
+
+                          <td>
+                              @if (auth()->user()->image != null)
+                              <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                              @endif
+                          </div>
+                          </td>
                           <td>  
                           <a href= "{{ route('type_activity.edit' ,[ 'type_activity' => $type_activity->id  ])}}" >{{ $type_activity -> description}}</a>
                           </td>

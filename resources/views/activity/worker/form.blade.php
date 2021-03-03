@@ -4,13 +4,13 @@
  <div class='table-responsive'>
 
             <input type="hidden" name="id" value="{{$worker->id }}" class="form-control py-3">
+            <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3">
 
 
 
             <div class="form-group">
 
-                <label for="name">Nome</label>
-                <input type="text" name="name" value="{{old('name') ?? $worker->name }}" class="form-control">
+                <input type="text" name="name" value="{{old('name') ?? $worker->name }}" class="form-control" placeholder="Nome">
                 @if($errors->has('name'))
                         <h6 class="text-danger" >Digite o Nome</h6> 
                 @endif
@@ -27,7 +27,7 @@
     
                 @else
                     <?php $data = $worker->admission?>
-                <label for="admission">Data : {{$data}}</label>
+                <label for="admission">Admissão : {{$data}}</label>
                     <input type="date" name="admission" id ="admission" value="{{old('$admission(d/m/Y)') ?? $worker->admission}}"  class="form-control py-3" placeholder="$data">             
                 @endif
             </div>
@@ -35,7 +35,7 @@
             <div class="form-group">
                 <label>Salario: </label>
                 <input type="number"  name="salary" value="{{old('salary') ?? $worker->salary }}"  placeholder="0.00" step="0.01" >
-                  @if($errors->has('valor'))
+                  @if($errors->has('salary'))
                       <h6 class="text-danger" >Digite o Salário</h6> 
                   @endif
               </div> 

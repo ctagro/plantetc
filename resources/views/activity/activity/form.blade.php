@@ -6,7 +6,6 @@
 
               
                 <div class="form-group">
-                <!--    <label for="type_activities_id">Escolha a type_activity</label> -->
                     <select name="type_activity_id"  id="type_activity_id" class="form-control">
                         @foreach($type_activitys as $type_activity)
 
@@ -22,7 +21,7 @@
                 <div class="form-group">
 
                     @if(!Request::is('*/edit'))
-                       
+                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3">
                         <input type="date" name="date"  value="{{old('$date(d/m/y)') ?? $activity->date }}"  class="form-control py-3" placeholder="$data">
                         @if($errors->has('date'))
                                 <h6 class="text-danger" >Digite a data</h6> 
@@ -31,7 +30,10 @@
                     @else
                         <?php $data = $activity->date ?>
                     <label for="date">Data : {{$data}}</label>
-                        <input type="date" name="date" id ="date" value="{{old('$date(d/m/Y)') ?? $activity->date}}"  class="form-control py-3" placeholder="$data">             
+                        <input type="date" name="date" id ="date" value="{{old('$date(d/m/Y)') ?? $activity->date}}"  class="form-control py-3" placeholder="$data">  
+                        @if($errors->has('date'))
+                        <h6 class="text-danger" >Digite a data</h6> 
+                @endif           
                     @endif
         
                 </div>
@@ -47,7 +49,8 @@
                     
                     <div class="form-group">
                         <!--    <label for="work_id">Escolha o funcionário</label> -->
-                            <select name="worker_id"  id="worker_id" class="form-control">
+                        <label for="worker_id">Funcionário</label>  
+                        <select name="worker_id"  id="worker_id" class="form-control">
                                 @foreach($workers as $worker)
                                     
                                     <p>{{$worker->id}}</p>
@@ -91,9 +94,8 @@
 --}}
 
 
-<input type="hidden" name="start_time" value="00:00" class="form-control py-3">
-<input type="hidden" name="final_time" value="00:00" class="form-control py-3">        
-
+                        <input type="hidden" name="start_time" value="00:00" class="form-control py-3">
+                        <input type="hidden" name="final_time" value="00:00" class="form-control py-3">        
 
 
                       <div class="form-group">
@@ -109,8 +111,7 @@
             <div class="form-group">
 
                 <label for="note">Observações</label>
-                <textarea class="form-control" rows="3" placeholder="Observação..." name="note" > {{old('note') ?? $activity->note }} </textarea>
-                   
+                <textarea class="form-control" rows="3" placeholder="Observação..." name="note" > {{old('note') ? $activity->note : "..."}} </textarea>
             </div>
 
             @csrf

@@ -36,13 +36,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Atividades Nr : {{ $worker->id }}
-                    <a class="float-right" href="/worker">Lista</a>
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/worker_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Editar
+                  <a class="float-right" href="{{url('/worker')}}">Lista</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
+  </div>   
 
 
 <div class="container">

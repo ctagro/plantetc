@@ -29,6 +29,10 @@
 
     @extends('adminlte::page')
 
+    @section('title', 'Atividade')
+@section('content_header')
+@stop
+
 
 @section('content')
 
@@ -37,7 +41,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                Cadastrar
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                Cadastrar Atividade
                 <a class="float-right" href="{{url('/activity')}}">Lista</a>
                 </div>
             </div>

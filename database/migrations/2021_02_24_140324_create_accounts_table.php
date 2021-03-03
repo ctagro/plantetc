@@ -19,13 +19,13 @@ class CreateAccountsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('date');
             $table->text('description');
-            $table->enum('type',['D','I']);
-            $table->text('accounting',15);
+            $table->enum('type',['D','I','V']);
             $table->text('crop',15);
+            $table->text('accounting',15);
             $table->double('amount',10,2);
-            $table->boolean('active')->default(true);
             $table->longtext('note');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -9,11 +9,12 @@ use App\User;
 use Carbon\Carbon;
 use DateTime;
 use DB;
-
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Account extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [ 
 
         
@@ -23,8 +24,7 @@ class Account extends Model
         'type'                  ,         
         'accounting'            ,      
         'crop'                  ,   
-        'amount'                ,  
-        'active'                ,        
+        'amount'                ,   
         'note'                  ,       
     ];
 
@@ -59,7 +59,6 @@ class Account extends Model
                 'accounting'            => $data['accounting'],
                 'crop'                  => $data['crop'],
                 'amount'                => $data['amount'],
-                'active'                => $data['active'],
                 'note'                  => $data['note'], 
                 
 

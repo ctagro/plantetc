@@ -8,9 +8,12 @@ use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Worker extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = [
         'user_id',
         'name',
@@ -18,6 +21,11 @@ class Worker extends Model
         'salary'
     
 ];
+
+public function getDateAttribute($value)
+     {
+         return Carbon::parse($value)->format('d/m/Y');
+     }
 
 public function storeWorker(array $data): Array
     {  
@@ -57,12 +65,7 @@ public function storeWorker(array $data): Array
 
     }
 
-   
 
-public function activity()
-    {
-        return $this->belongsTo(Activity::class);
-    }
 
     public function user()
     {

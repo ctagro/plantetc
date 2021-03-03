@@ -260,7 +260,7 @@ return [
         
 
         [
-            'text'       => 'Registrar Despesas',
+            'text'       => 'Movimentação Financeira',
             'icon_color' => 'cyan',
             'url'        => '/account',
             'icon'        => 'fas fa-calendar-minus',

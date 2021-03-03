@@ -9,9 +9,12 @@ use App\Models\Type_activity;
 use App\Models\Activity;
 use App\Models\Worker;
 use App\Models\Account;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
+    Use SoftDeletes;
+    
     use Notifiable;
 
     /**

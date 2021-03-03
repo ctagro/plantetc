@@ -34,13 +34,7 @@ class ActivityController extends Controller
    
     $activitys = auth()->user()->activity()->get();
 
-    $type_activitys = auth()->user()->type_activity()->get();
-
-    $workers = auth()->user()->worker()->get();
-
-    //dd($workers,$type_activitys);  
-
-        return view('activity.activity.index',compact('activitys','type_activitys','workers'));
+        return view('activity.activity.index',compact('activitys'));
     }
 
     /**
@@ -50,7 +44,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-
+       
 
         $user = auth()->user();
 
@@ -66,9 +60,7 @@ class ActivityController extends Controller
 
         ]);
 
-        //dd($workers,$type_activitys);
-        //dd($type_activitiess, $workers, $activitiess, $activity, "create");
-
+   
         return view('activity.activity.create',compact('activity','activitys','type_activitys','workers'));
        
     }
@@ -82,42 +74,27 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+       
+       $data = $this->validateRequest();
 
-        //dd($data);
-
-        $data['user_id'] = auth()->user()->id;
-
-        if($data['note'] === null)
-            $data['note'] = "";
-
-        $string = 'true';
-        $data['active'] = settype($string, 'boolean');
-
-
-      //dd($data, $data['worked_hours']);
-       // $data = $this->validateRequest();
 
         $activity = new activity();
 
-        //dd($activity,$data);
-        //Chamando a objeto a funcao do model despesa e passando o array 
-        // capiturado no formulario da view financeiro/despesa
-        
+       
         $response = $activity->storeActivity($data);
 
-        //dd($response);
+
 
         if ($response['sucess'])
 
             return redirect()
                         ->route('activity.index')
-                        ->with('sucess', $response['mensage']);
+                        ->with('sucess', "Atividade registrada com sucesso");
                     
 
         return redirect()
                     ->back()
-                    ->with('error', $response['mensage']);
+                    ->with('error', "Erro");
 
     }
 
@@ -191,8 +168,6 @@ class ActivityController extends Controller
          if($dataRequest['note'] === null)
                 $data['note'] = "";
 
-        $string = 'true';
-        $dataRequest['active'] = settype($string, 'boolean');
 
         $data['crop']                  = $dataRequest['crop'];
         $data['product']               = $dataRequest['product'];
@@ -229,16 +204,15 @@ class ActivityController extends Controller
         return request()->validate([
 
 
-            'user_id'                =>   'required', 
-            'type_activities_id'     =>   'required',        
+        
+            'type_activity_id'     =>   'required',        
             'date'                   =>   'required',
             'crop'                   =>   'required',      
             'product'                =>   'required',      
-            'worker'                 =>   'required',      
+            'worker_id'              =>   'required',      
             'start_time'             =>   'required',       
             'final_time'             =>   'required',         
-            'worked_hours'           =>   'required',         
-            'active'                 =>   'required',        
+           'worked_hours'           =>   'required',         
             'note'                   =>   'required',    
     
        ]);

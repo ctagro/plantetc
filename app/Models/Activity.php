@@ -10,15 +10,16 @@ use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Activity extends Model
 {
-   
+   use SoftDeletes;
 
     protected $fillable = [ 
 
         
-        'user_id'               ,  
+       
         'type_activity_id'    ,        
         'date'                  , 
         'crop'                  ,   
@@ -27,7 +28,6 @@ class Activity extends Model
         'start_time'            ,       
         'final_time'            ,         
         'worked_hours'          ,         
-        'active'                ,        
         'note'                  ,       
     ];
 
@@ -36,10 +36,10 @@ class Activity extends Model
      ******************************/
      
     
-    public function getDateAttribute($value)
-     {
-         return Carbon::parse($value)->format('d/m/Y');
-     }
+    //public function getDateAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('d/m/Y');
+    // }
 
    
 
@@ -51,15 +51,15 @@ class Activity extends Model
 
     public function storeActivity(array $data): Array
     {
-        //dd($data,$data['type_activity_id']);
+       
 
  // recebe o array do controller Despesa -> storeDespesa e grava na tabela
 
        
             $activity = auth()->user()->Activity()->create([
             
-
-               
+                
+            
                 'date'                  => $data['date'],
                 'crop'                  => $data['crop'],
                 'product'               => $data['product'],
@@ -67,9 +67,8 @@ class Activity extends Model
                 'start_time'            => $data['start_time'],
                 'final_time'            => $data['final_time'],
                 'worked_hours'          => $data['worked_hours'],
-                'active'                => $data['active'],
                 'note'                  => $data['note'],  
-                'type_activity_id'      => $data['type_activity_id'],
+                'type_activity_id'      => $data['type_activity_id']
 
                 ]);
         
@@ -107,8 +106,15 @@ class Activity extends Model
 
     public function type_activity()
     {
-        return $this -> belongsTo(Type_activity::class);
+        return $this->belongsTo(Type_activity::class);
     }
+
+    public function worker()
+    {
+        return $this->belongsTo(Worker::class);
+    }
+
+    
 
      
 }

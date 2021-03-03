@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Models\Account;
+use Carbon\Carbon;
 use Redirect;
 
 class AccountController extends Controller
@@ -28,10 +29,6 @@ class AccountController extends Controller
     $accounts = auth()->user()->account()->get();
 
     $response = $accounts->first();
-
-    //dd($response);
-
-    
 
     
     if ($response === null) {
@@ -80,35 +77,12 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $this->validateRequest();
         
-        
-        $data = $request->all();
-
-        //dd($data);
-
-        $data['user_id'] = auth()->user()->id;
-
-        //$data['date'] = null;
-
-        if($data['note'] === null)
-            $data['note'] = "";
-
-        $string = 'true';
-        $data['active'] = settype($string, 'boolean');
-
-
-     // dd($data, $data['date']);
-       // $data = $this->validateRequest();
 
         $account = new account();
 
-        //dd($account,$data);
-        //Chamando a objeto a funcao do model despesa e passando o array 
-        // capiturado no formulario da view financeiro/despesa
-        
         $response = $account->storeAccount($data);
-
-        //dd($response);
 
         if ($response['sucess'])
 
@@ -178,9 +152,6 @@ class AccountController extends Controller
          if($dataRequest['note'] === null)
                 $data['note'] = "";
 
-        $string = 'true';
-        $dataRequest['active'] = settype($string, 'boolean');
-
   
         $data['description']     = $dataRequest['description'];
         $data['type']            = $dataRequest['type'];
@@ -223,7 +194,6 @@ class AccountController extends Controller
             'accounting'            => 'required' ,
             'crop'                  => 'required' ,
             'amount'                => 'required' ,
-            'active'                => 'required' ,
             'note'                  => 'required' ,
     
        ]);

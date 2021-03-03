@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeActivitiesTable extends Migration
+class CreateCropsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateTypeActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_activities', function (Blueprint $table) {
+        Schema::create('crops', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('description',15);
-            $table->string('image', 100)->nullable();
-            $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +27,6 @@ class CreateTypeActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_activities');
+        Schema::dropIfExists('crops');
     }
 }

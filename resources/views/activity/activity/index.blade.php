@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tipo de atividades</title>
+    <title>Atividades</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,10 +37,20 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             
-                <div class="card-header">
-                  Tipo de atividades
-                  <a class="float-right" href="{{url('activity/create')}}">Cadastrar</a>
-                </div>
+
+                <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-md-12">
+                          <div class="card">
+                              <div class="card-header">
+                                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                                  Atividades
+                                  <a class="float-right" href="{{url('activity/create')}}">Cadastrar</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
            
                 @if(Session::has('mensagem_sucesso'))
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
@@ -48,7 +58,7 @@
 
                 <table class="table">
 
-                  <th>date</th>
+                  <th>Data</th>
                   <th>Atividade</th>
                   <th>Funcionário</th>
                   <th>Horas trab</th>
@@ -70,10 +80,10 @@
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->type_activity->description}}</a>
                           </td>
                           <td>
-                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->worker_id}}</a>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->worker->name}}</a>
                           </td>
                           <td>  
-                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ number_format($activity->work_hours, 2 , ',', '.')  }}</a>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ number_format($activity->worked_hours, 2 , ',', '.')  }}</a>
                           </td>
                           
                            

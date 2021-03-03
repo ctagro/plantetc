@@ -33,16 +33,23 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Despesas')
+@section('title', 'Movimentação')
 
-@section('content_header')  
-<div class="row">     
-  
-    <h1 class="ml-2  text-center">Excluir Despesas</h1>
-</div>
-@stop
 
 @section('content')
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header">
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Excluir Movimentação
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
    
 
 

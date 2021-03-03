@@ -62,17 +62,7 @@ class Type_activityController extends Controller
     public function store(Request $request, Type_activity $type_activity)
     {
        
-        $data = $request->all();
-
-        $data['user_id'] = auth()->user()->id;
-
-        if($data['note'] === null)
-                $data['note'] = "";
-
-        $string = 'true';
-        $data['active'] = settype($string, 'boolean');
-
-        $data['user_id'] = auth()->user()->id;
+        $data = $this->validateRequest();
  
         if ($request->file('image') === null){
             $data['image'] = 'type_activity_avatar.png';
@@ -153,16 +143,25 @@ class Type_activityController extends Controller
 
        $dataRequest = $request; 
 
-
     if ($request->hasFile('image') && $request->file('image')->isValid()) {
-          
-        $nameFile = $type_activity['image'];
 
+        $nameFile = $type_activity['image'];
+          
+        if  ($nameFile == "type_activity_avatar.png"){
+
+            //cria um nome para a imagem concatenado id e nome do user
+            $name = 'type_activity_'.time();   // tirar os espacos com o kebab_case
+            $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
+            $nameFile = "{$name}.{$extenstion}"; // concatenando
+            $type_activity['image'] = $nameFile;
+        }
+    
         $upload = $request->file('image')->storeAs('type_activities', $nameFile);
     }
 
     $data['description'] = $dataRequest['description'];
-    $data['active'] = $dataRequest['active'];
+
+  
     $data['note'] = $dataRequest['note'];
     $data['image'] = $type_activity['image'];
   
@@ -199,9 +198,7 @@ class Type_activityController extends Controller
 
         
             'description' => 'required',
-            'active'=> 'required',
             'note' => 'required',
-            'image' => 'requered',
             
             
        ]);

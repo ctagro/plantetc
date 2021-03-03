@@ -25,9 +25,9 @@ class CreateActivitiesTable extends Migration
             $table->time('start_time');
             $table->time('final_time');
             $table->double('worked_hours',10,2);
-            $table->boolean('active')->default(true);
             $table->longtext('note');
             $table->timestamps();
+            $table->softDeletes();
             
         });
     }

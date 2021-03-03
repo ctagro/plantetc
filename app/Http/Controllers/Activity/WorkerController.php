@@ -65,14 +65,8 @@ class WorkerController extends Controller
      */
     public function store(Request $request, Worker $worker)
     {
-        $data = $request->all();
+        $data = $this->validateRequest();
 
-       // dd($data, $worker);
-
-      $data['user_id'] = auth()->user()->id;
-
-    
-        
         $worker = new worker();
 
         
@@ -149,6 +143,15 @@ class WorkerController extends Controller
     {
 
         $dataRequest = $this->validateRequest();
+
+
+        if ($dataRequest['admission'] == null){
+            $dataP = explode('/',$worker->admission);
+            $data['admission'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
+         }
+         else {           
+            $data['admission'] = $dataRequest['admission'];
+         }
 
         $data['name'] = $dataRequest['name'];
         $data['admission'] = $dataRequest['admission'];
