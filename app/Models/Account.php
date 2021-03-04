@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Cache\ArrayLock;
 use App\User;
-
 use Carbon\Carbon;
 use DateTime;
 use DB;

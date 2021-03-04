@@ -17,12 +17,18 @@ class Worker extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'admission',
-        'salary'
+        'date',
+        'salary',
+        'image',
     
 ];
 
-public function getDateAttribute($value)
+   /*********************************
+     * Formatando a data como dia mes e ano
+     ******************************/
+     
+    
+    public function getDateAttribute($value)
      {
          return Carbon::parse($value)->format('d/m/Y');
      }
@@ -34,8 +40,9 @@ public function storeWorker(array $data): Array
             $worker = auth()->user()->worker()->create([
 
                 'name'          => $data['name'],
-                'admission'     => $data['admission'],
+                'date'          => $data['date'],
                 'salary'        => $data['salary'],
+                'image'          => $data['image'],
                 
 
          ]);

@@ -89,16 +89,16 @@ class Type_activityController extends Controller
 
         $response = $type_activity->storetype_activity($data);
 
-        if ($response['sucess'])
+        if ($response)
 
-            return redirect()
-                        ->route('type_activity.index')
-                        ->with('sucess', $response['mensage']);
+        return redirect()
+                        ->route('type_activity.create')
+                        ->with('sucess', 'Cadastro realizado com sucesso');
                     
 
         return redirect()
                     ->back()
-                    ->with('error', $response['mensage']);
+                    ->with('error',  'Falha ao cadastrar o tipo de atividade');
 
     }
 
@@ -166,9 +166,18 @@ class Type_activityController extends Controller
     $data['image'] = $type_activity['image'];
   
 
-        $type_activity -> update($data);
+      $update  = $type_activity -> update($data);
 
-        return redirect('/type_activity');
+      if ($update)
+
+        return redirect()
+                        ->route('type_activity.edit' ,[ 'type_activity' => $type_activity->id ])
+                        ->with('sucess', 'Sucesso ao atualizar');
+                    
+
+        return redirect()
+                    ->back()
+                    ->with('error',  'Falha na atualização do tipo de atividade');
 
     }
 

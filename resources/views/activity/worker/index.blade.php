@@ -58,6 +58,7 @@
 
                 <table class="table">
 
+                  <th>Foto</th>
                   <th>Nome</th>
                   <th>Admissão</th>
                   <th>Salário</th>
@@ -67,11 +68,14 @@
                       @foreach($workers as $worker)
 
                         <tr>
+                          <td>
+                            <img src="{{ asset('storage/workers/'.$worker->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                          </td>
                           <td>  
                           <a href= "{{ route('worker.edit' ,[ 'worker' => $worker->id  ])}}" >{{ $worker->name}}</a>
                           </td>
                           <td>  
-                            <a href= "{{ route('worker.edit' ,[ 'worker' => $worker->id  ])}}" >{{ $worker->admission}}</a>
+                            <a href= "{{ route('worker.edit' ,[ 'worker' => $worker->id  ])}}" >{{ $worker->date}}</a>
                             </td>
                             <td>  
                               <a href= "{{ route('worker.edit' ,[ 'worker' => $worker->id ])}}" >{{ number_format($worker->salary, 2 , ',', '.')  }}</a>

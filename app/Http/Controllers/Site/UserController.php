@@ -62,6 +62,8 @@ class UserController extends Controller
 
         $update = $user->update($data);
 
+        if ($update)
+
         return redirect()
                         ->route('profile')
                         ->with('sucess', 'Sucesso ao atualizar');

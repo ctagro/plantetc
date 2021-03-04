@@ -31,18 +31,30 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    Atividades Nr : {{ $activity->id }}
-                    <a class="float-right" href="/activity">Lista</a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        Atividades Nr : {{ $activity->id }}
+                        <a class="float-right" href="/activity">Lista</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    @if(session('sucess'))
+        <div class="alert alert-success">
+            {{ session('sucess') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
 
 <div class="container">

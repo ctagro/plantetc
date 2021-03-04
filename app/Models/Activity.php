@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Cache\ArrayLock;
 use App\Models\Type_activity;
 use App\Models\Worker;
+use App\User;
 use Carbon\Carbon;
 use DateTime;
 use DB;
-use App\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Activity extends Model
@@ -36,14 +36,10 @@ class Activity extends Model
      ******************************/
      
     
-    //public function getDateAttribute($value)
-    // {
-    //     return Carbon::parse($value)->format('d/m/Y');
-    // }
-
-   
-
-     
+    Public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 
       /*********************************
      * Registrando as despesas e os saldos

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use App\Models\Activity;
 use App\User;
 use App\Models\Worker;
@@ -67,6 +68,24 @@ class WorkerController extends Controller
     {
         $data = $this->validateRequest();
 
+        if ($request->file('image') === null){
+            $data['image'] = 'worker_avatar.png';
+            }
+        else{
+            if ($request->file('image')->isValid() && $request->file('image')->isValid()) {
+          
+            //cria um nome para a imagem concatenado id e nome do user
+                $name = 'worker_'.time();   // tirar os espacos com o kebab_case
+                $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
+                $nameFile = "{$name}.{$extenstion}"; // concatenando
+                $data['image'] = $nameFile;
+               dd($data['image']);
+
+               $upload = $request->file('image')->storeAs('workers', $nameFile);
+            }
+        }
+
+
         $worker = new worker();
 
         
@@ -82,16 +101,16 @@ class WorkerController extends Controller
 
 
 
-        if ($response['sucess'])
+        if ($response)
 
             return redirect()
-                        ->route('worker.index')
-                        ->with('sucess', $response['mensage']);
+                            ->route('worker.create')
+                            ->with('sucess', 'Cadastro realizado com sucesso');
                     
 
         return redirect()
                     ->back()
-                    ->with('error', $response['mensage']);
+                    ->with('error',  'Falha ao cadastrar o funcionário');
 
     }
 
@@ -144,23 +163,48 @@ class WorkerController extends Controller
 
         $dataRequest = $this->validateRequest();
 
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-        if ($dataRequest['admission'] == null){
-            $dataP = explode('/',$worker->admission);
-            $data['admission'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
+            $nameFile = $worker['image'];
+              
+            if  ($nameFile == "worker_avatar.png"){
+    
+                //cria um nome para a imagem concatenado id e nome do user
+                $name = 'worker_'.time();   // tirar os espacos com o kebab_case
+                $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
+                $nameFile = "{$name}.{$extenstion}"; // concatenando
+                $worker['image'] = $nameFile;
+                //dd($nameFile);
+            }
+        
+            $upload = $request->file('image')->storeAs('workers', $nameFile);
+        }
+
+        if ($dataRequest['date'] == null){
+            $dataP = explode('/',$worker->date);
+            $data['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
          }
          else {           
-            $data['admission'] = $dataRequest['admission'];
+            $data['date'] = $dataRequest['date'];
          }
 
         $data['name'] = $dataRequest['name'];
-        $data['admission'] = $dataRequest['admission'];
+        $data['date'] = $dataRequest['date'];
         $data['salary'] = $dataRequest['salary'];
        
 
-        $worker -> update($data);
+        $update = $worker -> update($data);
 
-        return redirect('/worker');
+        if ($update)
+
+        return redirect()
+                        ->route('worker.edit' ,[ 'worker' => $worker->id ])
+                        ->with('sucess', 'Sucesso ao atualizar');
+                    
+
+        return redirect()
+                    ->back()
+                    ->with('error',  'Falha na atualização do cadastro');     
 
     }
 
@@ -172,7 +216,13 @@ class WorkerController extends Controller
      */
     public function destroy(worker $worker)
     {
-        $worker->delete();
+        $path = 'workers/'.$worker['image'];
+
+        if($path != "workers/worker_avatar.png")
+
+        Storage::delete($path);
+
+        $destroy = $worker->delete();
 
         return redirect('/worker');
     }
@@ -183,7 +233,7 @@ class WorkerController extends Controller
         return request()->validate([
 
             'name'=> 'required',
-            'admission'=> 'required',
+            'date'=> 'required',
             'salary' => 'required',
     
        ]);

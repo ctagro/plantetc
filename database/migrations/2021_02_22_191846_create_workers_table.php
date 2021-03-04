@@ -18,8 +18,9 @@ class CreateWorkersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('name',50);
-            $table->date('admission');
+            $table->date('date');
             $table->double('salary',10,2);
+            $table->string('image', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -20,15 +20,15 @@
 
                 @if(!Request::is('*/edit'))
                    
-                    <input type="date" name="admission"  value="{{old('$admission(d/m/y)') ?? $worker->admission }}"  class="form-control py-3" placeholder="$data">
-                    @if($errors->has('admission'))
+                    <input type="date" name="date"  value="{{old('$date(d/m/y)') ?? $worker->date }}"  class="form-control py-3" placeholder="$data">
+                    @if($errors->has('date'))
                             <h6 class="text-danger" >Digite a Admissão</h6> 
                     @endif
     
                 @else
-                    <?php $data = $worker->admission?>
-                <label for="admission">Admissão : {{$data}}</label>
-                    <input type="date" name="admission" id ="admission" value="{{old('$admission(d/m/Y)') ?? $worker->admission}}"  class="form-control py-3" placeholder="$data">             
+                    <?php $data = $worker->date?>
+                <label for="date">Admissão : {{$data}}</label>
+                    <input type="date" name="date" id ="date" value="{{old('$date(d/m/Y)') ?? $worker->date}}"  class="form-control py-3" placeholder="$data">             
                 @endif
             </div>
 
@@ -42,7 +42,13 @@
 
         
                <!-- Para ativar o uploud de imagens -->
-
+               <div class="form-group">
+                @if ($worker->image != null)
+                    <img src="{{ asset('storage/workers/'.$worker->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                @endif
+                <label for="image">Imagem</label>
+                <input type="file" class="form-control"  name='image' value='worker_avatar.png'>
+            </div>
               
          
 

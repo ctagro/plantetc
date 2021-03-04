@@ -58,8 +58,8 @@
 
                 <table class="table">
 
-                  <th>Data</th>
-                  <th>Atividade</th>
+                  <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
+                  <th>Atividades</th>
                   <th>Funcionário</th>
                   <th>Horas trab</th>
 
@@ -74,7 +74,7 @@
 
                         <tr>
                           <td>  
-                          <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id  ])}}" >{{ $activity->date}}</a>
+                          <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id  ])}}" >{{ $activity->date }}</a>
                           </td>
                           <td>
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->type_activity->description}}</a>

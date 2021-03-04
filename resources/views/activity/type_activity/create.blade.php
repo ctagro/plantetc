@@ -49,11 +49,17 @@
 
 <div class="container">
 
-            @if(Session::has('mensagem_sucesso'))
+    @if(session('sucess'))
+        <div class="alert alert-success">
+            {{ session('sucess') }}
+        </div>
+    @endif
 
-                    <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
-
-            @endif
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
     <!-- porque nao suporta o metodo POST se store é post-->
     <div class="row justify-content-center">

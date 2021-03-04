@@ -74,7 +74,7 @@
           <div class="bolder">Admisssão:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $worker->admission}}</div>
+          <div class="form-control">{{ $worker->date}}</div>
         </div>
 
         <div class="row">
@@ -83,6 +83,12 @@
         <div class="row">
           <div class="form-control">{{ $worker->salary}}</div>
         </div>
+        <br>
+        <div class="row">
+          Imagem :
+          <img src="{{ asset('storage/workers/'.$worker->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+        </div>
+    </div>
       
              <div class="form-group">
                   <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>

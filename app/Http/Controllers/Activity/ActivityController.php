@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use App\User;
 use App\Models\Activity;
 use App\Models\Type_activity;
@@ -85,16 +86,17 @@ class ActivityController extends Controller
 
 
 
-        if ($response['sucess'])
+        if ($response)
 
-            return redirect()
-                        ->route('activity.index')
-                        ->with('sucess', "Atividade registrada com sucesso");
+        return redirect()
+                        ->route('activity.create')
+                        ->with('sucess', 'Cadastro realizado com sucesso');
                     
 
         return redirect()
                     ->back()
-                    ->with('error', "Erro");
+                    ->with('error',  'Falha ao cadastrar da atividade');
+
 
     }
 
@@ -179,9 +181,18 @@ class ActivityController extends Controller
 
        //dd($data);
 
-        $activity -> update($data);
+       $update = $activity -> update($data);
 
-        return redirect('/activity');
+       if ($update)
+
+        return redirect()
+                        ->route('activity.edit' ,[ 'activity' => $activity->id ])
+                        ->with('sucess', 'Sucesso ao atualizar');
+                    
+
+        return redirect()
+                    ->back()
+                    ->with('error',  'Falha na atualização da atividade');     
 
     }
 

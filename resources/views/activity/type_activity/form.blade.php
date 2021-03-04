@@ -28,8 +28,8 @@
                <!-- Para ativar o uploud de imagens -->
 
                <div class="form-group">
-                @if (auth()->user()->image != null)
-                <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                @if ($type_activity->image != null)
+                    <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
                 @endif
                 <label for="image">Imagem</label>
                 <input type="file" class="form-control"  name='image' value='type_activity_avatar.png'>
