@@ -304,7 +304,15 @@ return [
             'icon_color' => 'green',
             'url'  => '/worker',
             'icon'        => 'fas fa-money-bill-wave',
+        ], 
+        
+        [
+            'text'       => 'Áreas de Plantio',
+            'icon_color' => 'green',
+            'url'  => '/ground',
+            'icon'        => 'fas fa-money-bill-wave',
         ],  
+
 
         [
             'text'       => 'Consulta',

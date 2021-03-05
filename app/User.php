@@ -9,6 +9,7 @@ use App\Models\Type_activity;
 use App\Models\Activity;
 use App\Models\Worker;
 use App\Models\Account;
+use App\Models\Ground;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -65,5 +66,9 @@ class User extends Authenticatable
         return $this->hasMany(account::class);
     }
 
+    public function ground()
+    {
+        return $this->hasMany(ground::class);
+    }
 
 }

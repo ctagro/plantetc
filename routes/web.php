@@ -60,3 +60,13 @@ Route::namespace('Finance')->group(function () {
     Route::patch('account/{account}', 'AccountController@update')->name('account.update');
     Route::delete('account/{account}', 'AccountController@destroy')->name('account.destroy');
 });
+
+Route::namespace('Ground')->group(function () {
+    Route::get('ground/create', 'GroundController@create')->name('ground.create');
+    Route::post('ground/store', 'GroundController@store')->name('ground.store');
+    Route::get('ground', 'GroundController@index')->name('ground.index')-> middleware('auth');
+    Route::post('ground/{ground}', 'GroundController@show')->name('ground.show');
+    Route::get('ground/{ground}/edit', 'GroundController@edit')->name('ground.edit');
+    Route::patch('ground/{ground}', 'GroundController@update')->name('ground.update');
+    Route::delete('ground/{ground}', 'GroundController@destroy')->name('ground.destroy');
+});

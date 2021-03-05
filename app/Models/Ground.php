@@ -3,21 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Activity;
 use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
+use App\Models\Ground;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Worker extends Model
+class Ground extends Model
 {
     use SoftDeletes;
     
     protected $fillable = [
         'user_id',
         'name',
-        'date',
-        'salary',
+        'area',
+        'location',
         'image',
     
 ];
@@ -32,15 +34,15 @@ class Worker extends Model
          return Carbon::parse($value)->format('d/m/Y');
      }
 
-public function storeWorker(array $data): Array
+public function storeGround(array $data): Array
     {  
        //dd($data);
 
-            $worker = auth()->user()->worker()->create([
+            $ground = auth()->user()->ground()->create([
 
                 'name'          => $data['name'],
-                'date'          => $data['date'],
-                'salary'        => $data['salary'],
+                'area'          => $data['area'],
+                'location'        => $data['location'],
                 'image'          => $data['image'],
                 
 
@@ -48,13 +50,13 @@ public function storeWorker(array $data): Array
 
         
  
-       if($worker){
+       if($ground){
 
             DB::commit();
 
             return[
                 'sucess' => true,
-                'mensage'=> 'Funcionário registrada com sucesso'
+                'mensage'=> 'Area registrada com sucesso'
             ];
 
             }
@@ -65,7 +67,7 @@ public function storeWorker(array $data): Array
 
             return[
                     'sucess' => false,
-                    'mensage'=> 'Falha ao registrar a funcionário'
+                    'mensage'=> 'Falha ao registrar a Area'
             ];
             }
 
