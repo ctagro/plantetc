@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Funcionários</title>
+    <title>Tipo de Conta</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,7 +33,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Atividades')
+@section('title', 'Tipo de Conta')
 
 @section('content')
    
@@ -42,7 +42,7 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/worker_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/accounting_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                 Confirmar exclusão
               </div>
           </div>
@@ -51,7 +51,7 @@
 </div>   
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('worker.destroy',[ 'worker' => $worker->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('accounting.destroy',[ 'accounting' => $accounting->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -67,32 +67,24 @@
           <div class="bolder">Nome:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $worker->name}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Admisssão:</div>
+          <div class="form-control">{{ $accounting->name}}</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $worker->date}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Salário:</div>
+          <div class="bolder">Descrição:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $worker->salary}}</div>
-        </div>
+          <div class="form-control">{{ $accounting->description}}</div>
+        </div>      
         <br>
         <div class="row">
           Imagem :
-          <img src="{{ asset('storage/workers/'.$worker->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+          <img src="{{ asset('storage/accountings/'.$accounting->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
         </div>
     </div>
       
              <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do tipo de conta</button>
-                  <a href="{{ url('/worker') }}" class="float-right" >Voltar </a> 
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>
+                  <a href="{{ url('/accounting') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

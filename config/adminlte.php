@@ -313,6 +313,12 @@ return [
             'icon'        => 'fas fa-money-bill-wave',
         ],  
 
+        [
+            'text'       => 'Tipo de contas',
+            'icon_color' => 'green',
+            'url'  => '/accounting',
+            'icon'        => 'fas fa-money-bill-wave',
+        ],  
 
         [
             'text'       => 'Consulta',

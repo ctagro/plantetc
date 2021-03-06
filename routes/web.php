@@ -42,7 +42,7 @@ Route::namespace('Activity')->group(function () {
     Route::patch('type_activity/{type_activity}', 'Type_activityController@update')->name('type_activity.update');
     Route::delete('type_activity/{type_activity}', 'Type_activityController@destroy')->name('type_activity.destroy');
 
-    Route::get('worker/create', 'WorkerController@create')->name('worker.create');
+    Route::get('accounting/create', 'WorkerController@create')->name('worker.create');
     Route::post('worker/store', 'WorkerController@store')->name('worker.store');
     Route::get('worker', 'WorkerController@index')->name('worker.index')-> middleware('auth');
     Route::post('worker/{worker}', 'WorkerController@show')->name('worker.show');
@@ -59,6 +59,14 @@ Route::namespace('Finance')->group(function () {
     Route::get('account/{account}/edit', 'AccountController@edit')->name('account.edit');
     Route::patch('account/{account}', 'AccountController@update')->name('account.update');
     Route::delete('account/{account}', 'AccountController@destroy')->name('account.destroy');
+
+    Route::get('accounting/create', 'AccountingController@create')->name('accounting.create');
+    Route::post('accounting/store', 'AccountingController@store')->name('accounting.store');
+    Route::get('accounting', 'AccountingController@index')->name('accounting.index')-> middleware('auth');
+    Route::post('accounting/{accounting}', 'AccountingController@show')->name('accounting.show');
+    Route::get('accounting/{accounting}/edit', 'AccountingController@edit')->name('accounting.edit');
+    Route::patch('accounting/{accounting}', 'AccountingController@update')->name('accounting.update');
+    Route::delete('accounting/{accounting}', 'AccountingController@destroy')->name('accounting.destroy');
 });
 
 Route::namespace('Ground')->group(function () {
