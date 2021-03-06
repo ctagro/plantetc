@@ -14,7 +14,7 @@ class Type_activityTableSeeder extends Seeder
     {
          // Desabilita a checagem de chaves
          DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
-         DB::table('Type_activities')->delete();
+         DB::table('type_activities')->delete();
    
          Type_activity::create([
                         
