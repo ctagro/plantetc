@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers\Ground;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use App\User;
-use App\Models\Accounting;
 use Carbon\Carbon;
+use App\Models\Activity;
+use App\User;
+use App\Models\Crop;
 use Redirect;
 
-class AccountingController extends Controller
+class CropController extends Controller
 {
     public function __construct()
     {
@@ -26,14 +27,14 @@ class AccountingController extends Controller
     public function index()
     {
 
-    $accountings = auth()->user()->accounting()->get();
+    $crops = auth()->user()->crop()->get();
 
 
-    // $accountings = Accounting::all();
+    // $crops = Crop::all();
 
-    // dd($accountings);   
+    // dd($crops);   
 
-        return view('finance.accounting.index', ['accountings' => $accountings]);
+        return view('ground.crop.index', ['crops' => $crops]);
     }
 
     /**
@@ -47,12 +48,12 @@ class AccountingController extends Controller
 
         $user = auth()->user();
 
-        $accounting = new \App\Models\Accounting([
+        $crop = new \App\Models\Crop([
 
 
         ]);
 
-        return view('finance.accounting.create',compact('accounting'));
+        return view('ground.crop.create',compact('crop'));
        
     }
 
@@ -63,46 +64,46 @@ class AccountingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Accounting $accounting)
+    public function store(Request $request, Crop $crop)
     {
         $data = $this->validateRequest();
 
         if ($request->file('image') === null){
-            $data['image'] = 'accounting_avatar.png';
+            $data['image'] = 'crop_avatar.png';
             }
         else{
             if ($request->file('image')->isValid() && $request->file('image')->isValid()) {
           
             //cria um nome para a imagem concatenado id e nome do user
-                $name = 'accounting_'.time();   // tirar os espacos com o kebab_case
+                $name = 'crop_'.time();   // tirar os espacos com o kebab_case
                 $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
                 $nameFile = "{$name}.{$extenstion}"; // concatenando
                 $data['image'] = $nameFile;
                
-               $upload = $request->file('image')->storeAs('accountings', $nameFile);
+               $upload = $request->file('image')->storeAs('crops', $nameFile);
             }
         }
 
 
-        $accounting = new accounting();
+        $crop = new crop();
 
         
 
-        //dd($accounting);
+        //dd($crop);
 
        
 
         // Chamando a objeto a funcao do model despesa e passando o array 
-        // capiturado no formulario da view financeiro/despesa
+        // capiturado no formulario da view groundiro/despesa
 
-        $response = $accounting->storeAccounting($data);
+        $response = $crop->storeCrop($data);
 
 
 
         if ($response)
 
             return redirect()
-                            ->route('accounting.create')
+                            ->route('crop.create')
                             ->with('sucess', 'Cadastro realizado com sucesso');
                     
 
@@ -119,16 +120,16 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Accounting $accounting)
+    public function show(Crop $crop)
     {
 
       //  $user_login_id = auth()->user()->id;
       //  $user = auth()->user();
 
-      $accountings = auth()->user()->accounting()->get();
+      $crops = auth()->user()->crop()->get();
 
 
-        return view('finance.accounting.show', compact('accounting' ));
+        return view('ground.crop.show', compact('crop' ));
 
 
 
@@ -140,13 +141,13 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accounting $accounting) {
+    public function edit(Crop $crop) {
 
 
         $user = auth()->user();
 
 
-        return view('finance.accounting.edit',['accounting' => $accounting]);
+        return view('ground.crop.edit',['crop' => $crop]);
     }
 
     /**
@@ -156,26 +157,26 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accounting $accounting)
+    public function update(Request $request, Crop $crop)
     {
 
         $dataRequest = $this->validateRequest();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-            $nameFile = $accounting['image'];
+            $nameFile = $crop['image'];
               
-            if  ($nameFile == "accounting_avatar.png"){
+            if  ($nameFile == "crop_avatar.png"){
     
                 //cria um nome para a imagem concatenado id e nome do user
-                $name = 'accounting_'.time();   // tirar os espacos com o kebab_case
+                $name = 'crop_'.time();   // tirar os espacos com o kebab_case
                 $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
                 $nameFile = "{$name}.{$extenstion}"; // concatenando
-                $accounting['image'] = $nameFile;
+                $crop['image'] = $nameFile;
                 //dd($nameFile);
             }
         
-            $upload = $request->file('image')->storeAs('accountings', $nameFile);
+            $upload = $request->file('image')->storeAs('crops', $nameFile);
         }
 
         
@@ -184,12 +185,12 @@ class AccountingController extends Controller
         $data['description'] = $dataRequest['description'];
        
 
-        $update = $accounting -> update($data);
+        $update = $crop -> update($data);
 
         if ($update)
 
         return redirect()
-                        ->route('accounting.edit' ,[ 'accounting' => $accounting->id ])
+                        ->route('crop.edit' ,[ 'crop' => $crop->id ])
                         ->with('sucess', 'Sucesso ao atualizar');
                     
 
@@ -205,17 +206,17 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accounting $accounting)
+    public function destroy(Crop $crop)
     {
-        $path = 'accountings/'.$accounting['image'];
+        $path = 'crops/'.$crop['image'];
 
-        if($path != "accountings/accounting_avatar.png")
+        if($path != "crops/crop_avatar.png")
 
         Storage::delete($path);
 
-        $destroy = $accounting->delete();
+        $destroy = $crop->delete();
 
-        return redirect('/accounting');
+        return redirect('/crop');
     }
 
     private function validateRequest()

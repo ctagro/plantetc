@@ -32,7 +32,7 @@ class WorkerController extends Controller
 
     // $workers = Worker::all();
 
-    // dd($workers);   
+    //dd($workers);   
 
         return view('activity.worker.index', ['workers' => $workers]);
     }
@@ -44,7 +44,7 @@ class WorkerController extends Controller
      */
     public function create()
     {
-
+        
 
         $user = auth()->user();
 
@@ -52,6 +52,7 @@ class WorkerController extends Controller
 
 
         ]);
+
 
         return view('activity.worker.create',compact('worker'));
        
@@ -86,10 +87,6 @@ class WorkerController extends Controller
 
 
         $worker = new worker();
-
-        
-
-        //dd($worker);
 
        
 
@@ -159,7 +156,7 @@ class WorkerController extends Controller
      */
     public function update(Request $request, worker $worker)
     {
-
+        
         $dataRequest = $this->validateRequest();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {

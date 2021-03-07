@@ -19,7 +19,7 @@
             <div class="form-group">
 
                 @if(!Request::is('*/edit'))
-                   
+                    <input type="hidden" name="date" value="{{$worker->date}}" class="form-control py-3">
                     <input type="date" name="date"  value="{{old('$date(d/m/y)') ?? $worker->date }}"  class="form-control py-3" placeholder="$data">
                     @if($errors->has('date'))
                             <h6 class="text-danger" >Digite a Admissão</h6> 

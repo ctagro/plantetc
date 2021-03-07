@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cultura</title>
+    <title>Tipo de Conta</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,7 +42,7 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/accounting_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                 Confirmar exclusão
               </div>
           </div>
@@ -51,7 +51,7 @@
 </div>   
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('accounting.destroy',[ 'accounting' => $accounting->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('product.destroy',[ 'product' => $product->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -67,24 +67,24 @@
           <div class="bolder">Nome:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $accounting->name}}</div>
+          <div class="form-control">{{ $product->name}}</div>
         </div>
         <div class="row">
           <div class="bolder">Descrição:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $accounting->description}}</div>
+          <div class="form-control">{{ $product->description}}</div>
         </div>      
         <br>
         <div class="row">
           Imagem :
-          <img src="{{ asset('storage/accountings/'.$accounting->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+          <img src="{{ asset('storage/products/'.$product->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
         </div>
     </div>
       
              <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>
-                  <a href="{{ url('/accounting') }}" class="float-right" >Voltar </a> 
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão da Cultura</button>
+                  <a href="{{ url('/product') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

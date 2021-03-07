@@ -42,7 +42,7 @@ Route::namespace('Activity')->group(function () {
     Route::patch('type_activity/{type_activity}', 'Type_activityController@update')->name('type_activity.update');
     Route::delete('type_activity/{type_activity}', 'Type_activityController@destroy')->name('type_activity.destroy');
 
-    Route::get('accounting/create', 'WorkerController@create')->name('worker.create');
+    Route::get('worker/create', 'WorkerController@create')->name('worker.create');
     Route::post('worker/store', 'WorkerController@store')->name('worker.store');
     Route::get('worker', 'WorkerController@index')->name('worker.index')-> middleware('auth');
     Route::post('worker/{worker}', 'WorkerController@show')->name('worker.show');
@@ -77,4 +77,22 @@ Route::namespace('Ground')->group(function () {
     Route::get('ground/{ground}/edit', 'GroundController@edit')->name('ground.edit');
     Route::patch('ground/{ground}', 'GroundController@update')->name('ground.update');
     Route::delete('ground/{ground}', 'GroundController@destroy')->name('ground.destroy');
+
+    Route::get('crop/create', 'CropController@create')->name('crop.create');
+    Route::post('crop/store', 'CropController@store')->name('crop.store');
+    Route::get('crop', 'CropController@index')->name('crop.index')-> middleware('auth');
+    Route::post('crop/{crop}', 'CropController@show')->name('crop.show');
+    Route::get('crop/{crop}/edit', 'CropController@edit')->name('crop.edit');
+    Route::patch('crop/{crop}', 'CropController@update')->name('crop.update');
+    Route::delete('crop/{crop}', 'CropController@destroy')->name('crop.destroy');
+});
+
+Route::namespace('Product')->group(function () {
+    Route::get('product/create', 'ProductController@create')->name('product.create');
+    Route::post('product/store', 'ProductController@store')->name('product.store');
+    Route::get('product', 'ProductController@index')->name('product.index')-> middleware('auth');
+    Route::post('product/{product}', 'ProductController@show')->name('product.show');
+    Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
+    Route::patch('product/{product}', 'ProductController@update')->name('product.update');
+    Route::delete('product/{product}', 'ProductController@destroy')->name('product.destroy');
 });

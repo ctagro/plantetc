@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use App\User;
-use App\Models\Accounting;
 use Carbon\Carbon;
+use App\Models\Activity;
+use App\User;
+use App\Models\Product;
 use Redirect;
 
-class AccountingController extends Controller
+
+class ProductController extends Controller
 {
     public function __construct()
     {
@@ -26,14 +27,14 @@ class AccountingController extends Controller
     public function index()
     {
 
-    $accountings = auth()->user()->accounting()->get();
+    $products = auth()->user()->product()->get();
 
 
-    // $accountings = Accounting::all();
+    // $products = Product::all();
 
-    // dd($accountings);   
+    // dd($products);   
 
-        return view('finance.accounting.index', ['accountings' => $accountings]);
+        return view('product.product.index', ['products' => $products]);
     }
 
     /**
@@ -47,12 +48,12 @@ class AccountingController extends Controller
 
         $user = auth()->user();
 
-        $accounting = new \App\Models\Accounting([
+        $product = new \App\Models\Product([
 
 
         ]);
 
-        return view('finance.accounting.create',compact('accounting'));
+        return view('product.product.create',compact('product'));
        
     }
 
@@ -63,46 +64,46 @@ class AccountingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Accounting $accounting)
+    public function store(Request $request, Product $product)
     {
         $data = $this->validateRequest();
 
         if ($request->file('image') === null){
-            $data['image'] = 'accounting_avatar.png';
+            $data['image'] = 'product_avatar.png';
             }
         else{
             if ($request->file('image')->isValid() && $request->file('image')->isValid()) {
           
             //cria um nome para a imagem concatenado id e nome do user
-                $name = 'accounting_'.time();   // tirar os espacos com o kebab_case
+                $name = 'product_'.time();   // tirar os espacos com o kebab_case
                 $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
                 $nameFile = "{$name}.{$extenstion}"; // concatenando
                 $data['image'] = $nameFile;
                
-               $upload = $request->file('image')->storeAs('accountings', $nameFile);
+               $upload = $request->file('image')->storeAs('products', $nameFile);
             }
         }
 
 
-        $accounting = new accounting();
+        $product = new product();
 
         
 
-        //dd($accounting);
+        //dd($product);
 
        
 
         // Chamando a objeto a funcao do model despesa e passando o array 
-        // capiturado no formulario da view financeiro/despesa
+        // capiturado no formulario da view productiro/despesa
 
-        $response = $accounting->storeAccounting($data);
+        $response = $product->storeProduct($data);
 
 
 
         if ($response)
 
             return redirect()
-                            ->route('accounting.create')
+                            ->route('product.create')
                             ->with('sucess', 'Cadastro realizado com sucesso');
                     
 
@@ -119,16 +120,16 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Accounting $accounting)
+    public function show(Product $product)
     {
 
       //  $user_login_id = auth()->user()->id;
       //  $user = auth()->user();
 
-      $accountings = auth()->user()->accounting()->get();
+      $products = auth()->user()->product()->get();
 
 
-        return view('finance.accounting.show', compact('accounting' ));
+        return view('product.product.show', compact('product' ));
 
 
 
@@ -140,13 +141,13 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accounting $accounting) {
+    public function edit(Product $product) {
 
 
         $user = auth()->user();
 
 
-        return view('finance.accounting.edit',['accounting' => $accounting]);
+        return view('product.product.edit',['product' => $product]);
     }
 
     /**
@@ -156,40 +157,42 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accounting $accounting)
+    public function update(Request $request, Product $product)
     {
 
         $dataRequest = $this->validateRequest();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-            $nameFile = $accounting['image'];
+            $nameFile = $product['image'];
               
-            if  ($nameFile == "accounting_avatar.png"){
+            if  ($nameFile == "product_avatar.png"){
     
                 //cria um nome para a imagem concatenado id e nome do user
-                $name = 'accounting_'.time();   // tirar os espacos com o kebab_case
+                $name = 'product_'.time();   // tirar os espacos com o kebab_case
                 $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
                 $nameFile = "{$name}.{$extenstion}"; // concatenando
-                $accounting['image'] = $nameFile;
+                $product['image'] = $nameFile;
                 //dd($nameFile);
             }
         
-            $upload = $request->file('image')->storeAs('accountings', $nameFile);
+            $upload = $request->file('image')->storeAs('products', $nameFile);
         }
 
         
 
         $data['name'] = $dataRequest['name'];
         $data['description'] = $dataRequest['description'];
+        $data['type_product'] = $dataRequest['type_product'];
+        $data['note'] = $dataRequest['note'];
        
 
-        $update = $accounting -> update($data);
+        $update = $product -> update($data);
 
-        if ($update)
+        if ($update);
 
         return redirect()
-                        ->route('accounting.edit' ,[ 'accounting' => $accounting->id ])
+                        ->route('product.edit' ,[ 'product' => $product->id ])
                         ->with('sucess', 'Sucesso ao atualizar');
                     
 
@@ -205,17 +208,17 @@ class AccountingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accounting $accounting)
+    public function destroy(Product $product)
     {
-        $path = 'accountings/'.$accounting['image'];
+        $path = 'products/'.$product['image'];
 
-        if($path != "accountings/accounting_avatar.png")
+        if($path != "products/product_avatar.png")
 
         Storage::delete($path);
 
-        $destroy = $accounting->delete();
+        $destroy = $product->delete();
 
-        return redirect('/accounting');
+        return redirect('/product');
     }
 
     private function validateRequest()
@@ -225,6 +228,8 @@ class AccountingController extends Controller
 
             'name'=> 'required',
             'description'=> 'required',
+            'type_product'=> 'required',
+            'note'=> 'required',
     
        ]);
 

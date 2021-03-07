@@ -22,8 +22,8 @@ class CreateActivitiesTable extends Migration
             $table->text('crop',15);
             $table->text('product',15);
             $table->unsignedBigInteger('worker_id')->nullable();
-            $table->time('start_time');
-            $table->time('final_time');
+            $table->time('start_time'); // inativo 02/21
+            $table->time('final_time'); // inativo 02/21
             $table->double('worked_hours',10,2);
             $table->longtext('note');
             $table->timestamps();

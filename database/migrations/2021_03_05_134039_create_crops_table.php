@@ -15,7 +15,13 @@ class CreateCropsTable extends Migration
     {
         Schema::create('crops', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->text('name',50);
+            $table->text('description',200);
+            $table->string('image', 100)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

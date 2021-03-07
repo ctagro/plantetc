@@ -23,7 +23,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Insumos',
             'description'   => 'Tudo que for adquirido para utilização na produção do hortifruti',
-            'image'         => 'accounting_avatar.jpg',
+            'image'         => 'accounting_avatar.png',
         ]);
 
         Accounting::create([
@@ -31,7 +31,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Adubos',
             'description'   => 'Adubos adquirdos para utilização na produção do hortifruti',
-            'image'         => 'accounting_avatar.jpg',
+            'image'         => 'accounting_avatar.png',
         ]);
 
         Accounting::create([
@@ -39,7 +39,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Herbicidas',
             'description'   => 'Tudo que for adquirido para combater doenças',
-            'image'         => 'accounting_avatar.jpg',
+            'image'         => 'accounting_avatar.png',
         ]);
 
         Accounting::create([
@@ -47,7 +47,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Embalagens',
             'description'   => 'Aquisição de embalagens para a venda de hortifruti',
-            'image'         => 'accounting_avatar.jpg',
+            'image'         => 'accounting_avatar.png',
         ]);
       
         // Habilita novamente checagem de chaves *Importante*   

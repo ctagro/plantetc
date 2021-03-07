@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(WorkerTableSeeder::class);
         $this->call(Type_activityTableSeeder::class);
         $this->call(AccountingTableSeeder::class);
+        $this->call(CropTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
 
     }
 }

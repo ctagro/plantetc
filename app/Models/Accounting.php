@@ -18,8 +18,7 @@ class Accounting extends Model
         'name',
         'description',
         'image',
-    
-];
+    ];
 
    /*********************************
      * Formatando a data como dia mes e ano

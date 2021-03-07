@@ -11,6 +11,8 @@ use App\Models\Worker;
 use App\Models\Account;
 use App\Models\Accounting;
 use App\Models\Ground;
+use App\Models\Crop;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -75,6 +77,16 @@ class User extends Authenticatable
     public function accounting()
     {
         return $this->hasMany(accounting::class);
+    }
+
+    public function crop()
+    {
+        return $this->hasMany(crop::class);
+    }
+
+    public function product()
+    {
+        return $this->hasMany(product::class);
     }
 
 }

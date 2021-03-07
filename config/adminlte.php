@@ -318,6 +318,20 @@ return [
             'icon_color' => 'green',
             'url'  => '/accounting',
             'icon'        => 'fas fa-money-bill-wave',
+        ],
+        
+        [
+            'text'       => 'Culturas',
+            'icon_color' => 'green',
+            'url'  => '/crop',
+            'icon'        => 'fas fa-money-bill-wave',
+        ], 
+        
+        [
+            'text'       => 'Produtos',
+            'icon_color' => 'green',
+            'url'  => '/product',
+            'icon'        => 'fas fa-money-bill-wave',
         ],  
 
         [
