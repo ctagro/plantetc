@@ -137,27 +137,25 @@ class AccountController extends Controller
     public function update(Request $request, Account $account)
     {
 
-        $dataRequest = $request; 
-
-        
-
-        if ($dataRequest['date'] == null){
+       
+        if ($request['date'] == null){
             $dataP = explode('/',$account->date);
-            $data['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
-         }
-         else {           
-            $data['date'] = $dataRequest['date'];
-         }
+            $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
+        }
 
-         if($dataRequest['note'] === null)
-                $data['note'] = "";
+        if ($request['note'] == null){
+            $request['note'] = "...";
+         }
+                       
+        $dataRequest = $this->validateRequest();
 
-  
+        $data['date']            = $dataRequest['date'];
         $data['description']     = $dataRequest['description'];
         $data['type']            = $dataRequest['type'];
         $data['accounting']      = $dataRequest['accounting'];
-        $data['crop']            = $dataRequest['crop'];
+        $data['ground']            = $dataRequest['ground'];
         $data['amount']          = $dataRequest['amount'];
+        $data['note']            = $dataRequest['note'];
     
 
        //dd($data);
@@ -192,7 +190,7 @@ class AccountController extends Controller
             'description'           => 'required' ,
             'type'                  => 'required' ,
             'accounting'            => 'required' ,
-            'crop'                  => 'required' ,
+            'ground'                  => 'required' ,
             'amount'                => 'required' ,
             'note'                  => 'required' ,
     

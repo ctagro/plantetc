@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Cache\ArrayLock;
 use App\Models\Type_activity;
 use App\Models\Worker;
+use App\Models\Ground;
+use App\Models\Product;
 use App\User;
 use Carbon\Carbon;
 use DateTime;
@@ -20,11 +22,12 @@ class Activity extends Model
 
         
        
-        'type_activity_id'    ,        
+               
         'date'                  , 
-        'crop'                  ,   
-        'product'               ,      
-        'worker_id'                ,      
+        'type_activity_id'      ,
+        'worker_id'             , 
+        'ground_id'             ,   
+        'product_id'            ,                 
         'start_time'            ,       
         'final_time'            ,         
         'worked_hours'          ,         
@@ -57,8 +60,8 @@ class Activity extends Model
                 
             
                 'date'                  => $data['date'],
-                'crop'                  => $data['crop'],
-                'product'               => $data['product'],
+                'ground_id'             => $data['ground_id'],
+                'product_id'            => $data['product_id'],
                 'worker_id'             => $data['worker_id'],
                 'start_time'            => $data['start_time'],
                 'final_time'            => $data['final_time'],
@@ -110,8 +113,15 @@ class Activity extends Model
         return $this->belongsTo(Worker::class);
     }
 
-    
+    public function ground()
+    {
+        return $this->belongsTo(ground::class);
+    }
 
+    public function product()
+    {
+        return $this->belongsTo(product::class);
+    }
      
 }
 

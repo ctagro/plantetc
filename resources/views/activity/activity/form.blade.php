@@ -4,19 +4,6 @@
 
             <input type="hidden" name="id" value="{{$activity->id }}" class="form-control py-3">
 
-              
-                <div class="form-group">
-                    <select name="type_activity_id"  id="type_activity_id" class="form-control">
-                        @foreach($type_activitys as $type_activity)
-
-                          <option value="{{$type_activity->id}}" {{ $type_activity->id == $activity->type_activity_id ? 'selected' : ''}}>{{$type_activity->description}} </option> 
-                            
-                        @endforeach
-                    </select>
-                    @if($errors->has('type_activity_id'))
-                        <h6 class="text-danger" >Escolha a Atividade</h6> 
-                    @endif
-                </div>
 
                 <div class="form-group">
 
@@ -37,38 +24,65 @@
                     @endif
         
                 </div>
+              
+                <div class="form-group">
+                        <select name="type_activity_id"  id="type_activity_id" class="form-control">
+                        <option value="" disabled selected>Selecione a atividade...</option>
+                        @foreach($type_activitys as $type_activity)
 
-                    <div class="form-group">
-                        <input type="txt" name="crop" value="{{old('crop') ?? $activity->crop }}" class="form-control py-3" placeholder="Área">
-                        @if($errors->has('crop'))
-                            <h6 class="text-danger" >Digite a Área</h6> 
-                        @endif
-                    </div>
-                    
-                    
-                    
-                    <div class="form-group">
-                        <!--    <label for="work_id">Escolha o funcionário</label> -->
-                        <label for="worker_id">Funcionário</label>  
-                        <select name="worker_id"  id="worker_id" class="form-control">
-                                @foreach($workers as $worker)
-                                    
-                                    <p>{{$worker->id}}</p>
-                                        <option value="{{$worker->id}}" {{ $worker->id == $activity->worker_id ? 'selected' : ''}}>{{$worker->name}} </option>
-                                    
-                                @endforeach
-                            </select>
-                            @if($errors->has('worker'))
-                                <h6 class="text-danger" >Digite o nome do funcionário</h6> 
-                            @endif
-                        </div>
+                          <option value="{{$type_activity->id}}" {{ $type_activity->id == $activity->type_activity_id ? 'selected' : ''}}>{{$type_activity->description}} </option> 
+                            
+                        @endforeach
+                    </select>
+                    @if($errors->has('type_activity_id'))
+                        <h6 class="text-danger" >Selecione a Atividade</h6> 
+                    @endif
+                </div>
 
-                    <div class="form-group">
-                        <input type="txt" name="product" value="{{old('product') ?? $activity->product }}" class="form-control py-3" placeholder="Produto usado">
-                        @if($errors->has('product'))
-                            <h6 class="text-danger" >Digite o Produto usado</h6> 
+                <div class="form-group">
+                    <select name="worker_id"  id="worker_id" class="form-control">
+                        <option value="" disabled selected>Selecione o funcionário...</option>
+                        @foreach($workers as $worker)
+                                
+                            <p>{{$worker->id}}</p>
+                                <option value="{{$worker->id}}" {{ $worker->id == $activity->worker_id ? 'selected' : ''}}>{{$worker->name}} </option>
+                                
+                        @endforeach
+                    </select>
+                    @if($errors->has('worker_id'))
+                        <h6 class="text-danger" >Selecione o nome do funcionário</h6> 
+                    @endif
+                </div>                
+
+                <div class="form-group">                   
+                    <select name="ground_id"  id="ground_id" class="form-control">
+                        <option value="" disabled selected>Selecione a área...</option> 
+                            @foreach($grounds as $ground)
+                                
+                                <p>{{$ground->id}}</p>
+                                    <option value="{{$ground->id}}" {{ $ground->id == $activity->ground_id ? 'selected' : ''}}>{{$ground->name}} </option>
+                                
+                            @endforeach
+                    </select>
+                    @if($errors->has('ground_id'))
+                        <h6 class="text-danger" >Selecione o nome da Área de plantio</h6> 
+                    @endif
+                </div>
+                    
+                <div class="form-group">
+                    <select name="product_id"  id="product_id" class="form-control">
+                        <option value="" disabled selected>Selecione (os) produto(s) utilizado(s)...</option>
+                            @foreach($products as $product)
+                                
+                                <p>{{$product->id}}</p>
+                                    <option value="{{$product->id}}" {{ $product->id == $activity->product_id ? 'selected' : ''}}>{{$product->name}} </option>
+                                
+                            @endforeach
+                        </select>
+                        @if($errors->has('product_id'))
+                            <h6 class="text-danger" >Selecione o nome do(s) produto(s) usados</h6> 
                         @endif
-                    </div>
+                    </div>                
 
                 </div>
 

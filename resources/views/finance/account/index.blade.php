@@ -77,7 +77,7 @@
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type}}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->crop }}</a>
+                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground }}</a>
                                     </td>
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting }}</a>
@@ -97,7 +97,7 @@
                     <?php $account->description = Null ?>
                     <?php $account->type = Null ?>
                     <?php $account->accounting = Null ?>
-                    <?php $account->crop = Null ?>
+                    <?php $account->ground = Null ?>
                     <?php $account->amount = Null ?>
                     <?php $account->note = Null ?>
                 @endif

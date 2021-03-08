@@ -77,14 +77,7 @@
                           <td>  
                             <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ $product->description}}</a>
                           </td>
-        
-                         <td>
-            
-                            <form id="delete-form"  method="POST" action="{{ route('product.destroy' ,[ 'product' => $product->id ])}}", style = 'display: inline;'> 
-                              {{ csrf_field() }}
-                              {{ method_field('DELETE') }}                 
-                            </form>
-                          </td>
+      
                         </tr>
                       @endforeach
                     </tbody>

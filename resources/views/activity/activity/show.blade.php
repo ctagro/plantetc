@@ -67,9 +67,6 @@
         <div class="row">
           <div class="bolder">Atividade:</div>
         </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->type_activity->description}}</div>
-        </div>
 
         <div class="row">
           <div class="bolder">Data:</div>
@@ -79,17 +76,31 @@
         </div>
 
         <div class="row">
-          <div class="bolder">Área</div>
+          <div class="bolder">Atividade</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->crop}}</div>
+          <div class="form-control">{{ $activity->type_activity->description}}</div>
         </div>
-        
+
         <div class="row">
           <div class="bolder">Funcionário</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->worker_id}}</div>
+          <div class="form-control">{{ $activity->worker->name}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Área</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $activity->ground->name}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Produto</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $activity->product->name}}</div>
         </div>
 
         <div class="row">

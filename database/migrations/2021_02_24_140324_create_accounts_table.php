@@ -20,7 +20,7 @@ class CreateAccountsTable extends Migration
             $table->date('date');
             $table->text('description');
             $table->enum('type',['D','I']);
-            $table->text('ground_id',15);
+            $table->text('ground',15);
             $table->text('accounting',15);
             $table->double('amount',10,2);
             $table->longtext('note');

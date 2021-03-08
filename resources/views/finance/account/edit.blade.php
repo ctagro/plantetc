@@ -66,7 +66,7 @@
 
               <a href= "{{ route('account.show' ,[ 'account' => $account->id ])}}" class="btn btn-outline-danger" >Deletar</a>
    
-              <div class="text-right"> <a href="{{ url('finance/account/index') }}" class="text-right">Voltar </a> </div>
+              <div class="text-right"> <a href="{{ url('/account') }}" class="text-right">Voltar </a> </div>
              </div>
          <a href="#" id="ancora"></a>
 </form>

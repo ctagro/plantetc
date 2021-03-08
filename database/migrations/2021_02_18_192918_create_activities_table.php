@@ -16,12 +16,12 @@ class CreateActivitiesTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('type_activity_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');      
             $table->date('date');
-            $table->text('crop',15);
-            $table->text('product',15);
+            $table->unsignedBigInteger('type_activity_id')->nullable();
             $table->unsignedBigInteger('worker_id')->nullable();
+            $table->unsignedBigInteger('ground_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();            
             $table->time('start_time'); // inativo 02/21
             $table->time('final_time'); // inativo 02/21
             $table->double('worked_hours',10,2);

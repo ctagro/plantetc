@@ -36,7 +36,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Atividades Nr : {{ $activity->id }}
+                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                        Atividade
                         <a class="float-right" href="/activity">Lista</a>
                     </div>
                 </div>

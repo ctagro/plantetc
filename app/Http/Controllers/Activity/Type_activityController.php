@@ -159,11 +159,9 @@ class Type_activityController extends Controller
         $upload = $request->file('image')->storeAs('type_activities', $nameFile);
     }
 
-    $data['description'] = $dataRequest['description'];
-
-  
-    $data['note'] = $dataRequest['note'];
-    $data['image'] = $type_activity['image'];
+    $data['description']    = $dataRequest['description'];
+    $data['note']           = $dataRequest['note'];
+    $data['image']          = $type_activity['image'];
   
 
       $update  = $type_activity -> update($data);

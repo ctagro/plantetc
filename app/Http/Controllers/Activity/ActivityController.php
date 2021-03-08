@@ -12,6 +12,8 @@ use App\User;
 use App\Models\Activity;
 use App\Models\Type_activity;
 use App\Models\Worker;
+use App\Models\Ground;
+use App\Models\Product;
 use DateTime;
 use Redirect;
 
@@ -55,6 +57,10 @@ class ActivityController extends Controller
 
         $workers = auth()->user()->worker()->get();
 
+        $grounds = auth()->user()->ground()->get();
+
+        $products = auth()->user()->product()->get();
+
         
 
         $activity = new \App\Models\Activity([
@@ -62,7 +68,7 @@ class ActivityController extends Controller
         ]);
 
    
-        return view('activity.activity.create',compact('activity','activitys','type_activitys','workers'));
+        return view('activity.activity.create',compact('activity','activitys','type_activitys','workers','grounds','products'));
        
     }
 
@@ -75,7 +81,10 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-       
+        if ($request['note'] == null){
+            $request['note'] = "...";
+         }
+
        $data = $this->validateRequest();
 
 
@@ -137,10 +146,14 @@ class ActivityController extends Controller
 
         $workers = auth()->user()->worker()->get();
 
+        $grounds = auth()->user()->ground()->get();
+
+        $products = auth()->user()->product()->get();
+
         $user = auth()->user();
 
 
-        return view('activity.activity.edit',compact('activity','type_activitys','workers'));
+        return view('activity.activity.edit',compact('activity','type_activitys','workers','grounds','products'));
     }
 
     /**
@@ -153,33 +166,28 @@ class ActivityController extends Controller
     public function update(Request $request, Activity $activity)
     {
 
-        $dataRequest = $request; 
+        if ($request['date'] == null){
+            $dataP = explode('/',$activity->date);
+            $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
+         }
 
-        //dd($dataRequest['type_activity_id'],$activity);
-
+   
         
 
-        if ($dataRequest['date'] == null){
-            $dataP = explode('/',$activity->date);
-            $data['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
-         }
-         else {           
-            $data['date'] = $dataRequest['date'];
-         }
-
-         if($dataRequest['note'] === null)
-                $data['note'] = "";
+        $dataRequest = $this->validateRequest();
 
 
-        $data['crop']                  = $dataRequest['crop'];
-        $data['product']               = $dataRequest['product'];
+
+       
+        $data['date']                  = $dataRequest['date'];
+        $data['type_activity_id']      = $dataRequest['type_activity_id'];
+        $data['ground_id']             = $dataRequest['ground_id'];
+        $data['product_id']             = $dataRequest['product_id'];
         $data['worker_id']             = $dataRequest['worker_id'];
         $data['start_time']            = $dataRequest['start_time'];
         $data['final_time']            = $dataRequest['final_time'];
         $data['worked_hours']          = $dataRequest['worked_hours'];
-        $data['type_activity_id']      = $dataRequest['type_activity_id'];
-
-       //dd($data);
+       
 
        $update = $activity -> update($data);
 
@@ -213,17 +221,15 @@ class ActivityController extends Controller
     {
 
         return request()->validate([
-
-
-        
-            'type_activity_id'     =>   'required',        
+             
             'date'                   =>   'required',
-            'crop'                   =>   'required',      
-            'product'                =>   'required',      
-            'worker_id'              =>   'required',      
+            'type_activity_id'       =>   'required',
+            'worker_id'              =>   'required',  
+            'ground_id'              =>   'required',      
+            'product_id'             =>   'required',                   
             'start_time'             =>   'required',       
             'final_time'             =>   'required',         
-           'worked_hours'           =>   'required',         
+            'worked_hours'           =>   'required',         
             'note'                   =>   'required',    
     
        ]);

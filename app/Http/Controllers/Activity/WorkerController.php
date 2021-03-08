@@ -157,6 +157,13 @@ class WorkerController extends Controller
     public function update(Request $request, worker $worker)
     {
         
+
+        if ($request['date'] == null){
+            $dataP = explode('/',$worker->date);
+            $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
+         }
+        
+
         $dataRequest = $this->validateRequest();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -175,14 +182,7 @@ class WorkerController extends Controller
         
             $upload = $request->file('image')->storeAs('workers', $nameFile);
         }
-
-        if ($dataRequest['date'] == null){
-            $dataP = explode('/',$worker->date);
-            $data['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
-         }
-         else {           
-            $data['date'] = $dataRequest['date'];
-         }
+    
 
         $data['name'] = $dataRequest['name'];
         $data['date'] = $dataRequest['date'];

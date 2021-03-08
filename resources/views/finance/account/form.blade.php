@@ -3,10 +3,12 @@
      <!-- Inicio do Formulario de account_conta --> 
 
   
+     <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3"> 
+
             <div class="form-group row">
 
                 @if(!Request::is('*/edit'))
-                <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3">       
+                     
                 <input type="date" name="date"  value="{{old('$date(d/m/y)') ?? $account->date }}"  class="form-control py-3" placeholder="$data">
                 @if($errors->has('date'))
                         <h6 class="text-danger" >Digite a data</h6> 
@@ -15,7 +17,7 @@
             @else
                 <?php $data = $account->date ?>
             <label for="date">Data : {{$data}}</label>
-            {{auth()->user()->id}}
+
                 <input type="date" name="date" id ="date" value="{{old('$date(d/m/Y)') ?? $account->date}}"  class="form-control py-3" placeholder="$data"> 
                 @if($errors->has('date'))
                         <h6 class="text-danger" >Digite a data</h6> 
@@ -41,8 +43,8 @@
 </div>
 
 <div class="form-group row">
-    <input type="txt" name="crop" value="{{old('crop') ?? $account->crop }}" class="form-control py-3" placeholder="Área">
-    @if($errors->has('crop'))
+    <input type="txt" name="ground" value="{{old('ground') ?? $account->ground }}" class="form-control py-3" placeholder="Área">
+    @if($errors->has('ground'))
         <h6 class="text-danger" >Digite a Área</h6> 
     @endif
 </div>

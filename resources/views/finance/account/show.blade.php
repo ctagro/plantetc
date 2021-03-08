@@ -100,7 +100,7 @@
           <div class="bolder">Área</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $account->crop}}</div>
+          <div class="form-control">{{ $account->ground}}</div>
         </div>
         
         <div class="row">

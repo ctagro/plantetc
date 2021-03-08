@@ -22,7 +22,7 @@ class Account extends Model
         'description'           ,      
         'type'                  ,         
         'accounting'            ,      
-        'crop'                  ,   
+        'ground'                  ,   
         'amount'                ,   
         'note'                  ,       
     ];
@@ -56,7 +56,7 @@ class Account extends Model
                 'description'           => $data['description'],
                 'type'                  => $data['type'],
                 'accounting'            => $data['accounting'],
-                'crop'                  => $data['crop'],
+                'ground'                  => $data['ground'],
                 'amount'                => $data['amount'],
                 'note'                  => $data['note'], 
                 

@@ -60,6 +60,8 @@
 
                   <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
                   <th>Atividades</th>
+                  <th>Área</th>
+                  <th>Produto</th>
                   <th>Funcionário</th>
                   <th>Horas trab</th>
 
@@ -74,29 +76,27 @@
 
                         <tr>
                           <td>  
-                          <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id  ])}}" >{{ $activity->date }}</a>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id  ])}}" >{{ $activity->date }}</a>
                           </td>
+
                           <td>
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->type_activity->description}}</a>
                           </td>
+
+                          <td>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->ground->name}}</a>
+                          </td>
+
                           <td>
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->worker->name}}</a>
+                          </td>
+                          <td>
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->product->name}}</a>
                           </td>
                           <td>  
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ number_format($activity->worked_hours, 2 , ',', '.')  }}</a>
                           </td>
-                          
-                           
-                        </td>
-                    
-                        
-                          <td >
-            
-                            <form id="delete-form"  method="POST" action="{{ route('activity.destroy' ,[ 'activity' => $activity->id ])}}", style = 'display: inline;'> 
-                              {{ csrf_field() }}
-                              {{ method_field('DELETE') }}                 
-                            </form>
-                          </td>
+                      
                         </tr>
                       @endforeach
                     </tbody>
