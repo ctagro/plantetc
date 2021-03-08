@@ -93,14 +93,14 @@
           <div class="bolder">Conta:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $account->accounting}}</div>
+          <div class="form-control">{{ $account->accounting->name}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Área</div>
+          <div class="bolder">Área:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $account->ground}}</div>
+          <div class="form-control">{{ $account->ground->name}}</div>
         </div>
         
         <div class="row">

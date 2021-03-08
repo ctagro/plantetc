@@ -21,8 +21,8 @@ class AccountTableSeeder extends Seeder
              'date'                   => '2021-01-01',
              'description'            => 'Compra de fertilizante',
              'type'                   => 'D',
-             'ground'              => 1,
-             'accounting'             => 'Insumo',
+             'ground_id'              => 1,
+             'accounting_id'          => 1,
              'amount'                 => 1000,
              'note'                   => 'Bla bla bla',
          ]);
@@ -32,8 +32,8 @@ class AccountTableSeeder extends Seeder
             'date'                   => '2021-01-02',
             'description'            => 'Compra de adubo',
             'type'                   => 'D',
-            'ground'              => 2,
-            'accounting'             => 'Insumo',
+            'ground_id'              => 2,
+            'accounting_id'          => 1,
             'amount'                 => 1000,
             'note'                   => 'Bla bla bla',
         ]);
@@ -43,8 +43,8 @@ class AccountTableSeeder extends Seeder
             'date'                   => '2021-01-01',
             'description'            => 'Pagamento Vagner', 
             'type'                   => 'D',
-            'ground'              => 3,
-            'accounting'             => 'Pessoal',
+            'ground_id'              => 3,
+            'accounting_id'          => 2,
             'amount'                 => 1000,
             'note'                   => 'Bla bla bla',
         ]);

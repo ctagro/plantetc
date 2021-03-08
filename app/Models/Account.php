@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Cache\ArrayLock;
 use App\User;
+use App\Models\Accounting;
+use App\Models\Ground;
 use Carbon\Carbon;
 use DateTime;
 use DB;
@@ -21,8 +22,8 @@ class Account extends Model
         'date'                  , 
         'description'           ,      
         'type'                  ,         
-        'accounting'            ,      
-        'ground'                  ,   
+        'accounting_id'            ,      
+        'ground_id'             ,   
         'amount'                ,   
         'note'                  ,       
     ];
@@ -52,11 +53,11 @@ class Account extends Model
             $Account = auth()->user()->Account()->create([
             
                
-                 'date'                  => $data['date'],
+                'date'                  => $data['date'],
                 'description'           => $data['description'],
                 'type'                  => $data['type'],
-                'accounting'            => $data['accounting'],
-                'ground'                  => $data['ground'],
+                'accounting_id'         => $data['accounting_id'],
+                'ground_id'             => $data['ground_id'],
                 'amount'                => $data['amount'],
                 'note'                  => $data['note'], 
                 
@@ -94,6 +95,16 @@ class Account extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function ground()
+   {
+       return $this->belongsTo(ground::class);
+   }
+
+   public function accounting()
+   {
+       return $this->belongsTo(accounting::class);
+   }
 
 
      

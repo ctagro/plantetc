@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Models\Account;
+use App\Models\Accounting;
+use App\Models\Ground;
 use Carbon\Carbon;
 use Redirect;
 
@@ -28,21 +30,28 @@ class AccountController extends Controller
    
     $accounts = auth()->user()->account()->get();
 
+    $grounds = auth()->user()->ground()->get();
+
+    $accountings = auth()->user()->accounting()->get();
+
     $response = $accounts->first();
 
-    
+    //dd($accountings);
+
+    //dd($grounds);
+
     if ($response === null) {
 
         $account = new account();
     
-        return view('finance.account.index',compact('accounts','account'));
+        return view('finance.account.index',compact('accounts','account','grounds','accountings'));
     }    
 
   //dd($account->date);
 
    
 
-        return view('finance.account.index',compact('accounts'));
+        return view('finance.account.index',compact('accounts','grounds','accountings'));
     }
 
     /**
@@ -53,18 +62,19 @@ class AccountController extends Controller
     public function create()
     {
 
-
         $user = auth()->user();
 
         $accounts = auth()->user()->account()->get();
 
+        $grounds = auth()->user()->ground()->get();
 
+        $accountings = auth()->user()->accounting()->get();
+  
         $account = new \App\Models\Account([
 
         ]);
 
-    
-        return view('finance.account.create',compact('accounts'));
+        return view('finance.account.create',compact('accounts','grounds','accountings'));
        
     }
 
@@ -79,7 +89,6 @@ class AccountController extends Controller
     {
         $data = $this->validateRequest();
         
-
         $account = new account();
 
         $response = $account->storeAccount($data);
@@ -123,8 +132,11 @@ class AccountController extends Controller
 
         $user = auth()->user();
 
+        $grounds = auth()->user()->ground()->get();
 
-        return view('finance.account.edit',compact('account'));
+        $accountings = auth()->user()->accounting()->get();
+
+        return view('finance.account.edit',compact('account','grounds','accountings'));
     }
 
     /**
@@ -152,8 +164,8 @@ class AccountController extends Controller
         $data['date']            = $dataRequest['date'];
         $data['description']     = $dataRequest['description'];
         $data['type']            = $dataRequest['type'];
-        $data['accounting']      = $dataRequest['accounting'];
-        $data['ground']            = $dataRequest['ground'];
+        $data['accounting_id']   = $dataRequest['accounting_id'];
+        $data['ground_id']       = $dataRequest['ground_id'];
         $data['amount']          = $dataRequest['amount'];
         $data['note']            = $dataRequest['note'];
     
@@ -189,8 +201,8 @@ class AccountController extends Controller
             'date'                  => 'required' ,
             'description'           => 'required' ,
             'type'                  => 'required' ,
-            'accounting'            => 'required' ,
-            'ground'                  => 'required' ,
+            'accounting_id'         => 'required' ,
+            'ground_id'             => 'required' ,
             'amount'                => 'required' ,
             'note'                  => 'required' ,
     

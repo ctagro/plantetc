@@ -57,8 +57,8 @@
                             <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Descrição</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tipo</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Conta</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
                         </tr>
@@ -77,11 +77,11 @@
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type}}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground }}</a>
-                                    </td>
-                                    <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting }}</a>
+                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
                                     </td>  
+                                    <td>
+                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground->name}}</a>
+                                    </td>
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
                                     </td>
@@ -97,7 +97,7 @@
                     <?php $account->description = Null ?>
                     <?php $account->type = Null ?>
                     <?php $account->accounting = Null ?>
-                    <?php $account->ground = Null ?>
+                    <?php $account->ground_id = Null ?>
                     <?php $account->amount = Null ?>
                     <?php $account->note = Null ?>
                 @endif

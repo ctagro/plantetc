@@ -42,19 +42,35 @@
     @endif
 </div>
 
-<div class="form-group row">
-    <input type="txt" name="ground" value="{{old('ground') ?? $account->ground }}" class="form-control py-3" placeholder="Área">
-    @if($errors->has('ground'))
-        <h6 class="text-danger" >Digite a Área</h6> 
-    @endif
+<div class="form-group">
+    <select name="accounting_id"  id="accounting_id" class="form-control">
+            <option value="" disabled selected>Selecione a conta...</option> 
+            @foreach($accountings as $accounting)
+                                
+                <option value="{{$accounting->id}}" {{ $accounting->id == $account->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
+                
+            @endforeach
+    </select>
+        @if($errors->has('accounting_id'))
+            <h6 class="text-danger" >Selecione a Conta</h6> 
+        @endif
 </div>
 
-<div class="form-group row">
-    <input type="txt" name="accounting" value="{{old('accounting') ?? $account->accounting }}" class="form-control py-3" placeholder="Conta">
-    @if($errors->has('accounting'))
-        <h6 class="text-danger" >Digite a Conta</h6> 
-    @endif
-</div>
+<div class="form-group">
+    <select name="ground_id"  id="ground_id" class="form-control">
+        <option value="" disabled selected>Selecione a área...</option> 
+            @foreach($grounds as $ground)
+                
+                <p>{{$ground->id}}</p>
+                    <option value="{{$ground->id}}" {{ $ground->id == $account->ground_id ? 'selected' : ''}}>{{$ground->name}} </option>
+                
+            @endforeach
+        </select>
+        @if($errors->has('ground_id'))
+            <h6 class="text-danger" >Selecione a Área de plantio</h6> 
+        @endif
+    </div>
+
 
 
 <div class="form-group row">
