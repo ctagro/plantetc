@@ -49,6 +49,10 @@ Route::namespace('Activity')->group(function () {
     Route::get('worker/{worker}/edit', 'WorkerController@edit')->name('worker.edit');
     Route::patch('worker/{worker}', 'WorkerController@update')->name('worker.update');
     Route::delete('worker/{worker}', 'WorkerController@destroy')->name('worker.destroy');
+
+    Route::post('activity_research/research', 'ActivityResearchController@research')->name('activity_research.research');
+    Route::get('activity_research', 'ActivityResearchController@consult')->name('activity_research.consult');
+    Route::get('activity_research/index', 'ActivityResearchController@index')->name('activity_research.index');
 });
 
 Route::namespace('Finance')->group(function () {

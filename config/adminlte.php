@@ -339,6 +339,13 @@ return [
             'icon_color' => 'green',
             'url'  => '/account_research',
             'icon'        => 'fas fa-money-bill-wave',
+        ],
+        
+        [
+            'text'       => 'Pesquisar Movimentações',
+            'icon_color' => 'green',
+            'url'  => '/activity_research',
+            'icon'        => 'fas fa-money-bill-wave',
         ],  
         
     ],

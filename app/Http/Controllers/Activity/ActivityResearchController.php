@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers\Activity;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,11 +10,12 @@ use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
-use App\Models\Account;
-use App\Models\Accounting;
+use App\Models\Activity;
+use App\Models\Worker;
 use App\Models\Ground;
+use App\Models\Product;
 
-class AccountResearchController extends Controller
+class ActivityResearchController extends Controller
 {
     public function __construct()
     {
@@ -29,26 +30,34 @@ class AccountResearchController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->get();
+    $activitys = auth()->user()->activity()->get();
+
+    $type_activitys = auth()->user()->type_activity()->get();
 
     $grounds = auth()->user()->ground()->get();
 
-    $accountings = auth()->user()->accounting()->get();
+    $workers = auth()->user()->worker()->get();
 
-        return view('finance.account_research.index',compact('accounts','grounds','accountings'));
+    $products = auth()->user()->product()->get();
+
+        return view('activity.activity_research.index',compact('activitys','type_activitys','grounds','workers','products'));
     }
 
     public function consult()
 
     {
 
-        $accounts = auth()->user()->account()->get();
+        $activitys = auth()->user()->activity()->get();
+
+        $type_activitys = auth()->user()->type_activity()->get();
 
         $grounds = auth()->user()->ground()->get();
 
-        $accountings = auth()->user()->accounting()->get();
+        $workers = auth()->user()->worker()->get();
 
-    return view('finance.account_research.research', compact('accounts','grounds','accountings'));
+        $products = auth()->user()->product()->get();
+
+    return view('activity.activity_research.research', compact('activitys','type_activitys','grounds','workers','products'));
 
     }
     
@@ -58,7 +67,7 @@ class AccountResearchController extends Controller
        $pesquisa = $request;
 
 
-        $termos = $request->only('description', 'type', 'accounting_id', 'ground_id', 'date_inicial', 'date_final' );
+        $termos = $request->only('description', 'type_activity_id', 'worker_id', 'ground_id','product_id', 'date_inicial', 'date_final' );
         $prepareQuery = "";
         $query = "";
         foreach ($termos as $nome => $valor) {
@@ -67,7 +76,7 @@ class AccountResearchController extends Controller
               //  $query = $query . "where("."'".$nome."'".","."'"."="."'".","."'". $valor. "')->";
                 if ($nome == "description")
                     $prepareQuery = $prepareQuery . $nome. ' LIKE "'. '%'.$valor.'%'. '" AND ';   
-                if ($nome == "type" or $nome == "accounting_id" or $nome == "ground_id")
+                if ($nome == "type_activity_id" or $nome == "worker_id" or  $nome == "ground_id" or $nome == "product_id")
                     $prepareQuery = $prepareQuery . $nome. '="'. $valor. '" AND ';
                 if ($nome == "date_inicial") 
                         $prepareQuery = $prepareQuery . 'date'. '>="'. $valor. '" AND ';
@@ -76,22 +85,26 @@ class AccountResearchController extends Controller
             
             }
          }
+
    
          $query = substr($prepareQuery, 0 , -5);
 
 
          if ($query)
-         $accounts = account::whereRaw($query)->orderBy('date')->get();
+         $activitys = activity::whereRaw($query)->orderBy('date')->get();
          else
-         $accounts = account::orderBy('date')->get();
+
+         $activitys = activity::orderBy('date')->get();
+
+         $type_activitys = auth()->user()->type_activity()->get();
           
-         $accounts = auth()->user()->account()->get();
-
          $grounds = auth()->user()->ground()->get();
-     
-         $accountings = auth()->user()->accounting()->get();
- 
-    return view('finance.account_research.index', compact('accounts','accountings', 'grounds'));
-    }
 
+         $workers = auth()->user()->worker()->get();
+ 
+         $products = auth()->user()->product()->get();
+
+ 
+    return view('activity.activity_research.index', compact('activitys', 'type_activitys','grounds','workers','products'));
+    }
 }
