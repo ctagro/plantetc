@@ -72,6 +72,15 @@ Route::namespace('Finance')->group(function () {
     Route::patch('accounting/{accounting}', 'AccountingController@update')->name('accounting.update');
     Route::delete('accounting/{accounting}', 'AccountingController@destroy')->name('accounting.destroy');
 
+
+    Route::get('bayer/create', 'BayerController@create')->name('bayer.create');
+    Route::post('bayer/store', 'BayerController@store')->name('bayer.store');
+    Route::get('bayer', 'BayerController@index')->name('bayer.index')-> middleware('auth');
+    Route::post('bayer/{bayer}', 'BayerController@show')->name('bayer.show');
+    Route::get('bayer/{bayer}/edit', 'BayerController@edit')->name('bayer.edit');
+    Route::patch('bayer/{bayer}', 'BayerController@update')->name('bayer.update');
+    Route::delete('bayer/{bayer}', 'BayerController@destroy')->name('bayer.destroy');
+
     Route::post('account_research/research', 'AccountResearchController@research')->name('account_research.research');
     Route::get('account_research', 'AccountResearchController@consult')->name('account_research.consult');
     Route::get('account_research/index', 'AccountResearchController@index')->name('account_research.index');

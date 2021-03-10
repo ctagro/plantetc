@@ -124,9 +124,9 @@
 
             <div class="form-group">
 
-                <label for="note">Observações</label>
-                <textarea class="form-control" rows="3" placeholder="Observação..." name="note" > {{old('note') ? $activity->note : "..."}} </textarea>
-            </div>
+                <label for="note">Observações</label>    
+                    <input type="longtext" name="note" value="{{old('note') ?? $activity->note }}" rows="4" class="form-control">                            
+                </div>
 
             @csrf
                 <div class="card">

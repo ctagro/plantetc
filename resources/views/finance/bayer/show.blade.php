@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Atividades</title>
+    <title>Compradores</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,24 +29,30 @@
 
     @extends('adminlte::page')
 
+@section('content')
+
+@extends('adminlte::page')
+
+@section('title', 'Atividades')
 
 @section('content')
-   
+
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Excluir Atividade
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/bayer_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Confirmar a exclusão
               </div>
           </div>
       </div>
   </div>
-</div>
+</div>   
+
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('activity.destroy',[ 'activity' => $activity->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('bayer.destroy',[ 'bayer' => $bayer->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -57,66 +63,29 @@
   <div class="form-group">
 
     <div class="container">
-
         <div class="row">
-          <div class="bolder">Atividade:</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Data:</div>
+          <div class="bolder">Nome:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->date}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Atividade</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->type_activity->description}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Funcionário</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->worker->name}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Área</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->ground->name}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Produto</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->product->name}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Tempo de atividade</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->worked_hours}}</div>
-        </div>
-
-
-        <div class="bg-light">Observação</div>
-        <div class="row">
-            <textarea class="form-control" rows="3" >{{$activity->note }} </textarea>
+          <div class="form-control">{{ $bayer->name}}</div>
         </div>
         <br>
-
+        <div class="bg-light">Observação</div>
+        <div class="row">
+            <textarea class="form-control" rows="3" >{{$bayer->note }} </textarea>
+        </div>
+        <br>
+        <div class="row">
+          Imagem :
+          <img src="{{ asset('storage/bayers/'.$bayer->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+        </div>
+    </div>
     
     <p></p>
   
              <div class="form-group">
                   <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
-                  <a href="{{ url('/activity') }}" class="float-right" >Voltar </a> 
+                  <a href="{{ url('/bayer') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

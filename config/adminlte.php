@@ -242,7 +242,6 @@ return [
          //   'label'       => 4,
          //   'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
         [
             'text'       => 'Meu Perfil',
             'icon_color' => 'yellow',
@@ -256,97 +255,135 @@ return [
          //   'label_color' => 'success',
         ],
         
-        ['header' => 'Conta corrente'],
+        ['header' => '=========================='],
+
+
+
+            [
+                'text'    => 'Financeiro',
+                'icon'    => 'fas fa-fw fa-share',
+                'submenu' => [
+
+
+                [
+                    'text'       => 'Registrar despesas',
+                    'icon_color' => 'cyan',
+                    'url'        => '/account',
+                    'icon'        => 'fas fa-calendar-minus',
+
+                ],
+
+                [
+                    'text'       => 'Registrar Vendas',
+                    'icon_color' => 'cyan',
+                    'url'        => 'financeiro/investimento/index',
+                    'icon'        => 'fas fa-calendar-minus',
+    
+                ],
+
+                [
+                    'text'       => 'Pesquisar Movimentações',
+                    'icon_color' => 'green',
+                    'url'  => '/account_research',
+                    'icon'        => 'fas fa-money-bill-wave',
+                ],
+
+                [
+                    'text'       => 'Fluxo de Caixa',
+                    'icon_color' => 'cyan',
+                    'url'        => 'financeiro/fluxoDeCaixa',
+                    'icon'        => 'fas fa-chart-line', 
+                ],
+            ],
+        ],
+
+
+        ['header' => '=========================='],
+
+        [
+            'text'    => 'Atividades',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+
+
+            [
+                'text'       => 'Registrar Atividades',
+                'icon_color' => 'cyan',
+                'url'        => '/activity',
+                'icon'        => 'fas fa-calendar-plus', 
+
+            ],
+
+            [
+                'text'       => 'Pesquisar Atividades',
+                'icon_color' => 'green',
+                'url'  => '/activity_research',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],  
+
         
-
-        [
-            'text'       => 'Movimentação Financeira',
-            'icon_color' => 'cyan',
-            'url'        => '/account',
-            'icon'        => 'fas fa-calendar-minus',
-
+            
         ],
+    ],
 
-        [
-            'text'       => 'Registrar Atividades',
-            'icon_color' => 'cyan',
-            'url'        => '/activity',
-            'icon'        => 'fas fa-calendar-plus', 
+    ['header' => '=========================='],
 
-        ],
-
-        [
-            'text'       => 'Registrar Investimentos',
-            'icon_color' => 'cyan',
-            'url'        => 'financeiro/investimento/index',
-            'icon'        => 'fas fa-calendar-minus',
-
-        ],
-
-        [
-            'text'       => 'Fluxo de Caixa',
-            'icon_color' => 'cyan',
-            'url'        => 'financeiro/fluxoDeCaixa',
-            'icon'        => 'fas fa-chart-line', 
-        ],
-
-
-        ['header' => 'Configurações'],
-        [
-            'text'       => 'Tipo de atividades',
-            'icon_color' => 'green',
-            'url'  => '/type_activity',
-            'icon'        => 'fas fa-money-bill-wave',
-        ],  
-
-        [
-            'text'       => 'Funcionários',
-            'icon_color' => 'green',
-            'url'  => '/worker',
-            'icon'        => 'fas fa-money-bill-wave',
-        ], 
+       [
         
-        [
-            'text'       => 'Áreas de Plantio',
-            'icon_color' => 'green',
-            'url'  => '/ground',
-            'icon'        => 'fas fa-money-bill-wave',
-        ],  
+        'text'    => 'configurações',
+        'icon'    => 'fas fa-fw fa-share',
+        'submenu' => [
+            [
+                'text'       => 'Tipo de atividades',
+                'icon_color' => 'green',
+                'url'  => '/type_activity',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],  
 
-        [
-            'text'       => 'Tipo de contas',
-            'icon_color' => 'green',
-            'url'  => '/accounting',
-            'icon'        => 'fas fa-money-bill-wave',
-        ],
-        
-        [
-            'text'       => 'Culturas',
-            'icon_color' => 'green',
-            'url'  => '/crop',
-            'icon'        => 'fas fa-money-bill-wave',
-        ], 
-        
-        [
-            'text'       => 'Produtos',
-            'icon_color' => 'green',
-            'url'  => '/product',
-            'icon'        => 'fas fa-money-bill-wave',
-        ],  
+            [
+                'text'       => 'Funcionários',
+                'icon_color' => 'green',
+                'url'  => '/worker',
+                'icon'        => 'fas fa-money-bill-wave',
+            ], 
+            
+            [
+                'text'       => 'Áreas de Plantio',
+                'icon_color' => 'green',
+                'url'  => '/ground',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],  
 
-        [
-            'text'       => 'Pesquisar Movimentações',
-            'icon_color' => 'green',
-            'url'  => '/account_research',
-            'icon'        => 'fas fa-money-bill-wave',
+            [
+                'text'       => 'Tipo de contas',
+                'icon_color' => 'green',
+                'url'  => '/accounting',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],
+            
+            [
+                'text'       => 'Culturas',
+                'icon_color' => 'green',
+                'url'  => '/crop',
+                'icon'        => 'fas fa-money-bill-wave',
+            ], 
+            
+            [
+                'text'       => 'Produtos',
+                'icon_color' => 'green',
+                'url'  => '/product',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Compradores',
+                'icon_color' => 'green',
+                'url'  => '/bayer',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],
         ],
-        
-        [
-            'text'       => 'Pesquisar Movimentações',
-            'icon_color' => 'green',
-            'url'  => '/activity_research',
-            'icon'        => 'fas fa-money-bill-wave',
-        ],  
+    ],  
+
         
     ],
 

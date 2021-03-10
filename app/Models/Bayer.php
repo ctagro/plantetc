@@ -9,34 +9,34 @@ use DB;
 use App\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Type_activity extends Model
+class Bayer extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
         'user_id',
-        'description',
+        'name',
         'image',
         'note'
     
 ];
 
-public function storetype_activity(array $data): Array
+public function storebayer(array $data): Array
     {
 
         //dd($data);
 
-            $type_activity = auth()->user()->Type_activity()->create([         
+            $bayer = auth()->user()->Bayer()->create([         
                 
             
-                'description'    => $data['description'],
+                'name'    => $data['name'],
                 'image'          => $data['image'],
                 'note'           => $data['note']
 
             ]);
 
  
-       if($type_activity){
+       if($bayer){
 
             DB::commit();
 

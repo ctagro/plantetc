@@ -187,6 +187,7 @@ class ActivityController extends Controller
         $data['start_time']            = $dataRequest['start_time'];
         $data['final_time']            = $dataRequest['final_time'];
         $data['worked_hours']          = $dataRequest['worked_hours'];
+        $data['note']                   = $dataRequest['note'];
        
 
        $update = $activity -> update($data);

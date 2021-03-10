@@ -3,17 +3,17 @@
  
  <div class='table-responsive'>
 
-            <input type="hidden" name="id" value="{{$type_activity->id }}" class="form-control py-3">
+            <input type="hidden" name="id" value="{{$bayer->id }}" class="form-control py-3">
             <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3">
 
 
 
             <div class="form-group">
 
-                <label for="description">Descricao</label>
-                <input type="text" name="description" value="{{old('description') ?? $type_activity->description }}" class="form-control">
-                @if($errors->has('description'))
-                        <h6 class="text-danger" >Digite a Descrição</h6> 
+                <label for="name">Nome</label>
+                <input type="text" name="name" value="{{old('name') ?? $bayer->name }}" class="form-control">
+                @if($errors->has('name'))
+                        <h6 class="text-danger" >Digite a Nome</h6> 
                 @endif
             </div>
 
@@ -21,19 +21,17 @@
             <div class="form-group">
 
                 <label for="note">Observações</label>    
-                    <input type="longtext" name="note" value="{{old('note') ?? $type_activity->note }}" rows="4" class="form-control">                            
+                    <input type="longtext" name="note" value="{{old('note') ?? $bayer->note }}" rows="4" class="form-control">                            
                 </div>
-                   
-            </div>
     
                <!-- Para ativar o uploud de imagens -->
 
                <div class="form-group">
-                @if ($type_activity->image != null)
-                    <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                @if ($bayer->image != null)
+                    <img src="{{ asset('storage/bayers/'.$bayer->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
                 @endif
                 <label for="image">Imagem</label>
-                <input type="file" class="form-control"  name='image' value='type_activity_avatar.png'>
+                <input type="file" class="form-control"  name='image' value='bayer_avatar.png'>
             </div>
 
          
@@ -42,7 +40,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-                        <a href="{{ url('/type_activity') }}" class="float-right" >Voltar </a> 
+                        <a href="{{ url('/bayer') }}" class="float-right" >Voltar </a> 
                     </div>
                 </div>
 </div>

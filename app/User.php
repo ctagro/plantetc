@@ -13,6 +13,7 @@ use App\Models\Accounting;
 use App\Models\Ground;
 use App\Models\Crop;
 use App\Models\Product;
+use App\Models\Bayer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -87,6 +88,11 @@ class User extends Authenticatable
     public function product()
     {
         return $this->hasMany(product::class);
+    }
+
+    public function bayer()
+    {
+        return $this->hasMany(bayer::class);
     }
 
 }

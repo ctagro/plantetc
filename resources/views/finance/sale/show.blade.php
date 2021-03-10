@@ -29,24 +29,32 @@
 
     @extends('adminlte::page')
 
+@section('content')
+
+@extends('adminlte::page')
+
+@section('title', 'Movimentação')
+
 
 @section('content')
-   
+
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Excluir Atividade
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Excluir Movimentação
               </div>
           </div>
       </div>
   </div>
 </div>
+   
+
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('activity.destroy',[ 'activity' => $activity->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('account.destroy',[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -58,65 +66,55 @@
 
     <div class="container">
 
-        <div class="row">
-          <div class="bolder">Atividade:</div>
-        </div>
+       
 
         <div class="row">
           <div class="bolder">Data:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->date}}</div>
+          <div class="form-control">{{ $account->date}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Atividade</div>
+          <div class="bolder">Descrição:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->type_activity->description}}</div>
+          <div class="form-control">{{ $account->description}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Funcionário</div>
+          <div class="bolder">Tipo:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->worker->name}}</div>
+          <div class="form-control">{{ $account->type}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Área</div>
+          <div class="bolder">Conta:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->ground->name}}</div>
+          <div class="form-control">{{ $account->accounting->name}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Produto</div>
+          <div class="bolder">Área:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $activity->product->name}}</div>
+          <div class="form-control">{{ $account->ground->name}}</div>
         </div>
-
+        
         <div class="row">
-          <div class="bolder">Tempo de atividade</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->worked_hours}}</div>
-        </div>
-
-
-        <div class="bg-light">Observação</div>
-        <div class="row">
-            <textarea class="form-control" rows="3" >{{$activity->note }} </textarea>
-        </div>
-        <br>
-
+          <div class="bg-light">Valor:</div>
+      </div>
+      <div class="row">
+        <div class="form-control">{{number_format($account->amount, 2 , ',', '.') }}</div>
+      </div>
     
     <p></p>
   
              <div class="form-group">
                   <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
-                  <a href="{{ url('/activity') }}" class="float-right" >Voltar </a> 
+                  <a href="{{ url('/account') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

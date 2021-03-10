@@ -87,6 +87,11 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request['note'] == null){
+            $request['note'] = "...";
+         }
+         
         $data = $this->validateRequest();
         
         $account = new account();
