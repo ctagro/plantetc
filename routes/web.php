@@ -67,6 +67,11 @@ Route::namespace('Finance')->group(function () {
     Route::get('accounting/{accounting}/edit', 'AccountingController@edit')->name('accounting.edit');
     Route::patch('accounting/{accounting}', 'AccountingController@update')->name('accounting.update');
     Route::delete('accounting/{accounting}', 'AccountingController@destroy')->name('accounting.destroy');
+
+    Route::post('account_research/research', 'AccountResearchController@research')->name('account_research.research');
+    Route::get('account_research', 'AccountResearchController@consult')->name('account_research.consult');
+    Route::get('account_research/index', 'AccountResearchController@index')->name('account_research.index');
+
 });
 
 Route::namespace('Ground')->group(function () {

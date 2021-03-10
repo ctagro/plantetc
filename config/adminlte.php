@@ -335,9 +335,9 @@ return [
         ],  
 
         [
-            'text'       => 'Consulta',
+            'text'       => 'Pesquisar Movimentações',
             'icon_color' => 'green',
-            'url'  => 'admin/manutencao/consulta',
+            'url'  => '/account_research',
             'icon'        => 'fas fa-money-bill-wave',
         ],  
         

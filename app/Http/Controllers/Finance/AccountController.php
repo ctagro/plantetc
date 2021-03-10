@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Cookie;
 use App\Models\Account;
 use App\Models\Accounting;
 use App\Models\Ground;
@@ -36,7 +37,6 @@ class AccountController extends Controller
 
     $response = $accounts->first();
 
-    //dd($accountings);
 
     //dd($grounds);
 
@@ -147,9 +147,8 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Account $account)
-    {
+    {  
 
-       
         if ($request['date'] == null){
             $dataP = explode('/',$account->date);
             $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
@@ -173,6 +172,8 @@ class AccountController extends Controller
        //dd($data);
 
         $account -> update($data);
+
+
 
         return redirect('/account');
 
