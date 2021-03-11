@@ -17,6 +17,7 @@ class Accounting extends Model
         'user_id',
         'name',
         'description',
+        'sale',
         'image',
     ];
 
@@ -37,8 +38,9 @@ public function storeAccounting(array $data): Array
             $accounting = auth()->user()->accounting()->create([
 
                 'name'          => $data['name'],
-                'description'          => $data['description'],
-                'image'          => $data['image'],
+                'description'   => $data['description'],
+                'sale'          => $data['sale'],
+                'image'         => $data['image'],
                 
 
          ]);

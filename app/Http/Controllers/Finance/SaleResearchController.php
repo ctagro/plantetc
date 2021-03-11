@@ -12,10 +12,12 @@ use DB;
 use App\User;
 use App\Models\Account;
 use App\Models\Accounting;
+use App\Models\Ground;
+use App\Models\Bayer;
 use App\Models\Type_account;
 
 
-class AccountResearchController extends Controller
+class SaleResearchController extends Controller
 {
     public function __construct()
     {
@@ -30,31 +32,35 @@ class AccountResearchController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->get();
+    $accounts = auth()->user()->account()->where('type_account_id', '=', 3)->get();
 
     $grounds = auth()->user()->ground()->get();
 
-    $accountings = auth()->user()->accounting()->where('sale','N')->get();
+    $bayers = auth()->user()->bayer()->get();
 
-    $type_accounts= type_account::where('id', '<=', 2)->get();
+    $accountings = auth()->user()->accounting()->where('sale','S')->get();
 
-        return view('finance.account_research.index',compact('accounts','grounds','accountings','type_accounts'));
+    $type_accounts= type_account::where('id', '=', 3)->get();
+
+        return view('finance.sale_research.index',compact('accounts','grounds','accountings','type_accounts','bayers'));
     }
 
     public function consult()
 
     {
 
-        $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->get();
+        $accounts = auth()->user()->account()->where('type_account_id', '=', 3)->get();
         
         $grounds = auth()->user()->ground()->get();
 
-        $accountings = auth()->user()->accounting()->where('sale','N')->get();
+        $bayers = auth()->user()->bayer()->get();
 
-        $type_accounts= type_account::where('id', '<=', 2)->get();
+        $accountings = auth()->user()->accounting()->where('sale','S')->get();
+
+        $type_accounts= type_account::where('id', '=', 3)->get();
 
 
-    return view('finance.account_research.research', compact('accounts','grounds','accountings','type_accounts'));
+    return view('finance.sale_research.research', compact('accounts','grounds','accountings','type_accounts','bayers'));
 
     }
     
@@ -63,7 +69,7 @@ class AccountResearchController extends Controller
 
        $pesquisa = $request;
 
-        $termos = $request->only('description', 'type_account_id', 'accounting_id', 'ground_id', 'date_inicial', 'date_final' );
+        $termos = $request->only('description', 'bayer_id', 'accounting_id', 'ground_id', 'date_inicial', 'date_final' );
         $prepareQuery = "";
         $query = "";
         foreach ($termos as $nome => $valor) {
@@ -72,7 +78,7 @@ class AccountResearchController extends Controller
               //  $query = $query . "where("."'".$nome."'".","."'"."="."'".","."'". $valor. "')->";
                 if ($nome == "description")
                     $prepareQuery = $prepareQuery . $nome. ' LIKE "'. '%'.$valor.'%'. '" AND ';   
-                if ($nome == "type_account_id" or $nome == "accounting_id" or $nome == "ground_id")
+                if ($nome == "accounting_id" or $nome == "ground_id")
                     $prepareQuery = $prepareQuery . $nome. '="'. $valor. '" AND ';
                 if ($nome == "date_inicial") 
                         $prepareQuery = $prepareQuery . 'date'. '>="'. $valor. '" AND ';
@@ -88,16 +94,18 @@ class AccountResearchController extends Controller
          if ($query)
             $accounts = account::whereRaw($query)->orderBy('date')->get();
          else
-            $accounts = account::where('type_account_id', '<=', 2)->orderBy('date')->get();
+            $accounts = account::where('type_account_id', '=', 3)->orderBy('date')->get();
           
          $grounds = auth()->user()->ground()->get();
+
+         $bayers = auth()->user()->bayer()->get();
      
-         $accountings = auth()->user()->accounting()->where('sale','N')->get();
+         $accountings = auth()->user()->accounting()->where('sale','S')->get();
 
          $type_accounts= type_account::all();
 
  
-    return view('finance.account_research.index', compact('accounts','accountings', 'grounds','type_accounts'));
+    return view('finance.sale_research.index', compact('accounts','accountings', 'grounds','type_accounts','bayers'));
     }
 
 }

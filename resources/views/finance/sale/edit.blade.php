@@ -46,14 +46,14 @@
 </div>
    
 
-    <form action="{{ route('account.update' ,[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
+    <form action="{{ route('sale.update' ,[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
 
         @method('PATCH')
 
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('finance.account.form')
+             @include('finance.sale.form_edit')
 
                  <div class="form-group">
                       <button type="submit" class="btn btn-danger btn-block">Atualizar a Vendas</button>
@@ -64,9 +64,9 @@
     
              <div class="row justify-content-between" >
 
-              <a href= "{{ route('account.show' ,[ 'account' => $account->id ])}}" class="btn btn-outline-danger" >Deletar</a>
+              <a href= "{{ route('sale.show' ,[ 'account' => $account->id ])}}" class="btn btn-outline-danger" >Deletar</a>
    
-              <div class="text-right"> <a href="{{ url('/account') }}" class="text-right">Voltar </a> </div>
+              <div class="text-right"> <a href="{{ url('/sale') }}" class="text-right">Voltar </a> </div>
              </div>
          <a href="#" id="ancora"></a>
 </form>

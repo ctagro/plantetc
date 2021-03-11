@@ -30,17 +30,17 @@
         </div>
       </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-                <label for="type">Tipo :</label>
-                <select name="type"  id="type" class="form-control">
-                  <option selected="selected" value=""></option>
-                  <option value="D">Despesa</option>
-                  <option value="I">Investimento</option>
-                </select>              
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="accounting">Tipo de conta :</label>
+        <select name="type_account_id"  id="type_account_id" class="form-control">
+                <option selected="selected" value=""></option>
+                @foreach($type_accounts as $type_account)
+                        <option value="{{$type_account->id}}">{{$type_account->name}} </option>       
+                @endforeach
+            </select>
+        </div>
+      
 
           <div class="col-md-6">
             <div class="form-group">

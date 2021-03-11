@@ -74,7 +74,7 @@
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->description }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type}}</a>
+                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type_account->name}}</a>
                                     </td>
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
@@ -91,17 +91,6 @@
                     </tbody>
         
                 </table>
-
-           @if(isset($account->date))
-                    <?php $account->date = Null ?>
-                    <?php $account->description = Null ?>
-                    <?php $account->type = Null ?>
-                    <?php $account->accounting = Null ?>
-                    <?php $account->ground_id = Null ?>
-                    <?php $account->amount = Null ?>
-                    <?php $account->note = Null ?>
-                @endif
-             
             </div>
 
 <!-- Fim da Tabela dos registros -->

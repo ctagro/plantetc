@@ -86,7 +86,7 @@
           <div class="bolder">Tipo:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $account->type}}</div>
+          <div class="form-control">{{ $account->type_account->name}}</div>
         </div>
 
         <div class="row">

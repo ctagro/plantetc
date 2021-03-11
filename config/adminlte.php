@@ -274,11 +274,11 @@ return [
                 ],
 
                 [
-                    'text'       => 'Registrar Vendas',
+                    'text'       => 'Registrar vendas',
                     'icon_color' => 'cyan',
-                    'url'        => 'financeiro/investimento/index',
+                    'url'        => '/sale',
                     'icon'        => 'fas fa-calendar-minus',
-    
+
                 ],
 
                 [
@@ -289,9 +289,9 @@ return [
                 ],
 
                 [
-                    'text'       => 'Fluxo de Caixa',
+                    'text'       => 'Pesquisar Vendas',
                     'icon_color' => 'cyan',
-                    'url'        => 'financeiro/fluxoDeCaixa',
+                    'url'        => '/sale_research',
                     'icon'        => 'fas fa-chart-line', 
                 ],
             ],

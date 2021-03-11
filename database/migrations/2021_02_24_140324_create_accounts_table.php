@@ -19,7 +19,7 @@ class CreateAccountsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('date');
             $table->text('description');
-            $table->enum('type',['D','I']);         
+            $table->unsignedBigInteger('type_account_id')->nullable();       
             $table->unsignedBigInteger('accounting_id')->nullable();
             $table->unsignedBigInteger('ground_id')->nullable();
             $table->double('amount',10,2);

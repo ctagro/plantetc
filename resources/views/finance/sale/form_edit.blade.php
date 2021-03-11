@@ -9,7 +9,7 @@
 
                 @if(!Request::is('*/edit'))
                      
-                <input type="date" name="date"  value="{{old('date')}}"  class="form-control py-3" placeholder="$data">
+                <input type="date" name="date"  value="{{old('$date(d/m/y)') ?? $account->date }}"  class="form-control py-3" placeholder="$data">
                 @if($errors->has('date'))
                         <h6 class="text-danger" >Digite a data</h6> 
                 @endif
@@ -29,9 +29,7 @@
                 <select name="description"  id="description" class="form-control">
                     <option value="" disabled selected>Selecione o comprador...</option> 
                         @foreach($bayers as $bayer)
-                                
-                            <option value="{{$bayer->name}}">{{$bayer->name}}</option>
-                
+                            <option value="{{$bayer->name}}" {{ $bayer->name == $account->description ? 'selected' : ''}}>{{$bayer->name}} </option>
                         @endforeach
                 </select>
                 @if($errors->has('accounting_id'))
@@ -44,7 +42,7 @@
                     <option value="" disabled selected>Selecione o produto...</option> 
                         @foreach($accountings as $accounting)
                                 
-                            <option value="{{$accounting->id}}" {{ $accounting->id == $accounting->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
+                        <option value="{{$accounting->id}}" {{ $accounting->id == $account->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
                 
                         @endforeach
                 </select>
@@ -70,7 +68,7 @@
 
 
 <div class="form-group row">
-  <input type="number" class="floatNumberField form-control py-3" name="amount" value="{{old('amount')}}"  placeholder="0.00" step="0.01" >
+  <input type="number" class="floatNumberField form-control py-3" name="amount" value="{{old('amount') ?? $account->amount }}"  placeholder="0.00" step="0.01" >
     @if($errors->has('amount'))
         <h6 class="text-danger" >Digite o valor</h6> 
     @endif

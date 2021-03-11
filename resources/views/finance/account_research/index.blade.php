@@ -74,7 +74,7 @@
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->description }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type}}</a>
+                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type_account->name}}</a>
                                     </td>
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>

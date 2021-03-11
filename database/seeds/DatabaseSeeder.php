@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AccountingTableSeeder::class);
         $this->call(CropTableSeeder::class);
         $this->call(ProductTableSeeder::class);
+        $this->call(BayerTableSeeder::class);
+        $this->call(TypeAccountSeeder::class);
 
     }
 }

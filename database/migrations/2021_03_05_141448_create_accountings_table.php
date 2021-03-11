@@ -20,6 +20,7 @@ class CreateAccountingsTable extends Migration
             $table->text('name',50);
             $table->text('description',200);
             $table->string('image', 100)->nullable();
+            $table->enum('sale',['S','N']);         
             $table->timestamps();
             $table->softDeletes();
         });

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movimentacao</title>
+    <title>Vendas</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Consulta às movimentações financeiras
+                    Pesquisar as vendas
                 </div>
             </div>
         </div>
@@ -46,12 +46,12 @@
 </div>
 
 
-<form method="POST" action="{{ route('account_research.research')}}">
+<form method="POST" action="{{ route('sale_research.research')}}">
   
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('finance.account_research.form')
+             @include('finance.sale_research.form')
 
              <div class="form-group">
               <button type="submit" class="btn btn-danger btn-block">Executar pesquisa</button>

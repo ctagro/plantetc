@@ -11,6 +11,7 @@ use Cookie;
 use App\Models\Account;
 use App\Models\Accounting;
 use App\Models\Ground;
+use App\Models\Type_account;
 use Carbon\Carbon;
 use Redirect;
 
@@ -29,29 +30,29 @@ class AccountController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->get();
+    $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->get();
 
     $grounds = auth()->user()->ground()->get();
 
-    $accountings = auth()->user()->accounting()->get();
+    $accountings = auth()->user()->accounting()->where('sale','N')->get();
+
+    $type_accounts= type_account::where('id', '<=', 2)->get();
+
 
     $response = $accounts->first();
-
-
-    //dd($grounds);
+    
 
     if ($response === null) {
 
+
         $account = new account();
     
-        return view('finance.account.index',compact('accounts','account','grounds','accountings'));
-    }    
+        return view('finance.account.index',compact('accounts','account','grounds','accountings','type_accounts'));
+    } 
+    
+    //dd($accounts[3]->description);
 
-  //dd($account->date);
-
-   
-
-        return view('finance.account.index',compact('accounts','grounds','accountings'));
+        return view('finance.account.index',compact('accounts','grounds','accountings','type_accounts'));
     }
 
     /**
@@ -64,17 +65,19 @@ class AccountController extends Controller
 
         $user = auth()->user();
 
-        $accounts = auth()->user()->account()->get();
+        $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->get();
 
         $grounds = auth()->user()->ground()->get();
 
-        $accountings = auth()->user()->accounting()->get();
+        $accountings = auth()->user()->accounting()->where('sale','N')->get();
+
+        $type_accounts= type_account::where('id', '<=', 2)->get();
   
         $account = new \App\Models\Account([
 
         ]);
 
-        return view('finance.account.create',compact('accounts','grounds','accountings'));
+        return view('finance.account.create',compact('accounts','grounds','accountings','type_accounts'));
        
     }
 
@@ -139,9 +142,11 @@ class AccountController extends Controller
 
         $grounds = auth()->user()->ground()->get();
 
-        $accountings = auth()->user()->accounting()->get();
+        $accountings = auth()->user()->accounting()->where('sale','N')->get();
 
-        return view('finance.account.edit',compact('account','grounds','accountings'));
+        $type_accounts= type_account::where('id', '<=', 2)->get();
+
+        return view('finance.account.edit',compact('account','grounds','accountings','type_accounts'));
     }
 
     /**
@@ -167,7 +172,7 @@ class AccountController extends Controller
 
         $data['date']            = $dataRequest['date'];
         $data['description']     = $dataRequest['description'];
-        $data['type']            = $dataRequest['type'];
+        $data['type_account_id']         = $dataRequest['type_account_id'];
         $data['accounting_id']   = $dataRequest['accounting_id'];
         $data['ground_id']       = $dataRequest['ground_id'];
         $data['amount']          = $dataRequest['amount'];
@@ -206,7 +211,7 @@ class AccountController extends Controller
             
             'date'                  => 'required' ,
             'description'           => 'required' ,
-            'type'                  => 'required' ,
+            'type_account_id'       => 'required' ,
             'accounting_id'         => 'required' ,
             'ground_id'             => 'required' ,
             'amount'                => 'required' ,

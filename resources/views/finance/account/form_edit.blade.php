@@ -6,24 +6,42 @@
      <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3"> 
 
             <div class="form-group row">
-                <input type="date" name="date" id ="date"  value="{{old('date')}}" class="form-control py-3" placeholder="$date"> 
+
+                @if(!Request::is('*/edit'))
+                     
+                <input type="date" name="date"  value="{{old('$date(d/m/y)') ?? $account->date }}"  class="form-control py-3" placeholder="$data">
+                @if($errors->has('date'))
+                        <h6 class="text-danger" >Digite a data</h6> 
+                @endif
+
+            @else
+                <?php $data = $account->date ?>
+            <label for="date">Data : {{$data}}</label>
+
+                <input type="date" name="date" id ="date" value="{{old('$date(d/m/Y)') ?? $account->date}}"  class="form-control py-3" placeholder="$data"> 
                 @if($errors->has('date'))
                         <h6 class="text-danger" >Digite a data</h6> 
                 @endif           
+            @endif
             </div>
    
             <div class="form-group row">
-                <input type="txt" name="description" value="{{old('description')}}" class="form-control py-3" placeholder="Descrição" >
+                <input type="txt" name="description" value="{{old('description') == $account->description ? $account->description :'Descrição'}}" class="form-control py-3" >
                 @if($errors->has('description'))
                     <h6 class="text-danger" >Digite a Descrição</h6> 
                 @endif
             </div>
 
+
+
 <div class="form-group">
-    <select name="type_account_id"  id="type_account_id" value="{{old('typeaccount')}}" class="form-control">
+    <select name="type_account_id"  id="type_account_id" class="form-control">
         <option value="" disabled selected>Selecione o tipo de conta...</option> 
             @foreach($type_accounts as $type_account)
-                    <option value="{{$type_account->id}}">{{$type_account->name}} </option>       
+                
+                <p>{{$type_account->id}}</p>
+                    <option value="{{$type_account->id}}" {{ $type_account->id == $account->type_account_id ? 'selected' : ''}}>{{$type_account->name}} </option>
+                
             @endforeach
         </select>
         @if($errors->has('type_account_id'))
@@ -36,7 +54,7 @@
             <option value="" disabled selected>Selecione a conta...</option> 
             @foreach($accountings as $accounting)
                                 
-                <option value="{{$accounting->id}}">{{$accounting->name}} </option>
+                <option value="{{$accounting->id}}" {{ $accounting->id == $account->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
                 
             @endforeach
     </select>
@@ -50,7 +68,7 @@
    <option value="" disabled selected>Selecione a área...</option> 
        @foreach($grounds as $ground)         
            <p>{{$ground->id}}</p>
-           <option value="{{$ground->id}}">{{$ground->name}} </option>                
+           <option value="{{$ground->id}}" {{ $ground->id == $account->ground_id ? 'selected' : ''}}>{{$ground->name}} </option>                
        @endforeach
    </select>
    @if($errors->has('ground_id'))
@@ -61,7 +79,7 @@
 
 
 <div class="form-group row">
-  <input type="number" class="floatNumberField form-control py-3"  name="amount"  value="{{old('amount')}}" placeholder="0.00" step="0.01" >
+  <input type="number" class="floatNumberField form-control py-3" name="amount" value="{{old('amount') ?? $account->amount }}"  placeholder="0.00" step="0.01" >
     @if($errors->has('amount'))
         <h6 class="text-danger" >Digite o valor</h6> 
     @endif

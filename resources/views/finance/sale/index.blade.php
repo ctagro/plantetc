@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movimentacao</title>
+    <title>Vendas</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Registrar movimentação financeira
+                    Registrar as vendas
                 </div>
             </div>
         </div>
@@ -68,22 +68,22 @@
                         @forelse($accounts as $account)
                                 <tr>
                                     <td>
-                                       <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->date }}</a>
+                                       <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->date }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->description }}</a>
+                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->description }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type}}</a>
+                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type_account->name}}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
+                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
                                     </td>  
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground->name}}</a>
+                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground->name}}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
+                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
                                     </td>
                                 </tr>
                             @empty
@@ -109,7 +109,7 @@
              
     <!-- Inicio do Formulario de account --> 
 
-       @include('finance.account.create') 
+       @include('finance.sale.create') 
            
 <!-- Fim do Formulario de account_conta --> 
 

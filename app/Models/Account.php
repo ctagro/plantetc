@@ -21,8 +21,8 @@ class Account extends Model
         'user_id'               ,  
         'date'                  , 
         'description'           ,      
-        'type'                  ,         
-        'accounting_id'            ,      
+        'type_account_id'       ,         
+        'accounting_id'         ,      
         'ground_id'             ,   
         'amount'                ,   
         'note'                  ,       
@@ -55,7 +55,7 @@ class Account extends Model
                
                 'date'                  => $data['date'],
                 'description'           => $data['description'],
-                'type'                  => $data['type'],
+                'type_account_id'       => $data['type_account_id'],
                 'accounting_id'         => $data['accounting_id'],
                 'ground_id'             => $data['ground_id'],
                 'amount'                => $data['amount'],
@@ -104,6 +104,11 @@ class Account extends Model
    public function accounting()
    {
        return $this->belongsTo(accounting::class);
+   }
+
+   public function type_account()
+   {
+       return $this->belongsTo(type_account::class);
    }
 
 

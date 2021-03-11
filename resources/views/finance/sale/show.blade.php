@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Atividades</title>
+    <title>Vendas</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,7 +44,7 @@
           <div class="card">
               <div class="card-header">
                   <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Excluir Movimentação
+                  Excluir Venda
               </div>
           </div>
       </div>
@@ -54,7 +54,7 @@
 
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('account.destroy',[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('sale.destroy',[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -76,21 +76,14 @@
         </div>
 
         <div class="row">
-          <div class="bolder">Descrição:</div>
+          <div class="bolder">Comprador:</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $account->description}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Tipo:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $account->type}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Conta:</div>
+          <div class="bolder">Produto vendido:</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $account->accounting->name}}</div>
@@ -104,7 +97,7 @@
         </div>
         
         <div class="row">
-          <div class="bg-light">Valor:</div>
+          <div class="bg-light">Valor da venda:</div>
       </div>
       <div class="row">
         <div class="form-control">{{number_format($account->amount, 2 , ',', '.') }}</div>
@@ -113,7 +106,7 @@
     <p></p>
   
              <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão da venda</button>
                   <a href="{{ url('/account') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
