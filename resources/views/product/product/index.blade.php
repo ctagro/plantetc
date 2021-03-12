@@ -61,6 +61,10 @@
                   <th>Foto</th>
                   <th>Nome</th>
                   <th>Descrição</th>
+                  <th>Embalagem</th>
+                  <th>Unidade</th>
+                  <th>Preço</th>
+                  <th>Preço por unidade</th>
                   
 
                     <tbody>
@@ -76,6 +80,21 @@
                           </td>
                           <td>  
                             <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ $product->description}}</a>
+                          </td>
+                          <td>  
+                            <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ $product->packing}}</a>
+                          </td>
+
+                          <td>  
+                            <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ $product->unity}}</a>
+                          </td>
+
+                          <td>  
+                            <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ number_format($product->price, 2 , ',', '.') }}</a>
+                          </td>
+
+                          <td>  
+                            <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ number_format($product->price_unit, 2 , ',', '.')}}</a>
                           </td>
       
                         </tr>

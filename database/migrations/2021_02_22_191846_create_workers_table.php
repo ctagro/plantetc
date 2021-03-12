@@ -20,6 +20,7 @@ class CreateWorkersTable extends Migration
             $table->text('name',50);
             $table->date('date');
             $table->double('salary',10,2);
+            $table->double('salary_hour',10,2);
             $table->string('image', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();

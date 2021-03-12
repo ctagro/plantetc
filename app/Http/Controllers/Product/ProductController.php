@@ -181,10 +181,14 @@ class ProductController extends Controller
 
         
 
-        $data['name'] = $dataRequest['name'];
-        $data['description'] = $dataRequest['description'];
-        $data['type_product'] = $dataRequest['type_product'];
-        $data['note'] = $dataRequest['note'];
+        $data['name']           = $dataRequest['name'];
+        $data['description']    = $dataRequest['description'];
+        $data['type_product']   = $dataRequest['type_product'];
+        $data['packing']        = $dataRequest['packing'];
+        $data['unity']          = $dataRequest['unity'];
+        $data['price']          = $dataRequest['price'];
+        $data['price_unit']     = $dataRequest['price_unit'];
+        $data['note']           = $dataRequest['note'];
        
 
         $update = $product -> update($data);
@@ -226,10 +230,15 @@ class ProductController extends Controller
 
         return request()->validate([
 
-            'name'=> 'required',
-            'description'=> 'required',
-            'type_product'=> 'required',
-            'note'=> 'required',
+            'name'          => 'required',
+            'description'   => 'required',
+            'type_product'  => 'required',
+            'packing'       => 'required',
+            'unity'         => 'required',
+            'price'         => 'required',
+            'price_unit'    => 'required',
+            'note'          => 'required',
+            
     
        ]);
 

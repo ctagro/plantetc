@@ -184,9 +184,10 @@ class WorkerController extends Controller
         }
     
 
-        $data['name'] = $dataRequest['name'];
-        $data['date'] = $dataRequest['date'];
-        $data['salary'] = $dataRequest['salary'];
+        $data['name']           = $dataRequest['name'];
+        $data['date']           = $dataRequest['date'];
+        $data['salary']         = $dataRequest['salary'];
+        $data['salary_hour']    = $dataRequest['salary_hour'];
        
 
         $update = $worker -> update($data);
@@ -228,9 +229,11 @@ class WorkerController extends Controller
 
         return request()->validate([
 
-            'name'=> 'required',
-            'date'=> 'required',
-            'salary' => 'required',
+            'name'          => 'required',
+            'date'          => 'required',
+            'salary'        => 'required',
+            'salary_hour'   => 'required',
+
     
        ]);
 

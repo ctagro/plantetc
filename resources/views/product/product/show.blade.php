@@ -74,7 +74,32 @@
         </div>
         <div class="row">
           <div class="form-control">{{ $product->description}}</div>
-        </div>      
+        </div> 
+        <div class="row">
+          <div class="bolder">Embalagem:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $product->packing}}</div>
+        </div> 
+        <div class="row">
+          <div class="bolder">Unidade:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $product->unity}}</div>
+        </div> 
+        <div class="row">
+          <div class="bolder">Preço:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{number_format($product->price, 2 , ',', '.') }}</div>
+        </div> 
+        <div class="row">
+          <div class="bolder">Preço por unidade:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{number_format($product->price_unit, 2 , ',', '.') }}</div>
+        </div> 
+
         <br>
         <div class="row">
           Imagem :

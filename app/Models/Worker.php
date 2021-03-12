@@ -18,6 +18,7 @@ class Worker extends Model
         'name',
         'date',
         'salary',
+        'salary_hour',
         'image',
     
 ];
@@ -41,7 +42,8 @@ public function storeWorker(array $data): Array
                 'name'          => $data['name'],
                 'date'          => $data['date'],
                 'salary'        => $data['salary'],
-                'image'          => $data['image'],
+                'salary_hour'   => $data['salary'],
+                'image'         => $data['image'],
                 
 
          ]);

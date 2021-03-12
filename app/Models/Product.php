@@ -18,6 +18,10 @@ class Product extends Model
         'name',
         'description',
         'type_product',
+        'packing',
+        'unity',
+        'price',
+        'price_unit',
         'note',
         'image',
     
@@ -42,6 +46,10 @@ public function storeProduct(array $data): Array
                 'name'          => $data['name'],
                 'description'   => $data['description'],
                 'type_product'  => $data['type_product'],
+                'packing'       => $data['packing'],
+                'unity'         => $data['unity'],
+                'price'         => $data['price'],
+                'price_unit'    => $data['price_unit'],
                 'note'          => $data['note'],
                 'image'         => $data['image'],
                 

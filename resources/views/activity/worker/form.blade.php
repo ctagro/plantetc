@@ -40,6 +40,14 @@
                   @endif
               </div> 
 
+              <div class="form-group">
+                <label>Salario por hora: </label>
+                <input type="number"  name="salary_hour" value="{{old('salary_hour') ?? $worker->salary_hour }}"  placeholder="0.00" step="0.01" >
+                  @if($errors->has('salary_hour'))
+                      <h6 class="text-danger" >Digite o Salário por hora</h6> 
+                  @endif
+              </div> 
+
         
                <!-- Para ativar o uploud de imagens -->
                <div class="form-group">

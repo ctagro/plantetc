@@ -83,7 +83,15 @@
         <div class="row">
           <div class="form-control">{{ $worker->salary}}</div>
         </div>
+
+        <div class="row">
+          <div class="bolder">Salário por hora:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $worker->salary_hour}}</div>
+        </div>
         <br>
+        
         <div class="row">
           Imagem :
           <img src="{{ asset('storage/workers/'.$worker->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 

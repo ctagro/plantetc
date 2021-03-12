@@ -19,7 +19,11 @@ class CreateProductsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('name',50);
             $table->text('description',200);
-            $table->text('type_product',50);  //inativo 07/03/21
+            $table->text('type_product',50);  // inativo 07/03/21
+            $table->text('packing',50); // tipo de embalagem// 
+            $table->text('unity',10);
+            $table->double('price',10,2);
+            $table->double('price_unit',10,2);
             $table->string('image', 100)->nullable();
             $table->longtext('note');
             $table->timestamps();

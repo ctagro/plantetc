@@ -62,6 +62,8 @@
                   <th>Nome</th>
                   <th>Admissão</th>
                   <th>Salário</th>
+                  <th>Salário por hora</th>
+
 
                     <tbody>
 
@@ -79,6 +81,9 @@
                             </td>
                             <td>  
                               <a href= "{{ route('worker.edit' ,[ 'worker' => $worker->id ])}}" >{{ number_format($worker->salary, 2 , ',', '.')  }}</a>
+                            </td>
+                            <td>  
+                              <a href= "{{ route('worker.edit' ,[ 'worker' => $worker->id ])}}" >{{ number_format($worker->salary_hour, 2 , ',', '.')  }}</a>
                             </td>
         
                           <td >

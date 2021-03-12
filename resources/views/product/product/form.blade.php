@@ -22,6 +22,40 @@
                     @if($errors->has('description'))
                       <h6 class="text-danger" >Digite o Descrição</h6> 
                     @endif
+              </div>
+              
+
+              <div class="form-group">
+                <label>Embalagem: </label>
+                    <input type="txt" name="packing" value="{{old('packing') ?? $product->packing }}" class="form-control py-3" placeholder="Descrição">
+                    @if($errors->has('packing'))
+                      <h6 class="text-danger" >Digite o tipo de embalagem</h6> 
+                    @endif
+              </div>
+              
+              <div class="form-group">
+                <label>Unidade: </label>
+                    <input type="txt" name="unity" value="{{old('unity') ?? $product->unity }}" class="form-control py-3" placeholder="Descrição">
+                    @if($errors->has('unity'))
+                      <h6 class="text-danger" >Digite a unidade</h6> 
+                    @endif
+              </div> 
+              
+              
+              <div class="form-group">
+                <label>Preço: </label>
+                    <input type="number"  name="price" value="{{old('price') ?? $product->price }}"  placeholder="0.00" step="0.01" >
+                    @if($errors->has('price'))
+                      <h6 class="text-danger" >Digite o preço</h6> 
+                    @endif
+              </div>
+              
+              <div class="form-group">
+                <label>Preço por unidade: </label>
+                    <input type="number"  name="price_unit" value="{{old('price_unit') ?? $product->price_unit }}"  placeholder="0.00" step="0.01" >
+                    @if($errors->has('price_unit'))
+                      <h6 class="text-danger" >Digite o preço por unidade</h6> 
+                    @endif
               </div> 
 
               <input type="hidden" name="type_product" value="?" class="form-control py-3">
