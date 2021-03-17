@@ -30,8 +30,8 @@ Route::namespace('Activity')->group(function () {
     Route::get('activity', 'ActivityController@index')->name('activity.index')-> middleware('auth');
     Route::post('activity/{activity}', 'ActivityController@show')->name('activity.show');
     Route::get('activity/{activity}/edit', 'ActivityController@edit')->name('activity.edit');
-    Route::patch('activity/{activity}', 'ActivityController@update')->name('activity.update');
-    Route::delete('activity/{activity}', 'ActivityController@destroy')->name('activity.destroy');
+    Route::patch('activity/{activity}/{account}', 'ActivityController@update')->name('activity.update');
+    Route::delete('activity/{activity}/{account}', 'ActivityController@destroy')->name('activity.destroy');
 
 
     Route::get('type_activity/create', 'Type_activityController@create')->name('type_activity.create');

@@ -36,8 +36,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            
-
+          
                 <div class="container">
                   <div class="row justify-content-center">
                       <div class="col-md-12">
@@ -61,9 +60,10 @@
                   <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
                   <th>Atividades</th>
                   <th>Área</th>
-                  <th>Produto</th>
                   <th>Funcionário</th>
+                  <th>Produto</th>
                   <th>Horas trab</th>
+                  <th>Valor</th>
 
 
                 
@@ -71,22 +71,19 @@
                     <tbody>
 
                      
-
-                      @foreach($activitys as $activity)
-
+                    
+                    @foreach($activitys as $activity)
+                     
                         <tr>
                           <td>  
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id  ])}}" >{{ $activity->date }}</a>
                           </td>
-
                           <td>
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->type_activity->description}}</a>
                           </td>
-
                           <td>
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->ground->name}}</a>
                           </td>
-
                           <td>
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->worker->name}}</a>
                           </td>
@@ -96,8 +93,12 @@
                           <td>  
                             <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ number_format($activity->worked_hours, 2 , ',', '.')  }}</a>
                           </td>
-                      
+                          <td>  
+                            <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->account->amount}}</a>
+                          </td>
+                       
                         </tr>
+                      
                       @endforeach
                     </tbody>
                   </table>                  

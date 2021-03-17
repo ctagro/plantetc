@@ -38,7 +38,6 @@ class AccountController extends Controller
 
     $type_accounts= type_account::where('id', '<=', 2)->get();
 
-
     $response = $accounts->first();
     
 
@@ -72,6 +71,8 @@ class AccountController extends Controller
         $accountings = auth()->user()->accounting()->where('sale','N')->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
+
+        
   
         $account = new \App\Models\Account([
 
@@ -172,7 +173,7 @@ class AccountController extends Controller
 
         $data['date']            = $dataRequest['date'];
         $data['description']     = $dataRequest['description'];
-        $data['type_account_id']         = $dataRequest['type_account_id'];
+        $data['type_account_id'] = $dataRequest['type_account_id'];
         $data['accounting_id']   = $dataRequest['accounting_id'];
         $data['ground_id']       = $dataRequest['ground_id'];
         $data['amount']          = $dataRequest['amount'];

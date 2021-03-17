@@ -4,6 +4,8 @@
 
             <input type="hidden" name="id" value="{{$activity->id }}" class="form-control py-3">
 
+            
+
 
                 <div class="form-group">
 
@@ -24,35 +26,55 @@
                     @endif
         
                 </div>
+
               
                 <div class="form-group">
-                        <select name="type_activity_id"  id="type_activity_id" class="form-control">
+                        <select name="type_activity"  id="type_activity" class="form-control">
                         <option value="" disabled selected>Selecione a atividade...</option>
                         @foreach($type_activitys as $type_activity)
-
-                          <option value="{{$type_activity->id}}" {{ $type_activity->id == $activity->type_activity_id ? 'selected' : ''}}>{{$type_activity->description}} </option> 
+   
+                          <option value="{{$type_activity}}" {{ $type_activity->id == $activity->type_activity_id ? 'selected' : ''}}>{{$type_activity->description}} </option> 
                             
                         @endforeach
                     </select>
-                    @if($errors->has('type_activity_id'))
+                    @if($errors->has('type_activity'))
                         <h6 class="text-danger" >Selecione a Atividade</h6> 
                     @endif
                 </div>
 
                 <div class="form-group">
-                    <select name="worker_id"  id="worker_id" class="form-control">
+                    <select name="type_account_id"  id="type_account_id" class="form-control">
+                        <option value="" disabled selected>Selecione o tipo de conta...</option> 
+                            @foreach($type_accounts as $type_account)
+                                
+                                <p>{{$type_account->id}}</p>
+                                @if(Request::is('*/edit'))
+                                    <option value="{{$type_account->id}}" {{ $type_account->id == $activity->account->type_account_id ? 'selected' : ''}}>{{$type_account->name}} </option>  
+                                @else
+                                    <option value="{{$type_account->id}}" {{ $type_account->id == $activity->type_account_id ? 'selected' : ''}}>{{$type_account->name}} </option>  
+                                @endif                             
+                            @endforeach
+                    </select>
+                        @if($errors->has('type_account_id'))
+                            <h6 class="text-danger" >Selecione o tipo de conta</h6> 
+                        @endif
+                    </div>
+              
+
+                <div class="form-group">
+                    <select name="worker"  id="worker" class="form-control">
                         <option value="" disabled selected>Selecione o funcionário...</option>
                         @foreach($workers as $worker)
-                                
-                            <p>{{$worker->id}}</p>
-                                <option value="{{$worker->id}}" {{ $worker->id == $activity->worker_id ? 'selected' : ''}}>{{$worker->name}} </option>
+
+                            <option value="{{$worker}}" {{ $worker->id == $activity->worker_id ? 'selected' : ''}}>{{$worker->name}} </option>
                                 
                         @endforeach
                     </select>
-                    @if($errors->has('worker_id'))
+                    @if($errors->has('worker'))
                         <h6 class="text-danger" >Selecione o nome do funcionário</h6> 
                     @endif
-                </div>                
+                </div>   
+                
 
                 <div class="form-group">                   
                     <select name="ground_id"  id="ground_id" class="form-control">
@@ -68,6 +90,30 @@
                         <h6 class="text-danger" >Selecione o nome da Área de plantio</h6> 
                     @endif
                 </div>
+
+                
+                <div class="form-group">                   
+                    <select name="accounting_id"  id="accounting_id" class="form-control">
+                        <option value="" disabled selected>Selecione a Conta...</option> 
+                            @foreach($accountings as $accounting)
+                            
+                            <p>{{$accounting->id}}</p>
+                            @if(Request::is('*/edit'))
+                                <option value="{{$accounting->id}}" {{ $accounting->id == $activity->account->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
+                            @else
+                                <option value="{{$accounting->id}}" {{ $accounting->id == $activity->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
+                            @endif        
+                                
+                            @endforeach
+                    </select>
+                    @if($errors->has('accounting_id'))
+                        <h6 class="text-danger" >Selecione a Conta</h6> 
+                    @endif
+                </div>
+
+                
+
+
                     
                 <div class="form-group">
                     <select name="product_id"  id="product_id" class="form-control">

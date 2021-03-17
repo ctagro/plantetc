@@ -24,7 +24,8 @@ class Account extends Model
         'type_account_id'       ,         
         'accounting_id'         ,      
         'ground_id'             ,   
-        'amount'                ,   
+        'amount'                , 
+        'activity'              ,
         'note'                  ,       
     ];
 
@@ -59,6 +60,7 @@ class Account extends Model
                 'accounting_id'         => $data['accounting_id'],
                 'ground_id'             => $data['ground_id'],
                 'amount'                => $data['amount'],
+                'activity'              => $data['activity'],
                 'note'                  => $data['note'], 
                 
 
@@ -110,8 +112,6 @@ class Account extends Model
    {
        return $this->belongsTo(type_account::class);
    }
-
-
      
 }
 

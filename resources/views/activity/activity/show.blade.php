@@ -46,7 +46,7 @@
 </div>
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('activity.destroy',[ 'activity' => $activity->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('activity.destroy',[ 'activity' => $activity->id,'account' => $activity->account->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   

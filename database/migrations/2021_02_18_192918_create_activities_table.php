@@ -21,7 +21,8 @@ class CreateActivitiesTable extends Migration
             $table->unsignedBigInteger('type_activity_id')->nullable();
             $table->unsignedBigInteger('worker_id')->nullable();
             $table->unsignedBigInteger('ground_id')->nullable();
-            $table->unsignedBigInteger('product_id')->nullable();            
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->unsignedBigInteger('account_id')->nullable()->onDelete('cascade');            
             $table->time('start_time'); // inativo 02/21
             $table->time('final_time'); // inativo 02/21
             $table->double('worked_hours',10,2);
