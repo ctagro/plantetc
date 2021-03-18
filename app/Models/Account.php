@@ -53,7 +53,7 @@ class Account extends Model
        
             $Account = auth()->user()->Account()->create([
             
-               
+              
                 'date'                  => $data['date'],
                 'description'           => $data['description'],
                 'type_account_id'       => $data['type_account_id'],

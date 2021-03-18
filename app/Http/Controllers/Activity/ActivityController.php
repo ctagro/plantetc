@@ -254,12 +254,16 @@ class ActivityController extends Controller
     public function update(Request $request, Activity $activity, Account $account)
     {
 
-        dd($activity->account->amount);
 
         if ($request['date'] == null){
             $dataP = explode('/',$activity->date);
             $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
          }
+
+         if ($request['note'] == null){
+            $request['note'] = "...";
+         }
+
 
         $dataRequest = $this->validateRequest();
 
@@ -292,10 +296,7 @@ class ActivityController extends Controller
 
       // dd($dataAccount['date' ]);
        
-        if ($request['note'] == null){
-            $request['note'] = "...";
-         }
-
+  
          $account = account::where('id', '=', $activity->account_id)->get();
 
         $dataActivity['date']                    = $dataRequest['date'];

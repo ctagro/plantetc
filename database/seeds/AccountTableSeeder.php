@@ -22,7 +22,7 @@ class AccountTableSeeder extends Seeder
              'description'            => 'Preparaçao de Canteiros',
              'type_account_id'        => 1,
              'ground_id'              => 1,
-             'accounting_id'          => 1,
+             'accounting_id'          => 2,
              'amount'                 => 1000,
              'activity'               => 'S',
              'note'                   => 'Bla bla bla',

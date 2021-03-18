@@ -294,6 +294,14 @@ return [
                     'url'        => '/sale_research',
                     'icon'        => 'fas fa-chart-line', 
                 ],
+
+                [
+                    'text'       => 'Fluxo de caixa',
+                    'icon_color' => 'cyan',
+                    'url'        => '/cash_flow',
+                    'icon'        => 'fas fa-chart-line', 
+                ],
+
             ],
         ],
 

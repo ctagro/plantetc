@@ -21,10 +21,10 @@ class AccountingTableSeeder extends Seeder
         Accounting::create([
                        
             'user_id'       => 1,
-            'name'          => 'Insumos',
-            'description'   => 'Tudo que for adquirido para utilização na produção do hortifruti',
+            'name'          => 'Venda',
+            'description'   => 'Hotifruti produzido na Fazenda ',
             'image'         => 'accounting_avatar.png',
-            'sale'          => 'N',
+            'sale'          => 'S',
         ]);
 
         Accounting::create([
@@ -54,41 +54,16 @@ class AccountingTableSeeder extends Seeder
             'sale'          => 'N',
         ]);
 
-        Accounting::create([
+       Accounting::create([
                        
             'user_id'       => 1,
-            'name'          => 'Embalagens',
+            'name'          => 'Frete',
             'description'   => 'Aquisição de embalagens para a venda de hortifruti',
-            'image'         => 'accounting_avatar.png',
+            'image'          => 'accounting_avatar.png',
             'sale'          => 'N',
         ]);
 
-        Accounting::create([
-                       
-            'user_id'       => 1,
-            'name'          => 'Abacate',
-            'description'   => 'Aquisição de embalagens para a venda de hortifruti',
-            'image'         => 'accounting_avatar.png',
-            'sale'          => 'S',
-        ]);
-
-        Accounting::create([
-                       
-            'user_id'       => 1,
-            'name'          => 'Pimentão Amarelo',
-            'description'   => 'Aquisição de embalagens para a venda de hortifruti',
-            'image'         => 'accounting_avatar.png',
-            'sale'          => 'S',
-        ]);
-
-        Accounting::create([
-                       
-            'user_id'       => 1,
-            'name'          => 'Pimentão Vermelho',
-            'description'   => 'Aquisição de embalagens para a venda de hortifruti',
-            'image'         => 'accounting_avatar.png',
-            'sale'          => 'S',
-        ]);
+       
       
         // Habilita novamente checagem de chaves *Importante*   
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');

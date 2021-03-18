@@ -67,6 +67,7 @@ class AccountingController extends Controller
     {
         $data = $this->validateRequest();
 
+
         if ($request->file('image') === null){
             $data['image'] = 'accounting_avatar.png';
             }
@@ -225,6 +226,7 @@ class AccountingController extends Controller
 
             'name'=> 'required',
             'description'=> 'required',
+          //  'activity'=> 'required',
     
        ]);
 

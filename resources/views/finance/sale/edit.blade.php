@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,93 +25,74 @@
 </body>
 </html>
 
-@extends('adminlte::page')
+@section('title', 'Editar')
 
-@section('title', 'Contas')
+    @extends('adminlte::page')
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Editar Vendas
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/sale_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                        Venda
+                        <a class="float-right" href="/sale">Lista</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-   
 
-    <form action="{{ route('sale.update' ,[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
+    @if(session('sucess'))
+        <div class="alert alert-success">
+            {{ session('sucess') }}
+        </div>
+    @endif
 
-        @method('PATCH')
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
-             <div class="form-group">
-             {!! csrf_field() !!}                      
 
-             @include('finance.sale.form_edit')
+<div class="container">
 
+@if(Session::has('mensagem_sucesso'))
+
+            <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
+
+@endif
+
+    <div class="row justify-content-center">
+    <div class="col-12">
+
+    <!-- porque nao suporta o metodo POST se store é post-->
+        <form action="{{ route('sale.update' ,[ 'sale' => $sale->id,'account' => $sale->account->id])}}" method="POST"  enctype="multipart/form-data">
+
+            @method('PATCH')
+            @include('finance.sale.form')
+
+        </form>
+
+        <form action="{{ route('sale.show' ,[ 'sale' => $sale->id,'account' => $sale->account->id ])}}" method="POST"  enctype="multipart/form-data">
+
+            @method('POST')
+          
                  <div class="form-group">
-                      <button type="submit" class="btn btn-danger btn-block">Atualizar a Vendas</button>
+                 {!! csrf_field() !!}                      
+          
+                     <div class="form-group">
+                          <button type="submit" class="btn btn-outline-danger" >Deletar...</button>
+                     </div>
                  </div>
-             </div>
+             </form>
+          
+    </div>
+</div>
+</div>
 
-  <!-- Link para deletar inativo -->
-    
-             <div class="row justify-content-between" >
-
-              <a href= "{{ route('sale.show' ,[ 'account' => $account->id ])}}" class="btn btn-outline-danger" >Deletar</a>
-   
-              <div class="text-right"> <a href="{{ url('/sale') }}" class="text-right">Voltar </a> </div>
-             </div>
-         <a href="#" id="ancora"></a>
-</form>
-                
-
-
-</body>
-
-<!-- ./wrapper -->
-<!-- jQuery -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<script>
-    window.location.href='#ancora';
-</script>
-<!-- page script -->
-
-<script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
-
-@stop
-
- 
+@endsection
 

@@ -215,6 +215,7 @@ class AccountController extends Controller
             'type_account_id'       => 'required' ,
             'accounting_id'         => 'required' ,
             'ground_id'             => 'required' ,
+            'activity'              => 'required' ,
             'amount'                => 'required' ,
             'note'                  => 'required' ,
     

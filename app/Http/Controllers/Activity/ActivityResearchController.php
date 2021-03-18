@@ -91,10 +91,9 @@ class ActivityResearchController extends Controller
 
 
          if ($query)
-         $activitys = activity::whereRaw($query)->orderBy('date')->get();
+            $activitys = activity::whereRaw($query)->orderBy('date')->get();
          else
-
-         $activitys = activity::orderBy('date')->get();
+            $activitys = activity::orderBy('date')->get();
 
          $type_activitys = auth()->user()->type_activity()->get();
           

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductTableSeeder::class);
         $this->call(BayerTableSeeder::class);
         $this->call(TypeAccountSeeder::class);
+        $this->call(SaleTableSeeder::class);
 
     }
 }

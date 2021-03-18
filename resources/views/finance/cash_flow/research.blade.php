@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fluxo de Caixa</title>
+    <title>Fluxo de caixa</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Fluxo de Caixa
+                    Cálculo do Fluxo de Caixa
                 </div>
             </div>
         </div>

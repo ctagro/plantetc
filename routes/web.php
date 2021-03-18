@@ -67,10 +67,10 @@ Route::namespace('Finance')->group(function () {
     Route::get('sale/create', 'SaleController@create')->name('sale.create');
     Route::post('sale/store', 'SaleController@store')->name('sale.store');
     Route::get('sale',         'SaleController@index')->name('sale.index')-> middleware('auth');
-    Route::get('sale/{account}', 'SaleController@show')->name('sale.show');
-    Route::get('sale/{account}/edit', 'SaleController@edit')->name('sale.edit');
-    Route::patch('sale/{account}', 'SaleController@update')->name('sale.update');
-    Route::delete('sale/{account}', 'SaleController@destroy')->name('sale.destroy');
+    Route::post('sale/{sale}', 'SaleController@show')->name('sale.show');
+    Route::get('sale/{sale}/edit', 'SaleController@edit')->name('sale.edit');
+    Route::patch('sale/{sale}/{account}', 'SaleController@update')->name('sale.update');
+    Route::delete('sale/{sale}/{account}', 'SaleController@destroy')->name('sale.destroy');
 
     Route::get('accounting/create', 'AccountingController@create')->name('accounting.create');
     Route::post('accounting/store', 'AccountingController@store')->name('accounting.store');
@@ -85,7 +85,7 @@ Route::namespace('Finance')->group(function () {
     Route::post('bayer/store', 'AccountingController@store')->name('bayer.store');
     Route::get('bayer', 'AccountingController@index')->name('bayer.index')-> middleware('auth');
     Route::post('bayer/{bayer}', 'AccountingController@show')->name('bayer.show');
-    Route::get('bayer/{bayer}/edit', 'AccountingController@edit')->name('bayer.edit');
+    Route::get('bayer/{bayer}/edit', 'AccountingController@edit')->name('bayer.edit'); 
     Route::patch('bayer/{bayer}', 'AccountingController@update')->name('bayer.update');
     Route::delete('bayer/{bayer}', 'AccountingController@destroy')->name('bayer.destroy');
 
@@ -96,6 +96,10 @@ Route::namespace('Finance')->group(function () {
     Route::post('sale_research/research', 'SaleResearchController@research')->name('sale_research.research');
     Route::get('sale_research', 'SaleResearchController@consult')->name('sale_research.consult');
     Route::get('sale_research/index', 'SaleResearchController@index')->name('sale_research.index');
+
+    Route::post('cash_flow/research', 'Cash_flowController@research')->name('cash_flow.research');
+    Route::get('cash_flow', 'Cash_flowController@consult')->name('cash_flow.consult');
+    Route::get('cash_flow/index', 'Cash_flowController@index')->name('cash_flow.index');
 
 });
 

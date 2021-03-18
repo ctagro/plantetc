@@ -25,135 +25,98 @@
 </body>
 </html>
 
-@extends('adminlte::page')
+@section('title', 'Listar')
 
-@section('title', 'Movimentações')
-
-
+    @extends('adminlte::page')
 
 @section('content')
+
+<div class='table-responsive'>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Registrar as vendas
-                </div>
-            </div>
+          
+                <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-md-12">
+                          <div class="card">
+                              <div class="card-header">
+                                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/sale_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                                  Vendas
+                                  <a class="float-right" href="{{url('sale/create')}}">Cadastrar</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+           
+                @if(Session::has('mensagem_sucesso'))
+                       <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
+                @endif
+
+                <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
+                  <thead>
+                      <tr>
+                  
+                          <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Produto</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Comprador</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Qte</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Unid</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Pr Unit</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Valor</th>
+                          <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
+                      </tr>
+                  </thead>
+                
+
+                    <tbody>
+
+                     
+                    
+                    @foreach($sales as $sale)
+                     
+                    <tr>
+                      <td>  
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id  ])}}" >{{ $sale->date }}</a>
+                      </td>
+                      <td>
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->product->name}}</a>
+                      </td>
+                      <td>
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->ground->name}}</a>
+                      </td>
+                      <td>  
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->bayer->name}}</a>
+                      </td>
+                      <td>
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->amount, 2 , ',', '.')  }}</a>
+                      </td>
+                      <td>
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->unity}}</a>
+                      </td>
+                      <td>  
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->price_unit, 2 , ',', '.')  }}</a>              
+                      </td>
+                      <td>  
+                        <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->account->amount, 2 , ',', '.')  }}</a>              
+                      </td>          
+                    </tr>
+                       
+                      @endforeach
+                    </tbody>
+                  </table>                  
+       
         </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+          <a href="{{ url('/home') }}" class="float-right" >Voltar </a> 
+      </div>
     </div>
 </div>
 
-<!-- Inicio da Tabela dos registros -->
-
-                <div class='table-responsive'>
-
-                <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
-                    <thead>
-                        <tr>
-                    
-                            <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Descrição</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tipo</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Conta</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
-                        </tr>
-                    </thead>
-                
-                    <tbody>
-                        @forelse($accounts as $account)
-                                <tr>
-                                    <td>
-                                       <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->date }}</a>
-                                    </td>
-                                    <td>
-                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->description }}</a>
-                                    </td>
-                                    <td>
-                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type_account->name}}</a>
-                                    </td>
-                                    <td>
-                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
-                                    </td>  
-                                    <td>
-                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground->name}}</a>
-                                    </td>
-                                    <td>
-                                        <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
-                                    </td>
-                                </tr>
-                            @empty
-                        @endforelse                  
-                    </tbody>
-        
-                </table>
-
-           @if(isset($account->date))
-                    <?php $account->date = Null ?>
-                    <?php $account->description = Null ?>
-                    <?php $account->type = Null ?>
-                    <?php $account->accounting = Null ?>
-                    <?php $account->ground_id = Null ?>
-                    <?php $account->amount = Null ?>
-                    <?php $account->note = Null ?>
-                @endif
-             
-            </div>
-
-<!-- Fim da Tabela dos registros -->
-
-             
-    <!-- Inicio do Formulario de account --> 
-
-       @include('finance.sale.create') 
-           
-<!-- Fim do Formulario de account_conta --> 
-
-<p class="text-right"> <a href="{{ url('/home') }}" class="text-right">Voltar </a> </p>
-
-</body>
-
-<!-- ./wrapper -->
-<!-- jQuery -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<script>
-    window.location.href='#ancora';
-</script>
-<!-- page script -->
-
-<script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
-
-@stop
-
- 
+</div>
+@endsection

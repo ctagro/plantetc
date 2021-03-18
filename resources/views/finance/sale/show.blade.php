@@ -25,36 +25,28 @@
 </body>
 </html>
 
-@section('title', 'Apresentar')
+@section('title', 'Venda')
 
     @extends('adminlte::page')
 
-@section('content')
-
-@extends('adminlte::page')
-
-@section('title', 'Movimentação')
-
 
 @section('content')
-
+   
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/sale_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                   Excluir Venda
               </div>
           </div>
       </div>
   </div>
 </div>
-   
-
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('sale.destroy',[ 'account' => $account->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('sale.destroy',[ 'sale' => $sale->id,'account' => $sale->account->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -66,48 +58,72 @@
 
     <div class="container">
 
-       
+        <div class="row">
+          <div class="bolder">Venda:</div>
+        </div>
 
         <div class="row">
           <div class="bolder">Data:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $account->date}}</div>
+          <div class="form-control">{{ $sale->date}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Comprador:</div>
+          <div class="bolder">Produto</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $account->description}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Produto vendido:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $account->accounting->name}}</div>
+          <div class="form-control">{{ $sale->product->name}}</div>
         </div>
 
         <div class="row">
-          <div class="bolder">Área:</div>
+          <div class="bolder">Area</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $account->ground->name}}</div>
+          <div class="form-control">{{ $sale->ground->name}}</div>
         </div>
-        
+
         <div class="row">
-          <div class="bg-light">Valor da venda:</div>
-      </div>
-      <div class="row">
-        <div class="form-control">{{number_format($account->amount, 2 , ',', '.') }}</div>
-      </div>
+          <div class="bolder">Quantidade</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $sale->amount}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Unidade</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $sale->unity}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Preço Unitario</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $sale->price_unit}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Valor</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $sale->account->amount}}</div>
+        </div>
+
+
+        <div class="bg-light">Observação</div>
+        <div class="row">
+            <textarea class="form-control" rows="3" >{{$sale->note }} </textarea>
+        </div>
+        <br>
+
     
     <p></p>
   
              <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão da venda</button>
-                  <a href="{{ url('/account') }}" class="float-right" >Voltar </a> 
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
+                  <a href="{{ url('/sale') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>
