@@ -129,4 +129,18 @@ Route::namespace('Product')->group(function () {
     Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
     Route::patch('product/{product}', 'ProductController@update')->name('product.update');
     Route::delete('product/{product}', 'ProductController@destroy')->name('product.destroy');
+
+    Route::get('product_apply/create', 'Product_applyController@create')->name('product_apply.create');
+    Route::post('product_apply/store', 'Product_applyController@store')->name('product_apply.store');
+    Route::get('product_apply',         'Product_applyController@index')->name('product_apply.index')-> middleware('auth');
+    Route::post('product_apply/{product_apply}', 'Product_applyController@show')->name('product_apply.show');
+    Route::get('product_apply/{product_apply}/edit', 'Product_applyController@edit')->name('product_apply.edit');
+    Route::patch('product_apply/{product_apply}/{account}', 'Product_applyController@update')->name('product_apply.update'); 
+    Route::delete('product_apply/{product_apply}/{account}', 'Product_applyController@destroy')->name('product_apply.destroy');
+
+    Route::post('product_apply/product_apply_research/research', 'Product_applyResearchController@research')->name('product.product_apply_research.research');
+    Route::get('product_apply/product_apply_research', 'Product_applyResearchController@consult')->name('product.product_apply_research.consult');
+    Route::get('product_apply/product_apply_research/index', 'Product_applyResearchController@index')->name('product.product_apply_research.index');
+
+    
 });

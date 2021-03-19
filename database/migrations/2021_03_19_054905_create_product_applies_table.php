@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateProductAppliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('product_applies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('name',50);
-            $table->text('description',200);
-            $table->text('type_product',50);  // inativo 07/03/21
-            $table->text('packing',50); // tipo de embalagem// 
-            $table->text('unity',10); 
-            $table->double('price',10,2);
-            $table->double('price_unit',10,2);
-            $table->string('image', 100)->nullable();
+            $table->unsignedBigInteger('account_id')->nullable()->onDelete('cascade');
+            $table->date('date');
+            $table->unsignedBigInteger('product_id')->nullable(); 
+            $table->unsignedBigInteger('worker_id')->nullable();
+            $table->unsignedBigInteger('accounting_id')->nullable();
+            $table->unsignedBigInteger('ground_id')->nullable();
+            $table->double('amount',10,2);
             $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();
@@ -38,6 +37,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('product_applies');
     }
 }

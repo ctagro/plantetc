@@ -3,37 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Cache\ArrayLock;
 use App\Models\Type_account;
 use App\Models\Worker;
 use App\Models\Ground;
-use App\Models\Crop;
+use App\Models\Product;
 use App\Models\Account;
+use App\Models\Accounting;
 use App\User;
 use Carbon\Carbon;
 use DateTime;
 use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Sale extends Model
+class Product_apply extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [   
                
-        'account_id'        ,
-        'date'              ,
-   //     'date_delivery'     ,
-        'crop_id'        ,
-        'ground_id'         ,
-        'type_account_id'      ,
-        'amount'            ,
-        'unity'             ,
-        'price_unit'        ,
-        'bayer_id'          ,
-  //      'transporter_id'    ,
-  //      'cost_freight'      ,
-        'note'              ,
+        'account_id'            ,
+        'date'                  ,
+        'product_id'            ,
+        'worker_id'             ,
+        'accounting_id'         ,
+        'ground_id'             ,
+        'amount'                ,
+        'note'                  ,
 
     ];
 
@@ -51,33 +46,28 @@ class Sale extends Model
      * Registrando as despesas e os saldos
      ******************************/
 
-    public function storeSale(array $data): Array
+    public function storeProduct_apply(array $data): Array
     {
        
 
  // recebe o array do controller Despesa -> storeDespesa e grava na tabela
 
        
-            $sale = auth()->user()->Sale()->create([
+            $product_apply = auth()->user()->Product_apply()->create([
             
                 'account_id'            => $data['account_id'],
                 'date'                  => $data['date'],
- //               'date_delivery'         => $data['date_delivery'],
-                'crop_id'            => $data['crop_id'],
+                'product_id'            => $data['product_id'],
+                'worker_id'             => $data['worker_id'],
+                'accounting_id'         => $data['accounting_id'],
                 'ground_id'             => $data['ground_id'],
-                'type_account_id'          => $data['type_account_id'],
                 'amount'                => $data['amount'],
-                'unity'                 => $data['unity'],
-                'price_unit'            => $data['price_unit'],
-                'bayer_id'              => $data['bayer_id'],
- //               'transporter_id'        => $data['transporter_id'],
-  //              'cost_freight'          => $data['cost_freight'],
                 'note'                  => $data['note'], 
 
                 ]);
         
    
-       if($sale){
+       if($product_apply){
 
             DB::commit();
 
@@ -113,9 +103,9 @@ class Sale extends Model
         return $this->belongsTo(ground::class);
     }
 
-    public function crop()
+    public function worker()
     {
-        return $this->belongsTo(crop::class);
+        return $this->belongsTo(worker::class);
     }
 
     public function account()
@@ -123,13 +113,18 @@ class Sale extends Model
         return $this->belongsTo(account::class);
     }
 
-    public function bayer()
+    public function accounting()
     {
-        return $this->belongsTo(bayer::class);
+        return $this->belongsTo(accounting::class);
     }
 
     public function type_account()
     {
         return $this->belongsTo(type_account::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(product::class);
     }
 }

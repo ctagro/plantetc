@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vendas</title>
+    <title>Aplicação de Produto</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,8 +37,8 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/sale_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Excluir Venda
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Excluir aplicação
               </div>
           </div>
       </div>
@@ -46,7 +46,7 @@
 </div>
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('sale.destroy',[ 'sale' => $sale->id,'account' => $sale->account->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('product_apply.destroy',[ 'product_apply' => $product_apply->id,'account' => $product_apply->account->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -59,62 +59,54 @@
     <div class="container">
 
         <div class="row">
-          <div class="bolder">Venda:</div>
+          <div class="bolder">Aplicação de produto:</div>
         </div>
 
         <div class="row">
           <div class="bolder">Data:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $sale->date}}</div>
+          <div class="form-control">{{ $product_apply->date}}</div>
         </div>
 
         <div class="row">
           <div class="bolder">Produto</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $sale->crop->name}}</div>
+          <div class="form-control">{{ $product_apply->product->name}}</div>
         </div>
 
         <div class="row">
           <div class="bolder">Area</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $sale->ground->name}}</div>
+          <div class="form-control">{{ $product_apply->worker->name}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Area</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $product_apply->accounting->description}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Area</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $product_apply->ground->name}}</div>
         </div>
 
         <div class="row">
           <div class="bolder">Quantidade</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $sale->amount}}</div>
+          <div class="form-control">{{ $product_apply->amount}}</div>
         </div>
-
-        <div class="row">
-          <div class="bolder">Unidade</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $sale->unity}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Preço Unitario</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $sale->price_unit}}</div>
-        </div>
-
-        <div class="row">
-          <div class="bolder">Valor</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $sale->account->amount}}</div>
-        </div>
-
 
         <div class="bg-light">Observação</div>
         <div class="row">
-            <textarea class="form-control" rows="3" >{{$sale->note }} </textarea>
+            <textarea class="form-control" rows="3" >{{$product_apply->note }} </textarea>
         </div>
         <br>
 
@@ -123,7 +115,7 @@
   
              <div class="form-group">
                   <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
-                  <a href="{{ url('/sale') }}" class="float-right" >Voltar </a> 
+                  <a href="{{ url('/product_apply') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

@@ -20,7 +20,7 @@ class CreateSalesTable extends Migration
             $table->unsignedBigInteger('account_id')->nullable()->onDelete('cascade');
             $table->date('date'); //data de carregamento
         //    $table->date('date_delivery'); // data da entrega
-            $table->unsignedBigInteger('product_id')->nullable(); 
+            $table->unsignedBigInteger('crop_id')->nullable(); 
             $table->unsignedBigInteger('ground_id')->nullable();  //area da fazenda
             $table->unsignedBigInteger('type_account_id')->nullable(); // "3" vendas
             $table->double('amount',10,2);  // quantidade

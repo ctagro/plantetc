@@ -26,7 +26,7 @@ class ProductTableSeeder extends Seeder
                     'unity'         => 'ml',
                     'price'         => 100,
                     'price_unit'    => 0.1,
-                   'type_product'   => '?',
+                   'type_product'   => 'N',
                    'note'           => '?',
                    'image'          => 'product_avatar.png',
                ]);

@@ -42,7 +42,7 @@ class AccountingTableSeeder extends Seeder
             'name'          => 'Herbicidas',
             'description'   => 'Tudo que for adquirido para combater doenças',
             'image'         => 'accounting_avatar.png',
-            'sale'          => 'N',
+            'sale'          => 'P',
         ]);
 
         Accounting::create([

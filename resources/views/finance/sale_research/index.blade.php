@@ -74,7 +74,7 @@
                 <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id  ])}}" >{{ $sale->date }}</a>
               </td>
               <td>
-                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->product->name}}</a>
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->crop->name}}</a>
               </td>
               <td>
                 <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->ground->name}}</a>
@@ -108,7 +108,7 @@
 <!-- Fim da Tabela dos registros -->
 
  
-<p class="text-right"> <a href="{{ url('/cash_flow') }}" class="text-right">Voltar </a> </p>
+<p class="text-right"> <a href="{{ url('/sale_research') }}" class="text-right">Voltar </a> </p>
 
 </body>
 

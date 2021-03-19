@@ -47,11 +47,11 @@
 
           <div class="col-md-4">
             <div class="form-group">
-                <label for="product_id">Produto :</label>
-                <select name="product_id"  id="product_id" class="form-control">
+                <label for="crop_id">Produto :</label>
+                <select name="crop_id"  id="crop_id" class="form-control">
                   <option selected="selected" value=""></option>
-                    @foreach($products as $product)    
-                        <option value="{{$product->id}}">{{$product->name}} </option>                  
+                    @foreach($crops as $crop)    
+                        <option value="{{$crop->id}}">{{$crop->name}} </option>                  
                     @endforeach
                 </select>
             </div>

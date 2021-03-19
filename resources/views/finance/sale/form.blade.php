@@ -31,15 +31,15 @@
   
 
                 <div class="form-group">
-                    <select name="product"  id="product" class="form-control">
+                    <select name="crop"  id="crop" class="form-control">
                         <option value="" disabled selected>Selecione o produto...</option>
-                        @foreach($products as $product)
+                        @foreach($crops as $crop)
 
-                            <option value="{{$product}}" {{ $product->id == $sale->product_id ? 'selected' : ''}}>{{$product->name}} </option>
+                            <option value="{{$crop}}" {{ $crop->id == $sale->crop_id ? 'selected' : ''}}>{{$crop->name}} </option>
                                 
                         @endforeach
                     </select>
-                    @if($errors->has('product'))
+                    @if($errors->has('crop'))
                         <h6 class="text-danger" >Selecione o produto</h6> 
                     @endif
                 </div>   

@@ -13,6 +13,7 @@ use App\Models\Accounting;
 use App\Models\Ground;
 use App\Models\Crop;
 use App\Models\Product;
+use App\Models\Product_apply;
 use App\Models\Bayer;
 use App\Models\Sale;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -99,6 +100,11 @@ class User extends Authenticatable
     public function sale()
     {
         return $this->hasMany(sale::class);
+    }
+
+    public function product_apply()
+    {
+        return $this->hasMany(product_apply::class);
     }
 
 }

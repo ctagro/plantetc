@@ -17,7 +17,10 @@ class Crop extends Model
         'user_id',
         'name',
         'description',
+        'packing',
+        'unity',    
         'image',
+        'note',
     
 ];
 
@@ -38,8 +41,11 @@ public function storeCrop(array $data): Array
             $crop = auth()->user()->crop()->create([
 
                 'name'          => $data['name'],
-                'description'          => $data['description'],
-                'image'          => $data['image'],
+                'description'   => $data['description'], 
+                'packing'       => $data['packing'],
+                'unity'         => $data['unity'],
+                'image'         => $data['image'],
+                'note'          => $data['note'],
                 
 
          ]);
@@ -52,7 +58,7 @@ public function storeCrop(array $data): Array
 
             return[
                 'sucess' => true,
-                'mensage'=> 'Funcionário registrada com sucesso'
+                'mensage'=> 'Cultura registrada com sucesso'
             ];
 
             }
@@ -63,7 +69,7 @@ public function storeCrop(array $data): Array
 
             return[
                     'sucess' => false,
-                    'mensage'=> 'Falha ao registrar a funcionário'
+                    'mensage'=> 'Falha ao registrar a Cultura'
             ];
             }
 

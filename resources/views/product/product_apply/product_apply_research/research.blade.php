@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fluxo de Caixa</title>
+    <title>Movimentacao</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,8 +37,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Vendas
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    Pesquisar aplicação de produto
                 </div>
             </div>
         </div>
@@ -46,12 +46,12 @@
 </div>
 
 
-<form method="POST" action="{{ route('sale_research.research')}}">
+<form method="POST" action="{{ route('product.product_apply_research.research')}}">
   
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('finance.sale_research.form')
+             @include('product.product_apply.product_apply_research.form')
 
              <div class="form-group">
               <button type="submit" class="btn btn-danger btn-block">Executar pesquisa</button>

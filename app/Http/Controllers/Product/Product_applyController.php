@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,18 +9,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\User;
-use App\Models\Sale;
-Use App\Models\Type_account;
+use App\Models\Product;
+Use App\Models\Worker;
 use App\Models\Ground;
-use App\Models\Crop;
+use App\Models\Product_apply;
 use App\Models\Account;
 use App\Models\Accounting;
 
-
-use DateTime;
-use Redirect;
-
-class SaleController extends Controller
+class Product_applyController extends Controller
 {
     public function __construct()
     {
@@ -35,11 +31,11 @@ class SaleController extends Controller
     public function index()
     {
    
-    $sales = auth()->user()->sale()->get();
+    $product_applys = auth()->user()->product_apply()->get();
 
-    //dd($sales);
+   //dd($product_applys);
 
-        return view('finance.sale.index',compact('sales'));
+        return view('product.product_apply.index',compact('product_applys'));
     }
 
     /**
@@ -55,19 +51,15 @@ class SaleController extends Controller
 
         $accounts = auth()->user()->account()->get();
 
-        $sales = auth()->user()->sale()->get();
+        $product_applys = auth()->user()->product_apply()->get();
 
         $grounds = auth()->user()->ground()->get();
 
-        $crops = auth()->user()->crop()->get();
+        $workers = auth()->user()->worker()->get();
 
-        $bayers = auth()->user()->bayer()->get();
+        $products = auth()->user()->product()->get();
 
-        $type_accounts = Type_account::all();
-
-     //   $accountings = accounting::where('sale', '=', "S")->get();
-
-    // dd($type_crops);
+        $accountings = accounting::where('sale', '=', "P")->get();
 
 
         $account = new \App\Models\Account([
@@ -75,12 +67,12 @@ class SaleController extends Controller
             ]);
 
 
-        $sale = new \App\Models\Sale([
+        $product_apply = new \App\Models\Product_apply([
 
         ]);
 
    
-        return view('finance.sale.create',compact('sale','sales','account','grounds','crops','type_accounts','bayers'));
+        return view('product.product_apply.create',compact('product_apply','product_applys','account','grounds','accountings','workers','products'));
        
     }
 
@@ -94,6 +86,9 @@ class SaleController extends Controller
     public function store(Request $request)
     {
 
+     // $data = $request;
+      //dd($data);
+
         if ($request['note'] == null){
             $request['note'] = "...";
          }
@@ -104,17 +99,22 @@ class SaleController extends Controller
 
          $dataAccount['date' ] = $request['date'];
          $date['note'] = $request['note'];
-     
+         
+         //dd($data['product']);
 
         // captura json do produto selecionado
-        $crop = ($data['crop']);
+        $product = ($data['product']);
         // tranforma o produto em array
-        $crop = json_decode($crop);
+        $product = json_decode($product);
         // seleciona o nome
-        $sale_description = $crop->name;
-        $data['crop_id'] = $crop->id;
-     //   dd($dataSalary_hour);
-       // dd($sale_name);
+        $product_apply_description = $product->name;
+        $data['product_id'] = $product->id;
+        $product_price = $product->price_unit;
+        $product_unity = $product->unity;
+
+
+      //  dd($product_price,$product_unity);
+      //  dd($product_apply_name);
 
        $dataAccount['date' ] = $request['date'];
 
@@ -127,17 +127,17 @@ class SaleController extends Controller
 
       //  $an = $data['worked_hours'] * floatval($dataSalary[1]);
 
-       // dd($an);
+    //dd($data);
 
     //.  dd($data);
    
    //   $dataAccount['user_id' ] = $data['user_id'];
       $dataAccount['date' ] = $data['date'];
-      $dataAccount['description' ] = $sale_description;
+      $dataAccount['description' ] = $product_apply_description;
       $dataAccount['type_account_id'] = $data['type_account_id'];
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
-      $dataAccount['amount'] = $data['amount'] * $data['price_unit'];
+      $dataAccount['amount'] = $data['amount'] * $product_price;
       $dataAccount['activity'] = "N";
       $dataAccount['note' ] = $data['note'];
 
@@ -156,22 +156,22 @@ class SaleController extends Controller
 
          $data['account_id'] = $id;
 
-      //dd($data);
+   //   dd($data);
       ////// parei aqui /////////////
 
       /// criar e carregar o registro de atividade usar
       // o $id para o account_id criandp o relacionamento
 
-        $sale = new sale();
+        $product_apply = new product_apply();
     
-        $response = $sale->storeSale($data);
+        $response = $product_apply->storeProduct_apply($data);
 
       
         
         if ($response)
 
         return redirect()
-                        ->route('sale.create')
+                        ->route('product_apply.create')
                         ->with('sucess', 'Cadastro realizado com sucesso');
                     
 
@@ -189,10 +189,10 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sale $sale)
+    public function show(Product_apply $product_apply)
     {
 
-        return view('finance.sale.show', compact('sale' ));
+        return view('product.product_apply.show', compact('product_apply' ));
 
     }
 
@@ -202,29 +202,27 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale $sale) {
+    public function edit(Product_apply $product_apply) {
 
 
         $user = auth()->user();
 
         $accounts = auth()->user()->account()->get();
 
-        $sales = auth()->user()->sale()->get();
+      //  $product_applies = auth()->user()->product_apply()->get();
 
         $grounds = auth()->user()->ground()->get();
 
-        $crops = auth()->user()->crop()->get();
+        $workers = auth()->user()->worker()->get();
 
-        $bayers = auth()->user()->bayer()->get();
+        $products = auth()->user()->product()->get();
 
-        $type_accounts = Type_account::all();
+        $accountings = accounting::where('sale', '=', "P")->get();
 
-        $account = account::where('id', '=', $sale->account_id)->get();
-        
-        $accountings = accounting::where('sale', '=', "S")->get();
+        //dd($product_apply);
 
 
-        return view('finance.sale.edit',compact('sale','account','accountings','type_accounts','grounds','crops','bayers'));
+        return view('product.product_apply.edit',compact('product_apply','accounts','grounds','accountings','workers','products'));
     }
 
     /**
@@ -234,11 +232,12 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale, Account $account)
+    public function update(Request $request, Product_apply $product_apply, Account $account)
     {
 
+
         if ($request['date'] == null){
-            $dataP = explode('/',$sale->date);
+            $dataP = explode('/',$product_apply->date);
             $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
          }
 
@@ -246,65 +245,63 @@ class SaleController extends Controller
             $request['note'] = "...";
          }
 
-        // dd($request['note']);
+       
 
         $dataRequest = $this->validateRequest();
 
+       // dd($dataRequest);
+
          // captura json do produto selecionado
-         $crop = ($dataRequest['crop']);
+         $product = ($dataRequest['product']);
          // tranforma o produto em array
-         $crop = json_decode($crop);
+         $product = json_decode($product);
          // seleciona o nome
-         $sale_description = $crop->name;
-         $dataRequest['crop_id'] = $crop->id;
+         $product_apply_description = $product->name;
+         $dataRequest['product_id'] = $product->id;
 
         $dataAccount['date' ] = $request['date'];
         $date['note'] = $request['note'];
      
-       // dd($type_sale_description);
+       // dd($type_product_apply_description);
 
        $dataAccount['date' ] = $request['date'];
 
-      // dd($dataAccount['date' ]);
+      //  dd($dataAccount['date' ]);
     
 
-       //  $account = account::where('id', '=', $sale->account_id)->get();
-
-        $dataSale['date']                    = $dataRequest['date'];
-        $dataSale['type_account_id']      = $dataRequest['type_account_id'];
-        $dataSale['ground_id']             = $dataRequest['ground_id'];
-        $dataSale['crop_id']             = $dataRequest['crop_id'];
-        $dataSale['amount']             = $dataRequest['amount'];
-        $dataSale['unity']            = $dataRequest['unity'];
-        $dataSale['price_unit']            = $dataRequest['price_unit'];
-        $dataSale['bayer_id']          = $dataRequest['bayer_id'];
-        $dataSale['note']                   = $dataRequest['note'];
+        $dataProduct_apply['date']                 = $dataRequest['date'];
+        $dataProduct_apply['product_id']           = $dataRequest['product_id'];  
+        $dataProduct_apply['worker_id']            = $dataRequest['worker_id'];
+        $dataProduct_apply['accounting_id']        = $dataRequest['accounting_id'];
+        $dataProduct_apply['ground_id']            = $dataRequest['ground_id'];
+        $dataProduct_apply['amount']               = $dataRequest['amount'];
+        $dataProduct_apply['note']                 = $dataRequest['note'];
   
-      //  dd($dataSale);
+      //  dd($dataProduct_apply);
         
-       $updateSale = $sale -> update($dataSale);
+       $updateProduct_apply = $product_apply -> update($dataProduct_apply);
 
 
         $dataAccount['date' ] = $dataRequest['date'];
-        $dataAccount['description' ] = $sale_description;
+        $dataAccount['description' ] = $product_apply_description;
         $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
-        $dataAccount['amount'] = $dataRequest['amount'] * $dataRequest['price_unit'];
+        $dataAccount['amount'] = $dataRequest['amount'];
         $dataAccount['activity'] = "N";
         $dataAccount['note' ] = $dataRequest['note'];
 
        // dd($dataAccount);
 
-        $updateAccount = $sale->account ->update($dataAccount);
+        $updateAccount = $product_apply->account ->update($dataAccount);
 
 
-       $updateSale = $sale -> update($dataSale);
+       $updateProduct_apply = $product_apply -> update($dataProduct_apply);
 
-       if ($updateSale)
+       if ($updateProduct_apply)
 
         return redirect()
-                        ->route('sale.edit' ,[ 'sale' => $sale->id ])
+                        ->route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])
                         ->with('sucess', 'Sucesso ao atualizar');
                     
 
@@ -320,12 +317,12 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale, Account $account)
+    public function destroy(Product_apply $product_apply, Account $account)
     {
-        $sale->delete();
-        $sale->account->delete();
+        $product_apply->delete();
+        $product_apply->account->delete();
 
-        return redirect('sale');
+        return redirect('product_apply');
     }
 
     private function validateRequest()
@@ -334,24 +331,21 @@ class SaleController extends Controller
         return request()->validate([
              
 
-            
+         //   'user_id'               =>   'required',
             'date'                  =>   'required',
-       //     'date_delivery'        =>   'required',
-            'crop'                  =>   'required',
+            'product'               =>   'required',
+            'worker_id'             =>   'required',
             'ground_id'             =>   'required',
-            'type_account_id'        =>   'required',
+            'accounting_id'         =>   'required', 
             'amount'                =>   'required',
-            'unity'                 =>   'required',
-            'price_unit'            =>   'required',
-            'bayer_id'              =>   'required',
-      //      'transporter_id'    =>   'required',
-      //      'cost_freight'      =>   'required',
             'note'                  =>   'required',
-            'accounting_id'         =>   'required',
+            'type_account_id'       =>   'required',
+            'activity'       =>   'required'
+
 
     
        ]);
 
 
-    }
+    } 
 }

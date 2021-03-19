@@ -64,7 +64,7 @@ public function storeProduct(array $data): Array
 
             return[
                 'sucess' => true,
-                'mensage'=> 'Funcionário registrada com sucesso'
+                'mensage'=> 'Produto registrada com sucesso'
             ];
 
             }
@@ -75,7 +75,7 @@ public function storeProduct(array $data): Array
 
             return[
                     'sucess' => false,
-                    'mensage'=> 'Falha ao registrar a funcionário'
+                    'mensage'=> 'Falha ao registrar o produto'
             ];
             }
 

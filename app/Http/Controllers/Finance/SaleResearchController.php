@@ -13,7 +13,7 @@ use App\User;
 use App\Models\Account;
 use App\Models\Accounting;
 use App\Models\Ground;
-use App\Models\Product;
+use App\Models\Crop;
 use App\Models\Sale;
 
 use App\Models\Bayer;
@@ -45,7 +45,7 @@ class SaleResearchController extends Controller
 
         $grounds = auth()->user()->ground()->get();
 
-        $products = product::where('type_product', '=', "S")->get();
+        $crops = auth()->user()->crop()->get();
 
         $type_accounts = Type_account::all();
 
@@ -53,7 +53,7 @@ class SaleResearchController extends Controller
 
         $type_accounts= type_account::where('id', '=', 3)->get();
 
-        return view('finance.sale_research.index',compact('sales','accounts','grounds','accountings','type_accounts','bayers','products'));
+        return view('finance.sale_research.index',compact('sales','accounts','grounds','accountings','type_accounts','bayers','crops'));
     }
 
     public function consult()
@@ -66,7 +66,7 @@ class SaleResearchController extends Controller
 
         $grounds = auth()->user()->ground()->get();
 
-        $products = auth()->user()->product()->get();
+        $crops = auth()->user()->crop()->get();
 
         $bayers = auth()->user()->bayer()->get();
 
@@ -77,7 +77,7 @@ class SaleResearchController extends Controller
         $type_accounts= type_account::where('id', '=', 3)->get();
 
 
-    return view('finance.sale_research.research', compact('sales','accounts','grounds','type_accounts','bayers','products'));
+    return view('finance.sale_research.research', compact('sales','accounts','accountings','grounds','type_accounts','bayers','crops'));
 
     }
     
@@ -88,14 +88,14 @@ class SaleResearchController extends Controller
 
        //dd($pesquisa);
 
-        $termos = $request->only('bayer_id','product_id', 'ground_id', 'date_inicial', 'date_final' );
+        $termos = $request->only('bayer_id','crop_id', 'ground_id', 'date_inicial', 'date_final' );
         $prepareQuery = "";
         $query = "";
         foreach ($termos as $nome => $valor) {
 
             if($valor){
               //  $query = $query . "where("."'".$nome."'".","."'"."="."'".","."'". $valor. "')->";
-                if ($nome == "bayer_id" or $nome == "product_id" or $nome == "ground_id")
+                if ($nome == "bayer_id" or $nome == "crop_id" or $nome == "ground_id")
                     $prepareQuery = $prepareQuery . $nome. '="'. $valor. '" AND ';
                 if ($nome == "date_inicial") 
                         $prepareQuery = $prepareQuery . 'date'. '>="'. $valor. '" AND ';
@@ -119,7 +119,7 @@ class SaleResearchController extends Controller
           
         $bayers = auth()->user()->bayer()->get();
 
-        $products = auth()->user()->product()->get();
+        $crops = auth()->user()->crop()->get();
          
         $grounds = auth()->user()->ground()->get();
 
@@ -133,7 +133,7 @@ class SaleResearchController extends Controller
         // dd($sales); 
 
 
-    return view('finance.sale_research.index', compact('sales','products','grounds','bayers','accounts'));
+    return view('finance.sale_research.index', compact('sales','crops','grounds','bayers','accounts'));
     }
 
 }
