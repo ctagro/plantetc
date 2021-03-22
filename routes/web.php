@@ -23,6 +23,7 @@ Route::get('/home', function() {
 
 Route::get('site/profile/profile', [App\Http\Controllers\Site\UserController::class, 'profile'])->name('profile')-> middleware('auth');
 Route::post('site/profile/profile', [App\Http\Controllers\Site\UserController::class, 'profileUpdate'])->name('profile.update')-> middleware('auth');
+Route::get('/site/galeria/galeria', [App\Http\Controllers\HomeController::class, 'galeria'])->name('galeria');
 
 Route::namespace('Activity')->group(function () {
     Route::get('activity/create', 'ActivityController@create')->name('activity.create');

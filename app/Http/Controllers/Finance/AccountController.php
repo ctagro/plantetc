@@ -147,6 +147,8 @@ class AccountController extends Controller
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 
+      //  dd($account, $accountings);
+
         return view('finance.account.edit',compact('account','grounds','accountings','type_accounts'));
     }
 

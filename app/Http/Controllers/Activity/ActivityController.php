@@ -57,7 +57,7 @@ class ActivityController extends Controller
 
         $activitys = auth()->user()->activity()->get();
 
-        $type_activitys = auth()->user()->type_activity()->get();
+        $type_activitys = auth()->user()->type_activity()->where('in_use', '=', "S")->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 

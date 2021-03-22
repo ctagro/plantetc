@@ -183,6 +183,7 @@ class GroundController extends Controller
         $data['name'] = $dataRequest['name'];
         $data['area'] = $dataRequest['area'];
         $data['location'] = $dataRequest['location'];
+        $data['in_use']   = $dataRequest['in_use'];
        
 
         $update = $ground -> update($data);
@@ -227,6 +228,7 @@ class GroundController extends Controller
             'name'      => 'required',
             'area'      => 'required',
             'location'  => 'required',
+            'in_use'  => 'required',
     
        ]);
 

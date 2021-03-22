@@ -22,6 +22,7 @@ class Type_activityTableSeeder extends Seeder
              'description'  => 'Aplicação de Adubo foliar',
              'image'        => 'worker_avatar.png',
              'note'         => 'Aplicação de qualquer adubo foliar usando o pulvirizador',
+             'in_use'       => 'S',
          ]);
 
          Type_activity::create([
@@ -30,6 +31,7 @@ class Type_activityTableSeeder extends Seeder
             'description'  => 'Aplicação de Herbicidas',
             'image'        => 'worker_avatar.png',
             'note'         => 'Aplicação de qualquer herbicida usando o pulvirizador',
+            'in_use'       => 'S',
         ]);
 
         Type_activity::create([
@@ -38,6 +40,7 @@ class Type_activityTableSeeder extends Seeder
             'description'  => 'Preparaçao de Canteiros',
             'image'        => 'worker_avatar.png',
             'note'         => 'Preparação de canteiros para novo plantio',
+            'in_use'       => 'N',
         ]);
        
 

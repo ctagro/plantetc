@@ -24,18 +24,18 @@
                     @endif
               </div> 
 
-              <div class="form-group">
-                <label>Produto de venda: </label>
+     <!--         <div class="form-group">
+                <label>Produto de venda: {$accounting->sale}} </label>
                 <select name="sale"  id="sale" class="form-control">
                     <option value="N">Não</option>
                     <option value="S">Sim</option>
                   </select>
-                @if($errors->has('sale'))
+                if($errors->has('sale'))
                     <h6 class="text-danger" >Escolha a opção</h6> 
-                @endif
+                endif
             </div>
 
-        
+        --> 
                <!-- Para ativar o uploud de imagens -->
                <div class="form-group">
                 @if ($accounting->image != null)

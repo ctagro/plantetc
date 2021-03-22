@@ -27,7 +27,6 @@ class Type_activityController extends Controller
 
     $type_activities = auth()->user()->type_activity()->get();
 
-
         return view('activity.type_activity.index', ['type_activities' => $type_activities]);
     }
 
@@ -41,6 +40,7 @@ class Type_activityController extends Controller
 
 
         $user = auth()->user();
+        
        
 
         $type_activity = new \App\Models\Type_activity([
@@ -61,6 +61,8 @@ class Type_activityController extends Controller
      */
     public function store(Request $request, Type_activity $type_activity)
     {
+
+
        
         if ($request['note'] == null){
             $request['note'] = "...";
@@ -87,6 +89,7 @@ class Type_activityController extends Controller
         }
      
         $type_activity = new type_activity();
+
 
         // Chamando a objeto a funcao do model  e passando o array 
         // capiturado no formulario da view 
@@ -166,6 +169,7 @@ class Type_activityController extends Controller
     $data['description']    = $dataRequest['description'];
     $data['note']           = $dataRequest['note'];
     $data['image']          = $type_activity['image'];
+    $data['in_use']         = $dataRequest['in_use'];
   
 
       $update  = $type_activity -> update($data);
@@ -210,6 +214,7 @@ class Type_activityController extends Controller
         
             'description' => 'required',
             'note' => 'required',
+            'in_use'  => 'required',
             
             
        ]);

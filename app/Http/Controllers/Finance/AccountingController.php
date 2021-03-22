@@ -160,6 +160,7 @@ class AccountingController extends Controller
     public function update(Request $request, Accounting $accounting)
     {
 
+
         $dataRequest = $this->validateRequest();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {

@@ -41,6 +41,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 50,
                 'price_unit'     => 1,
                 'type_product'   => 'S',
+                'in_use'       => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -55,6 +56,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 500,
                 'price_unit'     => 10,
                 'type_product'   => 'S',
+                'in_use'       => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -69,6 +71,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 1000,
                 'price_unit'     => 10,
                 'type_product'   => 'S',
+                'in_use'       => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);

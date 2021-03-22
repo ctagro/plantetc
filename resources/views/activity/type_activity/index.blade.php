@@ -81,6 +81,9 @@
                           <td>
                             <textarea class="form-control" rows="1" cols= "33" > {{$type_activity->note }} </textarea>
                           </td>
+                          <td>  
+                            <a href= "{{ route('type_activity.edit' ,[ 'type_activity' => $type_activity->id  ])}}" >{{ $type_activity -> in_use}}</a>
+                          </td>
         
                           <td >
             

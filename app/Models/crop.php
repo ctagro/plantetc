@@ -18,7 +18,8 @@ class Crop extends Model
         'name',
         'description',
         'packing',
-        'unity',    
+        'unity', 
+        'in_use' ,   
         'image',
         'note',
     
@@ -44,6 +45,7 @@ public function storeCrop(array $data): Array
                 'description'   => $data['description'], 
                 'packing'       => $data['packing'],
                 'unity'         => $data['unity'],
+                'in_use'         => $data['in_use'],
                 'image'         => $data['image'],
                 'note'          => $data['note'],
                 

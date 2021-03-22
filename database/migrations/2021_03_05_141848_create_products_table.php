@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->double('price',10,2);
             $table->double('price_unit',10,2);
             $table->string('image', 100)->nullable();
+            $table->enum('in_use',['S','N'])->default("S");
             $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();

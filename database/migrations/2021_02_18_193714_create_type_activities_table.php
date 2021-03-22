@@ -20,6 +20,7 @@ class CreateTypeActivitiesTable extends Migration
             $table->text('description',15);
             $table->string('image', 100)->nullable();
             $table->longtext('note');
+            $table->enum('in_use',['S','N'])->default("S");
             $table->timestamps();
             $table->softDeletes();
         });

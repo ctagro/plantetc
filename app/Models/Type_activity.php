@@ -17,7 +17,8 @@ class Type_activity extends Model
         'user_id',
         'description',
         'image',
-        'note'
+        'note',
+        'in_use'
     
 ];
 
@@ -31,7 +32,8 @@ public function storetype_activity(array $data): Array
             
                 'description'    => $data['description'],
                 'image'          => $data['image'],
-                'note'           => $data['note']
+                'note'           => $data['note'],
+                'in_use'         => $data['in_use'],
 
             ]);
 

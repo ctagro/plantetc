@@ -5,6 +5,8 @@
 
             <input type="hidden" name="id" value="{{$crop->id }}" class="form-control py-3">
             <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3">
+            <input type="hidden" name="packing" value="???"class="form-control py-3">
+            <input type="hidden" name="unity" value="??" class="form-control py-3">
 
 
 
@@ -23,6 +25,22 @@
                       <h6 class="text-danger" >Digite o Descrição</h6> 
                     @endif
               </div> 
+
+              @if(!Request::is('*/edit'))
+                    <input type="hidden" name="in_use" value="S" class="form-control py-3">
+            @else
+            <div class="form-group">
+                <label>Ativo: {{$crop->in_use}} </label>
+                <select name="in_use"  id="in_use" class="form-control">
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                  </select>
+                @if($errors->has('in_use'))
+                    <h6 class="text-danger" >Escolha a opção</h6> 
+                @endif
+            </div>
+            @endif
+
 
         
                <!-- Para ativar o uploud de imagens -->

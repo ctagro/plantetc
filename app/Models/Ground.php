@@ -20,6 +20,7 @@ class Ground extends Model
         'name',
         'area',
         'location',
+        'in_use' ,
         'image',
     
 ];
@@ -43,6 +44,7 @@ public function storeGround(array $data): Array
                 'name'          => $data['name'],
                 'area'          => $data['area'],
                 'location'        => $data['location'],
+                'in_use'         => $data['in_use'],
                 'image'          => $data['image'],
                 
 

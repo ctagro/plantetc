@@ -24,6 +24,7 @@ class CropTableSeeder extends Seeder
             'description'   => 'Pimentão Amarelo e Vermelho em estufa',
             'packing'       => 'Caixa',
             'unity'         => 'cx',
+            'in_use'       => 'S',
             'image'         => 'crop_avatar.png',
             'note'          => '...',
         ]);
@@ -35,6 +36,7 @@ class CropTableSeeder extends Seeder
             'description'   => 'Abacate do tipo Geada, Fortuna e Hass no mesmo terreno ',
             'packing'       => 'Caixa',
             'unity'         => 'cx',
+            'in_use'       => 'S',
             'image'         => 'crop_avatar.png',
             'note'          => '...',
         ]);
@@ -46,6 +48,7 @@ class CropTableSeeder extends Seeder
             'description'   => 'Abacate do tipo Hass e de comercialização restrita',
             'packing'       => 'Caixa',
             'unity'         => 'cx',
+            'in_use'       => 'S',
             'image'         => 'crop_avatar.png',
             'note'          => '...',
         ]);
@@ -58,6 +61,7 @@ class CropTableSeeder extends Seeder
             'image'         => 'crop_avatar.png',
             'packing'       => 'Saca',
             'unity'         => 'sc',
+            'in_use'       => 'S',
             'image'         => 'crop_avatar.png',
             'note'          => '...',
         ]);

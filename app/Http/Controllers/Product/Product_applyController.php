@@ -93,10 +93,8 @@ class Product_applyController extends Controller
             $request['note'] = "...";
          }
 
-
-        
          $data = $this->validateRequest();
-
+         
          $dataAccount['date' ] = $request['date'];
          $date['note'] = $request['note'];
          

@@ -21,6 +21,7 @@ class CreateCropsTable extends Migration
             $table->text('description',200);
             $table->text('packing',50); // tipo de embalagem// 
             $table->text('unity',10);
+            $table->enum('in_use',['S','N'])->default("S");
             $table->string('image', 100)->nullable();
             $table->longtext('note');
             $table->timestamps();
