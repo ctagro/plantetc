@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::get('/', function() {
+    return view('site.home.index');
 });
 
-Auth::routes();
+Route::get('admin/home/index', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.home.index')-> middleware('auth');
 
 Route::get('/home', function() {
     return view('home');
@@ -144,4 +146,9 @@ Route::namespace('Product')->group(function () {
     Route::get('product_apply/product_apply_research/index', 'Product_applyResearchController@index')->name('product.product_apply_research.index');
 
     
+});
+
+Route::namespace('Site')->group(function () {
+    Route::get('/', 'HomeController')->name('site.home.index');
+
 });

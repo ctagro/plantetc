@@ -68,7 +68,7 @@ class AccountController extends Controller
 
         $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
 
-        $accountings = auth()->user()->accounting()->where('sale','N' and 'in_use', '=', "S")->get();
+        $accountings = auth()->user()->accounting()->where('sale','=','N' and 'in_use', '=', "S")->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 
@@ -143,7 +143,7 @@ class AccountController extends Controller
 
         $grounds = auth()->user()->ground()->get();
 
-        $accountings = auth()->user()->accounting()->where('sale','N' and 'in_use', '=', "S")->get();
+        $accountings = auth()->user()->accounting()->where('sale','=','N' and 'in_use', '=', "S")->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 

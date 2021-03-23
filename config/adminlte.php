@@ -237,7 +237,7 @@ return [
         ],
         [
             'text'        => 'Home',
-            'url'         => 'home',
+            'url'         => 'admin/home/index',
             'icon'        => 'fas fa-house-user',
          //   'label'       => 4,
          //   'label_color' => 'success',
