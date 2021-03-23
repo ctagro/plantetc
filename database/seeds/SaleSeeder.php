@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Sale;
 
-class SaleTableSeeder extends Seeder
+class SaleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,9 @@ class SaleTableSeeder extends Seeder
         // Desabilita a checagem de chaves
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
         DB::table('sales')->delete();
+
        
-        Sale::create([
+        Sale::create([ 
 
             'user_id'                => 1,
             'account_id'             => 1,

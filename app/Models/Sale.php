@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Cache\ArrayLock;
 use App\Models\Type_account;
 use App\Models\Worker;
@@ -16,6 +14,8 @@ use DateTime;
 use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Illuminate\Database\Eloquent\Model;
+
 class Sale extends Model
 {
     use SoftDeletes;
@@ -24,10 +24,10 @@ class Sale extends Model
                
         'account_id'        ,
         'date'              ,
-        'date_pay'     ,
-        'crop_id'        ,
+        'date_pay'          ,
+        'crop_id'           ,
         'ground_id'         ,
-        'type_account_id'      ,
+        'type_account_id'     ,
         'amount'            ,
         'unity'             ,
         'price_unit'        ,
