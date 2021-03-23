@@ -8,6 +8,7 @@ use App\Models\Type_account;
 use App\Models\Worker;
 use App\Models\Ground;
 use App\Models\Crop;
+use App\Models\Bayer;
 use App\Models\Account;
 use App\User;
 use Carbon\Carbon;
