@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Despesas</title>
+    <title>Atividades</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -70,14 +70,14 @@
     <div class="col-12">
 
     <!-- porque nao suporta o metodo POST se store é post-->
-        <form action="{{ route('activity.update' ,[ 'activity' => $activity->id ])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('activity.update' ,[ 'activity' => $activity->id,'account' => $activity->account->id])}}" method="POST"  enctype="multipart/form-data">
 
             @method('PATCH')
             @include('activity.activity.form')
 
         </form>
 
-        <form action="{{ route('activity.show' ,[ 'activity' => $activity->id ])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('activity.show' ,[ 'activity' => $activity->id,'account' => $activity->account->id ])}}" method="POST"  enctype="multipart/form-data">
 
             @method('POST')
           

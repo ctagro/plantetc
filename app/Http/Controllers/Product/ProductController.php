@@ -189,6 +189,7 @@ class ProductController extends Controller
         $data['price']          = $dataRequest['price'];
         $data['price_unit']     = $dataRequest['price_unit'];
         $data['note']           = $dataRequest['note'];
+        $data['in_use']         = $dataRequest['in_use'];
        
 
         $update = $product -> update($data);
@@ -237,6 +238,7 @@ class ProductController extends Controller
             'unity'         => 'required',
             'price'         => 'required',
             'price_unit'    => 'required',
+            'in_use'        => 'required',
             'note'          => 'required',
             
     

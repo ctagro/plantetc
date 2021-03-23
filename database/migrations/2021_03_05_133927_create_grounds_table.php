@@ -20,6 +20,7 @@ class CreateGroundsTable extends Migration
             $table->text('name',50);
             $table->double('area',10,2);
             $table->text('location',200);
+            $table->enum('in_use',['S','N'])->default("S");
             $table->string('image', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();

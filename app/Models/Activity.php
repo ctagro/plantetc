@@ -8,6 +8,7 @@ use App\Models\Type_activity;
 use App\Models\Worker;
 use App\Models\Ground;
 use App\Models\Product;
+use App\Models\Account;
 use App\User;
 use Carbon\Carbon;
 use DateTime;
@@ -27,7 +28,8 @@ class Activity extends Model
         'type_activity_id'      ,
         'worker_id'             , 
         'ground_id'             ,   
-        'product_id'            ,                 
+        'product_id'            , 
+        'account_id'            ,                
         'start_time'            ,       
         'final_time'            ,         
         'worked_hours'          ,         
@@ -63,6 +65,7 @@ class Activity extends Model
                 'ground_id'             => $data['ground_id'],
                 'product_id'            => $data['product_id'],
                 'worker_id'             => $data['worker_id'],
+                'account_id'            => $data['account_id'],
                 'start_time'            => $data['start_time'],
                 'final_time'            => $data['final_time'],
                 'worked_hours'          => $data['worked_hours'],
@@ -121,6 +124,11 @@ class Activity extends Model
     public function product()
     {
         return $this->belongsTo(product::class);
+    }
+
+    public function account()
+    {
+        return $this->belongsTo(account::class);
     }
      
 }

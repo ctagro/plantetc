@@ -237,7 +237,7 @@ return [
         ],
         [
             'text'        => 'Home',
-            'url'         => 'home',
+            'url'         => 'admin/home/index',
             'icon'        => 'fas fa-house-user',
          //   'label'       => 4,
          //   'label_color' => 'success',
@@ -294,6 +294,14 @@ return [
                     'url'        => '/sale_research',
                     'icon'        => 'fas fa-chart-line', 
                 ],
+
+                [
+                    'text'       => 'Fluxo de caixa',
+                    'icon_color' => 'cyan',
+                    'url'        => '/cash_flow',
+                    'icon'        => 'fas fa-chart-line', 
+                ],
+
             ],
         ],
 
@@ -320,11 +328,28 @@ return [
                 'url'  => '/activity_research',
                 'icon'        => 'fas fa-money-bill-wave',
             ],  
-
-        
+            
             
         ],
+    ], 
+    
+    ['header' => '=========================='],
+
+    [
+        'text'       => 'Aplicação de Insumos',
+        'icon_color' => 'cyan',
+        'url'        => '/product_apply',
+        'icon'        => 'fas fa-calendar-plus', 
+
     ],
+
+    [
+        'text'       => 'Pesquisar Aplicações',
+        'icon_color' => 'green',
+        'url'  => 'product_apply/product_apply_research',
+        'icon'        => 'fas fa-money-bill-wave',
+    ],  
+
 
     ['header' => '=========================='],
 

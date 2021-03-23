@@ -61,6 +61,7 @@
                   <th>Foto</th>
                   <th>Nome</th>
                   <th>Descrição</th>
+                  <th>Em Uso</th>
                   
 
                     <tbody>
@@ -77,6 +78,8 @@
                           <td>  
                             <a href= "{{ route('accounting.edit' ,[ 'accounting' => $accounting->id  ])}}" >{{ $accounting->description}}</a>
                           </td>
+                          
+        
         
                          <td>
             

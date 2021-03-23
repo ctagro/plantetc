@@ -22,6 +22,7 @@ class Product extends Model
         'unity',
         'price',
         'price_unit',
+        'in_use' ,
         'note',
         'image',
     
@@ -50,6 +51,7 @@ public function storeProduct(array $data): Array
                 'unity'         => $data['unity'],
                 'price'         => $data['price'],
                 'price_unit'    => $data['price_unit'],
+                'in_use'         => $data['in_use'],
                 'note'          => $data['note'],
                 'image'         => $data['image'],
                 
@@ -64,7 +66,7 @@ public function storeProduct(array $data): Array
 
             return[
                 'sucess' => true,
-                'mensage'=> 'Funcionário registrada com sucesso'
+                'mensage'=> 'Produto registrada com sucesso'
             ];
 
             }
@@ -75,7 +77,7 @@ public function storeProduct(array $data): Array
 
             return[
                     'sucess' => false,
-                    'mensage'=> 'Falha ao registrar a funcionário'
+                    'mensage'=> 'Falha ao registrar o produto'
             ];
             }
 

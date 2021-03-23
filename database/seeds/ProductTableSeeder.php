@@ -20,13 +20,13 @@ class ProductTableSeeder extends Seeder
                Product::create([
                               
                    'user_id'        => 1,
-                   'name'           => 'Adubo Foliar',
-                   'Description'    => 'Adubo Foliar',
-                   'packing'        => 'Litro',
+                   'name'           => 'Produto K',
+                   'Description'    => 'Produto K',
+                   'packing'        => 'Caixas',
                     'unity'         => 'ml',
                     'price'         => 100,
                     'price_unit'    => 0.1,
-                   'type_product'   => '?',
+                   'type_product'   => 'N',
                    'note'           => '?',
                    'image'          => 'product_avatar.png',
                ]);
@@ -40,7 +40,8 @@ class ProductTableSeeder extends Seeder
                 'unity'          => 'Kg',
                 'price'          => 50,
                 'price_unit'     => 1,
-                'type_product'   => '?',
+                'type_product'   => 'S',
+                'in_use'       => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -54,8 +55,8 @@ class ProductTableSeeder extends Seeder
                 'unity'          => 'lt',
                 'price'          => 500,
                 'price_unit'     => 10,
-                'type_product'   => '?',
-                'type_product'   => '?',
+                'type_product'   => 'S',
+                'in_use'       => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -69,8 +70,8 @@ class ProductTableSeeder extends Seeder
                 'unity'          => 'g',
                 'price'          => 1000,
                 'price_unit'     => 10,
-                'type_product'   => '?',
-                'type_product'   => '?',
+                'type_product'   => 'S',
+                'in_use'       => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);

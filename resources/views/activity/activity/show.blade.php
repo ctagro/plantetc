@@ -46,7 +46,7 @@
 </div>
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('activity.destroy',[ 'activity' => $activity->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('activity.destroy',[ 'activity' => $activity->id,'account' => $activity->account->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -97,11 +97,16 @@
           <div class="form-control">{{ $activity->product->name}}</div>
         </div>
 
+        <br>
         <div class="row">
-          <div class="bolder">Tempo de atividade</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $activity->worked_hours}}</div>
+          <div class="form-group col-sm-3 ">
+            <div class="bolder">Tempo de atividade</div>
+            <div class="form-control">{{ $activity->worked_hours}}</div>
+          </div>
+          <div class="form-group col-sm-3 ">
+            <div class="bolder">Custo</div>
+            <div class="form-control">{{ $activity->account->amount}}</div>
+          </div>
         </div>
 
 

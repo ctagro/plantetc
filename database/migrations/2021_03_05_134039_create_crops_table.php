@@ -19,7 +19,11 @@ class CreateCropsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('name',50);
             $table->text('description',200);
+            $table->text('packing',50); // tipo de embalagem// 
+            $table->text('unity',10);
+            $table->enum('in_use',['S','N'])->default("S");
             $table->string('image', 100)->nullable();
+            $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();
         });

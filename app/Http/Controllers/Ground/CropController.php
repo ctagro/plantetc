@@ -66,6 +66,11 @@ class CropController extends Controller
      */
     public function store(Request $request, Crop $crop)
     {
+        if ($request['note'] == null){
+            $request['note'] = "...";
+         }
+
+
         $data = $this->validateRequest();
 
         if ($request->file('image') === null){
@@ -160,6 +165,10 @@ class CropController extends Controller
     public function update(Request $request, Crop $crop)
     {
 
+        if ($request['note'] == null){
+            $request['note'] = "...";
+         }
+
         $dataRequest = $this->validateRequest();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -183,6 +192,9 @@ class CropController extends Controller
 
         $data['name'] = $dataRequest['name'];
         $data['description'] = $dataRequest['description'];
+        $data['packing']   = $dataRequest['packing'];
+        $data['unity']   = $dataRequest['unity'];
+        $data['in_use']   = $dataRequest['in_use'];
        
 
         $update = $crop -> update($data);
@@ -224,8 +236,13 @@ class CropController extends Controller
 
         return request()->validate([
 
-            'name'=> 'required',
-            'description'=> 'required',
+            'name'          => 'required',
+            'description'   => 'required',
+            'packing'       => 'required',
+            'unity'         => 'required',
+            'in_use'        => 'required',
+            'note'        => 'required',
+  
     
        ]);
 

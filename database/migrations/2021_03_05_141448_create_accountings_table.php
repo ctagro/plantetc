@@ -19,8 +19,9 @@ class CreateAccountingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('name',50);
             $table->text('description',200);
+            $table->enum('in_use',['S','N'])->default("S");
             $table->string('image', 100)->nullable();
-            $table->enum('sale',['S','N']);         
+            $table->enum('sale',['S','P','A','N']); // Sale, Product, Ativity, Nenhum       
             $table->timestamps();
             $table->softDeletes();
         });

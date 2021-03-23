@@ -26,6 +26,7 @@ class WorkerTableSeeder extends Seeder
             'date'       => '2021-01-01',
             'salary'     => 1200,
             'salary_hour'=> 5.45,
+            'in_use'       => 'S',
             'image'      => 'worker_avatar.png',
         ]);
 
@@ -36,6 +37,7 @@ class WorkerTableSeeder extends Seeder
             'date'       => '2021-01-02',
             'salary'     => 1200,
             'salary_hour'=> 5.45,
+            'in_use'       => 'S',
             'image'      => 'worker_avatar.png',
         ]);
 
@@ -46,6 +48,7 @@ class WorkerTableSeeder extends Seeder
             'date'       => '2021-01-03',
             'salary'     => 1200,
             'salary_hour'=> 5.45,
+            'in_use'       => 'S',
             'image'      => 'worker_avatar.png',
         ]);
       

@@ -38,7 +38,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/accounting_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                     Registrar movimentação financeira
                 </div>
             </div>
@@ -66,6 +66,7 @@
                 
                     <tbody>
                         @forelse($accounts as $account)
+                            @if($account->activity == "N")
                                 <tr>
                                     <td>
                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->date }}</a>
@@ -86,6 +87,7 @@
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
                                     </td>
                                 </tr>
+                            @endif
                             @empty
                         @endforelse                  
                     </tbody>

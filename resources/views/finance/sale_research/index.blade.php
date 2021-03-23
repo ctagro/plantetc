@@ -55,50 +55,55 @@
             <tr>
         
                 <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
-                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Comprador</th>
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Produto</th>
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
-                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Comprador</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Qte</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Unid</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Pr Unit</th>
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Valor</th>
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
             </tr>
         </thead>
     
         <tbody>
-            @forelse($accounts as $account)
-                    <tr>
-                        <td>
-                           <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->date }}</a>
-                        </td>
-                        <td>
-                            <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->description }}</a>
-                        </td>
-                        <td>
-                            <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
-                        </td>  
-                        <td>
-                            <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground->name}}</a>
-                        </td>
-                        <td>
-                            <a href= "{{ route('sale.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
-                        </td>
-                    </tr>
-                @empty
-            @endforelse                  
+            @foreach($sales as $sale)
+                     
+            <tr>
+              <td>  
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id  ])}}" >{{ $sale->date }}</a>
+              </td>
+              <td>
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->crop->name}}</a>
+              </td>
+              <td>
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->ground->name}}</a>
+              </td>
+              <td>  
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->bayer->name}}</a>
+              </td>
+              <td>
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->amount, 2 , ',', '.')  }}</a>
+              </td>
+              <td>
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->unity}}</a>
+              </td>
+              <td>  
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->price_unit, 2 , ',', '.')  }}</a>              
+              </td>
+              <td>  
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->account->amount, 2 , ',', '.')  }}</a>              
+              </td>          
+            </tr>
+          
+          @endforeach        
         </tbody>
 
     </table>
 
-@if(isset($account->date))
-        <?php $account->date = Null ?>
-        <?php $account->description = Null ?>
-        <?php $account->type = Null ?>
-        <?php $account->accounting = Null ?>
-        <?php $account->ground_id = Null ?>
-        <?php $account->amount = Null ?>
-        <?php $account->note = Null ?>
-    @endif
- 
-</div>
+
+    
+
 
 <!-- Fim da Tabela dos registros -->
 

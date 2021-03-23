@@ -37,6 +37,13 @@ class TypeAccountSeeder extends Seeder
              'name'       => 'Venda',
         
          ]);
+
+         Type_account::create([
+                        
+            
+            'name'       => 'Receita',
+       
+        ]);
          
          // Habilita novamente checagem de chaves *Importante*   
          DB::statement('SET FOREIGN_KEY_CHECKS = 1;');

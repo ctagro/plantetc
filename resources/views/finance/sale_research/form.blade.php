@@ -34,10 +34,10 @@
             <div class="col-md-4">
               <div class="form-group">
                   <label for="accounting">Comprador :</label>
-                  <select name="description"  id="description" class="form-control">
+                  <select name="bayer_id"  id="bayer_id" class="form-control">
                     <option selected="selected" value=""></option>
                       @foreach($bayers as $bayer)    
-                          <option value="{{$bayer->name}}">{{$bayer->name}} </option>                  
+                          <option value="{{$bayer->id}}">{{$bayer->name}} </option>                  
                       @endforeach
                   </select>
               </div>
@@ -47,11 +47,11 @@
 
           <div class="col-md-4">
             <div class="form-group">
-                <label for="accounting">Produto :</label>
-                <select name="accounting_id"  id="accounting_id" class="form-control">
+                <label for="crop_id">Produto :</label>
+                <select name="crop_id"  id="crop_id" class="form-control">
                   <option selected="selected" value=""></option>
-                    @foreach($accountings as $accounting)    
-                        <option value="{{$accounting->id}}">{{$accounting->name}} </option>                  
+                    @foreach($crops as $crop)    
+                        <option value="{{$crop->id}}">{{$crop->name}} </option>                  
                     @endforeach
                 </select>
             </div>

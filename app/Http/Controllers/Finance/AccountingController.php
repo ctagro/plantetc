@@ -67,6 +67,7 @@ class AccountingController extends Controller
     {
         $data = $this->validateRequest();
 
+
         if ($request->file('image') === null){
             $data['image'] = 'accounting_avatar.png';
             }
@@ -159,6 +160,7 @@ class AccountingController extends Controller
     public function update(Request $request, Accounting $accounting)
     {
 
+
         $dataRequest = $this->validateRequest();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -180,8 +182,10 @@ class AccountingController extends Controller
 
         
 
-        $data['name'] = $dataRequest['name'];
-        $data['description'] = $dataRequest['description'];
+        $data['name']           = $dataRequest['name'];
+        $data['description']    = $dataRequest['description'];
+        $data['in_use']         = $dataRequest['in_use'];
+
        
 
         $update = $accounting -> update($data);
@@ -223,8 +227,10 @@ class AccountingController extends Controller
 
         return request()->validate([
 
-            'name'=> 'required',
-            'description'=> 'required',
+            'name'          => 'required',
+            'description'   => 'required',
+            'in_use'        => 'required',
+          //  'activity'=> 'required',
     
        ]);
 

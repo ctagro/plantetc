@@ -23,6 +23,7 @@ class GroundTableSeeder extends Seeder
             'name'       => 'Estufa 1',
             'area'       => 0.21,
             'location'   => 'Primeira estufa de baixo para cima',
+            'in_use'       => 'S',
             'image'      => 'ground_avatar.png',
         ]);
 
@@ -32,6 +33,7 @@ class GroundTableSeeder extends Seeder
             'name'       => 'Estufa 2',
             'area'       => 0.21,
             'location'   => 'Segunda estufa de baixo para cima',
+            'in_use'       => 'S',
             'image'      => 'ground_avatar.png',
         ]);
 
@@ -41,6 +43,7 @@ class GroundTableSeeder extends Seeder
             'name'       => 'Estufa 3',
             'area'       => 0.21,
             'location'   => 'Terceira estufa de baixo para cima',
+            'in_use'       => 'S',
             'image'      => 'ground_avatar.png',
         ]);
         

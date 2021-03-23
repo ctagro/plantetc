@@ -53,7 +53,8 @@
     <select name="accounting_id"  id="accounting_id" class="form-control">
             <option value="" disabled selected>Selecione a conta...</option> 
             @foreach($accountings as $accounting)
-                                
+
+                <p>{{$accounting->id}}</p>                
                 <option value="{{$accounting->id}}" {{ $accounting->id == $account->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
                 
             @endforeach
