@@ -30,8 +30,6 @@ class SaleTableSeeder extends Seeder
             'unity'                  => "cx",
             'price_unit'             => 50,
             'bayer_id'               => 1,
-    //        'transporter_id'         => 1,
-    //        'cost_freight'           => 300,
             'note'                   => 'Bla bla bla',   
 
         ]);
@@ -49,8 +47,6 @@ class SaleTableSeeder extends Seeder
             'unity'                  => "cx",
             'price_unit'             => 60,
             'bayer_id'               => 1,
-     //       'transporter_id'         => 1,
-     //       'cost_freight'           => 400,
             'note'                   => 'Bla bla bla',   
 
         ]);
@@ -68,8 +64,6 @@ class SaleTableSeeder extends Seeder
             'unity'                  => "cx",
             'price_unit'             => 50,
             'bayer_id'               => 1,
-    //        'transporter_id'         => 1,
-    //        'cost_freight'           => 300,
             'note'                   => 'Bla bla bla',   
 
         ]);
