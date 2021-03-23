@@ -27,8 +27,6 @@ class CreateSalesTable extends Migration
             $table->text('unity',5);  // unidade
             $table->double('price_unit',10,2);
             $table->unsignedBigInteger('bayer_id')->nullable();
-        //    $table->unsignedBigInteger('transporter_id')->nullable();
-        //   $table->double('cost_freight',10,2);  // custo do frete
             $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();

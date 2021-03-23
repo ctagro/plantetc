@@ -32,8 +32,6 @@ class Sale extends Model
         'unity'             ,
         'price_unit'        ,
         'bayer_id'          ,
-  //      'transporter_id'    ,
-  //      'cost_freight'      ,
         'note'              ,
 
     ];
@@ -71,8 +69,6 @@ class Sale extends Model
                 'unity'                 => $data['unity'],
                 'price_unit'            => $data['price_unit'],
                 'bayer_id'              => $data['bayer_id'],
- //               'transporter_id'        => $data['transporter_id'],
-  //              'cost_freight'          => $data['cost_freight'],
                 'note'                  => $data['note'], 
 
                 ]);
