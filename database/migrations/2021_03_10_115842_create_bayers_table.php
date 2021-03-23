@@ -17,7 +17,8 @@ class CreateBayersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('name',50);            
+            $table->text('name',50);
+            $table->enum('in_use',['S','N'])->default("S");            
             $table->string('image', 100)->nullable();
             $table->longtext('note');
             $table->timestamps();

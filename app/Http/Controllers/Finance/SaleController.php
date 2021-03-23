@@ -57,11 +57,11 @@ class SaleController extends Controller
 
         $sales = auth()->user()->sale()->get();
 
-        $grounds = auth()->user()->ground()->get();
+        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
 
-        $crops = auth()->user()->crop()->get();
+        $crops = auth()->user()->crop()->where('in_use', '=', "S")->get();
 
-        $bayers = auth()->user()->bayer()->get();
+        $bayers = auth()->user()->bayer()->where('in_use', '=', "S")->get();
 
         $type_accounts = Type_account::all();
 
@@ -94,6 +94,7 @@ class SaleController extends Controller
     public function store(Request $request)
     {
 
+       
         if ($request['note'] == null){
             $request['note'] = "...";
          }
@@ -154,12 +155,12 @@ class SaleController extends Controller
 
  //   dd($id);
 
-         $data['account_id'] = $id;
+        $data['account_id'] = $id; // para o relacionamento account sale
+        $data['date_pay'] = $data['date'];  // data prevista do pagamento 
+                                            // ainda nao usada
 
-      //dd($data);
-      ////// parei aqui /////////////
 
-      /// criar e carregar o registro de atividade usar
+      /// criar e carregar o registro de venda com 
       // o $id para o account_id criandp o relacionamento
 
         $sale = new sale();
@@ -211,11 +212,11 @@ class SaleController extends Controller
 
         $sales = auth()->user()->sale()->get();
 
-        $grounds = auth()->user()->ground()->get();
+        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
 
-        $crops = auth()->user()->crop()->get();
+        $crops = auth()->user()->crop()->where('in_use', '=', "S")->get();
 
-        $bayers = auth()->user()->bayer()->get();
+        $bayers = auth()->user()->bayer()->where('in_use', '=', "S")->get();
 
         $type_accounts = Type_account::all();
 
@@ -263,36 +264,38 @@ class SaleController extends Controller
      
        // dd($type_sale_description);
 
-       $dataAccount['date' ] = $request['date'];
+       $dataAccount['date' ]     = $request['date'];
+       $dataAccount['date_pay' ] = $request['date'];
 
       // dd($dataAccount['date' ]);
     
 
        //  $account = account::where('id', '=', $sale->account_id)->get();
 
-        $dataSale['date']                    = $dataRequest['date'];
-        $dataSale['type_account_id']      = $dataRequest['type_account_id'];
-        $dataSale['ground_id']             = $dataRequest['ground_id'];
-        $dataSale['crop_id']             = $dataRequest['crop_id'];
-        $dataSale['amount']             = $dataRequest['amount'];
-        $dataSale['unity']            = $dataRequest['unity'];
-        $dataSale['price_unit']            = $dataRequest['price_unit'];
-        $dataSale['bayer_id']          = $dataRequest['bayer_id'];
-        $dataSale['note']                   = $dataRequest['note'];
+        $dataSale['date']                       = $dataRequest['date'];
+        $dataSale['date_pay']                   = $dataRequest['date_pay'];
+        $dataSale['type_account_id']            = $dataRequest['type_account_id'];
+        $dataSale['ground_id']                  = $dataRequest['ground_id'];
+        $dataSale['crop_id']                    = $dataRequest['crop_id'];
+        $dataSale['amount']                     = $dataRequest['amount'];
+        $dataSale['unity']                      = $dataRequest['unity'];
+        $dataSale['price_unit']                 = $dataRequest['price_unit'];
+        $dataSale['bayer_id']                   = $dataRequest['bayer_id'];
+        $dataSale['note']                       = $dataRequest['note'];
   
       //  dd($dataSale);
         
        $updateSale = $sale -> update($dataSale);
 
 
-        $dataAccount['date' ] = $dataRequest['date'];
-        $dataAccount['description' ] = $sale_description;
+        $dataAccount['date' ]           = $dataRequest['date'];
+        $dataAccount['description' ]    = $sale_description;
         $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
-        $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
-        $dataAccount['ground_id'] = $dataRequest['ground_id'];
-        $dataAccount['amount'] = $dataRequest['amount'] * $dataRequest['price_unit'];
-        $dataAccount['activity'] = "N";
-        $dataAccount['note' ] = $dataRequest['note'];
+        $dataAccount['accounting_id']   = $dataRequest['accounting_id'];
+        $dataAccount['ground_id']       = $dataRequest['ground_id'];
+        $dataAccount['amount']          = $dataRequest['amount'] * $dataRequest['price_unit'];
+        $dataAccount['activity']        = "N";
+        $dataAccount['note' ]           = $dataRequest['note'];
 
        // dd($dataAccount);
 
@@ -336,7 +339,7 @@ class SaleController extends Controller
 
             
             'date'                  =>   'required',
-       //     'date_delivery'        =>   'required',
+        //    'date_pay'              =>   'required',
             'crop'                  =>   'required',
             'ground_id'             =>   'required',
             'type_account_id'        =>   'required',

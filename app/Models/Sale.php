@@ -23,7 +23,7 @@ class Sale extends Model
                
         'account_id'        ,
         'date'              ,
-   //     'date_delivery'     ,
+        'date_pay'     ,
         'crop_id'        ,
         'ground_id'         ,
         'type_account_id'      ,
@@ -62,10 +62,10 @@ class Sale extends Model
             
                 'account_id'            => $data['account_id'],
                 'date'                  => $data['date'],
- //               'date_delivery'         => $data['date_delivery'],
-                'crop_id'            => $data['crop_id'],
+                'date_pay'              => $data['date_pay'],
+                'crop_id'               => $data['crop_id'],
                 'ground_id'             => $data['ground_id'],
-                'type_account_id'          => $data['type_account_id'],
+                'type_account_id'       => $data['type_account_id'],
                 'amount'                => $data['amount'],
                 'unity'                 => $data['unity'],
                 'price_unit'            => $data['price_unit'],

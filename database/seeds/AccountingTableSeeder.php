@@ -23,6 +23,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Venda',
             'description'   => 'Hotifruti produzido na Fazenda ',
+            'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'S',
         ]);
@@ -32,6 +33,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Adubos',
             'description'   => 'Adubos adquirdos para utilização na produção do hortifruti',
+            'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'N',
         ]);
@@ -41,6 +43,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Herbicidas',
             'description'   => 'Tudo que for adquirido para combater doenças',
+            'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'P',
         ]);
@@ -50,6 +53,7 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Embalagens',
             'description'   => 'Aquisição de embalagens para a venda de hortifruti',
+            'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'N',
         ]);
@@ -59,7 +63,8 @@ class AccountingTableSeeder extends Seeder
             'user_id'       => 1,
             'name'          => 'Frete',
             'description'   => 'Aquisição de embalagens para a venda de hortifruti',
-            'image'          => 'accounting_avatar.png',
+            'in_use'        => 'S',
+            'image'         => 'accounting_avatar.png',
             'sale'          => 'N',
         ]);
 

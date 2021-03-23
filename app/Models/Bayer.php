@@ -16,6 +16,7 @@ class Bayer extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'in_use' ,
         'image',
         'note'
     
@@ -29,9 +30,10 @@ public function storebayer(array $data): Array
             $bayer = auth()->user()->Bayer()->create([         
                 
             
-                'name'    => $data['name'],
-                'image'          => $data['image'],
-                'note'           => $data['note']
+                'name'              => $data['name'],
+                'in_use'            => $data['in_use'],
+                'image'             => $data['image'],
+                'note'              => $data['note']
 
             ]);
 

@@ -17,13 +17,28 @@
                 @endif
             </div>
 
-
             <div class="form-group">
 
                 <label for="note">Observações</label>    
                     <input type="longtext" name="note" value="{{old('note') ?? $bayer->note }}" rows="4" class="form-control">                            
                 </div>
-    
+
+            @if(!Request::is('*/edit'))
+                <input type="hidden" name="in_use" value="S" class="form-control py-3">
+            @else
+                <div class="form-group">
+                    <label>Ativo (S/N): {{$bayer->in_use}} </label>
+                    <select name="in_use"  id="in_use" class="form-control">
+                        <option value="S">Sim</option>
+                        <option value="N">Não</option>
+                    </select>
+                    @if($errors->has('in_use'))
+                        <h6 class="text-danger" >Escolha a opção</h6> 
+                    @endif
+                </div>
+            @endif
+
+
                <!-- Para ativar o uploud de imagens -->
 
                <div class="form-group">

@@ -21,6 +21,7 @@ class CreateWorkersTable extends Migration
             $table->date('date');
             $table->double('salary',10,2);
             $table->double('salary_hour',10,2);
+            $table->enum('in_use',['S','N'])->default("S");
             $table->string('image', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();

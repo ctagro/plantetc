@@ -21,6 +21,7 @@ class BayerTableSeeder extends Seeder
            'user_id'      => 1,
            'name'         => 'Dedé',
            'image'        => 'bayer_avatar.png',
+           'in_use'       => 'S',
            'note'         => 'O produto deve ser levado a Vasconselos até as 17hs',
        ]);
 
@@ -29,6 +30,7 @@ class BayerTableSeeder extends Seeder
           'user_id'      => 1,
           'name'         => 'Mario Wilson',
           'image'        => 'bayer_avatar.png',
+          'in_use'       => 'S',
           'note'         => 'Carrega na fazenda as 11hs do dia anterior',
       ]);
 
@@ -37,6 +39,7 @@ class BayerTableSeeder extends Seeder
           'user_id'      => 1,
           'name'         => 'André',
           'image'        => 'bayer_avatar.png',
+          'in_use'       => 'S',
           'note'         => 'Representa o Atacadista Benassi o trasporte deve ser providenciado ate o Ceasa',
       ]);
      

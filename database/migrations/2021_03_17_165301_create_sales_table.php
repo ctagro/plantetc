@@ -19,7 +19,7 @@ class CreateSalesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('account_id')->nullable()->onDelete('cascade');
             $table->date('date'); //data de carregamento
-        //    $table->date('date_delivery'); // data da entrega
+            $table->date('date_pay'); // data prevista de pagamento ... ainda nao usada
             $table->unsignedBigInteger('crop_id')->nullable(); 
             $table->unsignedBigInteger('ground_id')->nullable();  //area da fazenda
             $table->unsignedBigInteger('type_account_id')->nullable(); // "3" vendas

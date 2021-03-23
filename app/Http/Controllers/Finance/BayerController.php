@@ -166,6 +166,7 @@ class BayerController extends Controller
     $data['name']           = $dataRequest['name'];
     $data['note']           = $dataRequest['note'];
     $data['image']          = $bayer['image'];
+    $data['in_use']         = $dataRequest['in_use'];
   
     //dd($data);
 
@@ -209,8 +210,9 @@ class BayerController extends Controller
         return request()->validate([
 
         
-            'name' => 'required',
-            'note' => 'required',
+            'name'      => 'required',
+            'note'      => 'required',
+            'in_use'    => 'required',
             
             
        ]);

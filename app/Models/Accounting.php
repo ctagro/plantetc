@@ -18,6 +18,7 @@ class Accounting extends Model
         'name',
         'description',
         'sale',
+        'in_use' ,
         'image',
     ];
 
@@ -40,6 +41,7 @@ public function storeAccounting(array $data): Array
                 'name'          => $data['name'],
                 'description'   => $data['description'],
                 'sale'          => $data['sale'],
+                'in_use'        => $data['in_use'],
                 'image'         => $data['image'],
                 
 

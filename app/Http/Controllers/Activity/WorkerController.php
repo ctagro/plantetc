@@ -188,6 +188,7 @@ class WorkerController extends Controller
         $data['date']           = $dataRequest['date'];
         $data['salary']         = $dataRequest['salary'];
         $data['salary_hour']    = $dataRequest['salary_hour'];
+        $data['in_use']         = $dataRequest['in_use'];
        
 
         $update = $worker -> update($data);
@@ -233,6 +234,7 @@ class WorkerController extends Controller
             'date'          => 'required',
             'salary'        => 'required',
             'salary_hour'   => 'required',
+            'in_use'        => 'required',
 
     
        ]);
