@@ -88,7 +88,7 @@ class AccountController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     */e
     public function store(Request $request)
     {
 
@@ -112,7 +112,6 @@ class AccountController extends Controller
         return redirect()
                     ->back()
                     ->with('error', $response['mensage']);
-
     }
 
 
