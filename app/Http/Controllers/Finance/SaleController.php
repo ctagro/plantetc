@@ -243,6 +243,11 @@ class SaleController extends Controller
             $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
          }
 
+         if ($request['date_pay'] == null){
+            $dataP1 = explode('/',$sale->date);
+            $request['date_pay'] = $dataP1[2].'-'.$dataP1[1].'-'.$dataP1[0];
+         }
+
          if ($request['note'] == null){
             $request['note'] = "...";
          }
@@ -265,7 +270,7 @@ class SaleController extends Controller
        // dd($type_sale_description);
 
        $dataAccount['date' ]     = $request['date'];
-       $dataAccount['date_pay' ] = $request['date'];
+       $dataRequest['date_pay' ] = $request['date_pay'];
 
       // dd($dataAccount['date' ]);
     

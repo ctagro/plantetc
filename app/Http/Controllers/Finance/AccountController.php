@@ -171,8 +171,11 @@ class AccountController extends Controller
         if ($request['note'] == null){
             $request['note'] = "...";
          }
+
                        
         $dataRequest = $this->validateRequest();
+
+    
 
         $data['date']            = $dataRequest['date'];
         $data['description']     = $dataRequest['description'];
@@ -180,6 +183,7 @@ class AccountController extends Controller
         $data['accounting_id']   = $dataRequest['accounting_id'];
         $data['ground_id']       = $dataRequest['ground_id'];
         $data['amount']          = $dataRequest['amount'];
+        $data['activity']        = $dataRequest['activity'];
         $data['note']            = $dataRequest['note'];
     
 

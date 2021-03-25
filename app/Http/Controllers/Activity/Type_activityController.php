@@ -61,15 +61,13 @@ class Type_activityController extends Controller
      */
     public function store(Request $request, Type_activity $type_activity)
     {
-
-
-       
-        if ($request['note'] == null){
+      
+        if ($request['note'] == null){ 
             $request['note'] = "...";
          }
 
         $data = $this->validateRequest();
- 
+
         if ($request->file('image') === null){
             $data['image'] = 'type_activity_avatar.png';
             }
@@ -81,11 +79,9 @@ class Type_activityController extends Controller
                 $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
                 $nameFile = "{$name}.{$extenstion}"; // concatenando
                 $data['image'] = $nameFile;
-               //dd($data['image']);
-
+               
                $upload = $request->file('image')->storeAs('type_activities', $nameFile);
             }
-
         }
      
         $type_activity = new type_activity();
@@ -195,9 +191,9 @@ class Type_activityController extends Controller
      */
     public function destroy(type_activity $type_activity)
     {
-         $path = 'type_activities/'.$type_activity['image'];
+         $path = 'type_activity/'.$type_activity['image'];
 
-        if($path != "type_activities/type_activity_avatar.png")
+        if($path != "type_activity/type_activity_avatar.png")
             Storage::delete($path);
 
         $type_activity->delete();

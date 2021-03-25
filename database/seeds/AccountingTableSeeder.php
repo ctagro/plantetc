@@ -28,10 +28,10 @@ class AccountingTableSeeder extends Seeder
             'sale'          => 'S',
         ]);
 
-        Accounting::create([
+     /*    Accounting::create([
                        
             'user_id'       => 1,
-            'name'          => 'Adubos',
+            'name'          => 'Adubos foliar',
             'description'   => 'Adubos adquirdos para utilização na produção do hortifruti',
             'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
@@ -68,7 +68,7 @@ class AccountingTableSeeder extends Seeder
             'sale'          => 'N',
         ]);
 
-       
+       */
       
         // Habilita novamente checagem de chaves *Importante*   
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');

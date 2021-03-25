@@ -59,7 +59,7 @@ class Product_applyController extends Controller
 
         $products = auth()->user()->product()->where('in_use', '=', "S")->get();
 
-        $accountings = accounting::where('sale', '=', "P" and 'in_use', '=', "S")->get();
+        $accountings = accounting::where('sale', '=', "N")->where('in_use', '=', "S")->get();
 
 
         $account = new \App\Models\Account([
@@ -215,7 +215,7 @@ class Product_applyController extends Controller
 
         $products = auth()->user()->product()->where('in_use', '=', "S")->get();
 
-        $accountings = accounting::where('sale', '=', "P" and 'in_use', '=', "S")->get();
+        $accountings = accounting::where('sale', '=', "N")->where('in_use', '=', "S")->get();
 
         //dd($product_apply);
 

@@ -14,21 +14,28 @@ class UserTableSeeder extends Seeder
     {
 
         User::create([
-            'name'       => 'Joao Loures',
-            'email'      => 'louresvale@gmail.com',
+            'name'       => 'Admin',
+            'email'      => 'admin@gmail.com',
             'password'   => bcrypt('asdfqwer'),
+        ]);
+        
+                
+        User::create([
+            'name'       => 'Matheus',
+            'email'      => 'matheus@gmail.com',
+            'password'   => bcrypt('matheus'),
         ]);
 
         User::create([
-            'name'       => 'Joao Loures Vale',
-            'email'      => 'jp.loures.vale@gmail.com',
-            'password'   => bcrypt('asdfqwer'),
+            'name'       => 'Vagner',
+            'email'      => 'vagner@gmail.com',
+            'password'   => bcrypt('vagner'),
         ]);
 
         User::create([
-            'name'       => 'Joao Vale',
-            'email'      => 'joao.vale@gmail.com',
-            'password'   => bcrypt('asdfqwer'),
+            'name'       => 'Paulo',
+            'email'      => 'paulo@gmail.com',
+            'password'   => bcrypt('paulo'),
         ]);
 
     }

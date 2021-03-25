@@ -77,6 +77,13 @@
         </div>      
         <br>
         <div class="row">
+          <div class="bolder">Ct Vendas:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $accounting->sale}}</div>
+        </div>      
+        <br>
+        <div class="row">
           Imagem :
           <img src="{{ asset('storage/accountings/'.$accounting->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
         </div>

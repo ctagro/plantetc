@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Models\Accounting;
+use App\Models\Sale;
 use Carbon\Carbon;
 use Redirect;
 
@@ -65,6 +66,7 @@ class AccountingController extends Controller
      */
     public function store(Request $request, Accounting $accounting)
     {
+
         $data = $this->validateRequest();
 
 
@@ -185,6 +187,7 @@ class AccountingController extends Controller
         $data['name']           = $dataRequest['name'];
         $data['description']    = $dataRequest['description'];
         $data['in_use']         = $dataRequest['in_use'];
+        $data['sale']           = $dataRequest['sale'];
 
        
 
@@ -230,6 +233,7 @@ class AccountingController extends Controller
             'name'          => 'required',
             'description'   => 'required',
             'in_use'        => 'required',
+            'sale'          => 'required',
           //  'activity'=> 'required',
     
        ]);

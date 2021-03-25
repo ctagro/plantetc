@@ -90,7 +90,7 @@
 
                       <div class="form-group">
                         <select name="bayer_id"  id="bayer_id" class="form-control">
-                            <option value="" disabled selected>Selecione (os) produto(s) utilizado(s)...</option>
+                            <option value="" disabled selected>Selecione o comprador</option>
                                 @foreach($bayers as $bayer)
                                     
                                     <p>{{$bayer->id}}</p>
