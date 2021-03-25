@@ -35,7 +35,7 @@
               
               <div class="form-group">
                 <label>Unidade: </label>
-                    <input type="txt" name="unity" value="{{old('unity') ?? $product->unity }}" class="form-control py-3" placeholder="Descrição">
+                    <input type="txt" name="unity" value="{{old('unity') ?? $product->unity }}" class="form-control py-3" placeholder="Unidade">
                     @if($errors->has('unity'))
                       <h6 class="text-danger" >Digite a unidade</h6> 
                     @endif

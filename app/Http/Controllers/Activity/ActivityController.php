@@ -118,6 +118,7 @@ class ActivityController extends Controller
         $dataSalary_hour = $worker->salary_hour;
         $data['worker_id'] = $worker->id;
 
+
         // captura json do worker selecionado
         $type_activity = ($data['type_activity']);
         // tranforma o type_activity em array

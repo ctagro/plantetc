@@ -43,7 +43,7 @@ public function storeWorker(array $data): Array
                 'name'          => $data['name'],
                 'date'          => $data['date'],
                 'salary'        => $data['salary'],
-                'salary_hour'   => $data['salary'],
+                'salary_hour'   => $data['salary_hour'],
                 'in_use'         => $data['in_use'],
                 'image'         => $data['image'],
                 
