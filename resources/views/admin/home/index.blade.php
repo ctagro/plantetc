@@ -22,7 +22,7 @@
         <a href="{{ route('activity.index') }}" class="">
             <div class="card">
                 <h5 class="mt-2 text-center">Registrar Atividade</h5>
-                 <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.jpeg')}}"  style="height: 200px;"alt="Espaço reservado para exibição de imagens" >
+                 <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.png')}}"  style="height: 200px;"alt="Espaço reservado para exibição de imagens" >
                 <div class="card-body">
            
                 </div>
