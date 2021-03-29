@@ -20,8 +20,8 @@ class GroundTableSeeder extends Seeder
         Ground::create([
                        
             'user_id'    => 1,
-            'name'       => 'Estufa 1',
-            'area'       => 0.21,
+            'name'       => 'Estufa nr 1',
+            'area'       => 1,
             'location'   => 'Primeira estufa de baixo para cima',
             'in_use'       => 'S',
             'image'      => 'ground_avatar.png',
@@ -30,8 +30,8 @@ class GroundTableSeeder extends Seeder
         Ground::create([
                        
             'user_id'    => 1,
-            'name'       => 'Estufa 2',
-            'area'       => 0.21,
+            'name'       => 'Estufa nr 2',
+            'area'       => 1,
             'location'   => 'Segunda estufa de baixo para cima',
             'in_use'       => 'S',
             'image'      => 'ground_avatar.png',
@@ -40,9 +40,29 @@ class GroundTableSeeder extends Seeder
         Ground::create([
                        
             'user_id'    => 1,
-            'name'       => 'Estufa 3',
-            'area'       => 0.21,
+            'name'       => 'Estufa nr 3',
+            'area'       => 1,
             'location'   => 'Terceira estufa de baixo para cima',
+            'in_use'       => 'S',
+            'image'      => 'ground_avatar.png',
+        ]);
+
+        Ground::create([
+                       
+            'user_id'    => 1,
+            'name'       => 'Abacate nr 1',
+            'area'       => 1,
+            'location'   => 'Proximo à fazenda',
+            'in_use'       => 'S',
+            'image'      => 'ground_avatar.png',
+        ]);
+
+        Ground::create([
+                       
+            'user_id'    => 1,
+            'name'       => 'Abacate nr 1',
+            'area'       => 1,
+            'location'   => 'Proximo às estufas',
             'in_use'       => 'S',
             'image'      => 'ground_avatar.png',
         ]);

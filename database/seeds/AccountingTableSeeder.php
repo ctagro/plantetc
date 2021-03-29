@@ -28,11 +28,11 @@ class AccountingTableSeeder extends Seeder
             'sale'          => 'S',
         ]);
 
-     /*    Accounting::create([
+         Accounting::create([
                        
             'user_id'       => 1,
-            'name'          => 'Adubos foliar',
-            'description'   => 'Adubos adquirdos para utilização na produção do hortifruti',
+            'name'          => 'Colheita',
+            'description'   => 'Colheita de qualquer hortifruti',
             'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'N',
@@ -41,8 +41,8 @@ class AccountingTableSeeder extends Seeder
         Accounting::create([
                        
             'user_id'       => 1,
-            'name'          => 'Herbicidas',
-            'description'   => 'Tudo que for adquirido para combater doenças',
+            'name'          => 'Adubação',
+            'description'   => 'Adubação via solo ou foliar',
             'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'P',
@@ -51,8 +51,8 @@ class AccountingTableSeeder extends Seeder
         Accounting::create([
                        
             'user_id'       => 1,
-            'name'          => 'Embalagens',
-            'description'   => 'Aquisição de embalagens para a venda de hortifruti',
+            'name'          => 'Controle de pragas',
+            'description'   => 'Aplicação de qualquer produto para controle de pragas ou ervas daninhas',
             'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'N',
@@ -61,14 +61,23 @@ class AccountingTableSeeder extends Seeder
        Accounting::create([
                        
             'user_id'       => 1,
-            'name'          => 'Frete',
-            'description'   => 'Aquisição de embalagens para a venda de hortifruti',
+            'name'          => 'Atividades Gerais',
+            'description'   => 'Exemplo limpeza, capina, etc',
             'in_use'        => 'S',
             'image'         => 'accounting_avatar.png',
             'sale'          => 'N',
         ]);
 
-       */
+        Accounting::create([
+                       
+            'user_id'       => 1,
+            'name'          => 'Mudas e sementes',
+            'description'   => 'Mudas e sementes de qualquer natureza',
+            'in_use'        => 'S',
+            'image'         => 'accounting_avatar.png',
+            'sale'          => 'N',
+        ]);
+
       
         // Habilita novamente checagem de chaves *Importante*   
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');

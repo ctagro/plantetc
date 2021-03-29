@@ -19,28 +19,64 @@ class Type_activityTableSeeder extends Seeder
          Type_activity::create([
                         
              'user_id'      => 1,
-             'description'  => 'Aplicação de Adubo foliar',
-             'image'        => 'worker_avatar.png',
-             'note'         => 'Aplicação de qualquer adubo foliar usando o pulvirizador',
+             'description'  => 'Colheita de Pimentão',
+             'image'        => 'type_activity_avatar.png',
+             'note'         => 'Colheita de qualquer tipo de Pimentão',
              'in_use'       => 'S',
          ]);
 
          Type_activity::create([
                         
             'user_id'      => 1,
-            'description'  => 'Aplicação de Herbicidas',
-            'image'        => 'worker_avatar.png',
-            'note'         => 'Aplicação de qualquer herbicida usando o pulvirizador',
+            'description'  => 'Pulverização',
+            'image'        => 'type_activity_avatar.png',
+            'note'         => 'Aplicação de produtos usando o pulverizador',
             'in_use'       => 'S',
         ]);
 
         Type_activity::create([
                         
             'user_id'      => 1,
-            'description'  => 'Preparaçao de Canteiros',
-            'image'        => 'worker_avatar.png',
-            'note'         => 'Preparação de canteiros para novo plantio',
-            'in_use'       => 'N',
+            'description'  => 'Passar fitas',
+            'image'        => 'type_activity_avatar.png',
+            'note'         => 'Fitamento do pimentão',
+            'in_use'       => 'S',
+        ]);
+
+        Type_activity::create([
+                        
+            'user_id'      => 1,
+            'description'  => 'Embalar Pimentão',
+            'image'        => 'type_activity_avatar.png',
+            'note'         => 'Atividade de limpar e encaixotar o pimentão',
+            'in_use'       => 'S',
+        ]);
+
+        Type_activity::create([
+                        
+            'user_id'      => 1,
+            'description'  => 'Transporte',
+            'image'        => 'type_activity_avatar.png',
+            'note'         => 'Atividade de transportar qualquer produto',
+            'in_use'       => 'S',
+        ]);
+
+        Type_activity::create([
+                        
+            'user_id'      => 1,
+            'description'  => 'Limpeza',
+            'image'        => 'type_activity_avatar.png',
+            'note'         => 'Limpeza se refere a atividade de capina, roçagem e limpeza propriamente dita',
+            'in_use'       => 'S',
+        ]);
+
+        Type_activity::create([
+                        
+            'user_id'      => 1,
+            'description'  => 'Outra atividade',
+            'image'        => 'type_activity_avatar.png',
+            'note'         => 'O que não se encaixa nos itens relacionados acima',
+            'in_use'       => 'S',
         ]);
        
 

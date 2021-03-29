@@ -98,7 +98,7 @@
     </div>
     <div class="card">
       <div class="card-header">
-          <a href="{{ url('/home') }}" class="float-right" >Voltar </a> 
+          <a href="{{ url('admin/home/index') }}" class="float-right" >Voltar </a> 
       </div>
     </div>
 </div>

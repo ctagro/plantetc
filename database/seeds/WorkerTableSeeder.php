@@ -23,9 +23,9 @@ class WorkerTableSeeder extends Seeder
                        
             'user_id'    => 1,
             'name'       => 'Vagner',
-            'date'       => '2021-01-01',
-            'salary'     => 1200,
-            'salary_hour'=> 5.45,
+            'date'       => '2018-01-01',
+            'salary'     => 1650,
+            'salary_hour'=> 13.49,
             'in_use'       => 'S',
             'image'      => 'worker_avatar.png',
         ]);
@@ -34,9 +34,31 @@ class WorkerTableSeeder extends Seeder
                        
             'user_id'    => 1,
             'name'       => 'Mathes',
-            'date'       => '2021-01-02',
+            'date'       => '2021-03-01',
             'salary'     => 1200,
-            'salary_hour'=> 5.45,
+            'salary_hour'=> 9.17,
+            'in_use'       => 'S',
+            'image'      => 'worker_avatar.png',
+        ]);
+
+        Worker::create([
+                       
+            'user_id'    => 1,
+            'name'       => 'Paulo',
+            'date'       => '2017-01-01',
+            'salary'     => 3200,
+            'salary_hour'=> 22.17,
+            'in_use'       => 'S',
+            'image'      => 'worker_avatar.png',
+        ]);
+
+        Worker::create([
+                       
+            'user_id'    => 1,
+            'name'       => 'Leandro',
+            'date'       => '2019-01-01',
+            'salary'     => 1650,
+            'salary_hour'=> 15.76,
             'in_use'       => 'S',
             'image'      => 'worker_avatar.png',
         ]);
@@ -45,9 +67,9 @@ class WorkerTableSeeder extends Seeder
                        
             'user_id'    => 1,
             'name'       => 'Júlio',
-            'date'       => '2021-01-03',
-            'salary'     => 1200,
-            'salary_hour'=> 5.45,
+            'date'       => '2021-03-01',
+            'salary'     => 1600,
+            'salary_hour'=> 9.09,
             'in_use'       => 'S',
             'image'      => 'worker_avatar.png',
         ]);

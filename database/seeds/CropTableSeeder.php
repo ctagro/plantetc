@@ -20,7 +20,7 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
-            'name'          => 'Pimentão',
+            'name'          => 'Pimentão Misto',
             'description'   => 'Pimentão Amarelo e Vermelho em estufa',
             'packing'       => 'Caixa',
             'unity'         => 'cx',
@@ -32,8 +32,32 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
-            'name'          => 'Abacate variados',
-            'description'   => 'Abacate do tipo Geada, Fortuna e Hass no mesmo terreno ',
+            'name'          => 'Pimentão Amarelo',
+            'description'   => 'Pimentão Amarelo em estufa',
+            'packing'       => 'Caixa',
+            'unity'         => 'cx',
+            'in_use'       => 'S',
+            'image'         => 'crop_avatar.png',
+            'note'          => '...',
+        ]);
+
+        Crop::create([
+                       
+            'user_id'       => 1,
+            'name'          => 'Pimentão Vermelho',
+            'description'   => 'Pimentão Vermelho em estufa',
+            'packing'       => 'Caixa',
+            'unity'         => 'cx',
+            'in_use'       => 'S',
+            'image'         => 'crop_avatar.png',
+            'note'          => '...',
+        ]);
+
+        Crop::create([
+                       
+            'user_id'       => 1,
+            'name'          => 'Abacate Comum',
+            'description'   => 'Abacate do tipo Geada, Fortuna no mesmo terreno ',
             'packing'       => 'Caixa',
             'unity'         => 'cx',
             'in_use'       => 'S',

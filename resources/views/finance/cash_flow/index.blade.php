@@ -38,7 +38,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/expense.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/account_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                     Fluxo de Caixa
                 </div>
             </div>
@@ -71,19 +71,19 @@
                         @forelse($accounts as $account)
                                 <tr>
                                     <td>
-                                       <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->date }}</a>
+                                       <a>{{ $account->date }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->description }}</a>
+                                        <a>{{ $account->description }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->type_account->name}}</a>
+                                        <a>{{ $account->type_account->name}}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
+                                        <a>{{ $account->accounting->name }}</a>
                                     </td>  
                                     <td>
-                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground->name}}</a>
+                                        <a>{{ $account->ground->name}}</a>
                                     </td>
                                    
                                     @if( $account->type_account_id == 1 OR $account->type_account_id == 2)

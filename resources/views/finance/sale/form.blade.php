@@ -89,16 +89,16 @@
 
 
                       <div class="form-group">
-                        <select name="bayer_id"  id="bayer_id" class="form-control">
+                        <select name="bayer"  id="bayer" class="form-control">
                             <option value="" disabled selected>Selecione o comprador</option>
                                 @foreach($bayers as $bayer)
                                     
                                     <p>{{$bayer->id}}</p>
-                                        <option value="{{$bayer->id}}" {{ $bayer->id == $sale->bayer_id ? 'selected' : ''}}>{{$bayer->name}} </option>
+                                        <option value="{{$bayer}}" {{ $bayer->id == $sale->bayer_id ? 'selected' : ''}}>{{$bayer->name}} </option>
                                     
                                 @endforeach
                             </select>
-                            @if($errors->has('bayer_id'))
+                            @if($errors->has('bayer'))
                                 <h6 class="text-danger" >Selecione o nome do(s) produto(s) usados</h6> 
                             @endif
                     </div>                

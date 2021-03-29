@@ -66,7 +66,6 @@
                 
                     <tbody>
                         @forelse($accounts as $account)
-                            @if($account->activity == "N")
                                 <tr>
                                     <td>
                                        <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->date }}</a>
@@ -87,7 +86,6 @@
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
                                     </td>
                                 </tr>
-                            @endif
                             @empty
                         @endforelse                  
                     </tbody>
@@ -104,7 +102,7 @@
            
 <!-- Fim do Formulario de account_conta --> 
 
-<p class="text-right"> <a href="{{ url('/home') }}" class="text-right">Voltar </a> </p>
+<p class="text-right"> <a href="{{ url('admin/home/index') }}" class="text-right">Voltar </a> </p>
 
 </body>
 

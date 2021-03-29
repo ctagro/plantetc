@@ -80,7 +80,7 @@ class AccountTableSeeder extends Seeder
            'ground_id'              => 2,
            'accounting_id'          => 4,
            'amount'                 => 200,
-           'activity'               => 'N',  
+           'activity'               => 'C',  
            'note'                   => 'Bla bla bla',
        ]);
 

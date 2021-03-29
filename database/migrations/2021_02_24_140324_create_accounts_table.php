@@ -23,7 +23,7 @@ class CreateAccountsTable extends Migration
             $table->unsignedBigInteger('accounting_id')->nullable();
             $table->unsignedBigInteger('ground_id')->nullable();
             $table->double('amount',10,2);
-            $table->enum('activity',['N','S']);
+            $table->enum('activity',['A','C','P','V']);
             $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();

@@ -58,10 +58,21 @@
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                <table class="table">
-                  <th> </th>
-                  <th>Descrição</th>
-                  <th>Observações<optgroup></optgroup></th>
+
+                <div class='table-responsive'>
+
+                  <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
+                      <thead>
+                          <tr>
+                      
+                             <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label=""></th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Descrição</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Observação</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Em uso</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
+                          </tr>
+                      </thead>
+
 
                     <tbody>
 
@@ -70,10 +81,7 @@
                         <tr>
 
                           <td>
-                              @if (auth()->user()->image != null)
                               <img src="{{ asset('storage/type_activities/'.$type_activity->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
-                              @endif
-                          </div>
                           </td>
                           <td>  
                           <a href= "{{ route('type_activity.edit' ,[ 'type_activity' => $type_activity->id  ])}}" >{{ $type_activity -> description}}</a>
@@ -84,24 +92,23 @@
                           <td>  
                             <a href= "{{ route('type_activity.edit' ,[ 'type_activity' => $type_activity->id  ])}}" >{{ $type_activity -> in_use}}</a>
                           </td>
-        
-                          <td >
+      
             
                             <form id="delete-form"  method="POST" action="{{ route('type_activity.destroy' ,[ 'type_activity' => $type_activity->id ])}}", style = 'display: inline;'> 
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}                 
                             </form>
-                          </td>
+                     
                         </tr>
                       @endforeach
                     </tbody>
                   </table>                  
-       
+                </div>
         </div>
     </div>
     <div class="card">
       <div class="card-header">
-          <a href="{{ url('/home') }}" class="float-right" >Voltar </a> 
+          <a href="{{ url('admin/home/index') }}" class="float-right" >Voltar </a> 
       </div>
     </div>
 </div>

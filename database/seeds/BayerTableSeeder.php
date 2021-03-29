@@ -19,10 +19,10 @@ class BayerTableSeeder extends Seeder
        Bayer::create([
                       
            'user_id'      => 1,
-           'name'         => 'Dedé',
+           'name'         => 'Benassi - André',
            'image'        => 'bayer_avatar.png',
            'in_use'       => 'S',
-           'note'         => 'O produto deve ser levado a Vasconselos até as 17hs',
+           'note'         => 'Atacadista BH',
        ]);
 
        Bayer::create([
@@ -36,11 +36,20 @@ class BayerTableSeeder extends Seeder
 
       Bayer::create([
                       
+        'user_id'      => 1,
+        'name'         => 'Dedé',
+        'image'        => 'bayer_avatar.png',
+        'in_use'       => 'S',
+        'note'         => 'Levar em Vasconcellos',
+    ]);
+
+      Bayer::create([
+                      
           'user_id'      => 1,
-          'name'         => 'André',
+          'name'         => 'Rafael',
           'image'        => 'bayer_avatar.png',
           'in_use'       => 'S',
-          'note'         => 'Representa o Atacadista Benassi o trasporte deve ser providenciado ate o Ceasa',
+          'note'         => 'Vizinho',
       ]);
      
 

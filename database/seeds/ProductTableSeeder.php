@@ -20,26 +20,55 @@ class ProductTableSeeder extends Seeder
                Product::create([
                               
                    'user_id'        => 1,
-                   'name'           => 'Produto K',
-                   'Description'    => 'Produto K',
-                   'packing'        => 'Caixas',
-                    'unity'         => 'ml',
-                    'price'         => 100,
-                    'price_unit'    => 0.1,
+                   'name'           => 'Nitrato de Calcio Haifa',
+                   'Description'    => 'Comprado em 05/03/2021 - 2 sacos',
+                   'packing'        => 'Saco de 25 Kg',
+                    'unity'         => 'Kg',
+                    'price'         => 89.57,
+                    'price_unit'    => 3.59,
                    'type_product'   => 'N',
                    'note'           => '?',
                    'image'          => 'product_avatar.png',
                ]);
 
+                
                Product::create([
                               
                 'user_id'        => 1,
-                'name'           => 'Produto X',
-                'Description'    => 'Produto X',
-                'packing'        => 'Sc',
-                'unity'          => 'Kg',
-                'price'          => 50,
-                'price_unit'     => 1,
+                'name'           => 'MAP Purificado 12.61 Haifa',
+                'Description'    => 'Comprado em 05/03/2021 - 2 sacos',
+                'packing'        => 'Saco de 25 Kg',
+                 'unity'         => 'Kg',
+                 'price'         => 220.14,
+                 'price_unit'    => 8.00,
+                'type_product'   => 'N',
+                'note'           => '?',
+                'image'          => 'product_avatar.png',
+            ]);
+
+            Product::create([
+                              
+                'user_id'        => 1,
+                'name'           => 'MKP 00.52.34 Haifa',
+                'Description'    => 'Comprado em 05/03/2021 - 1 sacos',
+                'packing'        => 'Saco de 25 Kg',
+                 'unity'         => 'Kg',
+                 'price'         => 274.67,
+                 'price_unit'    => 11.00,
+                'type_product'   => 'N',
+                'note'           => '?',
+                'image'          => 'product_avatar.png',
+            ]);
+
+               Product::create([
+                              
+                'user_id'        => 1,
+                'name'           => 'Furiu s Fert  01 L',
+                'Description'    => 'Comprado em 05/03/2021 - 1 litro',
+                'packing'        => 'Litro',
+                'unity'          => 'ml',
+                'price'          => 80.22,
+                'price_unit'     => 0.08,
                 'type_product'   => 'S',
                 'in_use'       => 'S',
                 'note'           => '?',
@@ -49,12 +78,12 @@ class ProductTableSeeder extends Seeder
             Product::create([
                               
                 'user_id'        => 1,
-                'name'           => 'Produto Y',
-                'Description'    => 'Produto Y',
-                'packing'        => 'Galão',
-                'unity'          => 'lt',
-                'price'          => 500,
-                'price_unit'     => 10,
+                'name'           => 'Fertiliza Avalon 01 L',
+                'Description'    => 'Comprado em 05/03/2021 - 1 litro',
+                'packing'        => 'Litro',
+                'unity'          => 'ml',
+                'price'          => 249.65,
+                'price_unit'     => 0.25,
                 'type_product'   => 'S',
                 'in_use'       => 'S',
                 'note'           => '?',
@@ -64,17 +93,96 @@ class ProductTableSeeder extends Seeder
             Product::create([
                               
                 'user_id'        => 1,
-                'name'           => 'Produto Z',
-                'Description'    => 'Produto Z',
-                'packing'        => 'Sc',
-                'unity'          => 'g',
-                'price'          => 1000,
-                'price_unit'     => 10,
+                'name'           => 'Connect Onu 2902',
+                'Description'    => 'Comprado em 05/03/2021 - 1 litro',
+                'packing'        => 'Litro',
+                'unity'          => 'ml',
+                'price'          => 69.14,
+                'price_unit'     => 0.70,
                 'type_product'   => 'S',
                 'in_use'       => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
+
+            Product::create([
+                              
+                'user_id'        => 1,
+                'name'           => 'Nitrato de potássio Haifa',
+                'Description'    => 'Comprado em 05/03/2021 - 1 litro',
+                'packing'        => 'Litro',
+                'unity'          => 'ml',
+                'price'          => 179.25,
+                'price_unit'     => 0.18,
+                'type_product'   => 'S',
+                'in_use'       => 'S',
+                'note'           => '?',
+                'image'          => 'product_avatar.png',
+            ]);
+
+            Product::create([
+                              
+                'user_id'        => 1,
+                'name'           => 'Feriliza Aminoprol',
+                'Description'    => 'Comprado em 05/03/2021 - 1 litro',
+                'packing'        => 'Litro',
+                'unity'          => 'ml',
+                'price'          => 141.88,
+                'price_unit'     => 0.14,
+                'type_product'   => 'S',
+                'in_use'       => 'S',
+                'note'           => '?',
+                'image'          => 'product_avatar.png',
+            ]);
+
+            Product::create([
+                              
+                'user_id'        => 1,
+                'name'           => 'Fertiliza Patrono',
+                'Description'    => 'Comprado em 05/03/2021 - 1 litro',
+                'packing'        => 'Litro',
+                'unity'          => 'ml',
+                'price'          => 425.22,
+                'price_unit'     => 0.43,
+                'type_product'   => 'S',
+                'in_use'       => 'S',
+                'note'           => '?',
+                'image'          => 'product_avatar.png',
+            ]);
+
+            Product::create([
+                              
+                'user_id'        => 1,
+                'name'           => 'Fertiliza Aliado',
+                'Description'    => 'Comprado em 05/03/2021 - 1 litro',
+                'packing'        => 'Litro',
+                'unity'          => 'ml',
+                'price'          => 182.16,
+                'price_unit'     => 0.18,
+                'type_product'   => 'S',
+                'in_use'       => 'S',
+                'note'           => '?',
+                'image'          => 'product_avatar.png',
+            ]);
+
+            Product::create([
+                              
+                'user_id'        => 1,
+                'name'           => 'Não se aplica',
+                'Description'    => 'Quando do cadastro de atividade não há utilização de produto',
+                'packing'        => 'NA',
+                'unity'          => 'NA',
+                'price'          => 0.01,
+                'price_unit'     => 0.01,
+                'type_product'   => 'S',
+                'in_use'       => 'S',
+                'note'           => '?',
+                'image'          => 'product_avatar.png',
+            ]);
+
+           
+
+
     
                
                // Habilita novamente checagem de chaves *Importante*   

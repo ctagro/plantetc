@@ -136,10 +136,9 @@ class Product_applyController extends Controller
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
       $dataAccount['amount'] = $data['amount'] * $product_price;
-      $dataAccount['activity'] = "N";
+      $dataAccount['activity'] = "P";
       $dataAccount['note' ] = $data['note'];
 
-  //  dd($dataAccount);
 
       $account = new account();
     
@@ -286,7 +285,7 @@ class Product_applyController extends Controller
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
         $dataAccount['amount'] = $dataRequest['amount'];
-        $dataAccount['activity'] = "N";
+        $dataAccount['activity'] = "P";
         $dataAccount['note' ] = $dataRequest['note'];
 
        // dd($dataAccount);

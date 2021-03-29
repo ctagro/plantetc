@@ -30,13 +30,15 @@ class AccountController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->get();
+    $accounts = auth()->user()->account()->where('activity', '=', "C")->get();
 
     $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
 
     $accountings = auth()->user()->accounting()->where('sale','=','N')->where('in_use', '=', "S")->get();
 
     $type_accounts= type_account::where('id', '<=', 2)->get();
+
+//   dd($accounts);
 
     $response = $accounts->first();
     
@@ -49,7 +51,6 @@ class AccountController extends Controller
         return view('finance.account.index',compact('accounts','account','grounds','accountings','type_accounts'));
     } 
     
-    //dd($accounts[3]->description);
 
         return view('finance.account.index',compact('accounts','grounds','accountings','type_accounts'));
     }
@@ -64,7 +65,7 @@ class AccountController extends Controller
 
         $user = auth()->user();
 
-        $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->get();
+        $accounts = auth()->user()->account()->get();
 
         $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
 
