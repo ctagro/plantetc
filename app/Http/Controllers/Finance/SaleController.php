@@ -103,7 +103,7 @@ class SaleController extends Controller
         
          $data = $this->validateRequest();
 
-         //dd($data);
+       //  dd(1-($data['discount']/100));
 
          $dataAccount['date' ] = $request['date'];
          $date['note'] = $request['note'];
@@ -127,7 +127,7 @@ class SaleController extends Controller
 
    //  dd($bayer_name);
 
-       $dataAccount['date' ] = $request['date'];
+       $dataAccount['date' ] = $request['date_pay'];
 
       //dd($dataAccount['date' ]);
     
@@ -148,7 +148,7 @@ class SaleController extends Controller
       $dataAccount['type_account_id'] = $data['type_account_id'];
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
-      $dataAccount['amount'] = $data['amount'] * $data['price_unit'];
+      $dataAccount['amount'] = $data['amount'] * $data['price_unit'] * (1-($data['discount']/100));
       $dataAccount['activity'] = "V";
       $dataAccount['note' ] = $data['note'];
 
@@ -274,6 +274,14 @@ class SaleController extends Controller
          $sale_description = $crop->name;
          $dataRequest['crop_id'] = $crop->id;
 
+         // captura json do produto selecionado
+        $bayer = ($dataRequest['bayer']);
+        // tranforma o produto em array
+        $bayer = json_decode($bayer);
+        // seleciona o nome
+        $bayer_name = $bayer->name;
+        $dataRequest['bayer_id'] = $bayer->id;
+
         $dataAccount['date' ] = $request['date'];
         $date['note'] = $request['note'];
      
@@ -295,6 +303,7 @@ class SaleController extends Controller
         $dataSale['amount']                     = $dataRequest['amount'];
         $dataSale['unity']                      = $dataRequest['unity'];
         $dataSale['price_unit']                 = $dataRequest['price_unit'];
+        $dataSale['discount']                   = $dataRequest['discount'];
         $dataSale['bayer_id']                   = $dataRequest['bayer_id'];
         $dataSale['note']                       = $dataRequest['note'];
   
@@ -303,13 +312,13 @@ class SaleController extends Controller
        $updateSale = $sale -> update($dataSale);
 
 
-        $dataAccount['date' ]           = $dataRequest['date'];
-        $dataAccount['description' ]    = $sale_description;
+        $dataAccount['date' ]           = $dataRequest['date_pay'];
+        $dataAccount['description' ]    = $sale_description. " - " . $bayer_name;
         $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
         $dataAccount['accounting_id']   = $dataRequest['accounting_id'];
         $dataAccount['ground_id']       = $dataRequest['ground_id'];
-        $dataAccount['amount']          = $dataRequest['amount'] * $dataRequest['price_unit'];
-        $dataAccount['activity']        = "N";
+        $dataAccount['amount']          = $dataRequest['amount'] * $dataRequest['price_unit'] * (1-($dataRequest['discount']/100));;
+        $dataAccount['activity']        = "V";
         $dataAccount['note' ]           = $dataRequest['note'];
 
        // dd($dataAccount);
@@ -361,7 +370,8 @@ class SaleController extends Controller
             'amount'                =>   'required',
             'unity'                 =>   'required',
             'price_unit'            =>   'required',
-            'bayer'                  =>   'required',
+            'discount'              =>   'required',
+            'bayer'                 =>   'required',
       //      'transporter_id'    =>   'required',
       //      'cost_freight'      =>   'required',
             'note'                  =>   'required',

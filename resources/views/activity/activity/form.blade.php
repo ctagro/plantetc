@@ -27,8 +27,9 @@
         
                 </div>
 
+                <input type="hidden" name="type_activity" value=1 class="form-control py-3">
               
-                <div class="form-group">
+              <div class="form-group">
                         <select name="type_activity"  id="type_activity" class="form-control">
                         <option value="" disabled selected>Selecione a atividade...</option>
                         @foreach($type_activitys as $type_activity)
@@ -42,6 +43,8 @@
                     @endif
                 </div>
 
+                 <input type="hidden" name="type_account_id" value=1 class="form-control py-3">
+{{--  
                 <div class="form-group">
                     <select name="type_account_id"  id="type_account_id" class="form-control">
                         <option value="" disabled selected>Selecione o tipo de conta...</option> 
@@ -59,7 +62,7 @@
                             <h6 class="text-danger" >Selecione o tipo de conta</h6> 
                         @endif
                     </div>
-              
+--}}              
 
                 <div class="form-group">
                     <select name="worker"  id="worker" class="form-control">
@@ -91,7 +94,9 @@
                     @endif
                 </div>
 
-                
+                <input type="hidden" name="accounting_id" value=1 class="form-control py-3">
+
+{{--                
                 <div class="form-group">                   
                     <select name="accounting_id"  id="accounting_id" class="form-control">
                         <option value="" disabled selected>Selecione a Conta...</option> 
@@ -110,11 +115,11 @@
                         <h6 class="text-danger" >Selecione a Conta</h6> 
                     @endif
                 </div>
-
+--}} 
                 
+            <input type="hidden" name="product_id" value=11 class="form-control py-3">
 
-
-                    
+{{--                    
                 <div class="form-group">
                     <select name="product_id"  id="product_id" class="form-control">
                         <option value="" disabled selected>Selecione (os) produto(s) utilizado(s)...</option>
@@ -131,7 +136,7 @@
                     </div>                
 
                 </div>
-                
+--}}                
 
 {{-- Hora de inico e fim da atividade inabilitada
      Para habilitar: remover os inputs hidden abaixo e ativar os inputs desse comentario

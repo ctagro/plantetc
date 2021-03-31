@@ -58,13 +58,20 @@
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                <table class="table">
-                  <th> </th>
-                  <th>Nome</th>
-                  <th>Observações<optgroup></optgroup></th>
+                <div class='table-responsive'>
+
+                  <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
+                      <thead>
+                          <tr>
+                      
+                              <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Foto</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nome</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Observação</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
+                          </tr>
+                      </thead>
 
                     <tbody>
-
                       @foreach($bayers as $bayer)
 
                         <tr>
@@ -91,7 +98,7 @@
                       @endforeach
                     </tbody>
                   </table>                  
-       
+                </div>
         </div>
     </div>
     <div class="card">

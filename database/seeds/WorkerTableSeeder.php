@@ -33,7 +33,7 @@ class WorkerTableSeeder extends Seeder
         Worker::create([
                        
             'user_id'    => 1,
-            'name'       => 'Mathes',
+            'name'       => 'Matheus',
             'date'       => '2021-03-01',
             'salary'     => 1200,
             'salary_hour'=> 9.17,

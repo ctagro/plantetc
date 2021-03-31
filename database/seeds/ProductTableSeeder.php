@@ -38,9 +38,9 @@ class ProductTableSeeder extends Seeder
                 'name'           => 'MAP Purificado 12.61 Haifa',
                 'Description'    => 'Comprado em 05/03/2021 - 2 sacos',
                 'packing'        => 'Saco de 25 Kg',
-                 'unity'         => 'Kg',
-                 'price'         => 220.14,
-                 'price_unit'    => 8.00,
+                'unity'         => 'Kg',
+                'price'         => 220.14,
+                'price_unit'    => 8.00,
                 'type_product'   => 'N',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
@@ -100,7 +100,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 69.14,
                 'price_unit'     => 0.70,
                 'type_product'   => 'S',
-                'in_use'       => 'S',
+                'in_use'         => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -115,7 +115,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 179.25,
                 'price_unit'     => 0.18,
                 'type_product'   => 'S',
-                'in_use'       => 'S',
+                'in_use'         => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -130,7 +130,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 141.88,
                 'price_unit'     => 0.14,
                 'type_product'   => 'S',
-                'in_use'       => 'S',
+                'in_use'         => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -145,7 +145,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 425.22,
                 'price_unit'     => 0.43,
                 'type_product'   => 'S',
-                'in_use'       => 'S',
+                'in_use'         => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -160,7 +160,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 182.16,
                 'price_unit'     => 0.18,
                 'type_product'   => 'S',
-                'in_use'       => 'S',
+                'in_use'         => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);
@@ -175,7 +175,7 @@ class ProductTableSeeder extends Seeder
                 'price'          => 0.01,
                 'price_unit'     => 0.01,
                 'type_product'   => 'S',
-                'in_use'       => 'S',
+                'in_use'         => 'S',
                 'note'           => '?',
                 'image'          => 'product_avatar.png',
             ]);

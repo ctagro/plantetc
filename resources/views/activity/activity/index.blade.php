@@ -42,7 +42,7 @@
                       <div class="col-md-12">
                           <div class="card">
                               <div class="card-header">
-                                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                                   Atividades
                                   <a class="float-right" href="{{url('activity/create')}}">Cadastrar</a>
                               </div>
@@ -55,16 +55,23 @@
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                <table class="table">
+                <div class='table-responsive'>
 
-                  <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
-                  <th>Atividades</th>
-                  <th>Área</th>
-                  <th>Funcionário</th>
-                  <th>Produto</th>
-                  <th>Horas trab</th>
-                  <th>Valor</th>
-
+                <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
+                    <thead>
+                        <tr>
+                    
+                            <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Atividades</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Funcionário</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Produto</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Horas trab</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
+                        </tr>
+                    </thead>
+              
 
                 
 
@@ -102,7 +109,7 @@
                       @endforeach
                     </tbody>
                   </table>                  
-       
+                </div>
         </div>
     </div>
     <div class="card">

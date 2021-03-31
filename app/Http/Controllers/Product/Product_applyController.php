@@ -255,6 +255,8 @@ class Product_applyController extends Controller
          // seleciona o nome
          $product_apply_description = $product->name;
          $dataRequest['product_id'] = $product->id;
+         $product_price = $product->price_unit;
+         $product_unity = $product->unity;
 
         $dataAccount['date' ] = $request['date'];
         $date['note'] = $request['note'];
@@ -284,7 +286,7 @@ class Product_applyController extends Controller
         $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
-        $dataAccount['amount'] = $dataRequest['amount'];
+        $dataAccount['amount'] = $dataRequest['amount'] * $product_price;;
         $dataAccount['activity'] = "P";
         $dataAccount['note' ] = $dataRequest['note'];
 

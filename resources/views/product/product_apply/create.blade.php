@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vendas</title>
+    <title>Insumos</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                Cadastrar Venda
+                Consumo de insumos
                 <a class="float-right" href="{{url('/product_apply')}}">Lista</a>
                 </div>
             </div>

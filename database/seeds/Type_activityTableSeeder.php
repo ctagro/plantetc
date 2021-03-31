@@ -19,7 +19,7 @@ class Type_activityTableSeeder extends Seeder
          Type_activity::create([
                         
              'user_id'      => 1,
-             'description'  => 'Colheita de Pimentão',
+             'description'  => 'Colheita',
              'image'        => 'type_activity_avatar.png',
              'note'         => 'Colheita de qualquer tipo de Pimentão',
              'in_use'       => 'S',
@@ -37,7 +37,7 @@ class Type_activityTableSeeder extends Seeder
         Type_activity::create([
                         
             'user_id'      => 1,
-            'description'  => 'Passar fitas',
+            'description'  => 'Fitamento',
             'image'        => 'type_activity_avatar.png',
             'note'         => 'Fitamento do pimentão',
             'in_use'       => 'S',
@@ -46,7 +46,7 @@ class Type_activityTableSeeder extends Seeder
         Type_activity::create([
                         
             'user_id'      => 1,
-            'description'  => 'Embalar Pimentão',
+            'description'  => 'Embalamento',
             'image'        => 'type_activity_avatar.png',
             'note'         => 'Atividade de limpar e encaixotar o pimentão',
             'in_use'       => 'S',
@@ -55,7 +55,7 @@ class Type_activityTableSeeder extends Seeder
         Type_activity::create([
                         
             'user_id'      => 1,
-            'description'  => 'Transporte',
+            'description'  => 'Irrigação',
             'image'        => 'type_activity_avatar.png',
             'note'         => 'Atividade de transportar qualquer produto',
             'in_use'       => 'S',

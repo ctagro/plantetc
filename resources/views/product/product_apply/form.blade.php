@@ -47,8 +47,10 @@
                         <h6 class="text-danger" >Selecione o produto</h6> 
                     @endif
                 </div>
+
+                <input type="hidden" name="worker_id" value="N" class="form-control py-3">
     
-                
+             
                 <div class="form-group">                   
                     <select name="worker_id"  id="worker_id" class="form-control">
                         <option value="" disabled selected>Selecione o funcionário...</option> 
@@ -64,6 +66,9 @@
                     @endif
                 </div>
 
+
+            <input type="hidden" name="accounting_id" value=2 class="form-control py-3">
+{{--
                 <div class="form-group">                   
                     <select name="accounting_id"  id="accounting_id" class="form-control">
                         <option value="" disabled selected>Selecione a conta...</option> 
@@ -78,6 +83,8 @@
                         <h6 class="text-danger" >Selecione o nome da Área de plantio</h6> 
                     @endif
                 </div>
+
+--}}
 
                 <div class="form-group">                   
                     <select name="ground_id"  id="ground_id" class="form-control">

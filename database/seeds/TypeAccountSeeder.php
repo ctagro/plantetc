@@ -31,12 +31,6 @@ class TypeAccountSeeder extends Seeder
             
          ]);
  
-         Type_account::create([
-                        
-            
-             'name'       => 'Venda',
-        
-         ]);
 
          Type_account::create([
                         

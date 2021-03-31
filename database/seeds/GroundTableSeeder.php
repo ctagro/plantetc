@@ -53,7 +53,7 @@ class GroundTableSeeder extends Seeder
             'name'       => 'Abacate nr 1',
             'area'       => 1,
             'location'   => 'Proximo à fazenda',
-            'in_use'       => 'S',
+            'in_use'     => 'S',
             'image'      => 'ground_avatar.png',
         ]);
 
@@ -63,7 +63,17 @@ class GroundTableSeeder extends Seeder
             'name'       => 'Abacate nr 1',
             'area'       => 1,
             'location'   => 'Proximo às estufas',
-            'in_use'       => 'S',
+            'in_use'     => 'S',
+            'image'      => 'ground_avatar.png',
+        ]);
+
+        Ground::create([
+                       
+            'user_id'    => 1,
+            'name'       => 'Geral',
+            'area'       => 1,
+            'location'   => 'Geral da Fazenda',
+            'in_use'     => 'S',
             'image'      => 'ground_avatar.png',
         ]);
         

@@ -26,6 +26,7 @@ class CreateSalesTable extends Migration
             $table->double('amount',10,2);  // quantidade
             $table->text('unity',5);  // unidade
             $table->double('price_unit',10,2);
+            $table->double('discount',5,2);
             $table->unsignedBigInteger('bayer_id')->nullable();
             $table->longtext('note');
             $table->timestamps();

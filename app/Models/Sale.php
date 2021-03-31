@@ -27,10 +27,11 @@ class Sale extends Model
         'date_pay'          ,
         'crop_id'           ,
         'ground_id'         ,
-        'type_account_id'     ,
+        'type_account_id'   ,
         'amount'            ,
         'unity'             ,
         'price_unit'        ,
+        'discount'          ,
         'bayer_id'          ,
         'note'              ,
 
@@ -68,6 +69,7 @@ class Sale extends Model
                 'amount'                => $data['amount'],
                 'unity'                 => $data['unity'],
                 'price_unit'            => $data['price_unit'],
+                'discount'              => $data['discount'],
                 'bayer_id'              => $data['bayer_id'],
                 'note'                  => $data['note'], 
 

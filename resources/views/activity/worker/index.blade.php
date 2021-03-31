@@ -56,14 +56,20 @@
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                <table class="table">
+                <div class='table-responsive'>
 
-                  <th>Foto</th>
-                  <th>Nome</th>
-                  <th>Admissão</th>
-                  <th>Salário</th>
-                  <th>Salário por hora</th>
-
+                  <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
+                      <thead>
+                          <tr>
+                      
+                              <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Foto</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nome</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Admissão</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Salário</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Salário por hora</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
+                          </tr>
+                      </thead>
 
                     <tbody>
 
@@ -97,7 +103,7 @@
                       @endforeach
                     </tbody>
                   </table>                  
-       
+                </div>
         </div>
     </div>
     <div class="card">
