@@ -150,7 +150,7 @@ class ActivityController extends Controller
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
       $dataAccount['amount'] = $data['worked_hours'] * floatval($dataSalary_hour);
-      $dataAccount['activity'] = "A";
+      $dataAccount['origin'] = "A";
       $dataAccount['note' ] = $data['note'];
 
   //  dd($dataAccount);

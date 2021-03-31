@@ -4,7 +4,7 @@
 
   
      <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3"> 
-     <input type="hidden" name="activity" value="{{$account->activity}}" class="form-control py-3">
+     <input type="hidden" name="origin" value="{{$account->origin}}" class="form-control py-3">
 
             <div class="form-group row">
 

@@ -52,7 +52,7 @@ class AccountTableSeeder extends Seeder
             'ground_id'              => 3,
             'accounting_id'          => 2,
             'amount'                 => 3000,
-            'activity'               => 'S',
+            'origin'               => 'S',
             'note'                   => 'Bla bla bla',
         ]);
 
@@ -66,7 +66,7 @@ class AccountTableSeeder extends Seeder
             'ground_id'              => 1,
             'accounting_id'          => 3,
             'amount'                 => 100,
-            'activity'               => 'N',
+            'origin'               => 'N',
             'note'                   => 'Bla bla bla',
         ]);
 
@@ -80,7 +80,7 @@ class AccountTableSeeder extends Seeder
            'ground_id'              => 2,
            'accounting_id'          => 4,
            'amount'                 => 200,
-           'activity'               => 'C',  
+           'origin'               => 'C',  
            'note'                   => 'Bla bla bla',
        ]);
 
@@ -94,7 +94,7 @@ class AccountTableSeeder extends Seeder
            'ground_id'              => 3,
            'accounting_id'          => 3,
            'amount'                 => 300,
-           'activity'               => 'N',
+           'origin'               => 'N',
            'note'                   => 'Bla bla bla',
        ]);
 
@@ -108,7 +108,7 @@ class AccountTableSeeder extends Seeder
         'ground_id'              => 3,
         'accounting_id'          => 2,
         'amount'                 => 1230,
-        'activity'               => 'N',
+        'origin'                 => 'N',
         'note'                   => 'Bla bla bla',
     ]);
 
@@ -122,7 +122,7 @@ class AccountTableSeeder extends Seeder
         'ground_id'              => 2,
         'accounting_id'          => 3,
         'amount'                 => 100,
-        'activity'               => 'N',
+        'origin'                 => 'N',
         'note'                   => 'Bla bla bla',
     ]);
 

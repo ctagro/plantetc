@@ -30,13 +30,13 @@ class AccountController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->where('activity', '=', "C")->get();
+        $accounts = auth()->user()->account()->where('origin', '=', "C")->get();
 
     $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
 
-    $accountings = auth()->user()->accounting()->where('sale','=','N')->where('in_use', '=', "S")->get();
+    $accountings = auth()->user()->accounting()->where('in_use', '=', "S")->get();
 
-    $type_accounts= type_account::where('id', '<=', 2)->get();
+    $type_accounts= type_account::where('id', '<=', 3)->get();
 
 //   dd($accounts);
 
@@ -45,13 +45,12 @@ class AccountController extends Controller
 
     if ($response === null) {
 
-
         $account = new account();
     
         return view('finance.account.index',compact('accounts','account','grounds','accountings','type_accounts'));
     } 
     
-
+ 
         return view('finance.account.index',compact('accounts','grounds','accountings','type_accounts'));
     }
 
@@ -69,7 +68,7 @@ class AccountController extends Controller
 
         $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
 
-        $accountings = auth()->user()->accounting()->where('sale','=','N')->where('in_use', '=', "S")->get();
+        $accountings = auth()->user()->where('in_use', '=', "S")->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 
@@ -145,9 +144,9 @@ class AccountController extends Controller
 
         $grounds = auth()->user()->ground()->get();
 
-        $accountings = auth()->user()->accounting()->where('sale','=','N')->where('in_use', '=', "S")->get();
+        $accountings = auth()->user()->accounting()->where('in_use', '=', "S")->get();
 
-        $type_accounts= type_account::where('id', '<=', 2)->get();
+        $type_accounts= type_account::where('id', '<=', 3)->get();
 
       //  dd($account, $accountings);
 
@@ -173,6 +172,8 @@ class AccountController extends Controller
             $request['note'] = "...";
          }
 
+         
+
                        
         $dataRequest = $this->validateRequest();
 
@@ -184,7 +185,7 @@ class AccountController extends Controller
         $data['accounting_id']   = $dataRequest['accounting_id'];
         $data['ground_id']       = $dataRequest['ground_id'];
         $data['amount']          = $dataRequest['amount'];
-        $data['activity']        = $dataRequest['activity'];
+        $data['origin']          = $dataRequest['origin'];
         $data['note']            = $dataRequest['note'];
     
 
@@ -223,7 +224,7 @@ class AccountController extends Controller
             'type_account_id'       => 'required' ,
             'accounting_id'         => 'required' ,
             'ground_id'             => 'required' ,
-            'activity'              => 'required' ,
+            'origin'                => 'required' ,
             'amount'                => 'required' ,
             'note'                  => 'required' ,
     

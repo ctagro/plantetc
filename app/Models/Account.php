@@ -25,7 +25,7 @@ class Account extends Model
         'accounting_id'         ,      
         'ground_id'             ,   
         'amount'                , 
-        'activity'              ,
+        'origin'                ,
         'note'                  ,       
     ];
 
@@ -60,7 +60,7 @@ class Account extends Model
                 'accounting_id'         => $data['accounting_id'],
                 'ground_id'             => $data['ground_id'],
                 'amount'                => $data['amount'],
-                'activity'              => $data['activity'],
+                'origin'                => $data['origin'],
                 'note'                  => $data['note'], 
                 
 

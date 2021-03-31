@@ -49,7 +49,7 @@ class SaleResearchController extends Controller
 
         $type_accounts = Type_account::all();
 
-        $accountings = auth()->user()->accounting()->where('sale','S')->get();
+        $accountings = auth()->user()->accounting()->get();
 
         $type_accounts= type_account::where('id', '=', 3)->get();
 
@@ -72,7 +72,7 @@ class SaleResearchController extends Controller
 
         $type_accounts = Type_account::all();
 
-        $accountings = auth()->user()->accounting()->where('sale','S')->get();
+        $accountings = auth()->user()->accounting()->get();
 
         $type_accounts= type_account::where('id', '=', 3)->get();
 
@@ -125,7 +125,7 @@ class SaleResearchController extends Controller
 
         $accounts = auth()->user()->account()->get();
      
-        $accountings = auth()->user()->accounting()->where('sale','S')->get();
+        $accountings = auth()->user()->accounting()->get();
 
         $type_accounts= type_account::all();
 

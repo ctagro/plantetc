@@ -21,7 +21,6 @@ class CreateAccountingsTable extends Migration
             $table->text('description',200);
             $table->enum('in_use',['S','N'])->default("S");
             $table->string('image', 100)->nullable();
-            $table->enum('sale',['S','P','A','N']); // Sale, Product, Ativity, Nenhum       
             $table->timestamps();
             $table->softDeletes();
         });

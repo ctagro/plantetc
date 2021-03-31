@@ -30,11 +30,11 @@ class AccountResearchController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->where('activity', '=', "C")->get();
+    $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->where('origin', '=', "C")->get();
 
     $grounds = auth()->user()->ground()->get();
 
-    $accountings = auth()->user()->accounting()->where('sale','N')->get();
+    $accountings = auth()->user()->accounting()->get();
 
     $type_accounts= type_account::where('id', '<=', 2)->get();
 
@@ -45,11 +45,11 @@ class AccountResearchController extends Controller
 
     {
 
-        $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->where('activity', '=', "C")->get();
+        $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->where('origin', '=', "C")->get();
         
         $grounds = auth()->user()->ground()->get();
 
-        $accountings = auth()->user()->accounting()->where('sale','N')->get();
+        $accountings = auth()->user()->accounting()->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 
@@ -88,11 +88,11 @@ class AccountResearchController extends Controller
          if ($query)
             $accounts = account::whereRaw($query)->orderBy('date')->get();
          else
-            $accounts = account::where('type_account_id', '<=', 2)->where('activity', '=', "C")->orderBy('date')->get();
+            $accounts = account::where('type_account_id', '<=', 2)->where('origin', '=', "C")->orderBy('date')->get();
           
          $grounds = auth()->user()->ground()->get();
      
-         $accountings = auth()->user()->accounting()->where('sale','N')->get();
+         $accountings = auth()->user()->accounting()->get();
 
          $type_accounts= type_account::all();
 

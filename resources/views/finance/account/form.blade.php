@@ -4,7 +4,7 @@
 
   
      <input type="hidden" name="user_id" value="{{auth()->user()->id}}" class="form-control py-3"> 
-     <input type="hidden" name="activity" value={{"C"}} class="form-control py-3">
+     <input type="hidden" name="origin" value={{"C"}} class="form-control py-3">
 
             <div class="form-group row">
                 <input type="date" name="date" id ="date"  value="{{old('date')}}" class="form-control py-3" placeholder="$date"> 

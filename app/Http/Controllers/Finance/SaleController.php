@@ -149,7 +149,7 @@ class SaleController extends Controller
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
       $dataAccount['amount'] = $data['amount'] * $data['price_unit'] * (1-($data['discount']/100));
-      $dataAccount['activity'] = "V";
+      $dataAccount['origin'] = "V";
       $dataAccount['note' ] = $data['note'];
 
   //  dd($dataAccount);
@@ -232,7 +232,7 @@ class SaleController extends Controller
 
         $account = account::where('id', '=', $sale->account_id)->get();
         
-        $accountings = accounting::where('sale', '=', "S")->get();
+        $accountings = accounting::where('in_use', '=', "S")->get();
 
 
         return view('finance.sale.edit',compact('sale','account','accountings','type_accounts','grounds','crops','bayers'));
@@ -318,7 +318,7 @@ class SaleController extends Controller
         $dataAccount['accounting_id']   = $dataRequest['accounting_id'];
         $dataAccount['ground_id']       = $dataRequest['ground_id'];
         $dataAccount['amount']          = $dataRequest['amount'] * $dataRequest['price_unit'] * (1-($dataRequest['discount']/100));;
-        $dataAccount['activity']        = "V";
+        $dataAccount['origin']          = "V";
         $dataAccount['note' ]           = $dataRequest['note'];
 
        // dd($dataAccount);

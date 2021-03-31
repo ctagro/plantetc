@@ -59,7 +59,7 @@ class Product_applyController extends Controller
 
         $products = auth()->user()->product()->where('in_use', '=', "S")->get();
 
-        $accountings = accounting::where('sale', '=', "N")->where('in_use', '=', "S")->get();
+        $accountings = accounting::where('in_use', '=', "S")->get();
 
 
         $account = new \App\Models\Account([
@@ -87,7 +87,7 @@ class Product_applyController extends Controller
     {
 
      // $data = $request;
-      //dd($data);
+     // dd($data);
 
         if ($request['note'] == null){
             $request['note'] = "...";
@@ -136,7 +136,7 @@ class Product_applyController extends Controller
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
       $dataAccount['amount'] = $data['amount'] * $product_price;
-      $dataAccount['activity'] = "P";
+      $dataAccount['origin'] = "P";
       $dataAccount['note' ] = $data['note'];
 
 
@@ -214,7 +214,7 @@ class Product_applyController extends Controller
 
         $products = auth()->user()->product()->where('in_use', '=', "S")->get();
 
-        $accountings = accounting::where('sale', '=', "N")->where('in_use', '=', "S")->get();
+        $accountings = accounting::where('in_use', '=', "S")->get();
 
         //dd($product_apply);
 
@@ -287,10 +287,10 @@ class Product_applyController extends Controller
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
         $dataAccount['amount'] = $dataRequest['amount'] * $product_price;;
-        $dataAccount['activity'] = "P";
+        $dataAccount['origin'] = "P";
         $dataAccount['note' ] = $dataRequest['note'];
 
-       // dd($dataAccount);
+      // dd($dataAccount);
 
         $updateAccount = $product_apply->account ->update($dataAccount);
 
@@ -339,7 +339,7 @@ class Product_applyController extends Controller
             'amount'                =>   'required',
             'note'                  =>   'required',
             'type_account_id'       =>   'required',
-            'activity'              =>   'required'
+            'origin'                =>   'required'
 
 
     

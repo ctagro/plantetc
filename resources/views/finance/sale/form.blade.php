@@ -4,7 +4,7 @@
 
             <input type="hidden" name="id" value="{{$sale->id }}" class="form-control py-3">
             <input type="hidden" name="type_account_id" value="3" class="form-control py-3">
-            <input type="hidden" name="accounting_id" value="1" class="form-control py-3">
+            <input type="hidden" name="accounting_id" value="3" class="form-control py-3">
             <input type="hidden" name="data_pay" value="2021-01-01" class="form-control py-3">
             
 

@@ -4,7 +4,7 @@
 
             <input type="hidden" name="id" value="{{$product_apply->id }}" class="form-control py-3">
             <input type="hidden" name="type_account_id" value="1" class="form-control py-3">
-            <input type="hidden" name="activity" value="N" class="form-control py-3">
+            <input type="hidden" name="origin" value="P" class="form-control py-3">
             
 
 
@@ -48,8 +48,8 @@
                     @endif
                 </div>
 
-                <input type="hidden" name="worker_id" value="N" class="form-control py-3">
-    
+    {{--            <input type="hidden" name="worker_id" value="N" class="form-control py-3">
+    --}}
              
                 <div class="form-group">                   
                     <select name="worker_id"  id="worker_id" class="form-control">
