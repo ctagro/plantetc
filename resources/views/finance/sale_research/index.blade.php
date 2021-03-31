@@ -48,6 +48,9 @@
 
 <!-- Inicio da Tabela dos registros -->
 
+<?php $value_total = 0 ?>
+<?php $sale_total = 0 ?>
+
 <div class='table-responsive'>
 
     <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
@@ -67,7 +70,7 @@
         </thead>
     
         <tbody>
-            @foreach($sales as $sale)
+            @foreach($sales as $sale) 
                      
             <tr>
               <td>  
@@ -84,6 +87,7 @@
               </td>
               <td>
                 <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->amount, 2 , ',', '.')  }}</a>
+                <?php $sale_total = $sale_total + $sale->amount ?>
               </td>
               <td>
                 <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ $sale->unity}}</a>
@@ -92,11 +96,42 @@
                 <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->price_unit, 2 , ',', '.')  }}</a>              
               </td>
               <td>  
-                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->account->amount, 2 , ',', '.')  }}</a>              
+                <a href= "{{ route('sale.edit' ,[ 'sale' => $sale->id ])}}" >{{ number_format($sale->account->amount, 2 , ',', '.')  }}</a>
+                <?php $value_total = $value_total + $sale->account->amount ?>              
               </td>          
             </tr>
           
-          @endforeach        
+          @endforeach
+          
+          <tr>
+            <td>  
+              <a >{{ " "}}</a>
+            </td>
+            <td>
+              <a  >{{ "  " }}</a>
+            </td>
+            <td>
+              <a >{{ ""}}</a>
+            </td>
+            <td>  
+              <a>{{"Totais: "}}</a>
+            </td>
+            <td>
+              <a>{{ number_format($sale_total, 2 , ',', '.')}}</a>
+            </td>
+            <td>
+              <a>{{ ""}}</a>
+            </td>
+            <td>  
+              <a >{{ " "}}</a>              
+            </td>
+            <td>  
+              <a >{{ number_format($value_total, 2 , ',', '.')  }}</a>          
+            </td>          
+          </tr>
+
+
+
         </tbody>
 
     </table>

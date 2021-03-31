@@ -48,6 +48,13 @@
 
 <!-- Inicio da Tabela dos registros -->
 
+<!-- Inicio da Tabela dos registros -->
+
+<?php $total_hours = 0 ?>
+<?php $total_amount = 0 ?>
+
+
+
                 <div class='table-responsive'>
 
                 <table id="example1" class="table table-sm table-bordered table-striped dataTable dtr-inline collapsed" role="grid" aria-describedby="example1_info">
@@ -88,14 +95,44 @@
                             </td>
                             <td>  
                               <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ number_format($activity->worked_hours, 2 , ',', '.')  }}</a>
+                              <?php $total_hours = $total_hours + $activity->worked_hours ?>
                             </td>
                             <td>  
                               <a href= "{{ route('activity.edit' ,[ 'activity' => $activity->id ])}}" >{{ $activity->account->amount}}</a>
+                              <?php $total_amount = $total_amount + $activity->account->amount ?>
                             </td>
                         
                           </tr>   
                             @empty
-                        @endforelse                  
+                        @endforelse  
+                        
+                        <tr>
+                          <td>  
+                            <a >{{ " " }}</a>
+                          </td>
+
+                          <td>
+                            <a>{{ " "}}</a>
+                          </td>
+
+                          <td>
+                            <a>{{ " "}}</a>
+                          </td>
+
+                          <td>
+                            <a>{{ " "}}</a>
+                          </td>
+                          <td>
+                            <a>{{ "Totais : "}}</a>
+                          </td>
+                          <td>  
+                            <a>{{ number_format($total_hours, 2 , ',', '.')  }}</a>
+                          </td>
+                          <td>  
+                            <a>{{ number_format($total_amount, 2 , ',', '.')}}</a>
+                          </td>
+                      
+                        </tr>   
                     </tbody>
         
                 </table>
