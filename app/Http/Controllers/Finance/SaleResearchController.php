@@ -116,6 +116,8 @@ class SaleResearchController extends Controller
             $sales = sale::whereRaw($query)->orderBy('date')->get();
          else
             $sales = sale::orderBy('date')->get();
+
+            $accounts = auth()->user()->account()->get();
           
             $grounds = Ground::where('in_use', '=', "S")->get();
 
