@@ -38,7 +38,7 @@
                     <div class="card-header">
                         <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/sale_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                         Venda
-                        <a class="float-right" href="/sale">Lista</a>
+                        <a class="float-right" href="{{url('/sale')}}">Lista</a>
                     </div>
                 </div>
             </div>

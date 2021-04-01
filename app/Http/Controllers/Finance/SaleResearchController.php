@@ -41,17 +41,17 @@ class SaleResearchController extends Controller
 
         $sales = auth()->user()->sale()->get();
 
-        $bayers = auth()->user()->bayer()->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $grounds = auth()->user()->ground()->get();
+        $bayers = Bayer::where('in_use', '=', "S")->get();
 
-        $crops = auth()->user()->crop()->get();
+        $crops = Crop::where('in_use', '=', "S")->get();
 
         $type_accounts = Type_account::all();
 
-        $accountings = auth()->user()->accounting()->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
-        $type_accounts= type_account::where('id', '=', 3)->get();
+        $type_accounts= type_account::all();
 
         return view('finance.sale_research.index',compact('sales','accounts','grounds','accountings','type_accounts','bayers','crops'));
     }
@@ -64,17 +64,17 @@ class SaleResearchController extends Controller
 
         $sales = auth()->user()->sale()->get();
 
-        $grounds = auth()->user()->ground()->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $crops = auth()->user()->crop()->get();
+        $bayers = Bayer::where('in_use', '=', "S")->get();
 
-        $bayers = auth()->user()->bayer()->get();
+        $crops = Crop::where('in_use', '=', "S")->get();
 
         $type_accounts = Type_account::all();
 
-        $accountings = auth()->user()->accounting()->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
-        $type_accounts= type_account::where('id', '=', 3)->get();
+        $type_accounts= type_account::all();
 
 
     return view('finance.sale_research.research', compact('sales','accounts','accountings','grounds','type_accounts','bayers','crops'));
@@ -117,17 +117,17 @@ class SaleResearchController extends Controller
          else
             $sales = sale::orderBy('date')->get();
           
-        $bayers = auth()->user()->bayer()->get();
+            $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $crops = auth()->user()->crop()->get();
-         
-        $grounds = auth()->user()->ground()->get();
-
-        $accounts = auth()->user()->account()->get();
-     
-        $accountings = auth()->user()->accounting()->get();
-
-        $type_accounts= type_account::all();
+            $bayers = Bayer::where('in_use', '=', "S")->get();
+    
+            $crops = Crop::where('in_use', '=', "S")->get();
+    
+            $type_accounts = Type_account::all();
+    
+            $accountings = Accounting::where('in_use', '=', "S")->get();
+    
+            $type_accounts= type_account::all();
 
         
         // dd($sales); 

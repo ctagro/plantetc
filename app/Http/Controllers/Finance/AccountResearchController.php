@@ -12,6 +12,7 @@ use DB;
 use App\User;
 use App\Models\Account;
 use App\Models\Accounting;
+use App\Models\Ground;
 use App\Models\Type_account;
 
 
@@ -30,13 +31,15 @@ class AccountResearchController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->where('origin', '=', "C")->get();
+    $accounts = auth()->user()->account()->where('origin', '=', "C")->get();
 
-    $grounds = auth()->user()->ground()->get();
+    $grounds = Ground::where('in_use', '=', "S")->get();
 
-    $accountings = auth()->user()->accounting()->get();
+    $accountings = Accounting::where('in_use', '=', "S")->get();
 
-    $type_accounts= type_account::where('id', '<=', 2)->get();
+
+    $type_accounts= type_account::all();
+
 
         return view('finance.account_research.index',compact('accounts','grounds','accountings','type_accounts'));
     }
@@ -47,11 +50,11 @@ class AccountResearchController extends Controller
 
         $accounts = auth()->user()->account()->where('type_account_id', '<=', 2)->where('origin', '=', "C")->get();
         
-        $grounds = auth()->user()->ground()->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $accountings = auth()->user()->accounting()->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
-        $type_accounts= type_account::where('id', '<=', 2)->get();
+        $type_accounts= type_account::all();
 
 
     return view('finance.account_research.research', compact('accounts','grounds','accountings','type_accounts'));
@@ -88,11 +91,11 @@ class AccountResearchController extends Controller
          if ($query)
             $accounts = account::whereRaw($query)->orderBy('date')->get();
          else
-            $accounts = account::where('type_account_id', '<=', 2)->where('origin', '=', "C")->orderBy('date')->get();
+            $accounts = account::where('origin', '=', "C")->orderBy('date')->get();
           
-         $grounds = auth()->user()->ground()->get();
+         $grounds = Ground::where('in_use', '=', "S")->get();
      
-         $accountings = auth()->user()->accounting()->get();
+         $accountings = Accounting::where('in_use', '=', "S")->get();;
 
          $type_accounts= type_account::all();
 

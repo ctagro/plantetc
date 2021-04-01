@@ -34,15 +34,17 @@ class Product_applyResearchController extends Controller
    
     $product_applys = auth()->user()->product_apply()->get();
 
-    $grounds = auth()->user()->ground()->get();
+    $grounds = Ground::where('in_use', '=', "S")->get();
+
+    $bayers = Bayer::where('in_use', '=', "S")->get();
 
     $accounts = auth()->user()->account()->get();
 
-    $accountings = auth()->user()->accounting()->get();
+    $accountings = Accounting::where('in_use', '=', "S")->get();
 
-    $workers = auth()->user()->worker()->get();
+    $workers = Worker::where('in_use', '=', "S")->get();
 
-    $products = auth()->user()->product()->get();
+    $products = Product::where('in_use', '=', "S")->get();
 
         return view('product/product_apply.product_apply_research.index',compact('product_applys','accounts','accountings','grounds','workers','products'));
     }
@@ -53,15 +55,15 @@ class Product_applyResearchController extends Controller
 
         $product_applys = auth()->user()->product_apply()->get();
 
-        $grounds = auth()->user()->ground()->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
         $accounts = auth()->user()->account()->get();
 
-        $accountings = auth()->user()->accounting()->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
-        $workers = auth()->user()->worker()->get();
+        $workers = Worker::where('in_use', '=', "S")->get();
 
-        $products = auth()->user()->product()->get();
+        $products = Product::where('in_use', '=', "S")->get();
 
     return view('product/product_apply.product_apply_research.research', compact('product_applys','accounts','accountings','grounds','workers','products'));
 
@@ -100,15 +102,15 @@ class Product_applyResearchController extends Controller
          else
             $product_applys = product_apply::orderBy('date')->get();
 
+        $grounds = Ground::where('in_use', '=', "S")->get();
+    
         $accounts = auth()->user()->account()->get();
-
-        $accountings = auth()->user()->accounting()->get();
-          
-        $grounds = auth()->user()->ground()->get();
-
-        $workers = auth()->user()->worker()->get();
- 
-        $products = auth()->user()->product()->get();
+    
+        $accountings = Accounting::where('in_use', '=', "S")->get();
+    
+        $workers = Worker::where('in_use', '=', "S")->get();
+    
+        $products = Product::where('in_use', '=', "S")->get();;
 
  
     return view('product/product_apply.product_apply_research.index', compact('product_applys', 'products','grounds','workers','accountings'));

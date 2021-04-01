@@ -11,6 +11,7 @@ use DateTime;
 use DB;
 use App\User;
 use App\Models\Activity;
+use App\Models\Type_activity;
 use App\Models\Worker;
 use App\Models\Ground;
 use App\Models\Product;
@@ -32,13 +33,13 @@ class ActivityResearchController extends Controller
    
     $activitys = auth()->user()->activity()->get();
 
-    $type_activitys = auth()->user()->type_activity()->get();
+    $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
-    $grounds = auth()->user()->ground()->get();
+    $grounds = Ground::where('in_use', '=', "S")->get();
 
-    $workers = auth()->user()->worker()->get();
+    $workers = Worker::where('in_use', '=', "S")->get();
 
-    $products = auth()->user()->product()->get();
+    $products = Product::where('in_use', '=', "S")->get();
 
         return view('activity.activity_research.index',compact('activitys','type_activitys','grounds','workers','products'));
     }
@@ -49,13 +50,13 @@ class ActivityResearchController extends Controller
 
         $activitys = auth()->user()->activity()->get();
 
-        $type_activitys = auth()->user()->type_activity()->get();
+        $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
-        $grounds = auth()->user()->ground()->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $workers = auth()->user()->worker()->get();
+        $workers = Worker::where('in_use', '=', "S")->get();
 
-        $products = auth()->user()->product()->get();
+        $products = Product::where('in_use', '=', "S")->get();
 
     return view('activity.activity_research.research', compact('activitys','type_activitys','grounds','workers','products'));
 
@@ -95,13 +96,13 @@ class ActivityResearchController extends Controller
          else
             $activitys = activity::orderBy('date')->get();
 
-         $type_activitys = auth()->user()->type_activity()->get();
-          
-         $grounds = auth()->user()->ground()->get();
+            $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
-         $workers = auth()->user()->worker()->get();
- 
-         $products = auth()->user()->product()->get();
+            $grounds = Ground::where('in_use', '=', "S")->get();
+    
+            $workers = Worker::where('in_use', '=', "S")->get();
+    
+            $products = Product::where('in_use', '=', "S")->get();
 
  
     return view('activity.activity_research.index', compact('activitys', 'type_activitys','grounds','workers','products'));
