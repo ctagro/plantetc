@@ -14,28 +14,39 @@ class UserTableSeeder extends Seeder
     {
 
         User::create([
-            'name'       => 'Admin',
-            'email'      => 'admin@gmail.com',
-            'password'   => bcrypt('asdfqwer'),
+            'name'          => 'Admin',
+            'email'         => 'admin@gmail.com',
+            'competence_id' => 1,          
+            'password'      => bcrypt('asdfqwer'),
+        ]);
+
+        User::create([
+            'name'          => 'Admin',
+            'email'         => 'louresvale@gmail.com',
+            'competence_id' => 1,          
+            'password'      => bcrypt('asdfqwer'),
         ]);
         
                 
         User::create([
-            'name'       => 'Matheus',
-            'email'      => 'matheus@gmail.com',
-            'password'   => bcrypt('matheus'),
+            'name'          => 'Matheus',
+            'email'         => 'matheus@gmail.com',
+            'competence_id' => 2, 
+            'password'      => bcrypt('matheus'),
         ]);
 
         User::create([
-            'name'       => 'Vagner',
-            'email'      => 'vagner@gmail.com',
-            'password'   => bcrypt('vagner'),
+            'name'          => 'Vagner',
+            'email'         => 'vagner@gmail.com',
+            'competence_id' => 2, 
+            'password'      => bcrypt('vagner'),
         ]);
 
         User::create([
-            'name'       => 'Paulo',
-            'email'      => 'paulo@gmail.com',
-            'password'   => bcrypt('paulo'),
+            'name'          => 'Paulo',
+            'email'         => 'paulo@gmail.com',
+            'competence_id' => 2, 
+            'password'      => bcrypt('paulo'),
         ]);
 
     }

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Galeria')
 
 @section('content_header')
     <h1 class="m-0 text-dark">Fazenda Santa Luiza</h1>

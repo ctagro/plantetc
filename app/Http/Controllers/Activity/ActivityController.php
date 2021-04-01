@@ -57,19 +57,19 @@ class ActivityController extends Controller
 
         $activitys = auth()->user()->activity()->get();
 
-        $type_activitys = auth()->user()->type_activity()->where('in_use', '=', "S")->get();
+        $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 
-        $workers = auth()->user()->worker()->where('in_use', '=', "S")->get();
+        $workers = Worker::where('in_use', '=', "S")->get();
 
-        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $products = auth()->user()->product()->where('in_use', '=', "S")->get();
+        $products = Product::where('in_use', '=', "S")->get();
 
         $accounts = auth()->user()->account()->get();
 
-        $accountings = auth()->user()->accounting()->where('in_use', '=', "S")->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
         $account = new \App\Models\Account([
 
@@ -226,15 +226,15 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity) {
 
-        $type_activitys = auth()->user()->type_activity()->where('in_use', '=', "S")->get();
+        $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
         $type_accounts = Type_account::all();
 
-        $workers = auth()->user()->worker()->where('in_use', '=', "S")->get();
+        $workers = Worker::where('in_use', '=', "S")->get();
 
-        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $products = auth()->user()->product()->where('in_use', '=', "S")->get();
+        $products = Product::where('in_use', '=', "S")->get();
 
         $account = account::where('id', '=', $activity->account_id)->get();
 

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image', 100)->nullable();
+            $table->unsignedBigInteger('competence_id');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

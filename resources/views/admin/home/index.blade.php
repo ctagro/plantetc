@@ -6,10 +6,10 @@
 
 
 
-@section('title', 'Santa Luiza')
+@section('title', 'Home')
 
 @section('content_header')
-    <h3 class="text-dark text-center p-1">Controle Financeiro </h3>
+    <h3 class="text-dark text-center p-1">Fazenda Santa Luiza</h3>
     <h6 class="card-subtitle text-center">Conta:  {{ auth()->user()->name }}</h6>
 @stop
 

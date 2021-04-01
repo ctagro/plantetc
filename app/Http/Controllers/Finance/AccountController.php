@@ -30,11 +30,11 @@ class AccountController extends Controller
     public function index()
     {
    
-        $accounts = auth()->user()->account()->where('origin', '=', "C")->get();
+    $accounts = auth()->user()->account()->where('origin', '=', "C")->get();
 
-    $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+    $grounds = Ground::where('in_use', '=', "S")->get();
 
-    $accountings = auth()->user()->accounting()->where('in_use', '=', "S")->get();
+    $accountings = accounting::where('in_use', '=', "S")->get();
 
     $type_accounts= type_account::where('id', '<=', 3)->get();
 
@@ -66,9 +66,9 @@ class AccountController extends Controller
 
         $accounts = auth()->user()->account()->get();
 
-        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $accountings = auth()->user()->where('in_use', '=', "S")->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
         $type_accounts= type_account::where('id', '<=', 2)->get();
 
@@ -142,9 +142,9 @@ class AccountController extends Controller
 
         $user = auth()->user();
 
-        $grounds = auth()->user()->ground()->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $accountings = auth()->user()->accounting()->where('in_use', '=', "S")->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
         $type_accounts= type_account::where('id', '<=', 3)->get();
 

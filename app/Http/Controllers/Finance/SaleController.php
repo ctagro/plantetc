@@ -15,6 +15,7 @@ use App\Models\Ground;
 use App\Models\Crop;
 use App\Models\Account;
 use App\Models\Accounting;
+use App\Models\Bayer;
 
 
 use DateTime;
@@ -57,11 +58,11 @@ class SaleController extends Controller
 
         $sales = auth()->user()->sale()->get();
 
-        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $crops = auth()->user()->crop()->where('in_use', '=', "S")->get();
+        $crops = Crop::where('in_use', '=', "S")->get();
 
-        $bayers = auth()->user()->bayer()->where('in_use', '=', "S")->get();
+        $bayers = Bayer::where('in_use', '=', "S")->get();
 
         $type_accounts = Type_account::all();
 
@@ -222,11 +223,11 @@ class SaleController extends Controller
 
         $sales = auth()->user()->sale()->get();
 
-        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $crops = auth()->user()->crop()->where('in_use', '=', "S")->get();
+        $crops = Crop::where('in_use', '=', "S")->get();
 
-        $bayers = auth()->user()->bayer()->where('in_use', '=', "S")->get();
+        $bayers = Bayer::where('in_use', '=', "S")->get();
 
         $type_accounts = Type_account::all();
 

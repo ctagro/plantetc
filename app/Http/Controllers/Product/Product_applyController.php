@@ -53,13 +53,13 @@ class Product_applyController extends Controller
 
         $product_applys = auth()->user()->product_apply()->get();
 
-        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $workers = auth()->user()->worker()->where('in_use', '=', "S")->get();
+        $workers = Worker::where('in_use', '=', "S")->get();
 
-        $products = auth()->user()->product()->where('in_use', '=', "S")->get();
+        $products = Product::where('in_use', '=', "S")->get();
 
-        $accountings = accounting::where('in_use', '=', "S")->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
 
         $account = new \App\Models\Account([
@@ -208,13 +208,13 @@ class Product_applyController extends Controller
 
       //  $product_applies = auth()->user()->product_apply()->get();
 
-        $grounds = auth()->user()->ground()->where('in_use', '=', "S")->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $workers = auth()->user()->worker()->where('in_use', '=', "S")->get();
+        $workers = Worker::where('in_use', '=', "S")->get();
 
-        $products = auth()->user()->product()->where('in_use', '=', "S")->get();
+        $products = Product::where('in_use', '=', "S")->get();
 
-        $accountings = accounting::where('in_use', '=', "S")->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
         //dd($product_apply);
 
