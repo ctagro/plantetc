@@ -122,7 +122,7 @@
 </div>
 
 </div>
-@endsection
+
 
 <!-- ./wrapper -->
 <!-- jQuery -->
@@ -142,5 +142,7 @@
     window.location.href='#ancora';
 </script>
 <!-- page script -->
+
+@stop
 
 

@@ -47,6 +47,7 @@
 </div>
 
 <!-- Inicio da Tabela dos registros -->
+<?php $account_total = 0 ?>
 
                 <div class='table-responsive'>
 
@@ -84,10 +85,31 @@
                                     </td>
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ number_format($account->amount, 2 , ',', '.')  }}</a>
+                                        <?php $account_total = $account_total + $account->amount ?>
                                     </td>
                                 </tr>
                             @empty
-                        @endforelse                  
+                        @endforelse 
+                        <tr>
+                                    <td>
+                                       <a  >{{ " " }}</a>
+                                    </td>
+                                    <td>
+                                        <a  >{{ " "}}</a>
+                                    </td>
+                                    <td>
+                                        <a  >{{ " "}}</a>
+                                    </td>
+                                    <td>
+                                        <a  >{{ " " }}</a>
+                                    </td>  
+                                    <td>
+                                        <a  >{{ " "}}</a>
+                                    </td>
+                                    <td>
+                                        <a  >{{ number_format($account_total, 2 , ',', '.')  }}</a>
+                                    </td>
+                                </tr>                 
                     </tbody>
         
                 </table>

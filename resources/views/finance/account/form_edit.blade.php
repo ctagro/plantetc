@@ -27,7 +27,7 @@
             </div>
    
             <div class="form-group row">
-                <input type="txt" name="description" value="{{old('description') == $account->description ? $account->description :'Descrição'}}" class="form-control py-3" >
+                <input type="txt" name="description" value="{{old('description') == $account->description ? $account->description : $account->description}}" class="form-control py-3" >
                 @if($errors->has('description'))
                     <h6 class="text-danger" >Digite a Descrição</h6> 
                 @endif
@@ -41,7 +41,7 @@
             @foreach($type_accounts as $type_account)
                 
                 <p>{{$type_account->id}}</p>
-                    <option value="{{$type_account->id}}" {{ $type_account->id == $account->type_account_id ? 'selected' : ''}}>{{$type_account->name}} </option>
+                <option value="{{$type_account->id}}" {{ $type_account->id == $account->type_account_id ? 'selected' : ''}}>{{$type_account->name}} </option>
                 
             @endforeach
         </select>

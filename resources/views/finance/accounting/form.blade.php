@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 <label>Descrição: </label>
-                    <input type="txt" name="description" value="{{old('description') ?? $accounting->description }}" class="form-control py-3" placeholder="Descrição">
+                    <input type="txt" name="description" value="{{old('description') ?? $accounting->description }}" class="form-control py-3" >
                     @if($errors->has('description'))
                       <h6 class="text-danger" >Digite o Descrição</h6> 
                     @endif
