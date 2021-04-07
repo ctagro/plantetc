@@ -39,7 +39,7 @@ class ActivityController extends Controller
     public function index()
     {
    
-    $activitys = auth()->user()->activity()->get();
+    $activitys = Activity::all();
 
         return view('activity.activity.index',compact('activitys'));
     }
@@ -55,7 +55,7 @@ class ActivityController extends Controller
 
         $user = auth()->user();
 
-        $activitys = auth()->user()->activity()->get();
+        $activitys = Activity::all();
 
         $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
@@ -238,7 +238,7 @@ class ActivityController extends Controller
 
         $account = account::where('id', '=', $activity->account_id)->get();
 
-        $accountings = auth()->user()->accounting()->where('in_use', '=', "S")->get();
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
         $user = auth()->user();
 

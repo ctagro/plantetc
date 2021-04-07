@@ -31,7 +31,7 @@ class ActivityResearchController extends Controller
     public function index()
     {
    
-    $activitys = auth()->user()->activity()->get();
+    $activitys = Activity::all();
 
     $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
@@ -48,7 +48,7 @@ class ActivityResearchController extends Controller
 
     {
 
-        $activitys = auth()->user()->activity()->get();
+        $activitys = Activity::all();
 
         $type_activitys = Type_activity::where('in_use', '=', "S")->get();
 
