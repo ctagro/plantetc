@@ -32,7 +32,7 @@ class Product_applyResearchController extends Controller
     public function index()
     {
    
-    $product_applys = product_apply()->all();
+    $product_applys = Product_apply::all();
 
     $grounds = Ground::where('in_use', '=', "S")->get();
 
@@ -53,7 +53,7 @@ class Product_applyResearchController extends Controller
 
     {
 
-        $product_applys = auth()->user()->product_apply()->get();
+        $product_applys = Product_apply::all();
 
         $grounds = Ground::where('in_use', '=', "S")->get();
 

@@ -31,7 +31,7 @@ class Product_applyController extends Controller
     public function index()
     {
    
-    $product_applys = product_apply()->all();
+    $product_applys = Product_apply::all();
 
    //dd($product_applys);
 
