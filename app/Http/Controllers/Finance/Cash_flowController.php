@@ -11,6 +11,7 @@ use DateTime;
 use DB;
 use App\User;
 use App\Models\Account;
+use App\Models\Ground;
 use App\Models\Accounting;
 use App\Models\Type_account;
 
@@ -29,11 +30,11 @@ class Cash_flowController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->get();
+    $accounts = Account::all();
 
-    $grounds = auth()->user()->ground()->get();
+    $grounds = Ground::where('in_use', '=', "S")->get();
 
-    $accountings = auth()->user()->accounting()->get();
+    $accountings = Accounting::where('in_use', '=', "S")->get();
 
     $type_accounts= type_account::all();
 
@@ -44,11 +45,11 @@ class Cash_flowController extends Controller
 
     {
 
-        $accounts = auth()->user()->account()->get();
-        
-        $grounds = auth()->user()->ground()->get();
+        $accounts = Account::all();
 
-        $accountings = auth()->user()->accounting()->get();
+        $grounds = Ground::where('in_use', '=', "S")->get();
+
+        $accountings = Accounting::where('in_use', '=', "S")->get();
 
         $type_accounts= type_account::all();
 
