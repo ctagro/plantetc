@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tipo de Conta</title>
+    <title>Insumo</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,15 +25,9 @@
 </body>
 </html>
 
-@section('title', 'Apresentar')
+@section('title', 'Editar')
 
     @extends('adminlte::page')
-
-@section('content')
-
-@extends('adminlte::page')
-
-@section('title', 'Tipo de Conta')
 
 @section('content')
    
@@ -42,7 +36,7 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/ground_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                 Confirmar exclusão
               </div>
           </div>
@@ -50,74 +44,77 @@
   </div>
 </div>   
 
-   <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('product.destroy',[ 'product' => $product->id ])}}" method="POST"  enctype="multipart/form-data">
+   
+<form action="{{ route('product.destroy',[ 'product' => $product->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
-         <div class="form-group">
+  <div class="form-group">
          {!! csrf_field() !!}  
 
+    <div class="form-group">
 
-  <div class="form-group">
+      <div class="container">
 
-    <div class="container">
-
-        <div class="row">
-          <div class="bolder">Nome:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $product->name}}</div>
-        </div>
-        <div class="row">
-          <div class="bolder">Descrição:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $product->description}}</div>
-        </div> 
-        <div class="row">
-          <div class="bolder">Embalagem:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $product->packing}}</div>
-        </div> 
-        <div class="row">
-          <div class="bolder">Unidade:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $product->unity}}</div>
-        </div> 
-        <div class="row">
-          <div class="bolder">Preço:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{number_format($product->price, 2 , ',', '.') }}</div>
-        </div> 
-        <div class="row">
-          <div class="bolder">Preço por unidade:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{number_format($product->price_unit, 2 , ',', '.') }}</div>
-        </div> 
-
-        <br>
-        <div class="row">
-          Imagem :
-          <img src="{{ asset('storage/products/'.$product->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
-        </div>
-    </div>
+            <div class="row">
+              <div class="bolder">Nome:</div>
+            </div>
+            <div class="row">
+              <div class="form-control">{{ $product->name}}</div>
+            </div>
+            <div class="row">
+              <div class="bolder">Descrição:</div>
+            </div>
+            <div class="row">
+              <div class="form-control">{{ $product->description}}</div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-4 ">
+                <div class="row">
+                  <div class="bolder">Embalagem:</div>
+                </div>
+                <div class="row">
+                  <div class="form-control">{{ $product->packing}}</div>
+                </div> 
+                <div class="row">
+                  <div class="bolder">Unidade:</div>        
+                </div>
+                <div class="row">  
+                  <div class="form-control">{{ $product->unity}}</div>
+                </div> 
+                <div class="row">
+                  <div class="bolder">Preço:</div>
+                </div>       
+                <div class="row">
+                  <div class="form-control">{{number_format($product->price, 2 , ',', '.') }}</div>
+                </div>
+                <div class="row">
+                  <div class="bolder">Preço por unidade:</div>
+                </div>
+                <div class="row">
+                  <div class="form-control">{{number_format($product->price_unit, 2 , ',', '.') }}</div>
+                </div> 
+              </div>
+              <div class="form-group col-sm-2 ">          
+                <p></p>          
+              </div>
+              <div class="form-group col-sm-6 ">
+                <br>          
+                <img src="{{ asset('storage/products/'.$product->image)}}" class="img-thumbnail elevation-2"  style="max-width: 300px;">         
+              </div>
+            </div>
+      </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>
+              <a href="{{ url('/product') }}" class="float-right" >Voltar </a> 
+            </div>
+          </div>
+      </form>
       
-             <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão da Cultura</button>
-                  <a href="{{ url('/product') }}" class="float-right" >Voltar </a> 
-             </div>
-         </div>
-     </form>
-
-</div>
-</div>
-<a href="#" id="ancora"></a>
-
+    </div>
+  </div>
+     
+  <a href="#" id="ancora"></a>
 
 @endsection
 

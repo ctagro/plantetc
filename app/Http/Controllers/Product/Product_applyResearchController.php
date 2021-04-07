@@ -32,19 +32,19 @@ class Product_applyResearchController extends Controller
     public function index()
     {
    
-    $product_applys = auth()->user()->product_apply()->get();
+    $product_applys = product_apply()->all();
 
     $grounds = Ground::where('in_use', '=', "S")->get();
 
-    $bayers = Bayer::where('in_use', '=', "S")->get();
+    $bayers = Bayer::where('in_use', '=', "S")->orderby('name','asc')->get();
 
     $accounts = auth()->user()->account()->get();
 
     $accountings = Accounting::where('in_use', '=', "S")->get();
 
-    $workers = Worker::where('in_use', '=', "S")->get();
+    $workers = Worker::where('in_use', '=', "S")->orderby('name','asc')->get();
 
-    $products = Product::where('in_use', '=', "S")->get();
+    $products = Product::where('in_use', '=', "S")->orderby('name','asc')->get();
 
         return view('product/product_apply.product_apply_research.index',compact('product_applys','accounts','accountings','grounds','workers','products'));
     }
@@ -61,9 +61,9 @@ class Product_applyResearchController extends Controller
 
         $accountings = Accounting::where('in_use', '=', "S")->get();
 
-        $workers = Worker::where('in_use', '=', "S")->get();
+        $workers = Worker::where('in_use', '=', "S")->orderby('name','asc')->get();
 
-        $products = Product::where('in_use', '=', "S")->get();
+        $products = Product::where('in_use', '=', "S")->orderby('name','asc')->get();
 
     return view('product/product_apply.product_apply_research.research', compact('product_applys','accounts','accountings','grounds','workers','products'));
 

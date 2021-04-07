@@ -12,7 +12,7 @@
 
                 <input type="text" name="name" value="{{old('name') ?? $product->name }}" class="form-control" placeholder="Nome">
                 @if($errors->has('name'))
-                        <h6 class="text-danger" >Digite o Nome</h6> 
+                        <h6 class="text-danger" >Digite o Insumo</h6> 
                 @endif
             </div>
 

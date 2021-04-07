@@ -394,7 +394,7 @@ return [
             ], 
             
             [
-                'text'       => 'Produtos',
+                'text'       => 'Insumos',
                 'icon_color' => 'green',
                 'url'  => '/product',
                 'icon'        => 'fas fa-money-bill-wave',

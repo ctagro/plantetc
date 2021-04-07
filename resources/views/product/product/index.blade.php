@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Produto</title>
+    <title>Insumo</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,7 +44,7 @@
                           <div class="card">
                               <div class="card-header">
                                 <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                                Produto
+                               Insumos
                                 <a class="float-right" href="{{url('product/create')}}">Cadastrar</a>
                               </div>
                           </div>

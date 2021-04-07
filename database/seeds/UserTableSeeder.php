@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name'          => 'Admin',
+            'name'          => 'João Procópio',
             'email'         => 'louresvale@gmail.com',
             'competence_id' => 1,          
             'password'      => bcrypt('asdfqwer'),

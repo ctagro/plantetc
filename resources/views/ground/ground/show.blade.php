@@ -30,12 +30,6 @@
     @extends('adminlte::page')
 
 @section('content')
-
-@extends('adminlte::page')
-
-@section('title', 'Atividades')
-
-@section('content')
    
 <div class="container">
   <div class="row justify-content-center">
@@ -50,7 +44,7 @@
   </div>
 </div>   
 
-   <!-- Fim do Formulario de despesa_conta --> 
+   
    <form action="{{ route('ground.destroy',[ 'ground' => $ground->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
@@ -100,7 +94,6 @@
 </div>
 </div>
 <a href="#" id="ancora"></a>
-
 
 @endsection
 

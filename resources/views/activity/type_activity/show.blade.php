@@ -31,11 +31,6 @@
 
 @section('content')
 
-@extends('adminlte::page')
-
-@section('title', 'Atividades')
-
-@section('content')
 
 <div class="container">
   <div class="row justify-content-center">

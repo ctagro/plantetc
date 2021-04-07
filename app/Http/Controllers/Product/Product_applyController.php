@@ -31,7 +31,7 @@ class Product_applyController extends Controller
     public function index()
     {
    
-    $product_applys = auth()->user()->product_apply()->get();
+    $product_applys = product_apply()->all();
 
    //dd($product_applys);
 
@@ -55,9 +55,9 @@ class Product_applyController extends Controller
 
         $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $workers = Worker::where('in_use', '=', "S")->get();
+        $workers = Worker::where('in_use', '=', "S")->orderby('name','asc')->get();
 
-        $products = Product::where('in_use', '=', "S")->get();
+        $products = Product::where('in_use', '=', "S")->orderby('name','asc')->get();
 
         $accountings = Accounting::where('in_use', '=', "S")->get();
 
@@ -210,13 +210,13 @@ class Product_applyController extends Controller
 
         $grounds = Ground::where('in_use', '=', "S")->get();
 
-        $workers = Worker::where('in_use', '=', "S")->get();
+        $workers = Worker::where('in_use', '=', "S")->orderby('name','asc')->get();
 
-        $products = Product::where('in_use', '=', "S")->get();
+        $products = Product::where('in_use', '=', "S")->orderby('name','asc')->get();
 
         $accountings = Accounting::where('in_use', '=', "S")->get();
 
-        //dd($product_apply);
+    
 
 
         return view('product.product_apply.edit',compact('product_apply','accounts','grounds','accountings','workers','products'));

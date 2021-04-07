@@ -36,7 +36,7 @@ class SaleController extends Controller
     public function index()
     {
    
-    $sales = auth()->user()->sale()->get();
+    $sales = Sale::all();
 
     //dd($sales);
 
@@ -56,7 +56,7 @@ class SaleController extends Controller
 
         $accounts = auth()->user()->account()->get();
 
-        $sales = auth()->user()->sale()->get();
+        $sales = Sale::all();
 
         $grounds = Ground::where('in_use', '=', "S")->get();
 
@@ -221,7 +221,7 @@ class SaleController extends Controller
 
         $accounts = auth()->user()->account()->get();
 
-        $sales = auth()->user()->sale()->get();
+        $sales = Sale::all();
 
         $grounds = Ground::where('in_use', '=', "S")->get();
 

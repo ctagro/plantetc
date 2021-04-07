@@ -25,15 +25,9 @@
 </body>
 </html>
 
-@section('title', 'Apresentar')
+@section('title', 'Confirmar exclusão')
 
     @extends('adminlte::page')
-
-@section('content')
-
-@extends('adminlte::page')
-
-@section('title', 'Tipo de Conta')
 
 @section('content')
    

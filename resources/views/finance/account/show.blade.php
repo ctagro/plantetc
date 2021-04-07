@@ -31,10 +31,6 @@
 
 @section('content')
 
-@extends('adminlte::page')
-
-@section('title', 'Movimentação')
-
 
 @section('content')
 

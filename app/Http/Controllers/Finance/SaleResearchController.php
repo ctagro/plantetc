@@ -128,8 +128,7 @@ class SaleResearchController extends Controller
             $type_accounts = Type_account::all();
     
             $accountings = Accounting::where('in_use', '=', "S")->get();
-    
-            $type_accounts= type_account::all();
+
 
         
         // dd($sales); 
