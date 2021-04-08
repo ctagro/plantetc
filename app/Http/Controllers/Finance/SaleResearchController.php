@@ -106,7 +106,7 @@ class SaleResearchController extends Controller
 
          $query = substr($prepareQuery, 0 , -5);
 
-         dd($query);
+         // dd($query);
 
 
          if ($query)
