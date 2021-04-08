@@ -22,10 +22,7 @@ use App\Models\Type_account;
 
 class SaleResearchController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
 
     /**
      * Display a listing of the resource.
@@ -35,7 +32,7 @@ class SaleResearchController extends Controller
     public function index()
     {
 
-        $user = auth()->user();
+       // $user = auth()->user();
 
         $accounts = Account::all();
 
@@ -109,7 +106,7 @@ class SaleResearchController extends Controller
 
          $query = substr($prepareQuery, 0 , -5);
 
-         //dd($query);
+         dd($query);
 
 
          if ($query)
