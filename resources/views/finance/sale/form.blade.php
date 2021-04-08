@@ -109,7 +109,7 @@
                     @else 
 
                         <div class="form-group col-sm-3">
-                            <label>Desconto: </label>
+                            <label>Desconto (%): </label>
                             <input type="number" class="floatNumberField form-control py-3"  name="discount"  value="{{old('discount') ?? $sale->discount}}" placeholder="0.00"  >
                         </div>
                     @endif

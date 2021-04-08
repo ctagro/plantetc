@@ -37,9 +37,9 @@ class SaleResearchController extends Controller
 
         $user = auth()->user();
 
-        $accounts = auth()->user()->account()->get();
+        $accounts = Account::all();
 
-        $sales = auth()->user()->sale()->get();
+        $sales = Sale::all();
 
         $grounds = Ground::where('in_use', '=', "S")->get();
 
@@ -60,9 +60,9 @@ class SaleResearchController extends Controller
 
     {
 
-        $accounts = auth()->user()->account()->get();
+        $accounts = Account::all();
 
-        $sales = auth()->user()->sale()->get();
+        $sales = Sale::all();
 
         $grounds = Ground::where('in_use', '=', "S")->get();
 
@@ -117,7 +117,7 @@ class SaleResearchController extends Controller
          else
             $sales = sale::orderBy('date')->get();
 
-            $accounts = auth()->user()->account()->get();
+            $accounts = Account::all();
           
             $grounds = Ground::where('in_use', '=', "S")->get();
 
