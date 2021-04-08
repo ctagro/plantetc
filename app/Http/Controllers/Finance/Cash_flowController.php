@@ -66,6 +66,8 @@ class Cash_flowController extends Controller
         $termos = $request->only('description', 'type_account_id', 'accounting_id', 'ground_id', 'date_inicial', 'date_final' );
         $prepareQuery = "";
         $query = "";
+
+       
         foreach ($termos as $nome => $valor) {
 
             if($valor){

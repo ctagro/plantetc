@@ -148,6 +148,15 @@ Route::namespace('Product')->group(function () {
     
 });
 
+Route::namespace('Report')->group(function () {
+
+    Route::post('result_area/research', 'Result_areaController@research')->name('result_area.research');
+    Route::get('result_area', 'Result_areaController@consult')->name('result_area.consult');
+    Route::get('result_area/index', 'Result_areaController@index')->name('result_area.index');
+
+
+});
+
 Route::namespace('Site')->group(function () {
     Route::get('/', 'HomeController')->name('site.home.index');
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fluxo de caixa</title>
+    <title>Resultado por área</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,7 +27,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Movimentações')
+@section('title', 'Resultado')
 
 
 
@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/account_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Fluxo de Caixa
+                    Resultado por área
                 </div>
             </div>
         </div>
@@ -56,40 +56,29 @@
                     <thead>
                         <tr>
                     
-                            <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Descrição</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Conta</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Área</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Conta</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Somatório</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Balanço</th>
+                        
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
                         </tr>
                     </thead>
                 
                     <tbody>
-                        @forelse($accounts as $account)
+                        @forelse($results as $key => $result)
                                 <tr>
                                     <td>
-                                       <a>{{ $account->date }}</a>
+                                       <a>{{ $key }}</a>
                                     </td>
-                                    <td>
-                                        <a>{{ $account->description }}</a>
-                                    </td>
-                                    <td>
-                                        <a>{{ $account->accounting->name }}</a>
-                                    </td>  
-                                    <td>
-                                        <a>{{ $account->ground->name}}</a>
-                                    </td>
-                                   
-            @if( $account->type_account_id == 1 OR $account->type_account_id == 2)
-                                        <td class="tex                        t-sm">{{ number_format((-1 * $account->amount), 2 , ',', '.')  }}</td>
-                                        <?php $balance = $balance - $account->amount ?>
-                                    @else
-                                        <td class="text-sm" >{{ number_format($account->amount, 2 , ',', '.')  }}</td>
-                                        <?php $balance = $balance + $account->amount ?>
-                                    @endif
-                                    <td class="text-sm" >{{ number_format($balance, 2 , ',', '.')  }}</td>
+                                    @if( $key == "Receita de vendas" OR $key == "Outras Receitas" )
+                                    <td class="text-sm">{{ number_format(($result), 2 , ',', '.')  }}</td>
+                                    <?php $balance = $balance + $result ?>
+                                @else
+                                    <td class="text-sm" >{{ number_format(-1 * $result, 2 , ',', '.')  }}</td>
+                                    <?php $balance = $balance - $result ?>
+                                @endif
+                                <td class="text-sm" >{{ number_format($balance, 2 , ',', '.')  }}</td>
+                            </tr>
                                 </tr>
                             @empty
                         @endforelse                  

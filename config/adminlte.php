@@ -350,6 +350,16 @@ return [
         'icon'        => 'fas fa-money-bill-wave',
     ],  
 
+    ['header' => '=========================='],
+
+    [
+        'text'       => 'Resultado por área',
+        'icon_color' => 'cyan',
+        'url'        => '/result_area',
+        'icon'        => 'fas fa-calendar-plus', 
+
+    ],
+
 
     ['header' => '=========================='],
 
