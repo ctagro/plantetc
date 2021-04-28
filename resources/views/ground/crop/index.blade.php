@@ -44,7 +44,7 @@
                           <div class="card">
                               <div class="card-header">
                                 <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/crop_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                                Tipos de Conta
+                                Tipos de Cultura
                                 <a class="float-right" href="{{url('crop/create')}}">Cadastrar</a>
                               </div>
                           </div>

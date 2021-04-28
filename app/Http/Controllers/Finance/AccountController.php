@@ -30,7 +30,7 @@ class AccountController extends Controller
     public function index()
     {
    
-    $accounts = auth()->user()->account()->where('origin', '=', "C")->get();
+    $accounts = Account::where('origin', '=', "C")->get();
 
     $grounds = Ground::where('in_use', '=', "S")->get();
 

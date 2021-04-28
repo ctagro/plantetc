@@ -177,6 +177,11 @@ class ProductController extends Controller
             }
         
             $upload = $request->file('image')->storeAs('products', $nameFile);
+
+            if (!$upload)
+            return redirect() 
+                        ->back()
+                        ->with('error', 'Falha ao fazer o upload');
         }
 
         
