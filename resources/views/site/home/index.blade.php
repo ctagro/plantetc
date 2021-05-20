@@ -2,7 +2,7 @@
 
 @section('content')
 <main>
-<div class="container-fluid">
+<div id="carrosel-main"class="container-fluid">
     <!-- slider -->
     <div id="mainSlider" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -12,30 +12,86 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img/santaluiza/fsl09.jpeg" class="d-block w-100" alt="Projetos de e-commerce">
+          <img src="img/santaluiza/Casa_Faz.jpg" class="img-responsive" alt="Casa da Fazenda">
 
           <!-- tirar classe d-none -->
 
           <div class="carousel-caption d-nome d-md-block">
-            <h2> Fazenda Santa Luiza</h5>
-            <p>A sede</p>
-            <a href="#" class="main-btn">Mais informações</a>
+            <h2> Fazenda Santa Luiza</h2>
+            <h3>A sede</h3>
+    <!--        <a href="#" class="main-btn">Mais informações</a> -->
           </div>
         </div>
+       
         <div class="carousel-item">
-          <img src="img/santaluiza/fsl10.jpeg" class="d-block w-100" alt="Engenharia de software">
+          <img src="img/santaluiza/plantando_estufa1.jpeg" class="d-block w-100" alt="Cultura de Pimentão">
           <div class="carousel-caption d-md-block">
-            <h2>Fazenda Santa Luiza</h5>
-            <p>Cultura do Pimentão</p>
-            <a href="#" class="main-btn">Mais informações</a>
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Plantando estufa 1</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
           </div>
         </div>
+
         <div class="carousel-item">
-          <img src="img/santaluiza/fsl11.jpeg" class="d-block w-100" alt="Manutenção em software">
+          <img src="img/santaluiza/arado_estufa4.jpeg" class="d-block w-100" alt="Cultura de Pimentão">
           <div class="carousel-caption d-md-block">
-            <h2>Fazenda Santa Luiza</h5>
-            <p>Cultura do Abacate</p>
-            <a href="#" class="main-btn">Mais informações</a>
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Arando para implantação das estufas 4 e 5</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="img/santaluiza/externa_estufa3.jpg" class="d-block w-100" alt="Cultura de Pimentão">
+          <div class="carousel-caption d-md-block">
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Visão externa da estufa 3</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="img/santaluiza/interna_estufa3.jpg" class="d-block w-100" alt="Cultura de Pimentão">
+          <div class="carousel-caption d-md-block">
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Visão interna da estufa 3</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="img/santaluiza/vagner_na_estufa.jpeg" class="d-block w-100" alt="Cultura de Pimentão">
+          <div class="carousel-caption d-md-block">
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Colaborador Vagner</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="img/santaluiza/camionete2_pim_am.jpeg" class="d-block w-100" alt="Cultura de Pimentão">
+          <div class="carousel-caption d-md-block">
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Pimentões colhidos prontos para embalagem</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="img/santaluiza/trator_e_estufas.jpg" class="d-block w-100" alt="Cultura de Pimentão">
+          <div class="carousel-caption d-md-block">
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Pimentões colhidos que serão transportados para embalamento 3</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="img/santaluiza/abacate_hass.jpeg" class="d-block w-100" alt="Cultura de Abacate">
+          <div class="carousel-caption d-md-block">
+            <h2>Fazenda Santa Luiza</h2>
+            <h3>Cultura do Abacate</h3>
+           <!--        <a href="#" class="main-btn">Mais informações</a> -->
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@
   <!-- Estilos -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="{{asset('css/styles.css')}}"/>
+  <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
  
   <!-- Scripts (jQuery não pode ser o slim que vem do Boostrap) -->
   <script
@@ -32,7 +33,7 @@
       <!-- add essa class -->
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark" >
         <a class="navbar-brand" href="{{ route('site.home.index') }}" style="font-size: 20px;">
-          <img id="logo" class="rounded-circle" src="img/logo/logo_santa_luiza.jpg" alt="Fazenda Santa Luiza" style="width:50px;height:50px;"> Fazenda Santa Luiza
+          <img id="logo" class="rounded-circle" src="img/logo/logo_santa_luiza.jpg" alt="" style="width:50px;height:50px;"> Fazenda Santa Luiza
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links" aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -40,18 +41,18 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
           <div class="navbar-nav">
             <a class="nav-item nav-link" id="home-menu" href="{{ route('site.home.index') }}">Home</span></a>
-  <!--          <a class="nav-item nav-link" id="about-menu" href="{ route('site.about') }}">Sobre</a>
+    <!--    <a class="nav-item nav-link" id="about-menu" href="{ route('galeria') }}">Galeria</a>
           <a class="nav-item nav-link" id="services-menu" href="{ route('site.products.index')}}">Culturas</a>
-            <a class="nav-item nav-link" id="services-menu" href="{ route('site.category.index')}}">Fertilizantes</a>
+            <a class="nav-item nav-link" id="services-menu" href="{ route('category.index')}}">Fertilizantes</a>
             <a class="nav-item nav-link" id="services-menu" href="{ route('site.category.herbicida')}}">Herbicidas</a>
-            <a class="nav-item nav-link" id="portfolio-menu" href="{route('site.project.index')}}">Ceasa</a>
-  -->       <a class="nav-item nav-link" id="contact-menu" href="{{route('admin.home.index')}}">Entrar</a>
+            <a class="nav-item nav-link" id="portfolio-menu" href="{route('site.project.index')}}">Ceasa</a> -->
+            <a class="nav-item nav-link" id="contact-menu" href="{{route('admin.home.index')}}">Entrar</a>
           </div>
         </div>
       </nav>
     </div>
 
-    @yield('content')  
+  @yield('content')  
 <!-- Hamburger menu list -->
   <!-- Rodapé -->
   <footer>

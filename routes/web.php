@@ -27,6 +27,7 @@ Route::get('site/profile/profile', [App\Http\Controllers\Site\UserController::cl
 Route::post('site/profile/profile', [App\Http\Controllers\Site\UserController::class, 'profileUpdate'])->name('profile.update')-> middleware('auth');
 Route::get('/site/galeria/galeria', [App\Http\Controllers\HomeController::class, 'galeria'])->name('galeria');
 
+
 Route::namespace('Activity')->group(function () {
     Route::get('activity/create', 'ActivityController@create')->name('activity.create');
     Route::post('activity/store', 'ActivityController@store')->name('activity.store');
@@ -159,5 +160,7 @@ Route::namespace('Report')->group(function () {
 
 Route::namespace('Site')->group(function () {
     Route::get('/', 'HomeController')->name('site.home.index');
+    Route::get('site/about/index', [App\Http\Controllers\Site\AboutController::class,'index'])->name('site.about');
+    Route::get('site/category/index', [App\Http\Controllers\Site\CategoryController::class, 'index'])->name('category.index');
 
 });
