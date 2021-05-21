@@ -66,20 +66,22 @@
                 
                     <tbody>
                         @forelse($results as $key => $result)
+                            @if($result != 0)    
                                 <tr>
                                     <td>
                                        <a>{{ $key }}</a>
                                     </td>
-                                    @if( $key == "Receita de vendas" OR $key == "Outras Receitas" )
+                                @if( $key == "Receita de vendas" OR $key == "Outras Receitas" )
                                     <td class="text-sm">{{ number_format(($result), 2 , ',', '.')  }}</td>
                                     <?php $balance = $balance + $result ?>
                                 @else
                                     <td class="text-sm" >{{ number_format(-1 * $result, 2 , ',', '.')  }}</td>
                                     <?php $balance = $balance - $result ?>
                                 @endif
-                                <td class="text-sm" >{{ number_format($balance, 2 , ',', '.')  }}</td>
-                            </tr>
+                                    <td class="text-sm" >{{ number_format($balance, 2 , ',', '.')  }}</td>
                                 </tr>
+                            @endif
+                            </tr>
                             @empty
                         @endforelse                  
                     </tbody>
@@ -91,7 +93,7 @@
 <!-- Fim da Tabela dos registros -->
 
  
-<p class="text-right"> <a href="{{ url('/cash_flow') }}" class="text-right">Voltar </a> </p>
+<p class="text-right"> <a href="{{ url('/result_area') }}" class="text-right">Voltar </a> </p>
 
 </body>
 

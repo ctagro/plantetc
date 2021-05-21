@@ -63,7 +63,11 @@ class Result_areaController extends Controller
 
         $accountings= accounting::all();
 
+     // dd($accountings);
+
         $pesquisa = $request;
+
+       // dd($pesquisa);
     
 
     //    $termos = $request->only('ground_id', 'date_inicial', 'date_final' );
@@ -75,6 +79,8 @@ class Result_areaController extends Controller
             {
                 $names[] = $accounting->name;
                  $id[] = $accounting->id;
+
+            //     dd($names,$id);
 
 
                    $prepareQuery = $prepareQuery . 'accounting_id'. '="'. $accounting->id. '" AND ';
@@ -89,8 +95,8 @@ class Result_areaController extends Controller
                     $query = substr($prepareQuery, 0 , -5);
                    
                     
-
-                  // dd($query);
+                
+             
 
                     if ($query){
                         $sums[] = DB::table('accounts')->whereRaw($query)->sum('amount');
@@ -102,10 +108,23 @@ class Result_areaController extends Controller
 
             }
 
+     //   colocando a receita como primeiro item   
+           
+            $temp_name = $names[0];
+            $temp_sum = $sums[0];
+
+            $names[0] = $names[2];
+            $sums[0] = $sums[2];
+
+            $names[2] = $temp_name;
+            $sums[2] = $temp_sum;
+     // -----------------------------------------
+
+
             $results  =  array_combine($names,$sums);
 
 
-      //  dd($names,$sums,$resuls);
+      // dd($names,$sums,$results,$temp_name,$temp_sum);
             
 
          $grounds = auth()->user()->ground()->get();

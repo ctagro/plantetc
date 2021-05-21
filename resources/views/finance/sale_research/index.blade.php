@@ -102,6 +102,8 @@
             </tr>
           
           @endforeach
+
+          <?php $preco_medio = $value_total / $sale_total ?>
           
           <tr>
             <td>  
@@ -118,12 +120,12 @@
             </td>
             <td>
               <a>{{ number_format($sale_total, 2 , ',', '.')}}</a>
-            </td>
+            </td>       
             <td>
-              <a>{{ ""}}</a>
+              <a>{{ "P. Médio"}}</a>
             </td>
             <td>  
-              <a >{{ " "}}</a>              
+              <a>{{ number_format($preco_medio, 2 , ',', '.')}}</a>             
             </td>
             <td>  
               <a >{{ number_format($value_total, 2 , ',', '.')  }}</a>          
