@@ -43,9 +43,9 @@ public function storeGround(array $data): Array
 
                 'name'          => $data['name'],
                 'area'          => $data['area'],
-                'location'        => $data['location'],
-                'in_use'         => $data['in_use'],
-                'image'          => $data['image'],
+                'location'      => $data['location'],
+                'in_use'        => $data['in_use'],
+                'image'         => $data['image'],
                 
 
          ]);

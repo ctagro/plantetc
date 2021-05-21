@@ -247,14 +247,16 @@ return [
             'icon_color' => 'yellow',
             'url'  => 'site/profile/profile',
             'icon' => 'fas fa-fw fa-user',
-        ],[
+        ],
+        
+    /*    [
             'text'        => 'Galeria de fotos',
             'url'         => 'site/galeria/galeria',
             'icon'        => 'fas fa-house-user',
          //   'label'       => 4,
          //   'label_color' => 'success',
         ],
-        
+      */  
         ['header' => '=========================='],
 
 
@@ -343,6 +345,14 @@ return [
 
     ],
 
+ /*   [
+        'text'       => 'Aplicação de Defensivos',
+        'icon_color' => 'cyan',
+        'url'        => '/pesticide_apply',
+        'icon'        => 'fas fa-calendar-plus', 
+
+    ],
+*/
     [
         'text'       => 'Pesquisar Aplicações',
         'icon_color' => 'green',
@@ -408,6 +418,13 @@ return [
                 'icon_color' => 'green',
                 'url'  => '/product',
                 'icon'        => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Defensivos',
+                'icon_color' => 'green',
+                'url'        => '/pesticide',
+                'icon'       => 'fas fa-money-bill-wave',
             ],
 
             [

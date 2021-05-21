@@ -36,9 +36,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                         Consumo de Insumos
-                        <a class="float-right" href="{{url('/product_apply')}}">Lista</a>
+                        <a class="float-right" href="{{url('/pesticide_apply')}}">Lista</a>
                     </div>
                 </div>
             </div>
@@ -70,14 +70,14 @@
     <div class="col-12">
 
     <!-- porque nao suporta o metodo POST se store é post-->
-        <form action="{{ route('product_apply.update' ,[ 'product_apply' => $product_apply->id,'account' => $product_apply->account->id])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('pesticide_apply.update' ,[ 'pesticide_apply' => $pesticide_apply->id,'account' => $pesticide_apply->account->id])}}" method="POST"  enctype="multipart/form-data">
 
             @method('PATCH')
-            @include('product.product_apply.form')
+            @include('pesticide.pesticide_apply.form')
 
         </form>
 
-        <form action="{{ route('product_apply.show' ,[ 'product_apply' => $product_apply->id,'account' => $product_apply->account->id ])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('pesticide_apply.show' ,[ 'pesticide_apply' => $pesticide_apply->id,'account' => $pesticide_apply->account->id ])}}" method="POST"  enctype="multipart/form-data">
 
             @method('POST')
           

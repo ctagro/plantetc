@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class PesticideApplySeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+          // Desabilita a checagem de chaves
+          DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+          DB::table('pesticide_applies')->delete();
+         
+          Pesticide_apply::create([
+                         
+              'user_id'                => 1,
+              'account_id'             => 8,
+              'date'                   => '2021-01-01',
+              'pesticide_id'           => 1,
+              'worker_id'              => 1,
+              'accounting_id'          => 3,
+              'ground_id'              => 2,
+              'amount'                 => 100,   
+              'note'                   => 'Bla bla bla',
+  
+          ]);
+ 
+          Pesticide_apply::create([
+                         
+             'user_id'                => 1,
+             'account_id'             => 9,
+             'date'                   => '2021-01-02',
+             'pesticide_id'           => 1,
+             'worker_id'              => 2,
+             'accounting_id'          => 3,
+             'ground_id'              => 2,
+             'amount'                 => 200,   
+             'note'                   => 'Bla bla bla',
+ 
+         ]);
+ 
+ 
+         // Habilita novamente checagem de chaves *Importante*   
+          DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
+     
+    }
+}

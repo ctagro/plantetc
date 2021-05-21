@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Insumos</title>
+    <title>Defencivo</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,21 +31,21 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                        Consumo de Insumos
-                        <a class="float-right" href="{{url('/product_apply')}}">Lista</a>
-                    </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Editar
+                  <a class="float-right" href="{{url('/pesticide')}}">Lista</a>
                 </div>
             </div>
         </div>
     </div>
+  </div>   
 
-    @if(session('sucess'))
+  @if(session('sucess'))
         <div class="alert alert-success">
             {{ session('sucess') }}
         </div>
@@ -58,7 +58,7 @@
     @endif
 
 
-<div class="container"> 
+<div class="container">
 
 @if(Session::has('mensagem_sucesso'))
 
@@ -70,14 +70,14 @@
     <div class="col-12">
 
     <!-- porque nao suporta o metodo POST se store é post-->
-        <form action="{{ route('product_apply.update' ,[ 'product_apply' => $product_apply->id,'account' => $product_apply->account->id])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('pesticide.update' ,[ 'pesticide' => $pesticide->id ])}}" method="POST"  enctype="multipart/form-data">
 
             @method('PATCH')
-            @include('product.product_apply.form')
+            @include('pesticide.pesticide.form')
 
         </form>
 
-        <form action="{{ route('product_apply.show' ,[ 'product_apply' => $product_apply->id,'account' => $product_apply->account->id ])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('pesticide.show' ,[ 'pesticide' => $pesticide->id ])}}" method="POST"  enctype="multipart/form-data">
 
             @method('POST')
           

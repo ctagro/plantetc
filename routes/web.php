@@ -149,6 +149,30 @@ Route::namespace('Product')->group(function () {
     
 });
 
+Route::namespace('Pesticide')->group(function () {
+    Route::get('pesticide/create', 'PesticideController@create')->name('pesticide.create');
+    Route::post('pesticide/store', 'PesticideController@store')->name('pesticide.store');
+    Route::get('pesticide', 'PesticideController@index')->name('pesticide.index')-> middleware('auth');
+    Route::post('pesticide/{pesticide}', 'PesticideController@show')->name('pesticide.show');
+    Route::get('pesticide/{pesticide}/edit', 'PesticideController@edit')->name('pesticide.edit');
+    Route::patch('pesticide/{pesticide}', 'PesticideController@update')->name('pesticide.update');
+    Route::delete('pesticide/{pesticide}', 'PesticideController@destroy')->name('pesticide.destroy');
+
+    Route::get('pesticide_apply/create', 'Pesticide_applyController@create')->name('pesticide_apply.create');
+    Route::post('pesticide_apply/store', 'Pesticide_applyController@store')->name('pesticide_apply.store');
+    Route::get('pesticide_apply',         'Pesticide_applyController@index')->name('pesticide_apply.index')-> middleware('auth');
+    Route::post('pesticide_apply/{pesticide_apply}', 'Pesticide_applyController@show')->name('pesticide_apply.show');
+    Route::get('pesticide_apply/{pesticide_apply}/edit', 'Pesticide_applyController@edit')->name('pesticide_apply.edit');
+    Route::patch('pesticide_apply/{pesticide_apply}/{account}', 'Pesticide_applyController@update')->name('pesticide_apply.update'); 
+    Route::delete('pesticide_apply/{pesticide_apply}/{account}', 'Pesticide_applyController@destroy')->name('pesticide_apply.destroy');
+
+    Route::post('pesticide_apply/pesticide_apply_research/research', 'Pesticide_applyResearchController@research')->name('pesticide.pesticide_apply_research.research');
+    Route::get('pesticide_apply/pesticide_apply_research', 'Pesticide_applyResearchController@consult')->name('pesticide.pesticide_apply_research.consult');
+    Route::get('pesticide_apply/pesticide_apply_research/index', 'Pesticide_applyResearchController@index')->name('pesticide.pesticide_apply_research.index');
+
+    
+});
+
 Route::namespace('Report')->group(function () {
 
     Route::post('result_area/research', 'Result_areaController@research')->name('result_area.research');
