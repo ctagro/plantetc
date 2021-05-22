@@ -167,7 +167,7 @@ class Pesticide_applyController extends Controller
 
         $pesticide_apply = new pesticide_apply();
 
-       dd($pesticide_apply);
+      // dd($pesticide_apply);
     
         $response = $pesticide_apply->storePesticide_apply($data);
 
