@@ -345,14 +345,14 @@ return [
 
     ],
 
- /*   [
+    [
         'text'       => 'Aplicação de Defensivos',
         'icon_color' => 'cyan',
         'url'        => '/pesticide_apply',
         'icon'        => 'fas fa-calendar-plus', 
 
     ],
-*/
+
     [
         'text'       => 'Pesquisar Aplicações',
         'icon_color' => 'green',

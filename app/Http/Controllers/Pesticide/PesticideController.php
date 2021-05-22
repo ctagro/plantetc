@@ -10,12 +10,12 @@ use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
-use App\Models\Product_apply;
 use App\Models\Worker;
 use App\Models\Account;
 use App\Models\Accounting;
 use App\Models\Ground;
 use App\Models\Pesticide;
+use App\Models\Product_apply;
 
 class PesticideController extends Controller
 {
@@ -55,10 +55,10 @@ class PesticideController extends Controller
 
         $user = auth()->user();
 
-        $pesticide = new \App\Models\pesticide([
+ //       $pesticide = new \App\Models\pesticide([
+ //       ]);
 
-
-        ]);
+       $pesticide = new pesticide();
 
         return view('pesticide.pesticide.create',compact('pesticide'));
        

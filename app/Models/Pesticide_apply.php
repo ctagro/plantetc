@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Pesticide_apply as Authenticatable;
 use App\Models\Type_account;
 use App\Models\Worker;
 use App\Models\Ground;

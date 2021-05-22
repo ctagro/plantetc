@@ -53,7 +53,7 @@ class Pesticide_applyController extends Controller
 
         $accounts = auth()->user()->account()->get();
 
-      //  $pesticide_applys = auth()->user()->pesticide_apply()->get();
+      // $pesticide_applys = auth()->user()->pesticide_apply()->get();
         $grounds = Ground::where('in_use', '=', "S")->get();
 
         $workers = Worker::where('in_use', '=', "S")->orderby('name','asc')->get();
@@ -67,13 +67,18 @@ class Pesticide_applyController extends Controller
 
             ]);
 
+        //  dd($account);
 
-        $pesticide_apply = new \App\Models\Pesticide_apply([
+    //    $pesticide_apply = new \App\Models\Pesticide_apply([
 
-        ]);
+    //    ]);
+
+    $pesticide_apply = new pesticide_apply();
+
+    //    dd($pesticide_apply);
 
    
-        return view('pesticide.pesticide_apply.create',compact('pesticide_apply','pesticide_applys','account','grounds','accountings','workers','pesticides'));
+        return view('pesticide.pesticide_apply.create',compact('pesticide_apply','account','grounds','accountings','workers','pesticides'));
        
     }
 
@@ -162,7 +167,7 @@ class Pesticide_applyController extends Controller
 
         $pesticide_apply = new pesticide_apply();
 
-       // dd($data);
+       dd($pesticide_apply);
     
         $response = $pesticide_apply->storePesticide_apply($data);
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Pesticide as Authenticatable;
 use Carbon\Carbon;
 use DateTime;
 use DB;
