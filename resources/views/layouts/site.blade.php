@@ -73,7 +73,7 @@
             </div>
             <div class="col-md-4 contact-box">
               <i class="fas fa-map-marker-alt"></i>
-              <p><span class="contact-tile">Fazenda Santa Luiza/span> Antônio Carlos - MG</p>
+              <p><span class="contact-tile">Fazenda Santa Luiza - Antônio Carlos - MG</p>
             </div>
       
           </div>
