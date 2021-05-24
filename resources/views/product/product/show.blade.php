@@ -37,7 +37,7 @@
           <div class="card">
               <div class="card-header">
                 <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/ground_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                Confirmar exclusão
+                Confirmar exclusão do fertilizante
               </div>
           </div>
       </div>

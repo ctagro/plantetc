@@ -338,7 +338,7 @@ return [
     ['header' => '=========================='],
 
     [
-        'text'       => 'Aplicação de Insumos',
+        'text'       => 'Aplicação de Fertilizantes',
         'icon_color' => 'cyan',
         'url'        => '/product_apply',
         'icon'        => 'fas fa-calendar-plus', 
@@ -414,7 +414,7 @@ return [
             ], 
             
             [
-                'text'       => 'Insumos',
+                'text'       => 'Fertilizantes',
                 'icon_color' => 'green',
                 'url'  => '/product',
                 'icon'        => 'fas fa-money-bill-wave',

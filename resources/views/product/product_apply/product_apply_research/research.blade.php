@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-header">
                   <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Pesquisar consumo de produtos
+                    Pesquisar consumo de fertilizantes
                 </div>
             </div>
         </div>

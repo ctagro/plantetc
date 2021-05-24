@@ -33,7 +33,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="type_activity">Typo de atividade :</label>
+              <label for="type_activity">Tipo de atividade :</label>
               <select name="type_activity_id"  id="type_activity_id" class="form-control">
                 <option selected="selected" value=""></option>
                   @foreach($type_activitys as $type_activity)    
