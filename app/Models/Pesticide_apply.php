@@ -25,7 +25,7 @@ class Pesticide_apply extends Model
                
         'account_id'            ,
         'date'                  ,
-        'pesticide_id'            ,
+        'pesticide_id'          ,
         'worker_id'             ,
         'accounting_id'         ,
         'ground_id'             ,
@@ -49,14 +49,11 @@ class Pesticide_apply extends Model
      ******************************/
 
     public function storePesticide_apply(array $data): Array
-    {
-       
+    { 
+//dd($data);
 
- // recebe o array do controller Despesa -> storeDespesa e grava na tabela
+            $pesticide_apply = auth()->user()->Pesticide_apply()->create([
 
-       
-            $pesticide_apply = auth()->user()->pesticide_apply()->create([
-            
                 'account_id'            => $data['account_id'],
                 'date'                  => $data['date'],
                 'pesticide_id'          => $data['pesticide_id'],
@@ -67,7 +64,6 @@ class Pesticide_apply extends Model
                 'note'                  => $data['note'], 
 
                 ]);
-        
    
        if($pesticide_apply){
 

@@ -167,7 +167,7 @@ class Pesticide_applyController extends Controller
 
         $pesticide_apply = new pesticide_apply();
 
-      // dd($pesticide_apply);
+      //dd($pesticide_apply,$data);
     
         $response = $pesticide_apply->storePesticide_apply($data);
 
@@ -279,7 +279,7 @@ class Pesticide_applyController extends Controller
     
 
         $dataPesticide_apply['date']                 = $dataRequest['date'];
-        $dataPesticide_apply['pesticide_id']           = $dataRequest['pesticide_id'];  
+        $dataPesticide_apply['pesticide_id']         = $dataRequest['pesticide_id'];  
         $dataPesticide_apply['worker_id']            = $dataRequest['worker_id'];
         $dataPesticide_apply['accounting_id']        = $dataRequest['accounting_id'];
         $dataPesticide_apply['ground_id']            = $dataRequest['ground_id'];

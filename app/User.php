@@ -17,6 +17,7 @@ use App\Models\Product_apply;
 use App\Models\Bayer;
 use App\Models\Sale;
 use App\Models\Pesticide;
+use App\Models\Pesticide_apply;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
