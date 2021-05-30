@@ -41,8 +41,6 @@ class ActivityController extends Controller
    
     $activitys = Activity::all();
 
-    dd($activity);
-
         return view('activity.activity.index',compact('activitys'));
     }
 
