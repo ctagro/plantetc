@@ -41,6 +41,16 @@ class AccountController extends Controller
 //   dd($accounts);
 
     $response = $accounts->first();
+    $last = $accounts->last();
+
+    $nr = $last['id'];
+
+     if($nr>5):
+        $nr = $nr-5;
+        $accounts = Account::where('origin', '=', "C")->where('id','>', $nr)->get();
+     else:  
+        $accounts = Account::where('origin', '=', "C")->get();
+     endif;
     
 
     if ($response === null) {
