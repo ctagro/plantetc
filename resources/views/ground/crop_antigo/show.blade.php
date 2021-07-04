@@ -57,14 +57,8 @@
 
     <div class="container">
 
-      <div class="row">
-        <div class="bolder">Cultura:</div>
-      </div> 
-      <div class="row">
-        <div class="form-control">{{ $crop->crop_name}}</div>
-      </div>
-      <div class="row">
-          <div class="bolder">Variedade:</div>
+        <div class="row">
+          <div class="bolder">Nome:</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $crop->name}}</div>

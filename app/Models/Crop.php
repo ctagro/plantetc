@@ -15,6 +15,7 @@ class Crop extends Model
     
     protected $fillable = [
         'user_id',
+        'crop_name',
         'name',
         'description',
         'packing',
@@ -41,16 +42,16 @@ public function storeCrop(array $data): Array
 
             $crop = auth()->user()->crop()->create([
 
+                'crop_name'     => $data['crop_name'],
                 'name'          => $data['name'],
                 'description'   => $data['description'], 
                 'packing'       => $data['packing'],
                 'unity'         => $data['unity'],
-                'in_use'         => $data['in_use'],
+                'in_use'        => $data['in_use'],
                 'image'         => $data['image'],
                 'note'          => $data['note'],
                 
-
-         ]);
+             ]);
 
         
  

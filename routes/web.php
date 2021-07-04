@@ -70,7 +70,7 @@ Route::namespace('Finance')->group(function () {
 
     Route::get('sale/create', 'SaleController@create')->name('sale.create');
     Route::post('sale/store', 'SaleController@store')->name('sale.store');
-    Route::get('sale',         'SaleController@index')->name('sale.index')-> middleware('auth');
+    Route::get('sale','SaleController@index')->name('sale.index')-> middleware('auth');
     Route::post('sale/{sale}', 'SaleController@show')->name('sale.show');
     Route::get('sale/{sale}/edit', 'SaleController@edit')->name('sale.edit');
     Route::patch('sale/{sale}/{account}', 'SaleController@update')->name('sale.update');

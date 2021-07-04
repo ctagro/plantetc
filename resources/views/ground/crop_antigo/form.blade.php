@@ -8,20 +8,13 @@
             <input type="hidden" name="packing" value="???"class="form-control py-3">
             <input type="hidden" name="unity" value="??" class="form-control py-3">
 
+
+
             <div class="form-group">
 
-                <input type="text" name="crop_name" value="{{old('crop_name') ?? $crop->crop_name }}" class="form-control" placeholder="Cultura">
-                @if($errors->has('crop_name'))
-                        <h6 class="text-danger" >Digite o Nome</h6> 
-                @endif
-            </div>
-
-            
-            <div class="form-group">
-
-                <input type="text" name="name" value="{{old('name') ?? $crop->name }}" class="form-control" placeholder="Variedade">
+                <input type="text" name="name" value="{{old('name') ?? $crop->name }}" class="form-control" placeholder="Nome">
                 @if($errors->has('name'))
-                        <h6 class="text-danger" >Digite o Variedade</h6> 
+                        <h6 class="text-danger" >Digite o Nome</h6> 
                 @endif
             </div>
 

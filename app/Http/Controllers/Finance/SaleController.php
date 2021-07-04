@@ -38,8 +38,6 @@ class SaleController extends Controller
    
     $sales = Sale::all();
 
-    //dd($sales);
-
         return view('finance.sale.index',compact('sales'));
     }
 

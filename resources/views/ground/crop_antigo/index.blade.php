@@ -63,8 +63,7 @@
                           <tr>
                       
                               <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Foto</th>
-                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Cultura</th>
-                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Variedade</th>
+                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nome</th>
                               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Descrição</th>
                               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
                           </tr>
@@ -78,9 +77,6 @@
                           <td>
                             <img src="{{ asset('storage/crops/'.$crop->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
                           </td>
-                          <td>  
-                            <a href= "{{ route('crop.edit' ,[ 'crop' => $crop->id  ])}}" >{{ $crop->crop_name}}</a>
-                            </td>
                           <td>  
                           <a href= "{{ route('crop.edit' ,[ 'crop' => $crop->id  ])}}" >{{ $crop->name}}</a>
                           </td>

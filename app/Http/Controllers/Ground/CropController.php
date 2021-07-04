@@ -189,12 +189,12 @@ class CropController extends Controller
         }
 
         
-
-        $data['name'] = $dataRequest['name'];
-        $data['description'] = $dataRequest['description'];
-        $data['packing']   = $dataRequest['packing'];
-        $data['unity']   = $dataRequest['unity'];
-        $data['in_use']   = $dataRequest['in_use'];
+        $data['crop_name']      = $dataRequest['crop_name'];
+        $data['name']           = $dataRequest['name'];
+        $data['description']    = $dataRequest['description'];
+        $data['packing']        = $dataRequest['packing'];
+        $data['unity']          = $dataRequest['unity'];
+        $data['in_use']         = $dataRequest['in_use'];
        
 
         $update = $crop -> update($data);
@@ -236,12 +236,13 @@ class CropController extends Controller
 
         return request()->validate([
 
+            'crop_name'     => 'required',
             'name'          => 'required',
             'description'   => 'required',
             'packing'       => 'required',
             'unity'         => 'required',
             'in_use'        => 'required',
-            'note'        => 'required',
+            'note'          => 'required',
   
     
        ]);
