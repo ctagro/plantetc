@@ -8,7 +8,7 @@ use DateTime;
 use DB;
 use App\User;
 
-class category_pesticide extends Model
+class Category_pesticide extends Model
 {
     protected $fillable = [
         'user_id',
