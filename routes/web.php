@@ -170,6 +170,14 @@ Route::namespace('Pesticide')->group(function () {
     Route::get('pesticide_apply/pesticide_apply_research', 'Pesticide_applyResearchController@consult')->name('pesticide.pesticide_apply_research.consult');
     Route::get('pesticide_apply/pesticide_apply_research/index', 'Pesticide_applyResearchController@index')->name('pesticide.pesticide_apply_research.index');
 
+    Route::get('category_pesticide/create', 'Category_pesticideController@create')->name('category_pesticide.create');
+    Route::post('category_pesticide/store', 'Category_pesticideController@store')->name('category_pesticide.store');
+    Route::get('category_pesticide', 'Category_pesticideController@index')->name('category_pesticide.index')-> middleware('auth');
+    Route::post('category_pesticide/{category_pesticide}', 'Category_pesticideController@show')->name('category_pesticide.show');
+    Route::get('category_pesticide/{category_pesticide}/edit', 'Category_pesticideController@edit')->name('category_pesticide.edit');
+    Route::patch('category_pesticide/{category_pesticide}', 'Category_pesticideController@update')->name('category_pesticide.update');
+    Route::delete('category_pesticide/{category_pesticide}', 'Category_pesticideController@destroy')->name('category_pesticide.destroy');
+
     
 });
 

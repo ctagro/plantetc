@@ -413,6 +413,7 @@ return [
                 'icon'        => 'fas fa-money-bill-wave',
             ], 
             
+            
             [
                 'text'       => 'Fertilizantes',
                 'icon_color' => 'green',
@@ -424,6 +425,13 @@ return [
                 'text'       => 'Defensivos',
                 'icon_color' => 'green',
                 'url'        => '/pesticide',
+                'icon'       => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Categoria de defensivos',
+                'icon_color' => 'green',
+                'url'        => '/category_pesticide',
                 'icon'       => 'fas fa-money-bill-wave',
             ],
 

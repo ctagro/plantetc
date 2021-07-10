@@ -18,6 +18,7 @@ use App\Models\Bayer;
 use App\Models\Sale;
 use App\Models\Pesticide;
 use App\Models\Pesticide_apply;
+use App\Models\Category_pesticide;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -118,6 +119,11 @@ class User extends Authenticatable
     public function pesticide_apply()
     {
         return $this->hasMany(pesticide_apply::class);
+    }
+
+    public function category_pesticide()
+    {
+        return $this->hasMany(category_pesticide::class);
     }
 
 }
