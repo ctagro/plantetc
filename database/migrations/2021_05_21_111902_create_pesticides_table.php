@@ -18,20 +18,19 @@ class CreatePesticidesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('name',50);
-            $table->text('description',200);
-            $table->text('active_principle',200);
-            $table->integer('carencia');
-            $table->text('dosagem',50);
-            $table->text('indicacoes',200);
-            $table->text('type_pesticide',50); 
-            $table->text('packing',50); // tipo de embalagem// 
-            $table->text('unity',10);
             $table->text('manufacturer',200);
-            $table->double('price',10,2);
-            $table->double('price_unit',10,2);
+            $table->text('active_principle_id',200); // relacionar 
+            $table->longtext('application')->nullable();  
+            $table->integer('grace_period')->nullable(); //relacionar
+            $table->text('dosage',50)->nullable();
+            $table->unsignedBigInteger('category_pesticide_id')->nullable();
+            $table->text('packing',50)->nullable(); // tipo de embalagem//
+            $table->text('unity',10)->nullable();
+            $table->double('price',10,2)->nullable();
+            $table->double('price_unit',10,2)->nullable();
             $table->string('image', 100)->nullable();
+            $table->string('medicine_insert', 100)->nullable();
             $table->enum('in_use',['S','N'])->default("S");
-            $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();
         });

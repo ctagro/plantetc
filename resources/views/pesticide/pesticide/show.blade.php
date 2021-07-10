@@ -63,12 +63,6 @@
               <div class="form-control">{{ $pesticide->name}}</div>
             </div>
             <div class="row">
-              <div class="bolder">Descrição:</div>
-            </div>
-            <div class="row">
-              <div class="form-control">{{ $pesticide->description}}</div>
-            </div>
-            <div class="row">
               <div class="form-group col-sm-4 ">
                 <div class="row">
                   <div class="bolder">Embalagem:</div>

@@ -64,7 +64,6 @@
                       
                               <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Foto</th>
                               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nome</th>
-                              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Descrição</th>
                               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Embalagem</th>
                               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Unidade</th>
                               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Preço</th>
@@ -84,9 +83,6 @@
                           </td>
                           <td>  
                           <a href= "{{ route('pesticide.edit' ,[ 'pesticide' => $pesticide->id  ])}}" >{{ $pesticide->name}}</a>
-                          </td>
-                          <td>  
-                            <a href= "{{ route('pesticide.edit' ,[ 'pesticide' => $pesticide->id  ])}}" >{{ $pesticide->description}}</a>
                           </td>
                           <td>  
                             <a href= "{{ route('pesticide.edit' ,[ 'pesticide' => $pesticide->id  ])}}" >{{ $pesticide->packing}}</a>

@@ -16,74 +16,70 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <label>Descrição: </label>
-                    <input type="txt" name="description" value="{{old('description') ?? $pesticide->description }}" class="form-control py-3" placeholder="Descrição">
-                    @if($errors->has('description'))
-                      <h6 class="text-danger" >Digite o Descrição</h6> 
-                    @endif
-              </div>
-
               <div class="row">
-                <div class="form-group col-sm-9 ">  
+                <div class="form-group col-sm-6 ">  
                   <label>Fabricante: </label>
                       <input type="txt" name="manufacturer" value="{{old('manufacturer') ?? $pesticide->manufacturer }}" class="form-control py-3" placeholder="Fabricante">
                       @if($errors->has('manufacturer'))
                         <h6 class="text-danger" >Digite as indicações</h6> 
                       @endif
                 </div>
+             
 
-                <div class="form-group col-sm-3 "> 
-                  <label>Tipo: </label>
-                      <input type="txt" name="type_pesticide" value="{{old('type_pesticide') ?? $pesticide->type_pesticide }}" class="form-control py-3" placeholder="Tipo de defensivo">
-                      @if($errors->has('type_pesticide'))
-                        <h6 class="text-danger" >Digite o tipo de defensivo</h6> 
-                      @endif
-                </div>
+              <div class="form-group col-sm-6 "> 
+                <label for="category_pesticide_id">Categoria:</label>
+                <select name="category_pesticide_id"  id="category_pesticide_id" class="form-control">
+                  <option selected="selected" value=""></option>
+                    @foreach($category_pesticides as $category_pesticide)    
+
+                        <option value="{{$category_pesticide->id}}" {{ $category_pesticide->id == $pesticide->category_pesticide_id ? 'selected' : ''}}>{{$category_pesticide->name}} </option>                 
+                    @endforeach
+                </select>
               </div>
+            </div>
+
+            <div class="form-group">
+              <label for="application">Aplicação:</label>    
+                  <input type="longtext" name="application" value="{{old('application') ?? $pesticide->application }}" rows="4" class="form-control">                            
+          </div>
+  
 
               <div class="row">
                 <div class="form-group col-sm-6 ">
                 <label>Princípio Ativo: </label>
-                    <input type="txt" name="active_principle" value="{{old('active_principle') ?? $pesticide->active_principle }}" class="form-control py-3" placeholder="Princípio Ativo">
-                    @if($errors->has('active_principle'))
+                    <input type="txt" name="active_principle_id" value="{{old('active_principle_id') ?? $pesticide->active_principle_id }}" class="form-control py-3" placeholder="Princípio Ativo">
+                    @if($errors->has('active_principle_id'))
                       <h6 class="text-danger" >Digite o princípio ativo</h6> 
                     @endif
                 </div>
 
                 <div class="form-group col-sm-3 ">
                   <label>Carência (dias): </label>
-                      <input type="txt" name="carencia" value="{{old('carencia') ?? $pesticide->carencia }}" class="form-control py-3" placeholder="Carência">
-                      @if($errors->has('carencia'))
-                        <h6 class="text-danger" >Digite a dosagem</h6> 
+                      <input type="txt" name="grace_period" value="{{old('grace_period') ?? $pesticide->grace_period }}" class="form-control py-3" placeholder="Carência">
+                      @if($errors->has('grace_period'))
+                        <h6 class="text-danger" >Digite período de carência</h6> 
                       @endif
                 </div>
 
                 <div class="form-group col-sm-3 ">
                   <label>Dosagem: </label>
-                      <input type="txt" name="dosagem" value="{{old('dosagem') ?? $pesticide->dosagem }}" class="form-control py-3" placeholder="Dosagem">
-                      @if($errors->has('dosagem'))
+                      <input type="txt" name="dosage" value="{{old('dosage') ?? $pesticide->dosage }}" class="form-control py-3" placeholder="Dosagem">
+                      @if($errors->has('dosage'))
                         <h6 class="text-danger" >Digite a dosagem</h6> 
                       @endif
                 </div>
               </div>
               
-              <div class="form-group">
-                <label>Indicações: </label>
-                    <input type="txt" name="indicacoes" value="{{old('indicacoes') ?? $pesticide->indicacoes }}" class="form-control py-3" placeholder="Indicações">
-                    @if($errors->has('indicacoes'))
-                      <h6 class="text-danger">Digite as indicações</h6> 
-                    @endif
-              </div>
               
 
               <div class="row">
                   <div class="form-group col-sm-3 ">  
                       <label>Embalagem: </label>
                     <input type="txt" name="packing" value="{{old('packing') ?? $pesticide->packing }}" class="form-control py-3" placeholder="Embalagem">
-                      @if($errors->has('packing'))
-                      <h6 class="text-danger" >Digite o tipo de embalagem</h6> 
-                      @endif
+                    @if($errors->has('packing'))
+                      <h6 class="text-danger" >Digite a embalagem</h6> 
+                    @endif
+                     
                   </div>
               
                
@@ -98,23 +94,21 @@
               
                   <div class="form-group col-sm-3 ">
                     <label>Preço: </label>
-                    <input type="number"  name="price" value="{{old('price') ?? $pesticide->price }}"  placeholder="0.00" step="0.01" >
+                    <input type="txt" name="price" value="{{old('price') ?? $pesticide->price }}" class="form-control py-3" placeholder="0.00" step="0.01">
                     @if($errors->has('price'))
-                      <h6 class="text-danger" >Digite o preço</h6> 
+                      <h6 class="text-danger" >Digite a unidade</h6> 
                     @endif
                   </div>
               
               
                   <div class="form-group col-sm-3 ">
                     <label>Preço por unidade: </label>
-                    <input type="number"  name="price_unit" value="{{old('price_unit') ?? $pesticide->price_unit }}"  placeholder="0.00" step="0.01" >
+                    <input type="number"  name="price_unit" value="{{old('price_unit') ?? $pesticide->price_unit }}" class="form-control py-3" placeholder="0.00" step="0.01" >
                     @if($errors->has('price_unit'))
-                      <h6 class="text-danger" >Digite o preço por unidade</h6> 
+                      <h6 class="text-danger" >Digite a unidade</h6> 
                     @endif
                   </div> 
                 </div>
-
-              <input type="hidden" name="type_pesticide" value="?" class="form-control py-3">
 
               @if(!Request::is('*/edit'))
                     <input type="hidden" name="in_use" value="S" class="form-control py-3">
@@ -138,11 +132,17 @@
                 @endif
                     <label for="image">Imagem</label>
                     <input type="file" class="form-control"  name='image' value='pesticide_avatar.png'>
-            </div>
+              </div>
 
-            <input type="hidden" name="note" value="?" class="form-control py-3">
-              
-         
+              <div class="form-group">
+                @if ($pesticide->medicine_insert != null)
+                    <img src="{{ asset('storage/pesticides/'.$pesticide->medicine_insert)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+                @endif
+                    <label for="medicine_insert">Bula</label>
+                    <input type="file" class="form-control"  name='medicine_insert' value='pesticide_avatar.png'>
+              </div>
+
+          
 
             @csrf
                 <div class="card">

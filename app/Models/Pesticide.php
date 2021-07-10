@@ -12,26 +12,27 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pesticide extends Model
 {
-
     use SoftDeletes;
-    
+   
+   
     protected $fillable = [
         'user_id',
         'name',
-        'description',
-        'type_pesticide',
-        'active_principle',
-        'carencia',
-        'dosagem',
-        'indicacoes',
+        'manufacturer',
+        'category_pesticide_id',
+        'application',
+        'active_principle_id',
+        'grace_period',
+        'dosage',
         'packing',
         'unity',
-        'manufacturer',
         'price',
         'price_unit',
+        'image',
+        'medicine_insert',   
         'in_use' ,
-        'note',
-        'image',    
+     
+   
     
 ];
 
@@ -47,25 +48,26 @@ class Pesticide extends Model
 
 public function storePesticide(array $data): Array
     {  
-       //dd($data);
+      // dd($data);
 
             $product = auth()->user()->pesticide()->create([
 
-                'name'              => $data['name'],
-                'description'       => $data['description'],
-                'active_principle'  => $data['active_principle'],
-                'carencia'          => $data['carencia'],
-                'dosagem'           => $data['dosagem'],
-                'indicacoes'        => $data['indicacoes'],
-                'type_pesticide'    => $data['type_pesticide'],
-                'packing'           => $data['packing'],
-                'unity'             => $data['unity'],
-                'manufacturer'      => $data['manufacturer'],
-                'price'             => $data['price'],
-                'price_unit'        => $data['price_unit'],
-                'in_use'            => $data['in_use'],
-                'note'              => $data['note'],
-                'image'             => $data['image'],
+             
+                'name'                  => $data['name'],
+                'manufacturer'          => $data['manufacturer'],
+                'category_pesticide_id' => $data['category_pesticide_id'],
+                'application'           => $data['application'],
+                'active_principle_id'   => $data['active_principle_id'],
+                'grace_period'          => $data['grace_period'],
+                'dosage'                => $data['dosage'],               
+                'packing'               => $data['packing'],
+                'unity'                 => $data['unity'],
+                'price'                 => $data['price'],
+                'price_unit'            => $data['price_unit'],
+                'image'                 => $data['image'],
+                'medicine_insert'       => $data['medicine_insert'],
+                'in_use'                => $data['in_use'],
+                
                 
          ]);
 
@@ -101,4 +103,14 @@ public function storePesticide(array $data): Array
         return $this->belongsTo(User::class);
     }
 
+    public function active_principle()
+    {
+        return $this->belongsToMany(Active_principal::class);
+    }
+
+    public function category_pesticide()
+    {
+        return $this->belongsTo(category_pesticide::class);
+    }
+   
 }
