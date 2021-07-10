@@ -150,6 +150,7 @@ Route::namespace('Product')->group(function () {
 });
 
 Route::namespace('Pesticide')->group(function () {
+
     Route::get('pesticide/create', 'PesticideController@create')->name('pesticide.create');
     Route::post('pesticide/store', 'PesticideController@store')->name('pesticide.store');
     Route::get('pesticide', 'PesticideController@index')->name('pesticide.index')-> middleware('auth');
@@ -178,7 +179,22 @@ Route::namespace('Pesticide')->group(function () {
     Route::patch('category_pesticide/{category_pesticide}', 'Category_pesticideController@update')->name('category_pesticide.update');
     Route::delete('category_pesticide/{category_pesticide}', 'Category_pesticideController@destroy')->name('category_pesticide.destroy');
 
-    
+    Route::get('disease/create', 'DiseaseController@create')->name('disease.create');
+    Route::post('disease/store', 'DiseaseController@store')->name('disease.store');
+    Route::get('disease', 'DiseaseController@index')->name('disease.index')-> middleware('auth');
+    Route::post('disease/{disease}', 'DiseaseController@show')->name('disease.show');
+    Route::get('disease/{disease}/edit', 'DiseaseController@edit')->name('disease.edit');
+    Route::patch('disease/{disease}', 'DiseaseController@update')->name('disease.update');
+    Route::delete('disease/{disease}', 'DiseaseController@destroy')->name('disease.destroy');
+
+    Route::get('active_principle/create', 'Active_principleController@create')->name('active_principle.create');
+    Route::post('active_principle/store', 'Active_principleController@store')->name('active_principle.store');
+    Route::get('active_principle', 'Active_principleController@index')->name('active_principle.index')-> middleware('auth');
+    Route::post('active_principle/{active_principle}', 'Active_principleController@show')->name('active_principle.show');
+    Route::get('active_principle/{active_principle}/edit', 'Active_principleController@edit')->name('active_principle.edit');
+    Route::patch('active_principle/{active_principle}', 'Active_principleController@update')->name('active_principle.update');
+    Route::delete('active_principle/{active_principle}', 'Active_principleController@destroy')->name('active_principle.destroy');
+   
 });
 
 Route::namespace('Report')->group(function () {

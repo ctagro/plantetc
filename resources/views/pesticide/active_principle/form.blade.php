@@ -37,7 +37,7 @@
 
             <div class="form-group">
                 <label>Principal uso: </label>
-                <input type="text" name="main_uses" value="{{old('main_uses') ?? $active_principle->main_uses }}" class="form-control" placeholder="Preincipais usos">
+                <input type="text" name="main_uses" value="{{old('main_uses') ?? $active_principle->main_uses }}" class="form-control" placeholder="Principais usos">
                 @if($errors->has('main_uses'))
                         <h6 class="text-danger" >Digite principal uso</h6> 
                 @endif

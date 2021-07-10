@@ -19,6 +19,8 @@ use App\Models\Sale;
 use App\Models\Pesticide;
 use App\Models\Pesticide_apply;
 use App\Models\Category_pesticide;
+use App\Models\Disease;
+use App\Models\Active_principle;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -126,5 +128,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(category_pesticide::class);
     }
+
+    public function disease()
+    {
+        return $this->hasMany(disease::class);
+    }
+
+    public function active_principle()
+    {
+        return $this->hasMany(active_principle::class);
+    }
+
 
 }

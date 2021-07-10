@@ -436,6 +436,20 @@ return [
             ],
 
             [
+                'text'       => 'Pragas/Doenças',
+                'icon_color' => 'green',
+                'url'        => '/disease',
+                'icon'       => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Princípio Ativo',
+                'icon_color' => 'green',
+                'url'        => '/active_principle',
+                'icon'       => 'fas fa-money-bill-wave',
+            ],
+
+            [
                 'text'       => 'Compradores',
                 'icon_color' => 'green',
                 'url'  => '/bayer',
