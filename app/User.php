@@ -123,7 +123,10 @@ class User extends Authenticatable
 
     public function category_pesticide()
     {
+        //teste
         return $this->hasMany(category_pesticide::class);
+
     }
+
 
 }

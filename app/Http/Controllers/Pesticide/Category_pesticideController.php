@@ -11,6 +11,7 @@ use App\Models\Category_pesticide;
 use App\Models\Sale;
 use Carbon\Carbon;
 use Redirect;
+//teste
 
 class Category_pesticideController extends Controller
 {
@@ -27,10 +28,11 @@ class Category_pesticideController extends Controller
     public function index()
     {
 
-    $category_pesticides = auth()->user()->category_pesticide()->get();
+   // $category_pesticides = auth()->user()->category_pesticide()->get();
 
 
-    // $category_pesticides = Category_pesticide::all();
+
+    $category_pesticides = Category_pesticide::all();
 
     // dd($category_pesticides);   
 
