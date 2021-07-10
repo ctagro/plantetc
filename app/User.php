@@ -121,12 +121,10 @@ class User extends Authenticatable
         return $this->hasMany(pesticide_apply::class);
     }
 
+
     public function category_pesticide()
     {
-        //teste
         return $this->hasMany(category_pesticide::class);
-
     }
-
 
 }
