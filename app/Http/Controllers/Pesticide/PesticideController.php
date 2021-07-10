@@ -42,7 +42,7 @@ class PesticideController extends Controller
 
     // dd($pesticides);   
 
-        return view('pesticide.pesticide.index', compact('pesticides','category_pesticides'));
+        return view('pesticide.pesticide.index', compact('pesticides'));
     }
 
     /**
