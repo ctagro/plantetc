@@ -34,7 +34,7 @@ class PesticideController extends Controller
     {
 
 
-    $category_pesticides = Category_pesticide::where('in_use', '=', "S")->get();
+ //   $category_pesticides = Category_pesticide::where('in_use', '=', "S")->get();
 
    // dd($pesticides);
 
