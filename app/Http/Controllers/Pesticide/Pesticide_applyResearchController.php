@@ -46,7 +46,7 @@ class Pesticide_applyResearchController extends Controller
 
     $pesticides = Pesticide::where('in_use', '=', "S")->orderby('name','asc')->get();
 
-        return view('Pesticide/Pesticide_apply.Pesticide_apply_research.index',compact('pesticide_applys','accounts','accountings','grounds','workers','pesticides'));
+        return view('pesticide/pesticide_apply.pesticide_apply_research.index',compact('pesticide_applys','accounts','accountings','grounds','workers','pesticides'));
     }
 
     public function consult()
@@ -65,9 +65,9 @@ class Pesticide_applyResearchController extends Controller
 
         $pesticides = Pesticide::where('in_use', '=', "S")->orderby('name','asc')->get();
 
-       // dd($pesticide_applys,$pesticides);
+      // dd($pesticide_applys,$pesticides);
 
-    return view('Pesticide/Pesticide_apply.Pesticide_apply_research.research', compact('pesticide_applys','accounts','accountings','grounds','workers','pesticides'));
+    return view('pesticide/pesticide_apply.pesticide_apply_research.research', compact('pesticide_applys','accounts','accountings','grounds','workers','pesticides'));
 
     }
     
@@ -113,6 +113,6 @@ class Pesticide_applyResearchController extends Controller
         $pesticides = Pesticide::where('in_use', '=', "S")->get();;
 
  
-    return view('Pesticide/Pesticide_apply.Pesticide_apply_research.index', compact('pesticide_applys', 'pesticides','grounds','workers','accountings'));
+    return view('pesticide/pesticide_apply.pesticide_apply_research.index', compact('pesticide_applys', 'pesticides','grounds','workers','accountings'));
     }
 }
