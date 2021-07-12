@@ -104,7 +104,9 @@ class Category_pesticideController extends Controller
       //  $user_login_id = auth()->user()->id;
       //  $user = auth()->user();
 
-      $category_pesticides = auth()->user()->category_pesticide()->get();
+     // $category_pesticides = auth()->user()->category_pesticide()->get();
+
+     $category_pesticides = Category_pesticide::all();
 
 
         return view('pesticide.category_pesticide.show', compact('category_pesticide' ));

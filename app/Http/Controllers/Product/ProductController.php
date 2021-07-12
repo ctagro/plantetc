@@ -29,7 +29,9 @@ class ProductController extends Controller
 
     //$products = auth()->user()->product()->get();
 
-    $product_applys = Product_apply::all();
+    $products = Product::all();
+
+    
 
 
     // $products = Product::all();
@@ -130,7 +132,7 @@ class ProductController extends Controller
 
       //$products = auth()->user()->product()->get();
 
-      $product_applys = Product_apply::all();
+      $products = Product::all();
 
 
         return view('product.product.show', compact('product' ));
