@@ -354,11 +354,18 @@ return [
     ],
 
     [
-        'text'       => 'Pesquisar Aplicações',
+        'text'       => 'Pesquisar Apl. Fertilizantes',
         'icon_color' => 'green',
         'url'  => 'product_apply/product_apply_research',
         'icon'        => 'fas fa-money-bill-wave',
     ],  
+
+    [
+        'text'       => 'Pesquisar Apl. Defensivos',
+        'icon_color' => 'green',
+        'url'  => 'pesticide_apply/pesticide_apply_research',
+        'icon'        => 'fas fa-money-bill-wave',
+    ], 
 
     ['header' => '=========================='],
 

@@ -35,7 +35,9 @@ class Pesticide_applyController extends Controller
    
     $pesticide_applys = Pesticide_apply::all();
 
-   // dd($pesticide_applys);
+  // dd($pesticide_applys);
+   dd($pesticide_applys->pesticide);
+
 
         return view('pesticide.pesticide_apply.index',compact('pesticide_applys'));
     }

@@ -33,11 +33,11 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="product_id">Produto :</label>
-              <select name="product_id"  id="product_id" class="form-control">
+              <label for="pesticide_id">Defensivo:</label>
+              <select name="pesticide_id"  id="pesticide_id" class="form-control">
                 <option selected="selected" value=""></option>
-                  @foreach($products as $product)    
-                      <option value="{{$product->id}}">{{$product->name}} </option>                  
+                  @foreach($pesticides as $pesticide)    
+                      <option value="{{$pesticide->id}}">{{$pesticide->name}} </option>                  
                   @endforeach
               </select>
             </div>
@@ -71,7 +71,7 @@
 
           <div class="col-md-6">
             <div class="form-group">
-                <label for="product">Conta :</label>
+                <label for="pesticide">Conta :</label>
                 <select name="accounting_id"  id="accounting_id" class="form-control">
                   <option selected="selected" value=""></option>
                     @foreach($accountings as $accounting)    
@@ -90,7 +90,7 @@
     
   </div>            
 
-<!-- Fim do Formulario de product_conta -->
+<!-- Fim do Formulario de pesticide_conta -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">

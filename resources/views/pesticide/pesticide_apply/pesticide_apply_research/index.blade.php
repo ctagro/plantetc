@@ -38,8 +38,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                     Aplicação de produtos
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                     Aplicação de defensivos
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
 
 <!-- Inicio da Tabela dos registros -->
 
-<?php $total_product = 0 ?>
+<?php $total_pesticide = 0 ?>
 <?php $total_amount = 0 ?>
 
                 <div class='table-responsive'>
@@ -58,7 +58,7 @@
                         <tr>
                     
                             <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Produto</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Defensivo</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Funcionário</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Conta</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Área</th>
@@ -74,34 +74,34 @@
   
                        
                       
-                      @foreach($product_applys as $product_apply)
+                      @foreach($pesticide_applys as $pesticide_apply)
                        
                       <tr>
                         <td>  
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id  ])}}" >{{ $product_apply->date }}</a>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id  ])}}" >{{ $pesticide_apply->date }}</a>
                         </td>
                         <td>
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])}}" >{{ $product_apply->product->name}}</a>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id ])}}" >{{ $pesticide_apply->pesticide->name}}</a>
                         </td>
                         <td>
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])}}" >{{ $product_apply->worker->name}}</a>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id ])}}" >{{ $pesticide_apply->worker->name}}</a>
                         </td>
                         <td>  
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])}}" >{{ $product_apply->accounting->name}}</a>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id ])}}" >{{ $pesticide_apply->accounting->name}}</a>
                         </td>
                         <td>  
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])}}" >{{ $product_apply->ground->name}}</a>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id ])}}" >{{ $pesticide_apply->ground->name}}</a>
                         </td>
                         <td>
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])}}" >{{ number_format($product_apply->amount, 2 , ',', '.')  }}</a>
-                          <?php $total_product = $total_product + $product_apply->amount ?>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id ])}}" >{{ number_format($pesticide_apply->amount, 2 , ',', '.')  }}</a>
+                          <?php $total_pesticide = $total_pesticide + $pesticide_apply->amount ?>
                         </td>
                         <td>
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])}}" >{{ number_format($product_apply->product->price_unit, 2 , ',', '.')  }}</a>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id ])}}" >{{ number_format($pesticide_apply->pesticide->price_unit, 2 , ',', '.')  }}</a>
                         </td>
                         <td>
-                          <a href= "{{ route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])}}" >{{ number_format($product_apply->account->amount, 2 , ',', '.')  }}</a>
-                          <?php $total_amount = $total_amount + $product_apply->account->amount ?>
+                          <a href= "{{ route('pesticide_apply.edit' ,[ 'pesticide_apply' => $pesticide_apply->id ])}}" >{{ number_format($pesticide_apply->account->amount, 2 , ',', '.')  }}</a>
+                          <?php $total_amount = $total_amount + $pesticide_apply->account->amount ?>
                         </td>          
                       </tr>
                          
@@ -124,7 +124,7 @@
                             <a>{{"Totais : "}}</a>
                           </td>
                           <td>
-                            <a>{{ number_format($total_product, 2 , ',', '.')  }}</a>     
+                            <a>{{ number_format($total_pesticide, 2 , ',', '.')  }}</a>     
                           </td>
                           <td>
                             <a>{{ " " }}</a>
@@ -141,7 +141,7 @@
 <!-- Fim da Tabela dos registros -->
 
  
-<p class="text-right"> <a href="{{ url('/product_apply/product_apply_research') }}" class="text-right">Voltar </a> </p>
+<p class="text-right"> <a href="{{ url('/pesticide_apply/pesticide_apply_research') }}" class="text-right">Voltar </a> </p>
 
 </body>
 

@@ -27,7 +27,9 @@ class ProductController extends Controller
     public function index()
     {
 
-    $products = auth()->user()->product()->get();
+    //$products = auth()->user()->product()->get();
+
+    $product_applys = Product_apply::all();
 
 
     // $products = Product::all();
@@ -126,7 +128,9 @@ class ProductController extends Controller
       //  $user_login_id = auth()->user()->id;
       //  $user = auth()->user();
 
-      $products = auth()->user()->product()->get();
+      //$products = auth()->user()->product()->get();
+
+      $product_applys = Product_apply::all();
 
 
         return view('product.product.show', compact('product' ));
