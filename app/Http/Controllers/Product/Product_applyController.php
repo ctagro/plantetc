@@ -71,7 +71,6 @@ class Product_applyController extends Controller
 
         ]);
 
-   
         return view('product.product_apply.create',compact('product_apply','product_applys','account','grounds','accountings','workers','products'));
        
     }
@@ -135,7 +134,8 @@ class Product_applyController extends Controller
       $dataAccount['type_account_id'] = $data['type_account_id'];
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
-      $dataAccount['amount'] = $data['amount'] * $product_price;
+      $dataAccount['amount'] = $data['amount'] * $product_price;;
+      $dataAccount['volume_lt'] = $data['volume_lt'];
       $dataAccount['origin'] = "P";
       $dataAccount['note' ] = $data['note'];
 
@@ -274,6 +274,7 @@ class Product_applyController extends Controller
         $dataProduct_apply['accounting_id']        = $dataRequest['accounting_id'];
         $dataProduct_apply['ground_id']            = $dataRequest['ground_id'];
         $dataProduct_apply['amount']               = $dataRequest['amount'];
+        $dataProduct_apply['volume_lt']            = $dataRequest['volume_lt'];
         $dataProduct_apply['note']                 = $dataRequest['note'];
   
       //  dd($dataProduct_apply);
@@ -286,7 +287,8 @@ class Product_applyController extends Controller
         $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
-        $dataAccount['amount'] = $dataRequest['amount'] * $product_price;;
+        $dataAccount['amount'] = $dataRequest['amount'] * $product_price;
+        $dataAccount['volume_lt'] = $dataRequest['volume_lt'];
         $dataAccount['origin'] = "P";
         $dataAccount['note' ] = $dataRequest['note'];
 
@@ -337,6 +339,7 @@ class Product_applyController extends Controller
             'ground_id'             =>   'required',
             'accounting_id'         =>   'required', 
             'amount'                =>   'required',
+            'volume_lt'             =>   'required',
             'note'                  =>   'required',
             'type_account_id'       =>   'required',
             'origin'                =>   'required'

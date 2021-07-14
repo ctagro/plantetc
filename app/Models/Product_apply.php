@@ -28,6 +28,7 @@ class Product_apply extends Model
         'accounting_id'         ,
         'ground_id'             ,
         'amount'                ,
+        'volume_lt'             ,
         'note'                  ,
 
     ];
@@ -62,6 +63,7 @@ class Product_apply extends Model
                 'accounting_id'         => $data['accounting_id'],
                 'ground_id'             => $data['ground_id'],
                 'amount'                => $data['amount'],
+                'volume_lt'             => $data['volume_lt'],
                 'note'                  => $data['note'], 
 
                 ]);

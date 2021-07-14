@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                Consumo de defensivos
+                Aplicação de defensivos
                 <a class="float-right" href="{{url('/pesticide_apply')}}">Lista</a>
                 </div>
             </div>

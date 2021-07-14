@@ -30,6 +30,7 @@ class Pesticide_apply extends Model
         'accounting_id'         ,
         'ground_id'             ,
         'amount'                ,
+        'volume_lt'             ,
         'note'                  ,
 
     ];
@@ -59,8 +60,9 @@ class Pesticide_apply extends Model
                 'pesticide_id'          => $data['pesticide_id'],
                 'worker_id'             => $data['worker_id'],
                 'accounting_id'         => $data['accounting_id'],
-                'ground_id'             => $data['ground_id'],
+                'ground_id'             => $data['ground_id'],          
                 'amount'                => $data['amount'],
+                'volume_lt'             => $data['volume_lt'],
                 'note'                  => $data['note'], 
 
                 ]);

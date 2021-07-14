@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Insumos</title>
+    <title>Defensivo</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +38,7 @@
           <div class="card">
               <div class="card-header">
                   <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Excluir consumo
+                  Excluir aplicação de defensivo
               </div>
           </div>
       </div>
@@ -59,51 +59,52 @@
     <div class="container">
 
         <div class="row">
-          <div class="bolder">Consumo de Insumos:</div>
-        </div>
-
-        <div class="row">
           <div class="bolder">Data:</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $pesticide_apply->date}}</div>
         </div>
-
+        <br>
         <div class="row">
-          <div class="bolder">Produto</div>
+          <div class="bolder">Defensivo</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $pesticide_apply->pesticide->name}}</div>
         </div>
-
+        <br>
         <div class="row">
-          <div class="bolder">Area</div>
+          <div class="bolder">Funcionário</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $pesticide_apply->worker->name}}</div>
         </div>
-
-        <div class="row">
-          <div class="bolder">Area</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $pesticide_apply->accounting->description}}</div>
-        </div>
-
+        <br>
         <div class="row">
           <div class="bolder">Area</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $pesticide_apply->ground->name}}</div>
         </div>
-
+        <br>
         <div class="row">
-          <div class="bolder">Quantidade</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $pesticide_apply->amount}}</div>
-        </div>
+          <div class="form-group col-sm-4 ">
+            <div class="row"> 
+              <div class="bolder">Quantidade</div>
+            </div>
+            <div class="row">
+              <div class="form-control">{{ $pesticide_apply->amount}}</div>
+            </div>
+          </div>
 
+          <div class="form-group col-sm-4 ">
+            <div class="row">
+              <div class="bolder">Volume de calda</div>
+            </div>
+            <div class="row">
+              <div class="form-control">{{ $pesticide_apply->volume_lt}}</div>
+            </div>
+          </div>
+        </div>
         <div class="bg-light">Observação</div>
         <div class="row">
             <textarea class="form-control" rows="3" >{{$pesticide_apply->note }} </textarea>
@@ -114,7 +115,7 @@
     <p></p>
   
              <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão</button>
                   <a href="{{ url('/pesticide_apply') }}" class="float-right" >Voltar </a> 
              </div>
          </div>

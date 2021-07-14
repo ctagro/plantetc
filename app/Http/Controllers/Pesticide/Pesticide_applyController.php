@@ -35,7 +35,7 @@ class Pesticide_applyController extends Controller
    
     $pesticide_applys = Pesticide_apply::all();
 
-  // dd($pesticide_applys);
+ // dd($pesticide_applys);
 
 
         return view('pesticide.pesticide_apply.index',compact('pesticide_applys'));
@@ -76,7 +76,7 @@ class Pesticide_applyController extends Controller
 
     $pesticide_apply = new pesticide_apply();
 
-    //    dd($pesticide_apply);
+    //dd($pesticide_apply);
 
    
         return view('pesticide.pesticide_apply.create',compact('pesticide_apply','account','grounds','accountings','workers','pesticides'));
@@ -143,6 +143,7 @@ class Pesticide_applyController extends Controller
       $dataAccount['accounting_id'] = $data['accounting_id'];
       $dataAccount['ground_id'] = $data['ground_id'];
       $dataAccount['amount'] = $data['amount'] * $pesticide_price;
+      $dataAccount['volume_lt'] = $data['volume_lt'];
       $dataAccount['origin'] = "P";
       $dataAccount['note' ] = $data['note'];
 
@@ -285,6 +286,7 @@ class Pesticide_applyController extends Controller
         $dataPesticide_apply['accounting_id']        = $dataRequest['accounting_id'];
         $dataPesticide_apply['ground_id']            = $dataRequest['ground_id'];
         $dataPesticide_apply['amount']               = $dataRequest['amount'];
+        $dataPesticide_apply['volume_lt']            = $dataRequest['volume_lt'];
         $dataPesticide_apply['note']                 = $dataRequest['note'];
   
       //  dd($dataPesticide_apply);
@@ -298,6 +300,7 @@ class Pesticide_applyController extends Controller
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
         $dataAccount['amount'] = $dataRequest['amount'] * $pesticide_price;;
+        $dataAccount['volume_lt'] = $dataRequest['volume_lt'];
         $dataAccount['origin'] = "P";
         $dataAccount['note' ] = $dataRequest['note'];
 
@@ -348,6 +351,7 @@ class Pesticide_applyController extends Controller
             'ground_id'             =>   'required',
             'accounting_id'         =>   'required', 
             'amount'                =>   'required',
+            'volume_lt'             =>   'required',
             'note'                  =>   'required',
             'type_account_id'       =>   'required',
             'origin'                =>   'required'

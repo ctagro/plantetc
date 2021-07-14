@@ -102,14 +102,25 @@
                 </div>
 
                <!-- <div class="row"> -->
-                <div class="form-group">
-                    <label>Quantidade: </label>
-                    <input type="number" class="floatNumberField form-control py-3"  name="amount"  value="{{old('amount') ?? $product_apply->amount}}" placeholder="0.00" step="0.01" >
+                <div class="row">
+                    <div class="form-group col-sm-6 "> 
+                        <label>Quantidade: </label>
+                        <input type="number" class="floatNumberField form-control py-3"  name="amount"  value="{{old('amount') ?? $product_apply->amount}}" placeholder="0.00" step="0.01" >
                 
-                      @if($errors->has('amount'))
-                          <h6 class="text-danger" >Digite a quantidade</h6> 
-                      @endif
-                  </div> 
+                        @if($errors->has('amount'))
+                            <h6 class="text-danger" >Digite a quantidade</h6> 
+                        @endif
+                    </div> 
+
+                    <div class="form-group col-sm-6 ">
+                        <label>Volume de Calda (lt): </label>
+                        <input type="number" class="floatNumberField form-control py-3"  name="volume_lt"  value="{{old('volume_lt') ?? $product_apply->volume_lt}}" placeholder="0.00" step="0.01" >
+                    
+                        @if($errors->has('volume_lt'))
+                            <h6 class="text-danger" >Digite o volume de calda</h6> 
+                        @endif
+                    </div>
+                </div> 
 
             <!--
                   <div class="form-group col-sm-4">
