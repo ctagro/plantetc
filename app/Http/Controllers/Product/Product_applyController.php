@@ -232,6 +232,8 @@ class Product_applyController extends Controller
     public function update(Request $request, Product_apply $product_apply, Account $account)
     {
 
+     // dd($request['id'],$product_apply,$account);
+
 
         if ($request['date'] == null){
             $dataP = explode('/',$product_apply->date);
@@ -277,7 +279,7 @@ class Product_applyController extends Controller
         $dataProduct_apply['volume_lt']            = $dataRequest['volume_lt'];
         $dataProduct_apply['note']                 = $dataRequest['note'];
   
-      //  dd($dataProduct_apply);
+        //dd($dataProduct_apply);
         
        $updateProduct_apply = $product_apply -> update($dataProduct_apply);
 
@@ -325,6 +327,78 @@ class Product_applyController extends Controller
 
         return redirect('product_apply');
     }
+
+ // atualização dos preços dos fertilizantes 
+
+    public function update_price()
+    {
+
+      $accounts = Account::all();
+
+      $product_applys = Product_apply::all();
+
+      $products = Product::all();
+
+
+      foreach($product_applys as $product_apply){
+
+        $dataRequest = $product_apply;
+      //  $dataAccount = $product_apply->account;
+
+       // dd($product_apply->account);
+
+        $dataP = explode('/',$product_apply->date);
+        $data = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
+        $product_apply_description = $product_apply->product->name;
+       // dd($product_apply_description);
+
+       if ($dataRequest['note'] == null){
+          $dataRequest['note'] = "...";
+       }
+       
+        $product_price = $product_apply->product->price_unit;
+
+        $dataProduct_apply['date']                 = $data;
+        $dataProduct_apply['product_id']           = $dataRequest['product_id'];  
+        $dataProduct_apply['worker_id']            = $dataRequest['worker_id'];
+        $dataProduct_apply['accounting_id']        = $dataRequest['accounting_id'];
+        $dataProduct_apply['ground_id']            = $dataRequest['ground_id'];
+        $dataProduct_apply['amount']               = $dataRequest['amount'];
+        $dataProduct_apply['volume_lt']            = $dataRequest['volume_lt'];
+        $dataProduct_apply['note']                 = $dataRequest['note'];
+
+
+        $updateProduct_apply = $product_apply -> update($dataProduct_apply);
+
+        $dataAccount['date' ] = $data;
+        $dataAccount['description' ] = $product_apply_description;
+        $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
+        $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
+        $dataAccount['ground_id'] = $dataRequest['ground_id'];
+        $dataAccount['amount'] = $dataRequest['amount'] * $product_price;
+        $dataAccount['volume_lt'] = $dataRequest['volume_lt'];
+        $dataAccount['origin'] = "P";
+        $dataAccount['note' ] = $dataRequest['note'];
+
+
+        $updateAccount = $product_apply->account->update($dataAccount);
+
+      };
+
+  
+       if ($updateProduct_apply)
+
+        return redirect()
+                        ->route('product_apply.index' )
+                        ->with('sucess', 'Sucesso ao atualizar');
+                    
+
+        return redirect()
+                    ->back()
+                    ->with('error',  'Falha na atualização da atividade');     
+
+    }
+
 
     private function validateRequest()
     {

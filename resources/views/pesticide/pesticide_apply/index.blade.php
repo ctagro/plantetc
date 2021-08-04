@@ -111,6 +111,13 @@
        
         </div>
     </div>
+
+    <div class="card">
+      <div class="card-header">
+          <a href="{{ route('pesticide_apply.update_price') }}" class="float-right" >Atualizar preços </a> 
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-header">
           <a href="{{ url('admin/home/index') }}" class="float-right" >Voltar </a> 

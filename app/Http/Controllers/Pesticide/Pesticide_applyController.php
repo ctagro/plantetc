@@ -324,6 +324,78 @@ class Pesticide_applyController extends Controller
 
     }
 
+    // atualização dos preços dos fertilizantes 
+
+    public function update_price()
+    {
+
+      $accounts = Account::all();
+
+      $pesticide_applys = Pesticide_apply::all();
+
+      $pesticides = Pesticide::all();
+
+
+      foreach($pesticide_applys as $pesticide_apply){
+
+        $dataRequest = $pesticide_apply;
+     
+
+       // dd($pesticide_apply->account);
+
+        $dataP = explode('/',$pesticide_apply->date);
+        $data = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
+        $pesticide_apply_description = $pesticide_apply->pesticide->name;
+       // dd($pesticide_apply_description);
+
+       if ($dataRequest['note'] == null){
+          $dataRequest['note'] = "...";
+       }
+       
+        $pesticide_price = $pesticide_apply->pesticide->price_unit;
+
+        $dataPesticide_apply['date']                 = $data;
+        $dataPesticide_apply['pesticide_id']          = $dataRequest['pesticide_id'];  
+        $dataPesticide_apply['worker_id']            = $dataRequest['worker_id'];
+        $dataPesticide_apply['accounting_id']        = $dataRequest['accounting_id'];
+        $dataPesticide_apply['ground_id']            = $dataRequest['ground_id'];
+        $dataPesticide_apply['amount']               = $dataRequest['amount'];
+        $dataPesticide_apply['volume_lt']            = $dataRequest['volume_lt'];
+        $dataPesticide_apply['note']                 = $dataRequest['note'];
+
+
+        $updatePesticide_apply = $pesticide_apply -> update($dataPesticide_apply);
+
+        $dataAccount['date' ] = $data;
+        $dataAccount['description' ] = $pesticide_apply_description;
+        $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
+        $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
+        $dataAccount['ground_id'] = $dataRequest['ground_id'];
+        $dataAccount['amount'] = $dataRequest['amount'] * $pesticide_price;
+        $dataAccount['volume_lt'] = $dataRequest['volume_lt'];
+        $dataAccount['origin'] = "P";
+        $dataAccount['note' ] = $dataRequest['note'];
+
+
+        $updateAccount = $pesticide_apply->account->update($dataAccount);
+
+
+      };
+
+       if ($updatePesticide_apply)
+
+        return redirect()
+                        ->route('pesticide_apply.index' )
+                        ->with('sucess', 'Sucesso ao atualizar');
+                    
+
+        return redirect()
+                    ->back()
+                    ->with('error',  'Falha na atualização da atividade');     
+
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *

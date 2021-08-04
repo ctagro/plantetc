@@ -142,9 +142,14 @@ Route::namespace('Product')->group(function () {
     Route::patch('product_apply/{product_apply}/{account}', 'Product_applyController@update')->name('product_apply.update'); 
     Route::delete('product_apply/{product_apply}/{account}', 'Product_applyController@destroy')->name('product_apply.destroy');
 
+    Route::get('product_apply/update_price', 'Product_applyController@update_price')->name('product_apply.update_price');
+
+    
+
     Route::post('product_apply/product_apply_research/research', 'Product_applyResearchController@research')->name('product.product_apply_research.research');
     Route::get('product_apply/product_apply_research', 'Product_applyResearchController@consult')->name('product.product_apply_research.consult');
     Route::get('product_apply/product_apply_research/index', 'Product_applyResearchController@index')->name('product.product_apply_research.index');
+    
 
     
 });
@@ -166,6 +171,8 @@ Route::namespace('Pesticide')->group(function () {
     Route::get('pesticide_apply/{pesticide_apply}/edit', 'Pesticide_applyController@edit')->name('pesticide_apply.edit');
     Route::patch('pesticide_apply/{pesticide_apply}/{account}', 'Pesticide_applyController@update')->name('pesticide_apply.update'); 
     Route::delete('pesticide_apply/{pesticide_apply}/{account}', 'Pesticide_applyController@destroy')->name('pesticide_apply.destroy');
+
+    Route::get('pesticide_apply/update_price', 'Pesticide_applyController@update_price')->name('pesticide_apply.update_price');
 
     Route::post('pesticide_apply/pesticide_apply_research/research', 'Pesticide_applyResearchController@research')->name('pesticide.pesticide_apply_research.research');
     Route::get('pesticide_apply/pesticide_apply_research', 'Pesticide_applyResearchController@consult')->name('pesticide.pesticide_apply_research.consult');
