@@ -65,7 +65,7 @@
                     </thead>
                 
                     <tbody>
-                        @forelse($results as $key => $result)
+                        @forelse($results ?? '' as $key => $result)
                             @if($result != 0)    
                                 <tr>
                                     <td>

@@ -14,6 +14,7 @@ use App\Models\Account;
 use App\Models\Ground;
 use App\Models\Accounting;
 use App\Models\Type_account;
+use Redirect;
 
 class Result_areaController extends Controller
 {
@@ -30,6 +31,8 @@ class Result_areaController extends Controller
     public function index()
     {
    
+    
+
     $accounts = Account::all();
 
     $grounds = Ground::where('in_use', '=', "S")->get();
@@ -45,16 +48,24 @@ class Result_areaController extends Controller
 
     {
 
-   //   $accounts = Account::all();
+        $user = auth()->user();
+
+        
+
+        if ($user['id']==1){
+
 
          $grounds = Ground::where('in_use', '=', "S")->get();
+     
+            return view('report.result_area.research', compact('grounds'));
+        }
 
-    //    $accountings = Accounting::where('in_use', '=', "S")->get();
+        else{
+        
+            return view('admin.home.index');
+     
+        }
 
-     //   $type_accounts= type_account::all();
-
-
-    return view('report.result_area.research', compact('grounds'));
 
     }
     
