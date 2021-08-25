@@ -149,7 +149,7 @@ class Product_applyController extends Controller
 
       $id = DB::getPdo()->lastInsertId();
 
- //   dd($id);
+   // dd($dataAccount);
 
          $data['account_id'] = $id;
 
@@ -294,7 +294,7 @@ class Product_applyController extends Controller
         $dataAccount['origin'] = "P";
         $dataAccount['note' ] = $dataRequest['note'];
 
-      // dd($dataAccount);
+     //  dd($dataAccount);
 
         $updateAccount = $product_apply->account ->update($dataAccount);
 
@@ -372,7 +372,7 @@ class Product_applyController extends Controller
 
         $dataAccount['date' ] = $data;
         $dataAccount['description' ] = $product_apply_description;
-        $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
+        $dataAccount['type_account_id'] = 1;
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
         $dataAccount['amount'] = $dataRequest['amount'] * $product_price;

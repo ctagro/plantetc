@@ -368,7 +368,7 @@ class Pesticide_applyController extends Controller
 
         $dataAccount['date' ] = $data;
         $dataAccount['description' ] = $pesticide_apply_description;
-        $dataAccount['type_account_id'] = $dataRequest['type_account_id'];
+        $dataAccount['type_account_id'] = 1;
         $dataAccount['accounting_id'] = $dataRequest['accounting_id'];
         $dataAccount['ground_id'] = $dataRequest['ground_id'];
         $dataAccount['amount'] = $dataRequest['amount'] * $pesticide_price;
@@ -376,6 +376,7 @@ class Pesticide_applyController extends Controller
         $dataAccount['origin'] = "P";
         $dataAccount['note' ] = $dataRequest['note'];
 
+      
 
         $updateAccount = $pesticide_apply->account->update($dataAccount);
 
