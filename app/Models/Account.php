@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Accounting;
 use App\Models\Ground;
+use App\Models\Type_account;
 use Carbon\Carbon;
 use DateTime;
 use DB;
