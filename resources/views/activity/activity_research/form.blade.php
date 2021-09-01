@@ -69,17 +69,6 @@
             </div>
           </div>
 
-          <div class="col-md-6">
-            <div class="form-group">
-                <label for="product">Produto :</label>
-                <select name="product_id"  id="product_id" class="form-control">
-                  <option selected="selected" value=""></option>
-                    @foreach($products as $product)    
-                        <option value="{{$product->id}}">{{$product->name}} </option>                  
-                    @endforeach
-                </select>
-            </div>
-          </div>
        
         </div>
     </div>
