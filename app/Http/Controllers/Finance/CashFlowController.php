@@ -50,13 +50,8 @@ class CashFlowController extends Controller
         $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
      endif;
     
-     $maxdate = 
-
-     dd($maxdate);
 
     if ($response === null) {
-
-        $cashFlow = new cashFlow();
         
     
         return view('finance.cashFlow.index',compact('cashFlows','banks'));
