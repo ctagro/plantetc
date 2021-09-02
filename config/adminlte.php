@@ -284,6 +284,14 @@ return [
                 ],
 
                 [
+                    'text'       => 'Registrar fluxo de caixa',
+                    'icon_color' => 'cyan',
+                    'url'        => '/cashFlow',
+                    'icon'        => 'fas fa-calendar-minus',
+
+                ],
+
+                [
                     'text'       => 'Pesquisar Movimentações',
                     'icon_color' => 'green',
                     'url'  => '/account_research',
@@ -460,6 +468,13 @@ return [
                 'text'       => 'Compradores',
                 'icon_color' => 'green',
                 'url'  => '/bayer',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Bancos',
+                'icon_color' => 'green',
+                'url'  => '/bank',
                 'icon'        => 'fas fa-money-bill-wave',
             ],
         ],

@@ -101,6 +101,22 @@ Route::namespace('Finance')->group(function () {
     Route::get('sale_research', 'SaleResearchController@consult')->name('sale_research.consult');
     Route::get('sale_research/index', 'SaleResearchController@index')->name('sale_research.index');
 
+    Route::get('bank/create', 'BankController@create')->name('bank.create');
+    Route::post('bank/store', 'BankController@store')->name('bank.store');
+    Route::get('bank', 'BankController@index')->name('bank.index')-> middleware('auth');
+    Route::post('bank/{bank}', 'BankController@show')->name('bank.show');
+    Route::get('bank/{bank}/edit', 'BankController@edit')->name('bank.edit'); 
+    Route::patch('bank/{bank}', 'BankController@update')->name('bank.update');
+    Route::delete('bank/{bank}', 'BankController@destroy')->name('bank.destroy');
+
+    Route::get('cashFlow/create', 'CashFlowController@create')->name('cashFlow.create');
+    Route::post('cashFlow/store', 'CashFlowController@store')->name('cashFlow.store');
+    Route::get('cashFlow', 'CashFlowController@index')->name('cashFlow.index')-> middleware('auth');
+    Route::get('cashFlow/{cashFlow}', 'CashFlowController@show')->name('cashFlow.show');
+    Route::get('cashFlow/{cashFlow}/edit', 'CashFlowController@edit')->name('cashFlow.edit');
+    Route::patch('cashFlow/{cashFlow}', 'CashFlowController@update')->name('cashFlow.update');
+    Route::delete('cashFlow/{cashFlow}', 'CashFlowController@destroy')->name('cashFlow.destroy');
+
     Route::post('cash_flow/research', 'Cash_flowController@research')->name('cash_flow.research');
     Route::get('cash_flow', 'Cash_flowController@consult')->name('cash_flow.consult');
     Route::get('cash_flow/index', 'Cash_flowController@index')->name('cash_flow.index');

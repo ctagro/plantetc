@@ -21,6 +21,8 @@ use App\Models\Pesticide_apply;
 use App\Models\Disease;
 use App\Models\Active_principle;
 use App\Models\Category_pesticide;
+Use App\Models\Bank;
+Use App\Models\CashFlow;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -136,6 +138,16 @@ class User extends Authenticatable
     public function category_pesticide()
     {
         return $this->hasMany(category_pesticide::class);
+    }
+
+    public function bank()
+    {
+        return $this->hasMany(bank::class);
+    }
+
+    public function cashFlow()
+    {
+        return $this->hasMany(cashFlow::class);
     }
 
 }
