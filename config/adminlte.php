@@ -284,7 +284,7 @@ return [
                 ],
 
                 [
-                    'text'       => 'Registrar fluxo de caixa',
+                    'text'       => 'Registrar fluxo de caixa -11',
                     'icon_color' => 'cyan',
                     'url'        => '/cashFlow',
                     'icon'        => 'fas fa-calendar-minus',
