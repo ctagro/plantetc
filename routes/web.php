@@ -109,9 +109,10 @@ Route::namespace('Finance')->group(function () {
     Route::patch('bank/{bank}', 'BankController@update')->name('bank.update');
     Route::delete('bank/{bank}', 'BankController@destroy')->name('bank.destroy');
 
+
+    Route::get('cashFlow', 'CashFlowController@index')->name('cashFlow.index')-> middleware('auth');
     Route::get('cashFlow/create', 'CashFlowController@create')->name('cashFlow.create');
     Route::post('cashFlow/store', 'CashFlowController@store')->name('cashFlow.store');
-    Route::get('cashFlow', 'CashFlowController@index')->name('cashFlow.index')-> middleware('auth');
     Route::get('cashFlow/{cashFlow}', 'CashFlowController@show')->name('cashFlow.show');
     Route::get('cashFlow/{cashFlow}/edit', 'CashFlowController@edit')->name('cashFlow.edit');
     Route::patch('cashFlow/{cashFlow}', 'CashFlowController@update')->name('cashFlow.update');
