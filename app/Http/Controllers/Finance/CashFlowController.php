@@ -79,7 +79,7 @@ class CashFlowController extends Controller
 
         ]);
 
-        return view('finance.cashFlow.create',compact('cashFlows','banks'));
+        return view('finance.cashflow.create',compact('cashFlows','banks'));
        
     }
 
@@ -141,7 +141,7 @@ class CashFlowController extends Controller
     {
         $banks = auth()->user()->cashFlow()->get();
 
-        return view('finance.cashFlow.show', compact('cashFlow','banks' ));
+        return view('finance.cashflow.show', compact('cashFlow','banks' ));
 
     }
 
@@ -162,7 +162,7 @@ class CashFlowController extends Controller
 
       //  dd($cashFlow, $banks);
 
-        return view('finance.cashFlow.edit',compact('cashFlow','banks'));
+        return view('finance.cashflow.edit',compact('cashFlow','banks'));
     }
 
     /**
