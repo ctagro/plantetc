@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers\Report;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -38,7 +38,7 @@ class Cash_flowController extends Controller
 
     $type_accounts= type_account::all();
 
-        return view('finance.cash_flow.index',compact('accounts','grounds','accountings','type_accounts'));
+        return view('report.cash_flow.index',compact('accounts','grounds','accountings','type_accounts'));
     }
 
     public function consult()
@@ -54,7 +54,7 @@ class Cash_flowController extends Controller
         $type_accounts= type_account::all();
 
 
-    return view('finance.cash_flow.research', compact('accounts','grounds','accountings','type_accounts'));
+    return view('report.cash_flow.research', compact('accounts','grounds','accountings','type_accounts'));
 
     }
     
@@ -101,7 +101,7 @@ class Cash_flowController extends Controller
 
 
  
-    return view('finance.cash_flow.index', compact('accounts','grounds','type_accounts','accountings',));
+    return view('report.cash_flow.index', compact('accounts','grounds','type_accounts','accountings',));
     }
 
 }

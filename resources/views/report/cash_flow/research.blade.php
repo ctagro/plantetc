@@ -51,7 +51,7 @@
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('finance.cash_flow.form')
+             @include('report.cash_flow.form')
 
              <div class="form-group">
               <button type="submit" class="btn btn-danger btn-block">Executar pesquisa</button>

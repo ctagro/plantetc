@@ -119,10 +119,7 @@ Route::namespace('Finance')->group(function () {
     Route::delete('bank/{bank}', 'BankController@destroy')->name('bank.destroy');
 
 
-    Route::post('cash_flow/research', 'Cash_flowController@research')->name('cash_flow.research');
-    Route::get('cash_flow', 'Cash_flowController@consult')->name('cash_flow.consult');
-    Route::get('cash_flow/index', 'Cash_flowController@index')->name('cash_flow.index');
-
+ 
 });
 
 Route::namespace('Ground')->group(function () {
@@ -227,6 +224,10 @@ Route::namespace('Report')->group(function () {
     Route::post('result_area/research', 'Result_areaController@research')->name('result_area.research');
     Route::get('result_area', 'Result_areaController@consult')->name('result_area.consult');
     Route::get('result_area/index', 'Result_areaController@index')->name('result_area.index');
+
+    Route::post('cash_flow/research', 'Cash_flowController@research')->name('cash_flow.research');
+    Route::get('cash_flow', 'Cash_flowController@consult')->name('cash_flow.consult');
+    Route::get('cash_flow/index', 'Cash_flowController@index')->name('cash_flow.index');
 
 
 });

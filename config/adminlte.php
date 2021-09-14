@@ -305,12 +305,7 @@ return [
                     'icon'        => 'fas fa-chart-line', 
                 ],
 
-                [
-                    'text'       => 'Fluxo de caixa',
-                    'icon_color' => 'cyan',
-                    'url'        => '/cash_flow',
-                    'icon'        => 'fas fa-chart-line', 
-                ],
+                
 
             ],
         ],
@@ -377,14 +372,28 @@ return [
 
     ['header' => '=========================='],
 
-    [
-        'text'       => 'Resultado por área',
-        'icon_color' => 'cyan',
-        'url'        => '/result_area',
-        'icon'        => 'fas fa-calendar-plus', 
+        [
+        'text'    => 'Relatórios',
+        'icon'    => 'fas fa-fw fa-share',
+        'submenu' => [
 
+
+    
+            [ 'text'       => 'Resultado por área',
+            'icon_color' => 'cyan',
+            'url'        => '/result_area',
+            'icon'        => 'fas fa-calendar-plus', 
+
+            ],
+
+            [
+                'text'       => 'Fluxo de caixa',
+                'icon_color' => 'cyan',
+                'url'        => '/cash_flow',
+                'icon'        => 'fas fa-chart-line', 
+            ],
+        ],
     ],
-
 
     ['header' => '=========================='],
 
