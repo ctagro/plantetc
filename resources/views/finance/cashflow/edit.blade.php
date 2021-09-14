@@ -53,7 +53,7 @@
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('finance.cashFlow.form_edit')
+             @include('finance.cashflow.form_edit')
 
                  <div class="form-group">
                       <button type="submit" class="btn btn-danger btn-block">Atualizar a fluxo de caixa</button>

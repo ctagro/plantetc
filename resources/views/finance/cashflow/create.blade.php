@@ -6,7 +6,7 @@
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('finance.cashFlow.form')
+             @include('finance.cashflow.form')
 
                  <div class="form-group">
                       <button type="submit" class="btn btn-danger btn-block">Registrar fluxo de caixa</button>

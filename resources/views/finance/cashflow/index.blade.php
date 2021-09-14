@@ -94,7 +94,7 @@
              
     <!-- Inicio do Formulario de cashFlow --> 
 
-       @include('finance.cashFlow.create') 
+       @include('finance.cashflow.create') 
            
 <!-- Fim do Formulario de cashFlow_conta --> 
 
