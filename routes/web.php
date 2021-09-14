@@ -84,6 +84,13 @@ Route::namespace('Finance')->group(function () {
     Route::patch('accounting/{accounting}', 'AccountingController@update')->name('accounting.update');
     Route::delete('accounting/{accounting}', 'AccountingController@destroy')->name('accounting.destroy');
 
+    Route::get('cashFlow', 'CashFlowController@index')->name('cashFlow.index')-> middleware('auth');
+    Route::get('cashFlow/create', 'CashFlowController@create')->name('cashFlow.create');
+    Route::post('cashFlow/store', 'CashFlowController@store')->name('cashFlow.store');
+    Route::get('cashFlow/{cashFlow}', 'CashFlowController@show')->name('cashFlow.show');
+    Route::get('cashFlow/{cashFlow}/edit', 'CashFlowController@edit')->name('cashFlow.edit');
+    Route::patch('cashFlow/{cashFlow}', 'CashFlowController@update')->name('cashFlow.update');
+    Route::delete('cashFlow/{cashFlow}', 'CashFlowController@destroy')->name('cashFlow.destroy');
 
     Route::get('bayer/create', 'BayerController@create')->name('bayer.create');
     Route::post('bayer/store', 'BayerController@store')->name('bayer.store');
@@ -101,13 +108,7 @@ Route::namespace('Finance')->group(function () {
     Route::get('sale_research', 'SaleResearchController@consult')->name('sale_research.consult');
     Route::get('sale_research/index', 'SaleResearchController@index')->name('sale_research.index');
 
-    Route::get('cashFlow', 'CashFlowController@index')->name('cashFlow.index')-> middleware('auth');
-    Route::get('cashFlow/create', 'CashFlowController@create')->name('cashFlow.create');
-    Route::post('cashFlow/store', 'CashFlowController@store')->name('cashFlow.store');
-    Route::get('cashFlow/{cashFlow}', 'CashFlowController@show')->name('cashFlow.show');
-    Route::get('cashFlow/{cashFlow}/edit', 'CashFlowController@edit')->name('cashFlow.edit');
-    Route::patch('cashFlow/{cashFlow}', 'CashFlowController@update')->name('cashFlow.update');
-    Route::delete('cashFlow/{cashFlow}', 'CashFlowController@destroy')->name('cashFlow.destroy');
+   
 
     Route::get('bank/create', 'BankController@create')->name('bank.create');
     Route::post('bank/store', 'BankController@store')->name('bank.store');
