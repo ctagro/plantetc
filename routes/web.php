@@ -229,6 +229,11 @@ Route::namespace('Report')->group(function () {
     Route::get('cash_flow', 'Cash_flowController@consult')->name('cash_flow.consult');
     Route::get('cash_flow/index', 'Cash_flowController@index')->name('cash_flow.index');
 
+    Route::post('cashflow/research', 'Cashflow_ReportController@research')->name('cashflow.research');
+    Route::get('cashflow', 'Cashflow_ReportController@consult')->name('cashflow.consult');
+    Route::get('cashflow/index', 'Cashflow_ReportController@index')->name('cashflow.index');
+
+
 
 });
 

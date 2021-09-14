@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fluxo de Caixa</title>
+    <title>Fluxo de caixa</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,7 +27,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Movimentações')
+@section('title', 'Fluxo de Caixa')
 
 
 
@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/account_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Registrar fluxo de caixa
+                    Fluxo de Caixa
                 </div>
             </div>
         </div>
@@ -47,6 +47,8 @@
 </div>
 
 <!-- Inicio da Tabela dos registros -->
+
+<?php $balance = 0 ?>
 
                 <div class='table-responsive'>
 
@@ -67,38 +69,33 @@
                         @forelse($cashFlows as $cashFlow)
                                 <tr>
                                     <td>
-                                       <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ $cashFlow->date }}</a>
+                                       <a>{{ $cashFlow->date }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ $cashFlow->description }}</a>
+                                        <a>{{ $cashFlow->description }}</a>
                                     </td>
+
                                     <td>
-                                        <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ $cashFlow->bank->name}}</a>
+                                        <a>{{ $cashFlow->bank->name }}</a>
                                     </td>
-                                    <td>
-                                        <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ number_format($cashFlow->amount, 2 , ',', '.')  }}</a>
-                                    </td>
-                                    <td>
-                                        <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ number_format($cashFlow->balance, 2 , ',', '.')  }}</a>
-                                    </td>
+                                  
+                                    <td class="text-sm">{{ number_format(($cashFlow->amount), 2 , ',', '.')  }}</td>
+                                    <?php $balance = $balance + $cashFlow->amount ?>
+            
+                                    <td class="text-sm" >{{ number_format($balance, 2 , ',', '.')  }}</td>
                                 </tr>
                             @empty
                         @endforelse                  
                     </tbody>
         
                 </table>
+
             </div>
 
 <!-- Fim da Tabela dos registros -->
 
-             
-    <!-- Inicio do Formulario de cashFlow --> 
-
-       @include('finance.cashflow.create') 
-           
-<!-- Fim do Formulario de cashFlow_conta --> 
-
-<p class="text-right"> <a href="{{ url('admin/home/index') }}" class="text-right">Voltar </a> </p>
+ 
+<p class="text-right"> <a href="{{ url('/cashflow') }}" class="text-right">Voltar </a> </p>
 
 </body>
 

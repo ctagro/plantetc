@@ -28,7 +28,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Contas')
+@section('title', 'Pesquisa')
 
 @section('content')
 
@@ -37,40 +37,37 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/account_plant.png')}}" style="height: 50px; width: 50px;"alt="Imagem" >
-                    Editar fluxo de caixa
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/account_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    Cálculo do Fluxo de Caixa
                 </div>
             </div>
         </div>
     </div>
 </div>
-   
 
-    <form action="{{ route('cashFlow.update' ,[ 'cashFlow' => $cashFlow->id ])}}" method="POST"  enctype="multipart/form-data">
 
-        @method('PATCH')
-
+<form method="POST" action="{{ route('cashflow.research')}}">
+  
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('finance.cashflow.form_edit')
+             @include('report.cashflow.form')
 
-                 <div class="form-group">
-                      <button type="submit" class="btn btn-danger btn-block">Atualizar a fluxo de caixa</button>
-                 </div>
-             </div>
+             <div class="form-group">
+              <button type="submit" class="btn btn-danger btn-block">Executar pesquisa</button>
+         </div>
+     </div>
+     <div class="card">
+      <div class="card-header">
+          <a href="{{ url('admin/home/index') }}" class="float-right" >Voltar </a> 
+      </div>
+  </div>
 
-  <!-- Link para deletar inativo -->
-    
-             <div class="row justify-content-between" >
-
-              <a href= "{{ route('cashFlow.show' ,[ 'cashFlow' => $cashFlow->id ])}}" class="btn btn-outline-danger" >Deletar</a>
-   
-              <div class="text-right"> <a href="{{ url('/cashFlow') }}" class="text-right">Voltar </a> </div>
-             </div>
-         <a href="#" id="ancora"></a>
+    </div>
+<a href="#" id="ancora"></a>
+ <a href="#" id="ancora"></a>
 </form>
-                
+        
 
 
 </body>

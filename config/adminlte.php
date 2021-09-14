@@ -284,7 +284,7 @@ return [
                 ],
 
                 [
-                    'text'       => 'Registrar fluxo de caixa -11',
+                    'text'       => 'Registrar fluxo de caixa',
                     'icon_color' => 'cyan',
                     'url'        => '/cashFlow',
                     'icon'        => 'fas fa-calendar-minus',
@@ -390,6 +390,13 @@ return [
                 'text'       => 'Fluxo de caixa',
                 'icon_color' => 'cyan',
                 'url'        => '/cash_flow',
+                'icon'        => 'fas fa-chart-line', 
+            ],
+
+            [
+                'text'       => 'Fluxo de Bancos',
+                'icon_color' => 'cyan',
+                'url'        => '/cashflow',
                 'icon'        => 'fas fa-chart-line', 
             ],
         ],
