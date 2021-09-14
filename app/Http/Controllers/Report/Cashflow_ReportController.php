@@ -66,7 +66,7 @@ class Cashflow_ReportController extends Controller
 
        $pesquisa = $request;
 
-        $termos = $request->only('bank_id','date_inicial', 'date_final' );
+        $termos = $request->only('description','bank_id','date_inicial', 'date_final' );
         $prepareQuery = "";
         $query = "";
 
@@ -75,18 +75,18 @@ class Cashflow_ReportController extends Controller
 
             if($valor){
               //  $query = $query . "where("."'".$nome."'".","."'"."="."'".","."'". $valor. "')->";
-                if ($nome == "bank_id")
+              if ($nome == "description")
+                    $prepareQuery = $prepareQuery . $nome. ' LIKE "'. '%'.$valor.'%'. '" AND '; 
+              if ($nome == "bank_id")
                     $prepareQuery = $prepareQuery . $nome. '="'. $valor. '" AND ';
                 if ($nome == "date_inicial") 
-                        $prepareQuery = $prepareQuery . 'date'. '>="'. $valor. '" AND ';
+                    $prepareQuery = $prepareQuery . 'date'. '>="'. $valor. '" AND ';
                 if ($nome == "date_final")
-                        $prepareQuery = $prepareQuery . 'date'. '<="'. $valor. '" AND ';
-            
+                    $prepareQuery = $prepareQuery . 'date'. '<="'. $valor. '" AND ';
             }
          }
    
          $query = substr($prepareQuery, 0 , -5);
-
 
          if ($query){
             $cashFlows = cashFlow::whereRaw($query)->orderBy('date')->get();

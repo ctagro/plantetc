@@ -40,6 +40,13 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+                <label for="description">Descrição :</label>
+                  <input type="text" name="description" id ="description"  class="form-control py-3" > 
+          </div>
+        </div>
       
         </div>
         </div>
