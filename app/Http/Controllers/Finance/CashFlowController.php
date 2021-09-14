@@ -54,11 +54,11 @@ class CashFlowController extends Controller
     if ($response === null) {
         
     
-        return view('/finance.cashFlow.index',compact('cashFlows','banks'));
+        return view('/finance.cashflow.index',compact('cashFlows','banks'));
     } 
     
  
-        return view('finance.cashFlow.index',compact('cashFlows','banks'));
+        return view('finance.cashflow.index',compact('cashFlows','banks'));
     }
 
     /**
