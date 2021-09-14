@@ -41,8 +41,7 @@
             </div> 
 
             <div class="form-group row">
-
-                    <input type="longtext" name="note" value="{{old('note') ?? $cashFlow->note }}" rows="4" class="form-control">                            
+                    <input type="longtext" name="note" value="{{old('note') }}" rows="4" class="form-control">                            
             </div>
 
 <!-- Fim do Formulario de cashFlow_conta -->
