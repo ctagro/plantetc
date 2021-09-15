@@ -29,26 +29,35 @@ class CashFlowController extends Controller
     {
 
     $user = auth()->user();
+
+    if ($user['id']==1){
    
-    $banks = auth()->user()->bank()->get();
+        $banks = auth()->user()->bank()->get();
 
-    $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
-
-  //  dd($cashFlows);
-// $cashFlows = CashFlow::all();
-
-
-    $response = $cashFlows->first();
-    $last = $cashFlows->last();
-
-    $nr = $last['id'];
-
-     if($nr>5):
-        $nr = $nr-5;
-        $cashFlows = auth()->user()->cashFlow()->where('id','>', $nr)->orderBy('date')->get();
-     else:  
         $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
-     endif;
+
+    //  dd($cashFlows);
+    // $cashFlows = CashFlow::all();
+
+
+        $response = $cashFlows->first();
+        $last = $cashFlows->last();
+
+        $nr = $last['id'];
+
+        if($nr>5):
+            $nr = $nr-5;
+            $cashFlows = auth()->user()->cashFlow()->where('id','>', $nr)->orderBy('date')->get();
+        else:  
+            $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
+        endif;
+    }
+    
+     else{
+
+        return view('admin.home.index');
+     }
+ 
     
 
     if ($response === null) {
@@ -71,15 +80,17 @@ class CashFlowController extends Controller
 
         $user = auth()->user();
 
-        $banks = auth()->user()->cashFlow()->get();
+       
 
-        $cashFlows = auth()->user()->cashFlow()->get();
-  
-        $cashFlow = new \App\Models\CashFlow([
+            $banks = auth()->user()->cashFlow()->get();
 
-        ]);
+            $cashFlows = auth()->user()->cashFlow()->get();
+    
+            $cashFlow = new \App\Models\CashFlow([
 
-        return view('finance.cashflow.create',compact('cashFlows','banks'));
+            ]);
+
+            return view('finance.cashflow.create',compact('cashFlows','banks'));
        
     }
 
@@ -156,13 +167,21 @@ class CashFlowController extends Controller
 
         $user = auth()->user();
 
-       
+        if ($user['id']==1){
 
         $banks = auth()->user()->bank()->get();
 
       //  dd($cashFlow, $banks);
 
         return view('finance.cashflow.edit',compact('cashFlow','banks'));
+
+    }
+
+        else{
+
+        return view('admin.home.index');
+ 
+}
     }
 
     /**

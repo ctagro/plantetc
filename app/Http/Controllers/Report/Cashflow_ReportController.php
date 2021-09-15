@@ -31,12 +31,15 @@ class Cashflow_ReportController extends Controller
    
         $user = auth()->user();
 
-        $cashFlows = CashFlow::all();
-   
-        $banks = auth()->user()->bank()->get();
 
-        return view('report.cashflow.index',compact('banks','cashFlows'));
-    }
+            $cashFlows = CashFlow::all();
+    
+            $banks = auth()->user()->bank()->get();
+
+            return view('report.cashflow.index',compact('banks','cashFlows'));
+
+        }
+    
 
     public function consult()
 
@@ -59,6 +62,7 @@ class Cashflow_ReportController extends Controller
             return view('admin.home.index');
      
         }
+
     }
     
     public function research(Request $request)
