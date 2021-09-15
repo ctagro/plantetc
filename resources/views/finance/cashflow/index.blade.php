@@ -58,7 +58,7 @@
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Descrição</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Banco</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Saldo</th>
+ <!--                           <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Saldo</th> -->
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
                         </tr>
                     </thead>
@@ -78,9 +78,10 @@
                                     <td>
                                         <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ number_format($cashFlow->amount, 2 , ',', '.')  }}</a>
                                     </td>
-                                    <td>
-                                        <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ number_format($cashFlow->balance, 2 , ',', '.')  }}</a>
+<!--                                    <td>
+                                        <a href= "{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{ number_format($cashFlow->balance, 2 , ',', '.')  }}</a>
                                     </td>
+-->          
                                 </tr>
                             @empty
                         @endforelse                  

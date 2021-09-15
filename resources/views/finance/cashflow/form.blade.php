@@ -41,7 +41,7 @@
             </div> 
 
             <div class="form-group row">
-                    <input type="longtext" name="note" value="{{old('note') }}" rows="4" class="form-control">                            
+                    <input type="longtext" name="note" value="{{old('note') }}" rows="4" class="form-control py-3" placeholder="Observação">                            
             </div>
 
 <!-- Fim do Formulario de cashFlow_conta -->
