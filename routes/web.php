@@ -243,3 +243,14 @@ Route::namespace('Site')->group(function () {
     Route::get('site/category/index', [App\Http\Controllers\Site\CategoryController::class, 'index'])->name('category.index');
 
 });
+
+Route::namespace('Stock')->group(function () {
+    Route::get('type_product/create', 'Type_productController@create')->name('type_product.create');
+    Route::post('type_product/store', 'Type_productController@store')->name('type_product.store');
+    Route::get('type_product', 'Type_productController@index')->name('type_product.index')-> middleware('auth');
+    Route::post('type_product/{type_product}', 'Type_productController@show')->name('type_product.show');
+    Route::get('type_product/{type_product}/edit', 'Type_productController@edit')->name('type_product.edit'); 
+    Route::patch('type_product/{type_product}', 'Type_productController@update')->name('type_product.update');
+    Route::delete('type_product/{type_product}', 'Type_productController@destroy')->name('type_product.destroy');
+
+});

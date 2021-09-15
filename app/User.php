@@ -23,6 +23,7 @@ use App\Models\Active_principle;
 use App\Models\Category_pesticide;
 Use App\Models\Bank;
 Use App\Models\CashFlow;
+Use App\Models\Type_product;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -148,6 +149,11 @@ class User extends Authenticatable
     public function cashFlow()
     {
         return $this->hasMany(cashFlow::class);
+    }
+
+    public function type_product()
+    {
+        return $this->hasMany(type_product::class);
     }
 
 }

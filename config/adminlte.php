@@ -340,35 +340,75 @@ return [
     
     ['header' => '=========================='],
 
-    [
-        'text'       => 'Aplicação de Fertilizantes',
-        'icon_color' => 'cyan',
-        'url'        => '/product_apply',
-        'icon'        => 'fas fa-calendar-plus', 
+            [
+                'text'    => 'Insumos',
+                'icon'    => 'fas fa-fw fa-share',
+                'submenu' => [
+            
+            [
+                'text'       => 'Aplicação de Fertilizantes',
+                'icon_color' => 'cyan',
+                'url'        => '/product_apply',
+                'icon'        => 'fas fa-calendar-plus', 
+
+            ],
+
+            [
+                'text'       => 'Aplicação de Defensivos',
+                'icon_color' => 'cyan',
+                'url'        => '/pesticide_apply',
+                'icon'        => 'fas fa-calendar-plus', 
+
+            ],
+
+            [
+                'text'       => 'Pesquisar Apl. Fertilizantes',
+                'icon_color' => 'green',
+                'url'  => 'product_apply/product_apply_research',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],  
+
+            [
+                'text'       => 'Pesquisar Apl. Defensivos',
+                'icon_color' => 'green',
+                'url'  => 'pesticide_apply/pesticide_apply_research',
+                'icon'        => 'fas fa-money-bill-wave',
+            ], 
+        ],
 
     ],
 
-    [
-        'text'       => 'Aplicação de Defensivos',
-        'icon_color' => 'cyan',
-        'url'        => '/pesticide_apply',
-        'icon'        => 'fas fa-calendar-plus', 
+    ['header' => '=========================='],
 
+        [
+        'text'    => 'Estoque',
+        'icon'    => 'fas fa-fw fa-share',
+        'submenu' => [
+
+
+    
+            [ 'text'       => 'Registrar entradas',
+            'icon_color' => 'cyan',
+            'url'        => '/result_area',
+            'icon'        => 'fas fa-calendar-plus', 
+
+            ],
+
+            [
+                'text'       => 'Consulta ao Estoque',
+                'icon_color' => 'cyan',
+                'url'        => '/cash_flow',
+                'icon'        => 'fas fa-chart-line', 
+            ],
+
+            [
+                'text'       => 'Fluxo de Bancos',
+                'icon_color' => 'cyan',
+                'url'        => '/cashflow',
+                'icon'        => 'fas fa-chart-line', 
+            ],
+        ],
     ],
-
-    [
-        'text'       => 'Pesquisar Apl. Fertilizantes',
-        'icon_color' => 'green',
-        'url'  => 'product_apply/product_apply_research',
-        'icon'        => 'fas fa-money-bill-wave',
-    ],  
-
-    [
-        'text'       => 'Pesquisar Apl. Defensivos',
-        'icon_color' => 'green',
-        'url'  => 'pesticide_apply/pesticide_apply_research',
-        'icon'        => 'fas fa-money-bill-wave',
-    ], 
 
     ['header' => '=========================='],
 
@@ -491,6 +531,13 @@ return [
                 'text'       => 'Bancos',
                 'icon_color' => 'green',
                 'url'  => '/bank',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Tipo de Produto',
+                'icon_color' => 'green',
+                'url'  => '/type_product',
                 'icon'        => 'fas fa-money-bill-wave',
             ],
         ],
