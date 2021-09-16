@@ -253,4 +253,12 @@ Route::namespace('Stock')->group(function () {
     Route::patch('type_product/{type_product}', 'Type_productController@update')->name('type_product.update');
     Route::delete('type_product/{type_product}', 'Type_productController@destroy')->name('type_product.destroy');
 
+    Route::get('entry/create', 'EntryController@create')->name('entry.create');
+    Route::post('entry/store', 'EntryController@store')->name('entry.store');
+    Route::get('entry', 'EntryController@index')->name('entry.index')-> middleware('auth');
+    Route::get('entry/{entry}', 'EntryController@show')->name('entry.show');
+    Route::get('entry/{entry}/edit', 'EntryController@edit')->name('entry.edit');
+    Route::patch('entry/{entry}', 'EntryController@update')->name('entry.update');
+    Route::delete('entry/{entry}', 'EntryController@destroy')->name('entry.destroy');
+
 });

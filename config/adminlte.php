@@ -389,7 +389,7 @@ return [
     
             [ 'text'       => 'Registrar entradas',
             'icon_color' => 'cyan',
-            'url'        => '/result_area',
+            'url'        => '/entry',
             'icon'        => 'fas fa-calendar-plus', 
 
             ],

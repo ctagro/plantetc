@@ -40,7 +40,7 @@ class AccountController extends Controller
 
 //   dd($accounts);
 
-    $response = $accounts->first();
+    $response = $accounts->first(); 
     $last = $accounts->last();
 
     $nr = $last['id'];

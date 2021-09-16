@@ -24,6 +24,7 @@ use App\Models\Category_pesticide;
 Use App\Models\Bank;
 Use App\Models\CashFlow;
 Use App\Models\Type_product;
+Use App\Models\Entry;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -154,6 +155,11 @@ class User extends Authenticatable
     public function type_product()
     {
         return $this->hasMany(type_product::class);
+    }
+
+    public function entry()
+    {
+        return $this->hasMany(entry::class);
     }
 
 }
