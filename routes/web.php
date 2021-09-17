@@ -261,4 +261,12 @@ Route::namespace('Stock')->group(function () {
     Route::patch('entry/{entry}', 'EntryController@update')->name('entry.update');
     Route::delete('entry/{entry}', 'EntryController@destroy')->name('entry.destroy');
 
+    Route::get('provide/create', 'ProviderController@create')->name('provide.create');
+    Route::post('provide/store', 'ProviderController@store')->name('provide.store');
+    Route::get('provide', 'ProviderController@index')->name('provide.index')-> middleware('auth');
+    Route::post('provide/{provide}', 'ProviderController@show')->name('provide.show');
+    Route::get('provide/{provide}/edit', 'ProviderController@edit')->name('provide.edit'); 
+    Route::patch('provide/{provide}', 'ProviderController@update')->name('provide.update');
+    Route::delete('provide/{provide}', 'ProviderController@destroy')->name('provide.destroy');
+
 });

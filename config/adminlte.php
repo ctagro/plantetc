@@ -528,6 +528,13 @@ return [
             ],
 
             [
+                'text'       => 'Fornecedores',
+                'icon_color' => 'green',
+                'url'  => '/provide',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],
+
+            [
                 'text'       => 'Bancos',
                 'icon_color' => 'green',
                 'url'  => '/bank',

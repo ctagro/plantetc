@@ -25,6 +25,7 @@ Use App\Models\Bank;
 Use App\Models\CashFlow;
 Use App\Models\Type_product;
 Use App\Models\Entry;
+Use App\Models\Provide;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -160,6 +161,11 @@ class User extends Authenticatable
     public function entry()
     {
         return $this->hasMany(entry::class);
+    }
+
+    public function provide()
+    {
+        return $this->hasMany(provide::class);
     }
 
 }
