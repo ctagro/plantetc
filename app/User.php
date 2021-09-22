@@ -26,6 +26,8 @@ Use App\Models\CashFlow;
 Use App\Models\Type_product;
 Use App\Models\Entry;
 Use App\Models\Provide;
+Use App\Models\Fertilizer_inventory;
+Use App\Models\Fertilizer_entry;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -166,6 +168,16 @@ class User extends Authenticatable
     public function provide()
     {
         return $this->hasMany(provide::class);
+    }
+
+    public function fertilizer_inventory()
+    {
+        return $this->hasMany(fertilizer_inventory::class);
+    }
+
+    public function fertilizer_entry()
+    {
+        return $this->hasMany(fertilizer_entry::class);
     }
 
 }

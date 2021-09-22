@@ -35,7 +35,7 @@
 
 
 
-<div class="form-group">
+<div class="form-group row">
     <select name="type_account_id"  id="type_account_id" class="form-control">
         <option value="" disabled selected>Selecione o tipo de conta...</option> 
             @foreach($type_accounts as $type_account)
@@ -50,7 +50,7 @@
         @endif
     </div>
 
-<div class="form-group">
+<div class="form-group row">
     <select name="accounting_id"  id="accounting_id" class="form-control">
             <option value="" disabled selected>Selecione a conta...</option> 
             @foreach($accountings as $accounting)
@@ -65,7 +65,7 @@
         @endif
 </div>
 
-<div class="form-group">
+<div class="form-group row">
     <select name="ground_id"  id="ground_id" class="form-control">
    <option value="" disabled selected>Selecione a área...</option> 
        @foreach($grounds as $ground)         

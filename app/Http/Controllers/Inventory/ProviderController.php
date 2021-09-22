@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Stock;
+namespace App\Http\Controllers\Inventory;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -28,7 +28,7 @@ class ProviderController extends Controller
     $provides = auth()->user()->provide()->get();
 
 
-        return view('stock.provide.index', ['provides' => $provides]);
+        return view('inventory.provide.index', ['provides' => $provides]);
     }
 
     /**
@@ -48,7 +48,7 @@ class ProviderController extends Controller
 
         ]);
 
-        return view('stock.provide.create',compact('provide'));
+        return view('inventory.provide.create',compact('provide'));
        
     }
 
@@ -120,7 +120,7 @@ class ProviderController extends Controller
     public function show(provide $provide)
     {
 
-        return view('stock.provide.show', compact('provide' ));
+        return view('inventory.provide.show', compact('provide' ));
 
     }
 
@@ -136,7 +136,7 @@ class ProviderController extends Controller
         $user = auth()->user();
 
 
-        return view('stock.provide.edit',['provide' => $provide]);
+        return view('inventory.provide.edit',['provide' => $provide]);
     }
 
     /**

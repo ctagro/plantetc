@@ -50,6 +50,12 @@
                       </div>
                   </div>
               </div>
+
+              @if(session('sucess'))
+                  <div class="alert alert-success">
+                      {{ session('sucess') }}
+                  </div>
+              @endif
            
                 @if(Session::has('mensagem_sucesso'))
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>

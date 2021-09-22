@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use App\User;
 use App\Models\Product;
@@ -15,6 +16,7 @@ use App\Models\Ground;
 use App\Models\Product_apply;
 use App\Models\Account;
 use App\Models\Accounting;
+use App\Models\Fertilizer_inventory;
 
 class Product_applyController extends Controller
 {
@@ -62,6 +64,8 @@ class Product_applyController extends Controller
         $accountings = Accounting::where('in_use', '=', "S")->get();
 
 
+        $fertilizer_inventorys = Fertilizer_inventory::all();
+
         $account = new \App\Models\Account([
 
             ]);
@@ -85,10 +89,8 @@ class Product_applyController extends Controller
     public function store(Request $request)
     {
 
-     // $data = $request;
-     // dd($data);
-
-        if ($request['note'] == null){
+     
+       if ($request['note'] == null){
             $request['note'] = "...";
          }
 
@@ -97,7 +99,20 @@ class Product_applyController extends Controller
          $dataAccount['date' ] = $request['date'];
          $date['note'] = $request['note'];
          
-         //dd($data['product']);
+
+
+        if ($request['note'] == null){
+            $request['note'] = "...";
+         }
+
+         $data = $this->validateRequest();
+
+         
+         $dataAccount['date' ] = $request['date'];
+         $date['note'] = $request['note'];
+         
+         $dataAccount['date'] = $request['date'];
+
 
         // captura json do produto selecionado
         $product = ($data['product']);
@@ -106,30 +121,49 @@ class Product_applyController extends Controller
         // seleciona o nome
         $product_apply_description = $product->name;
         $data['product_id'] = $product->id;
+        $data['name'] = $product->name;
+       // dd($data['name']);
         $product_price = $product->price_unit;
         $product_unity = $product->unity;
 
+    ////===================Inicio atualizacao do estoque =======================
 
-      //  dd($product_price,$product_unity);
-      //  dd($product_apply_name);
+    //    Montando o array do Estoque de fertilisante
+ 
+        $fertilizer_inventory = Fertilizer_inventory::where('product_id', '=' , $data['product_id'])->get()->toArray();
 
-       $dataAccount['date' ] = $request['date'];
+      //  dd($fertilizer_inventory);
 
-      //dd($dataAccount['date' ]);
-    
-       
-     //  $data = $this->validateRequest();
+        if ($fertilizer_inventory ==[]){
+            return redirect()
+            ->back()
+            ->with('error',  'O Produto ## '. $data['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
+         }
 
-      // dd($data['worked_hours'],floatval($dataSalary[1]));
+        $fertilizerInventory = $fertilizer_inventory;
 
-      //  $an = $data['worked_hours'] * floatval($dataSalary[1]);
+        $dataInventory = Arr::pull($fertilizerInventory, 0);
 
-    //dd($data);
 
-    //.  dd($data);
-   
-   //   $dataAccount['user_id' ] = $data['user_id'];
-      $dataAccount['date' ] = $data['date'];
+        $dataInventory['date'] =  $dataAccount['date'];
+        $dataInventory['exit'] = $dataInventory['exit'] + $data['amount'];      
+        $dataInventory['balance'] =  $dataInventory['entry'] - $dataInventory['exit'];
+ 
+
+        $updateFertilizer_inventory =  DB::table('fertilizer_inventories')->where('product_id', '=' , $data['product_id'])->update($dataInventory);
+
+        if (!$updateFertilizer_inventory){
+
+        return redirect()
+                    ->back()
+                    ->with('error',  'Falha na atualização da atividade');     
+
+      }
+
+///========================Fim atualizacao do estoque========================///
+
+
+      $dataAccount['date' ] = $dataAccount['date'];
       $dataAccount['description' ] = $product_apply_description;
       $dataAccount['type_account_id'] = $data['type_account_id'];
       $dataAccount['accounting_id'] = $data['accounting_id'];
@@ -153,9 +187,7 @@ class Product_applyController extends Controller
 
          $data['account_id'] = $id;
 
-   //   dd($data);
-      ////// parei aqui /////////////
-
+  
       /// criar e carregar o registro de atividade usar
       // o $id para o account_id criandp o relacionamento
 
@@ -169,7 +201,7 @@ class Product_applyController extends Controller
 
         return redirect()
                         ->route('product_apply.create')
-                        ->with('sucess', 'Cadastro realizado com sucesso');
+                        ->with('sucess', 'Aplicação Cadastrada com sucesso!!!');
                     
 
         return redirect()
@@ -305,7 +337,7 @@ class Product_applyController extends Controller
 
         return redirect()
                         ->route('product_apply.edit' ,[ 'product_apply' => $product_apply->id ])
-                        ->with('sucess', 'Sucesso ao atualizar');
+                        ->with('sucess', 'Atualização realizada, confirme a necessidade de ajustar o estoque!!!');
                     
 
         return redirect()
@@ -325,7 +357,10 @@ class Product_applyController extends Controller
         $product_apply->delete();
         $product_apply->account->delete();
 
-        return redirect('product_apply');
+        return redirect()
+                ->route('product_apply.index')
+                ->with('sucess', 'Deleção realizada, confirme a necessidade de ajustar o estoque!!!');
+        
     }
 
  // atualização dos preços dos fertilizantes 
@@ -390,7 +425,7 @@ class Product_applyController extends Controller
 
         return redirect()
                         ->route('product_apply.index' )
-                        ->with('sucess', 'Sucesso ao atualizar');
+                        ->with('sucess', 'Atualização realizada, confirme a necessidade de ajustar o estoque');
                     
 
         return redirect()

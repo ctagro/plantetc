@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fertilizante</title>
+    <title>Fornecedor</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,10 +29,6 @@
 
     @extends('adminlte::page')
 
-    @section('title', 'Venda')
-@section('content_header')
-@stop
-
 
 @section('content')
 
@@ -41,14 +37,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Aplicação de fertilizantes
-                <a class="float-right" href="{{url('/product_apply')}}">Lista</a>
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/provide_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                Cadastrar
+                <a class="float-right" href="{{url('/provide')}}">Lista</a>
                 </div>
             </div>
         </div>
     </div>
-</div>  
+</div>   
+
+
+<div class="container">
 
     @if(session('sucess'))
         <div class="alert alert-success">
@@ -57,27 +56,18 @@
     @endif
 
     @if(session('error'))
-        <div class="alert alert-warning">
+        <div class="alert alert-danger">
             {{ session('error') }}
         </div>
     @endif
 
-
-<div class="container">
-
-            @if(Session::has('mensagem_sucesso'))
-
-                    <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
-
-            @endif
-
     <!-- porque nao suporta o metodo POST se store é post-->
     <div class="row justify-content-center">
         <div class="col-12">
-                <form action="{{ route('product_apply.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
+                <form action="{{ route('provide.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
 
                     @method('POST')
-                    @include('product/product_apply.form')
+                    @include('inventory/provide.form')
 
                 </form>
                        

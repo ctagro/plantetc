@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEntriesTable extends Migration
+class CreateFertilizerInventoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,19 @@ class CreateEntriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('entries', function (Blueprint $table) {
+        Schema::create('fertilizer_inventories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('date');
             $table->unsignedBigInteger('type_product_id')->nullable(); 
             $table->unsignedBigInteger('product_id')->nullable();
-            $table->unsignedBigInteger('provide_id')->nullable();
-            $table->double('quantity',10,2);
-            $table->double('price_unit',10,2);
-            $table->double('amount',10,2);
+            $table->unsignedBigInteger('provide_id')->nullable();  
+            $table->double('entry',10,2);
+            $table->double('exit',10,2);
+            $table->double('balance',10,2);
+            $table->double('minimum_stock',10,2);
+            $table->integer('status');
             $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();
@@ -37,6 +39,6 @@ class CreateEntriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entries');
+        Schema::dropIfExists('fertilizer_inventories');
     }
 }

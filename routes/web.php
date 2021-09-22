@@ -244,7 +244,7 @@ Route::namespace('Site')->group(function () {
 
 });
 
-Route::namespace('Stock')->group(function () {
+Route::namespace('Inventory')->group(function () {
     Route::get('type_product/create', 'Type_productController@create')->name('type_product.create');
     Route::post('type_product/store', 'Type_productController@store')->name('type_product.store');
     Route::get('type_product', 'Type_productController@index')->name('type_product.index')-> middleware('auth');
@@ -268,5 +268,21 @@ Route::namespace('Stock')->group(function () {
     Route::get('provide/{provide}/edit', 'ProviderController@edit')->name('provide.edit'); 
     Route::patch('provide/{provide}', 'ProviderController@update')->name('provide.update');
     Route::delete('provide/{provide}', 'ProviderController@destroy')->name('provide.destroy');
+
+    Route::get('fertilizer_inventory/create', 'Fertilizer_inventoryController@create')->name('fertilizer_inventory.create');
+    Route::post('fertilizer_inventory/store', 'Fertilizer_inventoryController@store')->name('fertilizer_inventory.store');
+    Route::get('fertilizer_inventory', 'Fertilizer_inventoryController@index')->name('fertilizer_inventory.index')-> middleware('auth');
+    Route::post('fertilizer_inventory/{fertilizer_inventory}', 'Fertilizer_inventoryController@show')->name('fertilizer_inventory.show');
+    Route::get('fertilizer_inventory/{fertilizer_inventory}/edit', 'Fertilizer_inventoryController@edit')->name('fertilizer_inventory.edit'); 
+    Route::patch('fertilizer_inventory/{fertilizer_inventory}', 'Fertilizer_inventoryController@update')->name('fertilizer_inventory.update');
+    Route::delete('fertilizer_inventory/{fertilizer_inventory}', 'Fertilizer_inventoryController@destroy')->name('fertilizer_inventory.destroy');
+
+    Route::get('fertilizer_entry/create', 'Fertilizer_entryController@create')->name('fertilizer_entry.create');
+    Route::post('fertilizer_entry/store', 'Fertilizer_entryController@store')->name('fertilizer_entry.store');
+    Route::get('fertilizer_entry', 'Fertilizer_entryController@index')->name('fertilizer_entry.index')-> middleware('auth');
+    Route::get('fertilizer_entry/{fertilizer_entry}', 'Fertilizer_entryController@show')->name('fertilizer_entry.show');
+    Route::get('fertilizer_entry/{fertilizer_entry}/edit', 'Fertilizer_entryController@edit')->name('fertilizer_entry.edit');
+    Route::patch('fertilizer_entry/{fertilizer_entry}', 'Fertilizer_entryController@update')->name('fertilizer_entry.update');
+    Route::delete('fertilizer_entry/{fertilizer_entry}', 'Fertilizer_entryController@destroy')->name('fertilizer_entry.destroy');
 
 });

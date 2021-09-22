@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Stock;
+namespace App\Http\Controllers\Inventory;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class Type_productController extends Controller
    // dd($type_products);
 
 
-        return view('stock.type_product.index', ['type_products' => $type_products]);
+        return view('inventory.type_product.index', ['type_products' => $type_products]);
     }
 
     /**
@@ -51,7 +51,7 @@ class Type_productController extends Controller
 
         ]);
 
-        return view('stock.type_product.create',compact('type_product'));
+        return view('inventory.type_product.create',compact('type_product'));
        
     }
 
@@ -101,7 +101,7 @@ class Type_productController extends Controller
     public function show(type_product $type_product)
     {
 
-        return view('stock.type_product.show', compact('type_product' ));
+        return view('inventory.type_product.show', compact('type_product' ));
 
     }
 
@@ -117,7 +117,7 @@ class Type_productController extends Controller
         $user = auth()->user();
 
 
-        return view('stock.type_product.edit',['type_product' => $type_product]);
+        return view('inventory.type_product.edit',['type_product' => $type_product]);
     }
 
     /**

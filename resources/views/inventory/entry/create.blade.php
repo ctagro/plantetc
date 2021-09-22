@@ -6,7 +6,7 @@
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('stock.entry.form')
+             @include('inventory.entry.form')
 
                  <div class="form-group">
                       <button type="submit" class="btn btn-danger btn-block">Registrar a entrada no estoque</button>

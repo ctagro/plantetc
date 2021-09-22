@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fornecedor</title>
+    <title>Compradores</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,9 +37,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/provide_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/type_product_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                 Cadastrar
-                <a class="float-right" href="{{url('/provide')}}">Lista</a>
+                <a class="float-right" href="{{url('/type_product')}}">Lista</a>
                 </div>
             </div>
         </div>
@@ -64,10 +64,10 @@
     <!-- porque nao suporta o metodo POST se store é post-->
     <div class="row justify-content-center">
         <div class="col-12">
-                <form action="{{ route('provide.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
+                <form action="{{ route('type_product.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
 
                     @method('POST')
-                    @include('stock/provide.form')
+                    @include('inventory/type_product.form')
 
                 </form>
                        

@@ -9,6 +9,7 @@ use App\Models\Ground;
 use App\Models\Product;
 use App\Models\Account;
 use App\Models\Accounting;
+Use App\Models\fertilizer_inventory;
 use App\User;
 use Carbon\Carbon;
 use DateTime;
@@ -128,5 +129,10 @@ class Product_apply extends Model
     public function product()
     {
         return $this->belongsTo(product::class);
+    }
+
+    public function fertilizer_inventory()
+    {
+        return $this->belongsTo(fertilizer_inventory::class);
     }
 }

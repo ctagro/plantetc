@@ -5,6 +5,7 @@
             <input type="hidden" name="id" value="{{$product_apply->id }}" class="form-control py-3">
             <input type="hidden" name="type_account_id" value="1" class="form-control py-3">
             <input type="hidden" name="origin" value="P" class="form-control py-3">
+
             
 
 
@@ -68,14 +69,15 @@
 
 
             <input type="hidden" name="accounting_id" value=2 class="form-control py-3">
-{{--
+
+            {{--
                 <div class="form-group">                   
                     <select name="accounting_id"  id="accounting_id" class="form-control">
                         <option value="" disabled selected>Selecione a conta...</option> 
                             @foreach($accountings as $accounting)
                                 
                                 <p>{{$accounting->id}}</p>
-                                    <option value="{{$accounting->id}}" {{ $accounting->id == $product_apply->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
+                                    <option value="{{$accounting->id}}" {{ $accounting->id == $poductt_apply->accounting_id ? 'selected' : ''}}>{{$accounting->name}} </option>
                                 
                             @endforeach
                     </select>

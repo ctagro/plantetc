@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Editar movimentação stockira
+                    Editar entrada do estoque
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('stock.entry.form_edit')
+             @include('inventory.entry.form_edit')
 
                  <div class="form-group">
                       <button type="submit" class="btn btn-danger btn-block">Atualizar a entrada no estoque</button>

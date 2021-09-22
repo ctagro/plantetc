@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tipo de Produto</title>
+    <title>Invetário de Fertilizantes</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,9 +25,14 @@
 </body>
 </html>
 
-@section('title', 'Editar')
+@section('title', 'Cadastrar')
 
     @extends('adminlte::page')
+
+    @section('title', 'Venda')
+@section('content_header')
+@stop
+
 
 @section('content')
 
@@ -36,14 +41,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/type_product_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Editar 
-                    <a class="float-right" href="/type_product">Lista</a>
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/fertilizer_inventory_inventory_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                Cadastrar Estoque
+                <a class="float-right" href="{{url('/fertilizer_inventory')}}">Lista</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>  
 
     @if(session('sucess'))
         <div class="alert alert-success">
@@ -60,38 +65,26 @@
 
 <div class="container">
 
-@if(Session::has('mensagem_sucesso'))
+            @if(Session::has('mensagem_sucesso'))
 
-            <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
+                    <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
 
-@endif
-
-    <div class="row justify-content-center">
-    <div class="col-12">
+            @endif
 
     <!-- porque nao suporta o metodo POST se store é post-->
-        <form action="{{ route('type_product.update' ,[ 'type_product' => $type_product->id ])}}" method="POST"  enctype="multipart/form-data">
+    <div class="row justify-content-center">
+        <div class="col-12">
+                <form action="{{ route('fertilizer_inventory.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
 
-            @method('PATCH')
-            @include('stock.type_product.form')
+                    @method('POST')
+                    @include('inventory/fertilizer_inventory.form')
 
-        </form>
-
-        <form action="{{ route('type_product.show' ,[ 'type_product' => $type_product->id ])}}" method="POST"  enctype="multipart/form-data">
-
-            @method('POST')
-          
-                 <div class="form-group">
-                 {!! csrf_field() !!}                      
-          
-                     <div class="form-group">
-                          <button type="submit" class="btn btn-outline-danger" >Deletar...</button>
-                     </div>
-                 </div>
-             </form>
-          
+                </form>
+                       
+        </div>
     </div>
-</div>
+     
+  
 </div>
 
 @endsection

@@ -380,29 +380,37 @@ return [
 
     ['header' => '=========================='],
 
-        [
-        'text'    => 'Estoque',
+        
+    
+    [
+        'text'    => 'Estoque de Fertilizantes',
         'icon'    => 'fas fa-fw fa-share',
         'submenu' => [
 
 
-    
             [ 'text'       => 'Registrar entradas',
             'icon_color' => 'cyan',
-            'url'        => '/entry',
+            'url'        => '/fertilizer_entry',
             'icon'        => 'fas fa-calendar-plus', 
 
             ],
 
             [
-                'text'       => 'Consulta ao Estoque',
+                'text'       => 'Inventário',
                 'icon_color' => 'cyan',
-                'url'        => '/cash_flow',
+                'url'        => '/fertilizer_inventory',
                 'icon'        => 'fas fa-chart-line', 
             ],
 
             [
-                'text'       => 'Fluxo de Bancos',
+                'text'       => 'Consulta Entradas',
+                'icon_color' => 'cyan',
+                'url'        => '/cashflow',
+                'icon'        => 'fas fa-chart-line', 
+            ],
+
+            [
+                'text'       => 'Consulta Estoque',
                 'icon_color' => 'cyan',
                 'url'        => '/cashflow',
                 'icon'        => 'fas fa-chart-line', 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fornecedor</title>
+    <title>Vendas</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,19 +31,19 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/provide_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Editar 
-                    <a class="float-right" href="/provide">Lista</a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/fertilizer_inventory_inventory_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                        Venda
+                        <a class="float-right" href="{{url('/fertilizer_inventory')}}">Lista</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
     @if(session('sucess'))
         <div class="alert alert-success">
@@ -70,14 +70,14 @@
     <div class="col-12">
 
     <!-- porque nao suporta o metodo POST se store é post-->
-        <form action="{{ route('provide.update' ,[ 'provide' => $provide->id ])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('fertilizer_inventory.update' ,[ 'fertilizer_inventory' => $fertilizer_inventory->id,'fertilizer_inventory' => $fertilizer_inventory->id])}}" method="POST"  enctype="multipart/form-data">
 
             @method('PATCH')
-            @include('stock.provide.form')
+            @include('inventory.fertilizer_inventory.form')
 
         </form>
 
-        <form action="{{ route('provide.show' ,[ 'provide' => $provide->id ])}}" method="POST"  enctype="multipart/form-data">
+        <form action="{{ route('fertilizer_inventory.show' ,[ 'fertilizer_inventory' => $fertilizer_inventory->id,'fertilizer_inventory' => $fertilizer_inventory->id ])}}" method="POST"  enctype="multipart/form-data">
 
             @method('POST')
           

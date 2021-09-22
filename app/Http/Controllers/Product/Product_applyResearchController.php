@@ -96,7 +96,6 @@ class Product_applyResearchController extends Controller
 
          $query = substr($prepareQuery, 0 , -5);
 
-
          if ($query)
             $product_applys = product_apply::whereRaw($query)->orderBy('date')->get();
          else
