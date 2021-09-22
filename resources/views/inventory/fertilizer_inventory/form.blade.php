@@ -100,7 +100,7 @@
 
      
                 <div class="form-group">
-                    <label for="status" name="status">Fornecedor </label>
+                    <label for="status" name="status">Status</label>
                     <select name="status"  id="status" class="form-control">
                         <option value="" disabled selected>Selecione o status..</option>
                      @foreach($statuss as $status)
