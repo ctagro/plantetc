@@ -28,6 +28,8 @@ Use App\Models\Entry;
 Use App\Models\Provide;
 Use App\Models\Fertilizer_inventory;
 Use App\Models\Fertilizer_entry;
+Use App\Models\Pesticide_inventory;
+Use App\Models\Pesticide_entry;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -178,6 +180,16 @@ class User extends Authenticatable
     public function fertilizer_entry()
     {
         return $this->hasMany(fertilizer_entry::class);
+    }
+
+    public function pesticide_inventory()
+    {
+        return $this->hasMany(pesticide_inventory::class);
+    }
+
+    public function pesticide_entry()
+    {
+        return $this->hasMany(pesticide_entry::class);
     }
 
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use App\User;
 use App\Models\Pesticide;
@@ -15,6 +16,7 @@ use App\Models\Ground;
 use App\Models\Pesticide_apply;
 use App\Models\Account;
 use App\Models\Accounting;
+use App\Models\Pesticide_inventory;
 
 class Pesticide_applyController extends Controller
 {
@@ -117,9 +119,41 @@ class Pesticide_applyController extends Controller
         $pesticide_price = $pesticide->price_unit;
         $pesticide_unity = $pesticide->unity;
 
+    ////===================Inicio atualizacao do estoque =======================
 
-      //  dd($pesticide_price,$pesticide_unity);
-      //  dd($pesticide_apply_name);
+    //    Montando o array do Estoque de fertilisante
+ 
+    $pesticide_inventory = Pesticide_inventory::where('pesticide_id', '=' , $data['pesticide_id'])->get()->toArray();
+
+    //  dd($pesticide_inventory);
+
+      if ($pesticide_inventory ==[]){
+          return redirect()
+          ->back()
+          ->with('error',  'O Defensivo ## '. $data['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
+       }
+
+      $pesticideInventory = $pesticide_inventory;
+
+      $dataInventory = Arr::pull($pesticideInventory, 0);
+
+
+      $dataInventory['date'] =  $dataAccount['date'];
+      $dataInventory['exit'] = $dataInventory['exit'] + $data['amount'];      
+      $dataInventory['balance'] =  $dataInventory['entry'] - $dataInventory['exit'];
+
+
+      $updateFertilizer_inventory =  DB::table('pesticide_inventories')->where('pesticide_id', '=' , $data['pesticide_id'])->update($dataInventory);
+
+      if (!$updateFertilizer_inventory){
+
+      return redirect()
+                  ->back()
+                  ->with('error',  'Falha na atualização da atividade');     
+
+    }
+
+///========================Fim atualizacao do estoque========================///
 
        $dataAccount['date' ] = $request['date'];
 

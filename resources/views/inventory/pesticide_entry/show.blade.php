@@ -39,7 +39,7 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                   Excluir Movimentação
               </div>
           </div>
@@ -50,7 +50,7 @@
 
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('entry.destroy',[ 'entry' => $entry->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('pesticide_entry.destroy',[ 'pesticide_entry' => $pesticide_entry->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -68,49 +68,49 @@
           <div class="bolder">Data:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $entry->date}}</div>
+          <div class="form-control">{{ $pesticide_entry->date}}</div>
         </div>
 
         <div class="row">
           <div class="bolder">Tipo de produto:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $entry->type_product_id}}</div>
+          <div class="form-control">{{ $pesticide_entry->type_product_id}}</div>
         </div>
 
         <div class="row">
           <div class="bolder">Produto:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $entry->product_id}}</div>
+          <div class="form-control">{{ $pesticide_entry->pesticide_id}}</div>
         </div>
 
         <div class="row">
           <div class="bolder">Quantidade:</div>
         </div>
       <div class="row">
-        <div class="form-control">{{number_format($entry->quantity, 2 , ',', '.') }}</div>
+        <div class="form-control">{{number_format($pesticide_entry->quantity, 2 , ',', '.') }}</div>
       </div>
 
       <div class="row">
         <div class="bolder">Preço unitário:</div>
       </div>
       <div class="row">
-        <div class="form-control">{{number_format($entry->price_unit, 2 , ',', '.') }}</div>
+        <div class="form-control">{{number_format($pesticide_entry->price_unit, 2 , ',', '.') }}</div>
       </div>
   
       <div class="row">
         <div class="bolder">Valor:</div>
       </div>
       <div class="row">
-        <div class="form-control">{{number_format($entry->amount, 2 , ',', '.') }}</div>
+        <div class="form-control">{{number_format($pesticide_entry->amount, 2 , ',', '.') }}</div>
       </div>
     
     <p></p>
   
              <div class="form-group">
                   <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão dessa atividade</button>
-                  <a href="{{ url('/entry') }}" class="float-right" >Voltar </a> 
+                  <a href="{{ url('/pesticide_entry') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

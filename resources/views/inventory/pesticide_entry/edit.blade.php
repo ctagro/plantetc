@@ -37,23 +37,33 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                     Editar entrada do estoque
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@if(session('sucess'))
+<div class="alert alert-warning">
+    {{ session('sucess') }}
+</div>
+@endif
+
+@if(Session::has('mensagem_sucesso'))
+     <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
+@endif
    
 
-    <form action="{{ route('entry.update' ,[ 'entry' => $entry->id ])}}" method="POST"  enctype="multipart/form-data">
+    <form action="{{ route('pesticide_entry.update' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" method="POST"  enctype="multipart/form-data">
 
         @method('PATCH')
 
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('inventory.entry.form_edit')
+             @include('inventory.pesticide_entry.form_edit')
 
                  <div class="form-group">
                       <button type="submit" class="btn btn-danger btn-block">Atualizar a entrada no estoque</button>
@@ -64,9 +74,9 @@
     
              <div class="row justify-content-between" >
 
-              <a href= "{{ route('entry.show' ,[ 'entry' => $entry->id ])}}" class="btn btn-outline-danger" >Deletar</a>
+              <a href= "{{ route('pesticide_entry.show' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" class="btn btn-outline-danger" >Deletar</a>
    
-              <div class="text-right"> <a href="{{ url('/entry') }}" class="text-right">Voltar </a> </div>
+              <div class="text-right"> <a href="{{ url('/pesticide_entry') }}" class="text-right">Voltar </a> </div>
              </div>
          <a href="#" id="ancora"></a>
 </form>

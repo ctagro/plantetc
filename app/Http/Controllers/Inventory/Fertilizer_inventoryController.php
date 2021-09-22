@@ -92,10 +92,14 @@ class Fertilizer_inventoryController extends Controller
 
         $data = $request; 
 
+
+
         $fertilizer_inventory = DB::table('fertilizer_inventories')->where('product_id', '=' , $data['product_id'])->get();
     
-    // dd((!$fertilizer_inventory->isEmpty()),$fertilizer_inventory,$data['product_id']);
+    
+    //   dd((!$fertilizer_inventory->isEmpty()),$fertilizer_inventory,$data['product_id']);
 
+   //     dd($fertilizer_inventory['deleted_at']);
 
         if (!$fertilizer_inventory->isEmpty()){
 

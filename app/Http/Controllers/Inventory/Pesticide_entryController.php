@@ -6,18 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Type_product;
 use App\Models\Provide;
-use App\Models\Product;
+use App\Models\Pesticide;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use App\User;
 use Cookie;
-use App\Models\Fertilizer_entry;
-use App\Models\Fertilizer_inventory;
+use App\Models\Pesticide_entry;
+use App\Models\Pesticide_inventory;
 use Carbon\Carbon;
 use Redirect;
 
-class fertilizer_entryController extends Controller
+class Pesticide_entryController extends Controller
 {
     public function __construct()
     {
@@ -32,9 +32,9 @@ class fertilizer_entryController extends Controller
     public function index()
     {
    
-   $fertilizer_entrys = fertilizer_entry::all();
+   $pesticide_entrys = pesticide_entry::all();
 
-   $products = Product::all();
+   $pesticides = Pesticide::all();
 
    $provides = Provide::all();
 
@@ -44,12 +44,12 @@ class fertilizer_entryController extends Controller
 
 
 
-  // dd($fertilizer_entrys,$type_products);
+  // dd($pesticide_entrys,$type_products);
 
 
 
-    $response = $fertilizer_entrys->first(); 
-    $last = $fertilizer_entrys->last();
+    $response = $pesticide_entrys->first(); 
+    $last = $pesticide_entrys->last();
 
     $nr = $last['id'];
 
@@ -57,9 +57,9 @@ class fertilizer_entryController extends Controller
 
      if($nr>5):
         $nr = $nr-5;
-        $fertilizer_entrys = fertilizer_entry::where('id','>', $nr)->get();
+        $pesticide_entrys = pesticide_entry::where('id','>', $nr)->get();
      else:  
-        $fertilizer_entrys = fertilizer_entry::all();
+        $pesticide_entrys = pesticide_entry::all();
  
      endif;
     
@@ -67,15 +67,15 @@ class fertilizer_entryController extends Controller
     if ($response === null) {
 
         
-        $fertilizer_entry = new fertilizer_entry();
+        $pesticide_entry = new pesticide_entry();
     
 
    
 
-        return view('inventory.fertilizer_entry.index',compact('fertilizer_entrys','type_products','fertilizer_entry','provides','products'));
+        return view('inventory.pesticide_entry.index',compact('pesticide_entrys','type_products','pesticide_entry','provides','pesticides'));
     } 
-   // dd($fertilizer_entrys,$provides);
-        return view('inventory.fertilizer_entry.index',compact('fertilizer_entrys','type_products','provides','products'));
+   // dd($pesticide_entrys,$provides);
+        return view('inventory.pesticide_entry.index',compact('pesticide_entrys','type_products','provides','pesticides'));
     }
 
     /**
@@ -88,19 +88,19 @@ class fertilizer_entryController extends Controller
 
         $user = auth()->user();
 
-        $fertilizer_entrys = auth()->user()->fertilizer_entry()->get();
+        $pesticide_entrys = auth()->user()->pesticide_entry()->get();
 
         $type_products= Type_product::all();
 
-        $products = Product::all();
+        $pesticides = Pesticide::all();
 
         $provides = Provide::all();
   
-        $fertilizer_entry = new \App\Models\fertilizer_entry([
+        $pesticide_entry = new \App\Models\pesticide_entry([
 
         ]);
 
-        return view('inventory.fertilizer_entry.create',compact('fertilizer_entrys','type_products','provides','products'));
+        return view('inventory.pesticide_entry.create',compact('pesticide_entrys','type_products','provides','pesticides'));
        
     }
 
@@ -130,18 +130,18 @@ class fertilizer_entryController extends Controller
          $dataAccount['date'] = $request['date'];
 
    
-     $productInventory = Product::where('id', '=' , $data['product_id'])->get()->toArray();
+     $pesticideInventory = Pesticide::where('id', '=' , $data['pesticide_id'])->get()->toArray();
 
-     $productInventory = $productInventory;
+     $pesticideInventory = $pesticideInventory;
 
-     $dataProduct = Arr::pull($productInventory, 0);
+     $dataProduct = Arr::pull($pesticideInventory, 0);
 
      
 
-     $dataProduct['price'] = $data['price_unit'];
-     $dataProduct['price_unit'] = $data['price_unit_cons'];
+     $dataPesticide['price'] = $data['price_unit'];
+     $dataPesticide['price_unit'] = $data['price_unit_cons'];
 
-    // dd($dataProduct,$data);
+    // dd($dataPesticide,$data);
 
 
 
@@ -149,19 +149,19 @@ class fertilizer_entryController extends Controller
 
     //    Montando o array do Estoque de fertilisante
  
-    $fertilizer_inventory = Fertilizer_inventory::where('product_id', '=' , $data['product_id'])->get()->toArray();
+    $pesticide_inventory = Pesticide_inventory::where('pesticide_id', '=' , $data['pesticide_id'])->get()->toArray();
 
+  
 
-
-      if ($fertilizer_inventory ==[]){
+      if ($pesticide_inventory ==[]){
           return redirect()
           ->back()
-          ->with('sucess', 'O Produto ## '. $dataProduct['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
+          ->with('sucess', 'O Produto ## '. $dataPesticide['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
        }
 
-      $fertilizerInventory = $fertilizer_inventory;
+      $pesticideInventory = $pesticide_inventory;
 
-      $dataInventory = Arr::pull($fertilizerInventory, 0);
+      $dataInventory = Arr::pull($pesticideInventory, 0);
 
      // dd($dataInventory['entry'],$dataInventory['exit'],$dataInventory['balance']);
 
@@ -172,9 +172,9 @@ class fertilizer_entryController extends Controller
 
   // dd(is_array($dataInventory));
 
-      $updateFertilizer_inventory =  DB::table('fertilizer_inventories')->where('product_id', '=' , $data['product_id'])->update($dataInventory);
+      $updatePesticide_inventory =  DB::table('pesticide_inventories')->where('pesticide_id', '=' , $data['pesticide_id'])->update($dataInventory);
 
-      if (!$updateFertilizer_inventory){
+      if (!$updatePesticide_inventory){
 
       return redirect()
                   ->back()
@@ -188,9 +188,9 @@ class fertilizer_entryController extends Controller
 
 ///========================Atualizado preço e preço unitário do produto =======///
 
-$updateProduct =  DB::table('products')->where('id', '=' , $data['product_id'])->update($dataProduct);
+$updatePesticide =  DB::table('pesticides')->where('id', '=' , $data['pesticide_id'])->update($dataPesticide);
 
-if (!$updateProduct){
+if (!$updatePesticide){
 
 return redirect()
             ->back()
@@ -199,15 +199,15 @@ return redirect()
 }
      
         
-        $fertilizer_entry = new fertilizer_entry();
+        $pesticide_entry = new pesticide_entry();
 
-        $response = $fertilizer_entry->storeFertilizer_entry($data);
+        $response = $pesticide_entry->storePesticide_entry($data);
 
 
         if ($response['sucess'])
 
             return redirect()
-                        ->route('fertilizer_entry.index')
+                        ->route('pesticide_entry.index')
                         ->with('sucess', $response['mensage']);
                     
 
@@ -224,16 +224,16 @@ return redirect()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(fertilizer_entry $fertilizer_entry)
+    public function show(pesticide_entry $pesticide_entry)
     {
 
         $type_products= type_product::all();
 
-        $products = Product::all();
+        $pesticides = Pesticide::all();
 
         $provides = Provide::all();
 
-        return view('inventory.fertilizer_entry.show', compact('fertilizer_entry','type_products','provides','products' ));
+        return view('inventory.pesticide_entry.show', compact('pesticide_entry','type_products','provides','pesticides' ));
 
     }
 
@@ -243,18 +243,18 @@ return redirect()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(fertilizer_entry $fertilizer_entry) {
+    public function edit(pesticide_entry $pesticide_entry) {
 
 
         $user = auth()->user();
 
         $type_products= type_product::all();
 
-        $products = Product::all();
+        $pesticides = Pesticide::all();
 
         $provides = Provide::all();
 
-        return view('inventory.fertilizer_entry.edit',compact('fertilizer_entry','type_products','provides','products'));
+        return view('inventory.pesticide_entry.edit',compact('pesticide_entry','type_products','provides','pesticides'));
     }
 
     /**
@@ -264,11 +264,11 @@ return redirect()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, fertilizer_entry $fertilizer_entry)
+    public function update(Request $request, pesticide_entry $pesticide_entry)
     {  
 
         if ($request['date'] == null){
-            $dataP = explode('/',$fertilizer_entry->date);
+            $dataP = explode('/',$pesticide_entry->date);
             $request['date'] = $dataP[2].'-'.$dataP[1].'-'.$dataP[0];
         }
 
@@ -289,7 +289,7 @@ return redirect()
 
         $data['date']                 = $dataRequest['date'];
         $data['type_product_id']      = $dataRequest['type_product_id'];
-        $data['product_id']           = $dataRequest['product_id'];
+        $data['pesticide_id']           = $dataRequest['pesticide_id'];
         $data['provide_id']           = $dataRequest['provide_id'];
         $data['quantity']             = $dataRequest['quantity'];
         $data['price_unit']           = $dataRequest['price_unit'];
@@ -299,12 +299,12 @@ return redirect()
 
      //  dd($data);
 
-        $fertilizer_entry -> update($data);
+        $pesticide_entry -> update($data);
 
-        if ($fertilizer_entry)
+        if ($pesticide_entry)
 
         return redirect()
-                        ->route('fertilizer_entry.edit' ,[ 'fertilizer_entry' => $fertilizer_entry->id ])
+                        ->route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])
                         ->with('sucess', 'Atualização realizada, confirme a necessidade de ajustar o estoque e produto!!!');
                     
 
@@ -314,7 +314,7 @@ return redirect()
 
 
 
-        return redirect('/fertilizer_entry');
+        return redirect('/pesticide_entry');
 
     }
 
@@ -324,14 +324,14 @@ return redirect()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(fertilizer_entry $fertilizer_entry)
+    public function destroy(pesticide_entry $pesticide_entry)
     {
 
-        //dd($fertilizer_entry);       
-        $fertilizer_entry->delete();
+        //dd($pesticide_entry);       
+        $pesticide_entry->delete();
 
         return redirect()
-        ->route('fertilizer_entry.index')
+        ->route('pesticide_entry.index')
         ->with('sucess', 'Deleção realizada, confirme a necessidade de ajustar o estoque!!!');
 
     }
@@ -343,7 +343,7 @@ return redirect()
             
             'date'                  => 'required' ,
             'type_product_id'       => 'required' ,
-            'product_id'            => 'required' ,
+            'pesticide_id'          => 'required' ,
             'provide_id'            => 'required' ,
             'quantity'              => 'required' ,
             'price_unit'            => 'required' ,

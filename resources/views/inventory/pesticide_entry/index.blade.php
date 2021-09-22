@@ -38,7 +38,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                     Registrar entrada no estoque
                 </div>
             </div>
@@ -46,6 +46,16 @@
     </div>
 </div>
 
+
+@if(session('sucess'))
+<div class="alert alert-warning">
+    {{ session('sucess') }}
+</div>
+@endif
+
+@if(Session::has('mensagem_sucesso'))
+     <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
+@endif
 
 <!-- Inicio da Tabela dos registros -->
 
@@ -66,25 +76,25 @@
                     </thead>
                 
                     <tbody>
-                        @forelse($entrys as $entry)
+                        @forelse($pesticide_entrys as $pesticide_entry)
                                 <tr>
                                     <td>
-                                       <a href= "{{ route('entry.edit' ,[ 'entry' => $entry->id ])}}" >{{ $entry->date }}</a>
+                                       <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ $pesticide_entry->date }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('entry.edit' ,[ 'entry' => $entry->id ])}}" >{{ $entry->type_product_id }}</a>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ $pesticide_entry->pesticide->name }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('entry.edit' ,[ 'entry' => $entry->id ])}}" >{{ $entry->product_id}}</a>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ $pesticide_entry->provide->name}}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('entry.edit' ,[ 'entry' => $entry->id ])}}" >{{ number_format($entry->quantity, 2 , ',', '.')  }}</a>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->quantity, 2 , ',', '.')  }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('entry.edit' ,[ 'entry' => $entry->id ])}}" >{{ number_format($entry->price_unit, 2 , ',', '.')  }}</a>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->price_unit, 2 , ',', '.')  }}</a>
                                     </td>                                    
                                     <td>
-                                        <a href= "{{ route('entry.edit' ,[ 'entry' => $entry->id ])}}" >{{ number_format($entry->amount, 2 , ',', '.')  }}</a>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->amount, 2 , ',', '.')  }}</a>
                                     </td>
                                 </tr>
                             @empty
@@ -96,12 +106,13 @@
 
 <!-- Fim da Tabela dos registros -->
 
-             
-    <!-- Inicio do Formulario de entry --> 
 
-       @include('inventory.entry.create') 
+             
+    <!-- Inicio do Formulario de pesticide_entry --> 
+
+       @include('inventory.pesticide_entry.create') 
            
-<!-- Fim do Formulario de entry_conta --> 
+<!-- Fim do Formulario de pesticide_entry_conta --> 
 
 <p class="text-right"> <a href="{{ url('admin/home/index') }}" class="text-right">Voltar </a> </p>
 

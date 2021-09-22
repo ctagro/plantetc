@@ -253,14 +253,6 @@ Route::namespace('Inventory')->group(function () {
     Route::patch('type_product/{type_product}', 'Type_productController@update')->name('type_product.update');
     Route::delete('type_product/{type_product}', 'Type_productController@destroy')->name('type_product.destroy');
 
-    Route::get('entry/create', 'EntryController@create')->name('entry.create');
-    Route::post('entry/store', 'EntryController@store')->name('entry.store');
-    Route::get('entry', 'EntryController@index')->name('entry.index')-> middleware('auth');
-    Route::get('entry/{entry}', 'EntryController@show')->name('entry.show');
-    Route::get('entry/{entry}/edit', 'EntryController@edit')->name('entry.edit');
-    Route::patch('entry/{entry}', 'EntryController@update')->name('entry.update');
-    Route::delete('entry/{entry}', 'EntryController@destroy')->name('entry.destroy');
-
     Route::get('provide/create', 'ProviderController@create')->name('provide.create');
     Route::post('provide/store', 'ProviderController@store')->name('provide.store');
     Route::get('provide', 'ProviderController@index')->name('provide.index')-> middleware('auth');
@@ -284,5 +276,21 @@ Route::namespace('Inventory')->group(function () {
     Route::get('fertilizer_entry/{fertilizer_entry}/edit', 'Fertilizer_entryController@edit')->name('fertilizer_entry.edit');
     Route::patch('fertilizer_entry/{fertilizer_entry}', 'Fertilizer_entryController@update')->name('fertilizer_entry.update');
     Route::delete('fertilizer_entry/{fertilizer_entry}', 'Fertilizer_entryController@destroy')->name('fertilizer_entry.destroy');
+
+    Route::get('pesticide_inventory/create', 'Pesticide_inventoryController@create')->name('pesticide_inventory.create');
+    Route::post('pesticide_inventory/store', 'Pesticide_inventoryController@store')->name('pesticide_inventory.store');
+    Route::get('pesticide_inventory', 'Pesticide_inventoryController@index')->name('pesticide_inventory.index')-> middleware('auth');
+    Route::post('pesticide_inventory/{pesticide_inventory}', 'Pesticide_inventoryController@show')->name('pesticide_inventory.show');
+    Route::get('pesticide_inventory/{pesticide_inventory}/edit', 'Pesticide_inventoryController@edit')->name('pesticide_inventory.edit'); 
+    Route::patch('pesticide_inventory/{pesticide_inventory}', 'Pesticide_inventoryController@update')->name('pesticide_inventory.update');
+    Route::delete('pesticide_inventory/{pesticide_inventory}', 'Pesticide_inventoryController@destroy')->name('pesticide_inventory.destroy');
+
+    Route::get('pesticide_entry/create', 'Pesticide_entryController@create')->name('pesticide_entry.create');
+    Route::post('pesticide_entry/store', 'Pesticide_entryController@store')->name('pesticide_entry.store');
+    Route::get('pesticide_entry', 'Pesticide_entryController@index')->name('pesticide_entry.index')-> middleware('auth');
+    Route::get('pesticide_entry/{pesticide_entry}', 'Pesticide_entryController@show')->name('pesticide_entry.show');
+    Route::get('pesticide_entry/{pesticide_entry}/edit', 'Pesticide_entryController@edit')->name('pesticide_entry.edit');
+    Route::patch('pesticide_entry/{pesticide_entry}', 'Pesticide_entryController@update')->name('pesticide_entry.update');
+    Route::delete('pesticide_entry/{pesticide_entry}', 'Pesticide_entryController@destroy')->name('pesticide_entry.destroy');
 
 });

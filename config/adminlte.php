@@ -402,19 +402,31 @@ return [
                 'icon'        => 'fas fa-chart-line', 
             ],
 
-            [
-                'text'       => 'Consulta Entradas',
-                'icon_color' => 'cyan',
-                'url'        => '/cashflow',
-                'icon'        => 'fas fa-chart-line', 
+        ],
+    ],
+
+    ['header' => '=========================='],      
+    
+    [
+        'text'    => 'Estoque de Defensivos',
+        'icon'    => 'fas fa-fw fa-share',
+        'submenu' => [
+
+
+            [ 'text'       => 'Registrar entradas',
+            'icon_color' => 'cyan',
+            'url'        => '/pesticide_entry',
+            'icon'        => 'fas fa-calendar-plus', 
+
             ],
 
             [
-                'text'       => 'Consulta Estoque',
+                'text'       => 'Inventário',
                 'icon_color' => 'cyan',
-                'url'        => '/cashflow',
+                'url'        => '/pesticide_inventory',
                 'icon'        => 'fas fa-chart-line', 
             ],
+
         ],
     ],
 
