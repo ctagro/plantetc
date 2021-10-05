@@ -88,4 +88,4 @@
         });
     });
 </script>
-
+<script src="../../../js/validacao.js"></script>

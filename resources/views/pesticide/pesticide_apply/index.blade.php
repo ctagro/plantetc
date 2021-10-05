@@ -50,6 +50,12 @@
                       </div>
                   </div>
               </div>
+
+                @if(session('sucess'))
+                <div class="alert alert-warning">
+                    {{ session('sucess') }}
+                </div>
+                @endif
            
                 @if(Session::has('mensagem_sucesso'))
                        <div class="alert alert-success"> {{ Session::get('mensagem_sucesso')}}</div>
@@ -112,11 +118,17 @@
         </div>
     </div>
 
-    <div class="card">
+<!--- ================= Rotina de atualização de todas as aplicações com o preço atual  
+      ================= cadastrado na tabela pesticides. Se a rota for executada ps preços 
+      ================= serão atualizados. O que só deve ser feito em casos extremos -->
+ <!-- 
+  <div class="card">
       <div class="card-header">
-          <a href="{{ route('pesticide_apply.update_price') }}" class="float-right" >Atualizar preços </a> 
+          <a href="{ route('pesticide_apply.update_price') }}" class="float-right" >Atualizar preços </a> 
       </div>
     </div>
+
+  -->
 
     <div class="card">
       <div class="card-header">

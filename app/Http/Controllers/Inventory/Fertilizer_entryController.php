@@ -116,8 +116,6 @@ class fertilizer_entryController extends Controller
     {
 
    
-
-
         if ($request['note'] == null){
             $request['note'] = "...";
          }
@@ -141,7 +139,7 @@ class fertilizer_entryController extends Controller
      $dataProduct['price'] = $data['price_unit'];
      $dataProduct['price_unit'] = $data['price_unit_cons'];
 
-    // dd($dataProduct,$data);
+//  dd($dataProduct,$data);
 
 
 
@@ -151,7 +149,7 @@ class fertilizer_entryController extends Controller
  
     $fertilizer_inventory = Fertilizer_inventory::where('product_id', '=' , $data['product_id'])->get()->toArray();
 
-
+//dd($fertilizer_inventory);
 
       if ($fertilizer_inventory ==[]){
           return redirect()

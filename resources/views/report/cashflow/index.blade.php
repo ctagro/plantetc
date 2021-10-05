@@ -69,8 +69,8 @@
                         @forelse($cashFlows as $cashFlow)
                                 <tr>
                                     <td>
-                                       <a>{{ $cashFlow->date }}</a>
-                                    </td>
+                                        <a href= "{{ route('cashFlow.edit' ,[ 'cashFlow' => $cashFlow->id ])}}" >{{ $cashFlow->date }}</a>
+                                     </td>
                                     <td>
                                         <a>{{ $cashFlow->description }}</a>
                                     </td>

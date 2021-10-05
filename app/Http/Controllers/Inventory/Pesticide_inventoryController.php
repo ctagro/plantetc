@@ -82,26 +82,17 @@ class Pesticide_inventoryController extends Controller
      */
     public function store(Request $request)
     {
-      
 
         if ($request['note'] == null){
             $request['note'] = "...";
          }
 
-            $request['type_product_id'] = 2;
-
         $data = $request; 
 
+        $pesticide_inventory = Pesticide_inventory::where('pesticide_id', '=' , $data['pesticide_id'])->first();
+        
 
-
-        $pesticide_inventory = DB::table('pesticide_inventories')->where('pesticide_id', '=' , $data['pesticide_id'])->get();
-    
-    
-    //   dd((!$pesticide_inventory->isEmpty()),$pesticide_inventory,$data['pesticide_id']);
-
-   //     dd($pesticide_inventory['deleted_at']);
-
-        if (!$pesticide_inventory->isEmpty()){
+        if (!is_null($pesticide_inventory)){
 
             $pesticide = Pesticide::find($data['pesticide_id']);
 
@@ -109,14 +100,10 @@ class Pesticide_inventoryController extends Controller
                         ->back()
                         ->with('error',  'O Defensivo ## '. $pesticide->name .  ' ## já consta do Estoque.');     
       
-          }
- 
- 
+        }
         
-         $data = $this->validateRequest();
-
-
-     
+         $data = $this->validateRequest(); 
+         
        
  
       $dataPesticide_inventory['date' ]           = $data['date'];
@@ -224,7 +211,7 @@ class Pesticide_inventoryController extends Controller
        
         $dataPesticide_inventory['date']                       = $dataRequest['date'];
         $dataPesticide_inventory['type_product_id']            = $dataRequest['type_product_id'];
-        $dataPesticide_inventory['pesticide_id']                 = $dataRequest['pesticide_id'];
+        $dataPesticide_inventory['pesticide_id']               = $dataRequest['pesticide_id'];
         $dataPesticide_inventory['provide_id']                 = $dataRequest['provide_id'];
         $dataPesticide_inventory['entry']                      = $dataRequest['entry'];
         $dataPesticide_inventory['exit']                       = $dataRequest['exit'];
@@ -237,6 +224,7 @@ class Pesticide_inventoryController extends Controller
         
        $updatePesticide_inventory = $pesticide_inventory -> update($dataPesticide_inventory);
 
+         
 
        if ($updatePesticide_inventory)
 

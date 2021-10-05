@@ -2,7 +2,8 @@
 
  <div class='table-responsive'>
 
-            <input type="hidden" name="id" value="{{$pesticide_inventory->id }}" class="form-control py-3">         
+            <input type="hidden" name="id" value="{{$pesticide_inventory->id }}" class="form-control py-3">  
+            <input type="hidden" name="type_product_id" value=2 class="form-control py-3">         
 
 
                 <div class="form-group">

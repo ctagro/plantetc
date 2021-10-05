@@ -103,6 +103,8 @@ class Pesticide_applyController extends Controller
          }
 
          $data = $this->validateRequest();
+
+       //  dd($data);
          
          $dataAccount['date' ] = $request['date'];
          $date['note'] = $request['note'];
@@ -114,36 +116,65 @@ class Pesticide_applyController extends Controller
         // tranforma o produto em array
         $pesticide = json_decode($pesticide);
         // seleciona o nome
+
+       $data['name'] = $pesticide->name;
+
         $pesticide_apply_description = $pesticide->name;
         $data['pesticide_id'] = $pesticide->id;
         $pesticide_price = $pesticide->price_unit;
         $pesticide_unity = $pesticide->unity;
 
-    ////===================Inicio atualizacao do estoque =======================
+////===================Inicio atualizacao do estoque =======================
 
-    //    Montando o array do Estoque de fertilisante
+    //=========   Captura o registro do estoque relacionado
  
-    $pesticide_inventory = Pesticide_inventory::where('pesticide_id', '=' , $data['pesticide_id'])->get()->toArray();
+    $pesticide_inventory = Pesticide_inventory::where('pesticide_id', '=' , $data['pesticide_id'])->first();
 
-    //  dd($pesticide_inventory);
+    //============= testa se o pesticida já esta cadastrado no estoque
+    //============= se nao: informa que o pesticida deve ser cadastrado no estoque
 
-      if ($pesticide_inventory ==[]){
+    if (is_null($pesticide_inventory)){
           return redirect()
           ->back()
-          ->with('error',  'O Defensivo ## '. $data['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
+          ->with('sucess', 'O Defensivo ## '. $data['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
        }
 
-      $pesticideInventory = $pesticide_inventory;
+    //============= cria array espelho do registro para alteracao dos devidos campos
 
-      $dataInventory = Arr::pull($pesticideInventory, 0);
+       $dataInventory = $pesticide_inventory->toArray();
 
+    // dd($dataInventory,(1.10 * $dataInventory['minimum_stock']));
+
+    // calcula e altera os devidos campos do estoque
 
       $dataInventory['date'] =  $dataAccount['date'];
       $dataInventory['exit'] = $dataInventory['exit'] + $data['amount'];      
       $dataInventory['balance'] =  $dataInventory['entry'] - $dataInventory['exit'];
 
+    //=========== Atualizar status do estoque==============
 
-      $updateFertilizer_inventory =  DB::table('pesticide_inventories')->where('pesticide_id', '=' , $data['pesticide_id'])->update($dataInventory);
+
+    //==== 1 - Estoque confortável -> Est Min > 110% estoque 
+    //==== 2 - Estoque no limite -> Est Min < 110% estoque > 100%
+    //==== 3 - Estoque confortável -> Est Min < 100% estoque 
+
+      if ($dataInventory['balance'] > (1.10 * $dataInventory['minimum_stock'])){
+          $dataInventory['status'] = 1;
+          }elseif (($dataInventory['balance'] <= (1.10 * $dataInventory['minimum_stock']) && 
+                  ($dataInventory['balance'] > ($dataInventory['minimum_stock'])))){
+          $dataInventory['status'] = 2;
+                  }elseif ($dataInventory['balance'] <= ($dataInventory['minimum_stock'])) {
+                  $dataInventory['status'] = 3;
+      }
+      
+      
+     // dd($dataInventory['balance'],$dataInventory['minimum_stock'],$dataInventory['status']);
+                  //  dd($pesticide_inventory,$dataInventory['id']);
+
+      //=========Atualizar estoque==============
+
+
+      $updateFertilizer_inventory =  DB::table('pesticide_inventories')->where('id', '=' , $dataInventory['id'])->update($dataInventory);
 
       if (!$updateFertilizer_inventory){
 
@@ -157,20 +188,7 @@ class Pesticide_applyController extends Controller
 
        $dataAccount['date' ] = $request['date'];
 
-      //dd($dataAccount['date' ]);
-    
-       
-     //  $data = $this->validateRequest();
-
-      // dd($data['worked_hours'],floatval($dataSalary[1]));
-
-      //  $an = $data['worked_hours'] * floatval($dataSalary[1]);
-
-    //dd($data);
-
-    //.  dd($data);
-   
-   //   $dataAccount['user_id' ] = $data['user_id'];
+ 
       $dataAccount['date' ] = $data['date'];
       $dataAccount['description' ] = $pesticide_apply_description;
       $dataAccount['type_account_id'] = $data['type_account_id'];
@@ -442,7 +460,10 @@ class Pesticide_applyController extends Controller
         $pesticide_apply->delete();
         $pesticide_apply->account->delete();
 
-        return redirect('pesticide_apply');
+        return redirect()
+        ->route('pesticide_apply.index')
+        ->with('sucess', 'Deleção realizada, confirme a necessidade de ajustar o estoque!!!');
+
     }
 
     private function validateRequest()

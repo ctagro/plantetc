@@ -115,8 +115,6 @@ class Pesticide_entryController extends Controller
     public function store(Request $request)
     {
 
-   
-
 
         if ($request['note'] == null){
             $request['note'] = "...";
@@ -130,52 +128,93 @@ class Pesticide_entryController extends Controller
          $dataAccount['date'] = $request['date'];
 
    
-     $pesticideInventory = Pesticide::where('id', '=' , $data['pesticide_id'])->get()->toArray();
+     $pesticide = Pesticide::where('id', '=' , $data['pesticide_id'])->first();
 
-     $pesticideInventory = $pesticideInventory;
+     $dataPesticide = $pesticide->toArray();
 
-     $dataProduct = Arr::pull($pesticideInventory, 0);
-
-     
+    //======== atualizacao dos campos da tabela pesticides
 
      $dataPesticide['price'] = $data['price_unit'];
      $dataPesticide['price_unit'] = $data['price_unit_cons'];
 
-    // dd($dataPesticide,$data);
+     //======== atualizacao dos campos da tabela pesticide_entries
+
+        $dataEntry['date']                 = $data['date'];
+        $dataEntry['type_product_id']      = $data['type_product_id'];
+        $dataEntry['pesticide_id']         = $data['pesticide_id'];
+        $dataEntry['provide_id']           = $data['provide_id'];
+        $dataEntry['quantity']             = $data['quantity'];
+        $dataEntry['price_unit']           = $data['price_unit'];
+        $dataEntry['amount']               = $data['amount'];
+        $dataEntry['note']                 = $data['note'];
+
+
+ // dd($dataPesticide['id'],$data);
+
+ // $data = entrada formulario
+ // $dataEntry = (pesticide_entry)
+ // $dataPesticide  =defensivo (pesticide)
+ // $pesticide_inventory = Estoque (pesticide_inventory) - $dataInventory
 
 
 
     ////===================Inicio atualizacao do estoque =======================
 
-    //    Montando o array do Estoque de fertilisante
+    //   Captura o registro do estoque relacionado
  
-    $pesticide_inventory = Pesticide_inventory::where('pesticide_id', '=' , $data['pesticide_id'])->get()->toArray();
+    $pesticide_inventory = Pesticide_inventory::where('pesticide_id', '=' , $data['pesticide_id'])->first();
 
-  
+   // dd($dataPesticide,$pesticide_inventory,$data);
 
-      if ($pesticide_inventory ==[]){
+ // testa se o pesticida já esta cadastrado no estoque
+ // se nao: informa que o pesticida deve ser cadastrado no estoque
+
+    if (is_null($pesticide_inventory)){
           return redirect()
           ->back()
-          ->with('sucess', 'O Produto ## '. $dataPesticide['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
+          ->with('sucess', 'O Defensivo ## '. $dataPesticide['name'] .  ' ## não consta do Estoque. Cadastrar para continuar!!');
        }
 
-      $pesticideInventory = $pesticide_inventory;
+    // cria array espelho do registro para alteracao dos devidos campos
 
-      $dataInventory = Arr::pull($pesticideInventory, 0);
+       $dataInventory = $pesticide_inventory->toArray();
 
-     // dd($dataInventory['entry'],$dataInventory['exit'],$dataInventory['balance']);
+  // calcula e altera os devidos campos do estoque
 
       $dataInventory['date'] =  $dataAccount['date'];
-      $dataInventory['entry'] = $dataInventory['entry'] + $data['quantity'];      
+      $dataInventory['entry'] = $pesticide_inventory->entry + $data['quantity'];      
       $dataInventory['balance'] =  $dataInventory['entry'] - $dataInventory['exit'];
   //  dd($dataInventory['entry'],$dataInventory['exit'],$dataInventory['balance']);
+//dd($pesticide_inventory->entry,$dataInventory['entry']);
+  
 
-  // dd(is_array($dataInventory));
+  //=========== Atualizar status do estoque==============
 
-      $updatePesticide_inventory =  DB::table('pesticide_inventories')->where('pesticide_id', '=' , $data['pesticide_id'])->update($dataInventory);
+
+    //==== 1 - Estoque confortável -> Est Min > 110% estoque 
+    //==== 2 - Estoque no limite -> Est Min < 110% estoque > 100%
+    //==== 3 - Estoque confortável -> Est Min < 100% estoque 
+
+    if ($dataInventory['balance'] > (1.10 * $dataInventory['minimum_stock'])){
+        $dataInventory['status'] = 1;
+        }elseif (($dataInventory['balance'] <= (1.10 * $dataInventory['minimum_stock']) && 
+                ($dataInventory['balance'] > ($dataInventory['minimum_stock'])))){
+        $dataInventory['status'] = 2;
+                }elseif ($dataInventory['balance'] <= ($dataInventory['minimum_stock'])) {
+                $dataInventory['status'] = 3;
+    }
+ 
+  // dd($pesticide_inventory->id,$dataInventory['id']);
+  // Atualiza o estoque  ----
+
+  $updatePesticide_inventory =  DB::table('pesticide_inventories')->where('id', '=' , $dataInventory['id'])->update($dataInventory);
+
+//dd($updatePesticide_inventory);
+
+
 
       if (!$updatePesticide_inventory){
-
+   
       return redirect()
                   ->back()
                   ->with('error',  'Falha na atualização da estoque');     
@@ -185,10 +224,11 @@ class Pesticide_entryController extends Controller
 ///========================Fim atualizacao do estoque========================///
 
 
-
 ///========================Atualizado preço e preço unitário do produto =======///
 
-$updatePesticide =  DB::table('pesticides')->where('id', '=' , $data['pesticide_id'])->update($dataPesticide);
+
+
+$updatePesticide =  DB::table('pesticides')->where('id', '=' , $dataPesticide['id'])->update($dataPesticide);
 
 if (!$updatePesticide){
 
@@ -197,12 +237,14 @@ return redirect()
             ->with('error',  'Falha na atualização do produto');     
 
 }
-     
+
+//===========================Registrar a entrada no estoque==================
         
         $pesticide_entry = new pesticide_entry();
 
-        $response = $pesticide_entry->storePesticide_entry($data);
+  //      dd($pesticide_entry, $dataEntry);
 
+        $response = $pesticide_entry->storePesticide_entry($dataEntry);
 
         if ($response['sucess'])
 
@@ -289,7 +331,7 @@ return redirect()
 
         $data['date']                 = $dataRequest['date'];
         $data['type_product_id']      = $dataRequest['type_product_id'];
-        $data['pesticide_id']           = $dataRequest['pesticide_id'];
+        $data['pesticide_id']         = $dataRequest['pesticide_id'];
         $data['provide_id']           = $dataRequest['provide_id'];
         $data['quantity']             = $dataRequest['quantity'];
         $data['price_unit']           = $dataRequest['price_unit'];

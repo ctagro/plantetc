@@ -49,7 +49,7 @@ class Pesticide_entry extends Model
 
  // recebe o array do controller Pesticide_entry-> storePesticide_entry e grava na tabela
 
- //dd($data);
+// dd($data);
             $Pesticide_entry = auth()->user()->Pesticide_entry()->create([
 
 
