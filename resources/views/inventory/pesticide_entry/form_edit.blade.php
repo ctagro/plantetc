@@ -59,16 +59,17 @@
                         @endif
                     </div>
 
-            <div class="form-group row">
-                <label for="quanty" name="quanty">Quantidade </label>
-                <input type="number" class="floatNumberField form-control py-3" name="quantity" value="{{old('quantity') ?? $pesticide_entry->quantity }}"  placeholder="0.00" step="0.01" >
-                  @if($errors->has('quantity'))
-                      <h6 class="text-danger" >Digite a quantidade</h6> 
-                  @endif
-              </div> 
+           
+            <div class="row">
+                <div class="form-group col-sm-3 ">
+                    <label for="quanty" name="quanty">Quantidade </label>
+                    <input type="number" class="floatNumberField form-control py-3" name="quantity" value="{{old('quantity') ?? $pesticide_entry->quantity }}"  placeholder="0.00" step="0.01" >
+                    @if($errors->has('quantity'))
+                        <h6 class="text-danger" >Digite a quantidade</h6> 
+                    @endif
+                </div> 
 
-              <div class="row">
-                <div class="form-group col-sm-6 ">
+                <div class="form-group col-sm-3 ">
                 <label for="price_unit" name="price_unit">Preço unitário </label>
                 <input type="number" class="floatNumberField form-control py-3" name="price_unit" value="{{old('price_unit') ?? $pesticide_entry->price_unit }}"  placeholder="0.00" step="0.01" >
                   @if($errors->has('price_unit'))
@@ -76,7 +77,15 @@
                   @endif
                 </div> 
 
-                <div class="form-group col-sm-6 ">
+                <div class="form-group col-sm-3 ">
+                    <label for="amount" name="amount">Valor total </label>
+                    <input type="number" class="floatNumberField form-control py-3" name="amount" value="{{old('amount') ?? $pesticide_entry->amount }}"  placeholder="0.00" step="0.01" >
+                      @if($errors->has('amount'))
+                          <h6 class="text-danger" >Digite o valor</h6> 
+                      @endif
+                </div> 
+
+                <div class="form-group col-sm-3 ">
                     <label>Preço por und cons: </label>
                     <input type="number" class="floatNumberField form-control py-3" name="price_unit_cons" value="" class="form-control py-3" placeholder="0.000" step="0.001" >
                     @if($errors->has('price_unit'))
@@ -84,14 +93,6 @@
                     @endif
                 </div> 
             </div>
-
-              <div class="form-group row">
-                <label for="amount" name="amount">Valor total </label>
-                <input type="number" class="floatNumberField form-control py-3" name="amount" value="{{old('amount') ?? $pesticide_entry->amount }}"  placeholder="0.00" step="0.01" >
-                  @if($errors->has('amount'))
-                      <h6 class="text-danger" >Digite o valor</h6> 
-                  @endif
-              </div> 
 
 
             <input type="hidden" name="note" value="{{old('note)') ? $pesticide_entry->note : "Observação"  }}" class="form-control py-3">
