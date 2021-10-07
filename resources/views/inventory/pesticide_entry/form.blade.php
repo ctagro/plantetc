@@ -69,7 +69,7 @@
                 </div> 
 
                 <div class="form-group col-sm-3 ">
-                    <label>Preço por {{$pesticide->unity}} </label>
+                    <label>Preço por unid de cons </label>
                     <input type="number" class="floatNumberField form-control py-3" name="price_unit_cons" value="" class="form-control py-3" placeholder="0.000" step="0.001" >
                     @if($errors->has('price_unit'))
                         <h6 class="text-danger" >Digite o preço p/ unid cons</h6> 
