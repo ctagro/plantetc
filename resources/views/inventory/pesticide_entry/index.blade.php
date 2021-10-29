@@ -71,6 +71,8 @@
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Quantidade</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Preço Unitário</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Qtd cons</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Preço cons</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
                         </tr>
                     </thead>
@@ -95,6 +97,12 @@
                                     </td>                                    
                                     <td>
                                         <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->amount, 2 , ',', '.')  }}</a>
+                                    </td>
+                                    <td>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->quantity_cons, 2 , ',', '.')  }}</a>
+                                    </td>                                    
+                                    <td>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->price_unit_cons, 4 , ',', '.')  }}</a>
                                     </td>
                                 </tr>
                             @empty

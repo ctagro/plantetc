@@ -71,6 +71,8 @@
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Quantidade</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Preço Unitário</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Qtd cons</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Preço cons</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="display: none;">CSS grade</th>
                         </tr>
                     </thead>
@@ -91,10 +93,16 @@
                                         <a href= "{{ route('fertilizer_entry.edit' ,[ 'fertilizer_entry' => $fertilizer_entry->id ])}}" >{{ number_format($fertilizer_entry->quantity, 2 , ',', '.')  }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('fertilizer_entry.edit' ,[ 'fertilizer_entry' => $fertilizer_entry->id ])}}" >{{ number_format($fertilizer_entry->price_unit, 4 , ',', '.')  }}</a>
+                                        <a href= "{{ route('fertilizer_entry.edit' ,[ 'fertilizer_entry' => $fertilizer_entry->id ])}}" >{{ number_format($fertilizer_entry->price_unit, 2 , ',', '.')  }}</a>
                                     </td>                                    
                                     <td>
                                         <a href= "{{ route('fertilizer_entry.edit' ,[ 'fertilizer_entry' => $fertilizer_entry->id ])}}" >{{ number_format($fertilizer_entry->amount, 2 , ',', '.')  }}</a>
+                                    </td>
+                                    <td>
+                                        <a href= "{{ route('fertilizer_entry.edit' ,[ 'fertilizer_entry' => $fertilizer_entry->id ])}}" >{{ number_format($fertilizer_entry->quantity_cons, 2 , ',', '.')  }}</a>
+                                    </td>                                    
+                                    <td>
+                                        <a href= "{{ route('fertilizer_entry.edit' ,[ 'fertilizer_entry' => $fertilizer_entry->id ])}}" >{{ number_format($fertilizer_entry->price_unit_cons, 4 , ',', '.')  }}</a>
                                     </td>
                                 </tr>
                             @empty
