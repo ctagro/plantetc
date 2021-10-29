@@ -57,13 +57,13 @@ class Pesticide_entryController extends Controller
 
     
 
-        if($nr>5):
-            $nr = $nr-5;
-            $pesticide_entrys = pesticide_entry::where('id','>', $nr)->get();
-        else:  
-            $pesticide_entrys = pesticide_entry::all();
+ //       if($nr>5):
+ //           $nr = $nr-5;
+ //           $pesticide_entrys = pesticide_entry::where('id','>', $nr)->get();
+ //       else:  
+ //           $pesticide_entrys = pesticide_entry::all();
     
-        endif;
+ //       endif;
     }
 
     if ($response === null) {

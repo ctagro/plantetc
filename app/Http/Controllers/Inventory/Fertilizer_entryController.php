@@ -57,13 +57,13 @@ if($last!=null){
 
     
 
-        if($nr>5):
-            $nr = $nr-5;
-            $fertilizer_entrys = fertilizer_entry::where('id','>', $nr)->get();
-        else:  
-            $fertilizer_entrys = fertilizer_entry::all();
-    
-        endif;
+ //       if($nr>5):
+ //           $nr = $nr-5;
+ //           $fertilizer_entrys = fertilizer_entry::where('id','>', $nr)->get();
+ //       else:  
+ //           $fertilizer_entrys = fertilizer_entry::all();
+ //   
+ //       endif;
     
     }
 
