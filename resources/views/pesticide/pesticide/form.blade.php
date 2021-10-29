@@ -103,7 +103,7 @@
               
                   <div class="form-group col-sm-3 ">
                     <label>Preço por unidade: </label>
-                    <input type="number"  name="price_unit" value="{{old('price_unit') ?? $pesticide->price_unit }}" class="form-control py-3" placeholder="0.00" step="0.01" >
+                    <input type="number"  name="price_unit" value="{{old('price_unit') ?? $pesticide->price_unit }}" class="form-control py-3" placeholder="0.0000" step="0.0001" >
                     @if($errors->has('price_unit'))
                       <h6 class="text-danger" >Digite a unidade</h6> 
                     @endif

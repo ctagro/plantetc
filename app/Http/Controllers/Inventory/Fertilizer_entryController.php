@@ -51,18 +51,21 @@ class fertilizer_entryController extends Controller
     $response = $fertilizer_entrys->first(); 
     $last = $fertilizer_entrys->last();
 
-    $nr = $last['id'];
-
-  
-
-     if($nr>5):
-        $nr = $nr-5;
-        $fertilizer_entrys = fertilizer_entry::where('id','>', $nr)->get();
-     else:  
-        $fertilizer_entrys = fertilizer_entry::all();
- 
-     endif;
+if($last!=null){ 
     
+        $nr = $last['id'];
+
+    
+
+        if($nr>5):
+            $nr = $nr-5;
+            $fertilizer_entrys = fertilizer_entry::where('id','>', $nr)->get();
+        else:  
+            $fertilizer_entrys = fertilizer_entry::all();
+    
+        endif;
+    
+    }
 
     if ($response === null) {
 
@@ -161,10 +164,12 @@ class fertilizer_entryController extends Controller
 
       $dataInventory = Arr::pull($fertilizerInventory, 0);
 
+    //  dd($data);
+
      // dd($dataInventory['entry'],$dataInventory['exit'],$dataInventory['balance']);
 
       $dataInventory['date'] =  $dataAccount['date'];
-      $dataInventory['entry'] = $dataInventory['entry'] + $data['quantity'];      
+      $dataInventory['entry'] = $dataInventory['entry'] + $data['quantity_cons'];      
       $dataInventory['balance'] =  $dataInventory['entry'] - $dataInventory['exit'];
   //  dd($dataInventory['entry'],$dataInventory['exit'],$dataInventory['balance']);
 
@@ -252,6 +257,7 @@ return redirect()
 
         $provides = Provide::all();
 
+
         return view('inventory.fertilizer_entry.edit',compact('fertilizer_entry','type_products','provides','products'));
     }
 
@@ -292,6 +298,8 @@ return redirect()
         $data['quantity']             = $dataRequest['quantity'];
         $data['price_unit']           = $dataRequest['price_unit'];
         $data['amount']               = $dataRequest['amount'];
+        $data['quantity_cons']        = $dataRequest['quantity_cons'];
+        $data['price_unit_cons']      = $dataRequest['price_unit_cons'];
         $data['note']                 = $dataRequest['note'];
     
 
@@ -344,9 +352,10 @@ return redirect()
             'product_id'            => 'required' ,
             'provide_id'            => 'required' ,
             'quantity'              => 'required' ,
-            'price_unit'            => 'required' ,
-            'price_unit_cons'       => 'required' ,
+            'price_unit'            => 'required' ,           
             'amount'                => 'required' ,
+            'quantity_cons'         => 'required' ,
+            'price_unit_cons'       => 'required' ,
             'note'                  => 'required' ,
     
        ]);

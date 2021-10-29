@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->text('packing',50); // tipo de embalagem// 
             $table->text('unity',10); 
             $table->double('price',10,2);
-            $table->double('price_unit',10,2);
+            $table->double('price_unit',10,4);
             $table->string('image', 100)->nullable();
             $table->enum('in_use',['S','N'])->default("S");
             $table->longtext('note');

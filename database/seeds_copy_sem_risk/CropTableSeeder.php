@@ -20,6 +20,7 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
+            'crop_name'     => 'Pimentão',
             'name'          => 'Pimentão Misto',
             'description'   => 'Pimentão Amarelo e Vermelho em estufa',
             'packing'       => 'Caixa',
@@ -32,6 +33,7 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
+            'crop_name'     => 'Pimentão',
             'name'          => 'Pimentão Amarelo',
             'description'   => 'Pimentão Amarelo em estufa',
             'packing'       => 'Caixa',
@@ -44,6 +46,7 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
+            'crop_name'     => 'Pimentão',
             'name'          => 'Pimentão Vermelho',
             'description'   => 'Pimentão Vermelho em estufa',
             'packing'       => 'Caixa',
@@ -56,6 +59,7 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
+            'crop_name'     => 'Abacate',
             'name'          => 'Abacate Comum',
             'description'   => 'Abacate do tipo Geada, Fortuna no mesmo terreno ',
             'packing'       => 'Caixa',
@@ -68,6 +72,7 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
+            'crop_name'     => 'Abacate',
             'name'          => 'Abacate Hass',
             'description'   => 'Abacate do tipo Hass e de comercialização restrita',
             'packing'       => 'Caixa',
@@ -80,7 +85,8 @@ class CropTableSeeder extends Seeder
         Crop::create([
                        
             'user_id'       => 1,
-            'name'          => 'Feijão',
+            'crop_name'     => 'Feijão',
+            'name'          => 'Feijão roxinho',
             'description'   => 'Feijão vermelho',
             'image'         => 'crop_avatar.png',
             'packing'       => 'Saca',

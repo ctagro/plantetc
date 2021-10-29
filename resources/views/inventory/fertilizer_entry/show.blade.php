@@ -39,8 +39,8 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/fertilizer_entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Excluir Movimentação
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entry_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Excluir entrada de fertilizante no estoque
               </div>
           </div>
       </div>
@@ -72,17 +72,17 @@
         </div>
 
         <div class="row">
-          <div class="bolder">Tipo de produto:</div>
-        </div>
-        <div class="row">
-          <div class="form-control">{{ $fertilizer_entry->type_product_id}}</div>
-        </div>
-
-        <div class="row">
           <div class="bolder">Produto:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $fertilizer_entry->product_id}}</div>
+          <div class="form-control">{{ $fertilizer_entry->product->name}}</div>
+        </div>
+
+        <div class="row">
+          <div class="bolder">Fornecedor:</div>
+        </div>
+        <div class="row">
+          <div class="form-control">{{ $fertilizer_entry->provide->name}}</div>
         </div>
 
         <div class="row">
@@ -96,7 +96,7 @@
         <div class="bolder">Preço unitário:</div>
       </div>
       <div class="row">
-        <div class="form-control">{{number_format($fertilizer_entry->price_unit, 2 , ',', '.') }}</div>
+        <div class="form-control">{{number_format($fertilizer_entry->price_unit, 4 , ',', '.') }}</div>
       </div>
   
       <div class="row">
@@ -105,6 +105,21 @@
       <div class="row">
         <div class="form-control">{{number_format($fertilizer_entry->amount, 2 , ',', '.') }}</div>
       </div>
+
+      <div class="row">
+        <div class="bolder">Quantidade por und cons:</div>
+      </div>
+    <div class="row">
+      <div class="form-control">{{number_format($fertilizer_entry->quantity_cons, 2 , ',', '.') }}</div>
+    </div>
+
+    <div class="row">
+      <div class="bolder">Preço unitário de cons:</div>
+    </div>
+    <div class="row">
+      <div class="form-control">{{number_format($fertilizer_entry->price_unit_cons, 4 , ',', '.') }}</div>
+    </div>
+
     
     <p></p>
   

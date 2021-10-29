@@ -97,7 +97,7 @@
                           </td>
 
                           <td>  
-                            <a href= "{{ route('pesticide.edit' ,[ 'pesticide' => $pesticide->id  ])}}" >{{ number_format($pesticide->price_unit, 2 , ',', '.')}}</a>
+                            <a href= "{{ route('pesticide.edit' ,[ 'pesticide' => $pesticide->id  ])}}" >{{ number_format($pesticide->price_unit, 4 , ',', '.')}}</a>
                           </td>
       
                         </tr>

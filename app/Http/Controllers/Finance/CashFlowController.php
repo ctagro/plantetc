@@ -30,6 +30,8 @@ class CashFlowController extends Controller
 
     $user = auth()->user();
 
+    //dd($user['id']);
+
     if ($user['id']==1){
    
         $banks = auth()->user()->bank()->get();
@@ -42,7 +44,8 @@ class CashFlowController extends Controller
 
         $response = $cashFlows->first();
         $last = $cashFlows->last();
-
+    
+    if($last!=null){ 
         $nr = $last['id'];
 
         if($nr>5):
@@ -51,14 +54,15 @@ class CashFlowController extends Controller
         else:  
             $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
         endif;
+        }
     }
     
-     else{
+    else{
 
-        return view('admin.home.index');
-     }
+            return view('admin.home.index');
+    }
  
-    
+
 
     if ($response === null) {
         
@@ -108,16 +112,25 @@ class CashFlowController extends Controller
 
         $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
 
+        $data = $request;
+
+      //  dd($data);
 
 
-
-        if ($request['note'] == null){
-            $request['note'] = "...";
+        if ($data['note'] == null){
+            $data['note'] = "...";
          }
+
+         
 
          $last = $cashFlows->last();
 
-         $request['balance'] = $last['balance'] + $request['amount'];
+         if ($last == null){
+            $data['balance'] = 0;
+            $last['balance'] = 0;
+         }
+
+         $data['balance'] = $last['balance'] + $request['amount'];
          
         $data = $this->validateRequest();
 

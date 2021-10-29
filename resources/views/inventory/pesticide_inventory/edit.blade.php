@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Defensivo</title>
+    <title>Inventário de defensivos</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,8 +36,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_inventory_inventory_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                        Venda
+                        <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/inventory_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                        Editar inventário de estoque de defensivo
                         <a class="float-right" href="{{url('/pesticide_inventory')}}">Lista</a>
                     </div>
                 </div>

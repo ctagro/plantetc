@@ -86,7 +86,7 @@
                   <div class="bolder">Preço por unidade:</div>
                 </div>
                 <div class="row">
-                  <div class="form-control">{{number_format($pesticide->price_unit, 2 , ',', '.') }}</div>
+                  <div class="form-control">{{number_format($pesticide->price_unit, 4 , ',', '.') }}</div>
                 </div> 
               </div>
               <div class="form-group col-sm-2 ">          

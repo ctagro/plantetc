@@ -43,6 +43,9 @@ class AccountController extends Controller
     $response = $accounts->first(); 
     $last = $accounts->last();
 
+
+  if($last!=null){ 
+ 
     $nr = $last['id'];
 
      if($nr>5):
@@ -52,6 +55,7 @@ class AccountController extends Controller
         $accounts = Account::where('origin', '=', "C")->get();
      endif;
     
+    }
 
     if ($response === null) {
 

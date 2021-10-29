@@ -51,18 +51,20 @@ class Pesticide_entryController extends Controller
     $response = $pesticide_entrys->first(); 
     $last = $pesticide_entrys->last();
 
-    $nr = $last['id'];
-
-  
-
-     if($nr>5):
-        $nr = $nr-5;
-        $pesticide_entrys = pesticide_entry::where('id','>', $nr)->get();
-     else:  
-        $pesticide_entrys = pesticide_entry::all();
- 
-     endif;
+    if($last!=null){   
     
+        $nr = $last['id'];
+
+    
+
+        if($nr>5):
+            $nr = $nr-5;
+            $pesticide_entrys = pesticide_entry::where('id','>', $nr)->get();
+        else:  
+            $pesticide_entrys = pesticide_entry::all();
+    
+        endif;
+    }
 
     if ($response === null) {
 
@@ -146,9 +148,11 @@ class Pesticide_entryController extends Controller
         $dataEntry['quantity']             = $data['quantity'];
         $dataEntry['price_unit']           = $data['price_unit'];
         $dataEntry['amount']               = $data['amount'];
+        $dataEntry['quantity_cons']        = $data['quantity_cons'];
+        $dataEntry['price_unit_cons']      = $data['price_unit_cons'];
         $dataEntry['note']                 = $data['note'];
 
-
+  //      dd($dataPesticide['price_unit'],$data['price_unit_cons']);
  // dd($dataPesticide['id'],$data);
 
  // $data = entrada formulario
@@ -182,7 +186,7 @@ class Pesticide_entryController extends Controller
   // calcula e altera os devidos campos do estoque
 
       $dataInventory['date'] =  $dataAccount['date'];
-      $dataInventory['entry'] = $pesticide_inventory->entry + $data['quantity'];      
+      $dataInventory['entry'] = $pesticide_inventory->entry + $data['quantity_cons'];      
       $dataInventory['balance'] =  $dataInventory['entry'] - $dataInventory['exit'];
   //  dd($dataInventory['entry'],$dataInventory['exit'],$dataInventory['balance']);
 //dd($pesticide_inventory->entry,$dataInventory['entry']);
@@ -228,6 +232,7 @@ class Pesticide_entryController extends Controller
 
 
 
+
 $updatePesticide =  DB::table('pesticides')->where('id', '=' , $dataPesticide['id'])->update($dataPesticide);
 
 if (!$updatePesticide){
@@ -241,8 +246,6 @@ return redirect()
 //===========================Registrar a entrada no estoque==================
         
         $pesticide_entry = new pesticide_entry();
-
-  //      dd($pesticide_entry, $dataEntry);
 
         $response = $pesticide_entry->storePesticide_entry($dataEntry);
 
@@ -336,6 +339,8 @@ return redirect()
         $data['quantity']             = $dataRequest['quantity'];
         $data['price_unit']           = $dataRequest['price_unit'];
         $data['amount']               = $dataRequest['amount'];
+        $data['quantity_cons']        = $dataRequest['quantity_cons'];
+        $data['price_unit_cons']      = $dataRequest['price_unit_cons'];
         $data['note']                 = $dataRequest['note'];
     
 
@@ -388,9 +393,10 @@ return redirect()
             'pesticide_id'          => 'required' ,
             'provide_id'            => 'required' ,
             'quantity'              => 'required' ,
-            'price_unit'            => 'required' ,
-            'price_unit_cons'       => 'required' ,
+            'price_unit'            => 'required' ,           
             'amount'                => 'required' ,
+            'quantity_cons'         => 'required' ,
+            'price_unit_cons'       => 'required' ,
             'note'                  => 'required' ,
     
        ]);

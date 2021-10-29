@@ -101,7 +101,7 @@
                           </td>
 
                           <td>  
-                            <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ number_format($product->price_unit, 2 , ',', '.')}}</a>
+                            <a href= "{{ route('product.edit' ,[ 'product' => $product->id  ])}}" >{{ number_format($product->price_unit, 4 , ',', '.')}}</a>
                           </td>
       
                         </tr>

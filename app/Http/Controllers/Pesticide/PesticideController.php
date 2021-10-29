@@ -125,8 +125,8 @@ class PesticideController extends Controller
 
         // relacionando pesticidas com  principios ativos
 
-        //dd($pesticide);
-        //dd($data);
+       // dd($pesticide);
+       // dd($data);
        
 
         // Chamando a objeto a funcao do model despesa e passando o array 

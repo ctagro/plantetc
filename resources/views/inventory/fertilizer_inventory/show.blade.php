@@ -37,8 +37,8 @@
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/fertilizer_inventory_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Excluir Estoque
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/inventory_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Excluir Estoque de Fertilizante
               </div>
           </div>
       </div>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="row">
-          <div class="bolder">Produto</div>
+          <div class="bolder">Fertilizante</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $fertilizer_inventory->product->name}}</div>

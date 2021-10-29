@@ -22,8 +22,10 @@ class CreatePesticideEntriesTable extends Migration
             $table->unsignedBigInteger('pesticide_id')->nullable();
             $table->unsignedBigInteger('provide_id')->nullable();
             $table->double('quantity',10,2);
-            $table->double('price_unit',10,2);
+            $table->double('price_unit',10,4);
             $table->double('amount',10,2);
+            $table->double('quantity_cons',10,2);
+            $table->double('price_unit_cons',10,4);
             $table->longtext('note');
             $table->timestamps();
             $table->softDeletes();

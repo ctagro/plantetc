@@ -39,7 +39,7 @@
                 <div class="card-header">
                     <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entry_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                 Cadastrar
-                <a class="float-right" href="{{url('/entry')}}">Lista</a>
+                <a class="float-right" href="{{url('/bank')}}">Lista</a>
                 </div>
             </div>
         </div>
@@ -64,10 +64,10 @@
     <!-- porque nao suporta o metodo POST se store é post-->
     <div class="row justify-content-center">
         <div class="col-12">
-                <form action="{{ route('entry.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
+                <form action="{{ route('bank.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
 
                     @method('POST')
-                    @include('finance/entry.form')
+                    @include('finance/bank.form')
 
                 </form>
                        

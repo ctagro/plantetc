@@ -27,7 +27,7 @@ class CreatePesticidesTable extends Migration
             $table->text('packing',50)->nullable(); // tipo de embalagem//
             $table->text('unity',10)->nullable();
             $table->double('price',10,2)->nullable();
-            $table->double('price_unit',10,2)->nullable();
+            $table->double('price_unit',10,4)->nullable();
             $table->string('image', 100)->nullable();
             $table->string('medicine_insert', 100)->nullable();
             $table->enum('in_use',['S','N'])->default("S");

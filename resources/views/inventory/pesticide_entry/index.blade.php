@@ -38,8 +38,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/pesticide_entrying_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Registrar entrada no estoque
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entry_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    Registrar entrada de defensivo no estoque
                 </div>
             </div>
         </div>
@@ -66,8 +66,8 @@
                         <tr>
                     
                             <th class="sorting_asc" tabindex="0" aria-controls="" rowspan="0" colspan="1"  aria-label="">Data</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Tipo de Produto</th>
-                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Produto</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Produto</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Fornecedor</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Quantidade</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Preço Unitário</th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Valor</th>
@@ -91,7 +91,7 @@
                                         <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->quantity, 2 , ',', '.')  }}</a>
                                     </td>
                                     <td>
-                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->price_unit, 2 , ',', '.')  }}</a>
+                                        <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->price_unit, 4 , ',', '.')  }}</a>
                                     </td>                                    
                                     <td>
                                         <a href= "{{ route('pesticide_entry.edit' ,[ 'pesticide_entry' => $pesticide_entry->id ])}}" >{{ number_format($pesticide_entry->amount, 2 , ',', '.')  }}</a>

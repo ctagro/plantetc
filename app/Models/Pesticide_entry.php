@@ -21,11 +21,13 @@ class Pesticide_entry extends Model
         'user_id'            ,    
         'date'               ,
         'type_product_id'    ,
-        'pesticide_id'         ,
+        'pesticide_id'       ,
         'provide_id'         ,
         'quantity'           ,
         'price_unit'         ,
         'amount'             ,
+        'quantity_cons'      ,
+        'price_unit_cons'    ,
         'note'               ,
     ];
 
@@ -49,9 +51,7 @@ class Pesticide_entry extends Model
 
  // recebe o array do controller Pesticide_entry-> storePesticide_entry e grava na tabela
 
-// dd($data);
             $Pesticide_entry = auth()->user()->Pesticide_entry()->create([
-
 
                 'date'                 => $data['date'],
                 'type_product_id'      => $data['type_product_id'],
@@ -60,6 +60,8 @@ class Pesticide_entry extends Model
                 'quantity'             => $data['quantity'],
                 'price_unit'           => $data['price_unit'],
                 'amount'               => $data['amount'],
+                'quantity_cons'        => $data['quantity_cons'],
+                'price_unit_cons'      => $data['price_unit_cons'],
                 'note'                 => $data['note'],
                 
 

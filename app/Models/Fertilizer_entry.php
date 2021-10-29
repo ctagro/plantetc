@@ -27,6 +27,8 @@ class Fertilizer_entry extends Model
         'quantity'           ,
         'price_unit'         ,
         'amount'             ,
+        'quantity_cons'      ,
+        'price_unit_cons'    ,
         'note'               ,
     ];
 
@@ -61,6 +63,8 @@ class Fertilizer_entry extends Model
                 'quantity'             => $data['quantity'],
                 'price_unit'           => $data['price_unit'],
                 'amount'               => $data['amount'],
+                'quantity_cons'        => $data['quantity_cons'],
+                'price_unit_cons'      => $data['price_unit_cons'],
                 'note'                 => $data['note'],
                 
 

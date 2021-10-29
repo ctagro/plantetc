@@ -30,7 +30,7 @@
             <div class="form-group row">
                 <label for="product_id" name="product_id">Fertilizante </label>
                 <select name="product_id"  id="product_id" class="form-control">
-                    <option value="" disabled selected>Selecione o tipo de conta...</option> 
+                    <option value="" disabled selected>Selecione o fertilizante...</option> 
                         @foreach($products as $product)
                             
                             <p>{{$product->id}}</p>
@@ -39,14 +39,14 @@
                         @endforeach
                     </select>
                     @if($errors->has('product_id'))
-                        <h6 class="text-danger" >Selecione o tipo de conta</h6> 
+                        <h6 class="text-danger" >Selecione o produto</h6> 
                     @endif
                 </div>
 
                 <div class="form-group row">
                     <label for="provide_id" name="provide_id">Fornecedor </label>
                     <select name="provide_id"  id="provide_id" class="form-control">
-                        <option value="" disabled selected>Selecione o tipo de conta...</option> 
+                        <option value="" disabled selected>Selecione o fornecedor...</option> 
                             @foreach($provides as $provide)
                                 
                                 <p>{{$provide->id}}</p>
@@ -55,13 +55,15 @@
                             @endforeach
                         </select>
                         @if($errors->has('provide_id'))
-                            <h6 class="text-danger" >Selecione o tipo de conta</h6> 
+                            <h6 class="text-danger" >Selecione o fornecedor</h6> 
                         @endif
                     </div>
 
+                    <p class="font-weight-bold">----------------  Dados da Nota   -------------------</p>
+
                 <div class="row">
                     <div class="form-group col-sm-3 ">
-                        <label for="quanty" name="quanty">Quantidade </label>
+                        <p for="quanty" name="quanty">Quantidade </p>
                         <input type="number" class="floatNumberField form-control py-3" name="quantity" value="{{old('quantity') ?? $fertilizer_entry->quantity }}"  placeholder="0.00" step="0.01" >
                         @if($errors->has('quantity'))
                             <h6 class="text-danger" >Digite a quantidade</h6> 
@@ -69,28 +71,44 @@
                     </div> 
 
                     <div class="form-group col-sm-3 ">
-                        <label for="price_unit" name="price_unit">Preço unitário </label>
-                        <input type="number" class="floatNumberField form-control py-3" name="price_unit" value="{{old('price_unit') ?? $fertilizer_entry->price_unit }}"  placeholder="0.00" step="0.01" >
+                        <p for="price_unit" name="price_unit">Preço unitário </p>
+                        <input type="number" class="form-control py-3" name="price_unit" value="{{old('price_unit') ?? $fertilizer_entry->price_unit }}"  placeholder="0.0000" step="0.0001" >
                         @if($errors->has('price_unit'))
                             <h6 class="text-danger" >Digite o preço unitário</h6> 
                         @endif
                     </div> 
              
                     <div class="form-group col-sm-3 ">
-                        <label for="amount" name="amount">Valor total </label>
-                        <input type="number" class="floatNumberField form-control py-3" name="amount" value="{{old('amount') ?? $fertilizer_entry->amount }}"  placeholder="0.00" step="0.01" >
+                        <p for="amount" name="amount">Valor total </p>
+                        <input type="number" class="form-control py-3" name="amount" value="{{old('amount') ?? $fertilizer_entry->amount }}"  placeholder="0.00" step="0.01" >
                         @if($errors->has('amount'))
                             <h6 class="text-danger" >Digite o valor</h6> 
                         @endif
                     </div> 
-     
+                </div>
+
+                <p class="font-weight-bold">----------------  Dados para o estoque  -------------------</p>
+
+                <div class="row">
+
                     <div class="form-group col-sm-3 ">
-                        <label>Preço por und cons: </label>
-                        <input type="number" class="floatNumberField form-control py-3" name="price_unit_cons" value="" class="form-control py-3" placeholder="0.000" step="0.001" >
-                        @if($errors->has('price_unit'))
+                        <p>Quantidade por unid cons: </p>
+                        <input type="number" name="quantity_cons"  class="form-control py-3" name="quantity_cons" value="{{old('quantity_cons') ?? $fertilizer_entry->quantity_cons }}"placeholder="0.00" step="0.01" >
+                        @if($errors->has('quantity_cons'))
+                            <h6 class="text-danger" >Digite o preço p/ unid cons</h6> 
+                        @endif
+                    </div>    
+        
+                    <div class="form-group col-sm-3 ">
+                        <p>Preço por und cons: </p>
+                        <input type="number" name="price_unit_cons"  class="form-control py-3" name="price_unit_cons" value="{{old('price_unit_cons') ?? $fertilizer_entry->price_unit_cons }}"placeholder="0.0000" step="0.0001" >
+                        @if($errors->has('price_unit_cons'))
                             <h6 class="text-danger" >Digite o preço p/ unid cons</h6> 
                         @endif
                     </div> 
+
+             
+
                 </div>
 
 
