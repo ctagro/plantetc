@@ -37,8 +37,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/product_apply_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Pesquisar consumo de fertilizantes
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/inventory_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    Pesquisar novimentação de estoque de fertilizantes
                 </div>
             </div>
         </div>
@@ -46,12 +46,12 @@
 </div>
 
 
-<form method="POST" action="{{ route('product.product_apply_research.research')}}">
+<form method="POST" action="{{ route('fertilizer_inventory_research.research')}}">
   
              <div class="form-group">
              {!! csrf_field() !!}                      
 
-             @include('product.product_apply.product_apply_research.form')
+             @include('inventory.fertilizer_inventory_research.form')
 
              <div class="form-group">
               <button type="submit" class="btn btn-danger btn-block">Executar pesquisa</button>

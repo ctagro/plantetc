@@ -293,4 +293,16 @@ Route::namespace('Inventory')->group(function () {
     Route::patch('pesticide_entry/{pesticide_entry}', 'Pesticide_entryController@update')->name('pesticide_entry.update');
     Route::delete('pesticide_entry/{pesticide_entry}', 'Pesticide_entryController@destroy')->name('pesticide_entry.destroy');
 
+    Route::post('fertilizer_inventory_research/research', 'Fertilizer_inventoryResearchController@research')->name('fertilizer_inventory_research.research');
+    Route::get('fertilizer_inventory_research', 'Fertilizer_inventoryResearchController@consult')->name('fertilizer_inventory_research.consult');
+    Route::get('fertilizer_inventory_research/index', 'Fertilizer_inventoryResearchController@index')->name('fertilizer_inventory_research.index');
+    
+    Route::post('pesticide_inventory_research/research', 'Pesticide_inventoryResearchController@research')->name('pesticide_inventory_research.research');
+    Route::get('pesticide_inventory_research', 'Pesticide_inventoryResearchController@consult')->name('pesticide_inventory_research.consult');
+    Route::get('pesticide_inventory_research/index', 'Pesticide_inventoryResearchController@index')->name('pesticide_inventory_research.index');
+    
+
+
+
+
 });

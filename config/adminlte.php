@@ -402,6 +402,13 @@ return [
                 'icon'        => 'fas fa-chart-line', 
             ],
 
+            [
+                'text'       => 'Inventário de fertilizantes',
+                'icon_color' => 'green',
+                'url'  => 'fertilizer_inventory_research',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],  
+
         ],
     ],
 
@@ -426,6 +433,13 @@ return [
                 'url'        => '/pesticide_inventory',
                 'icon'        => 'fas fa-chart-line', 
             ],
+
+            [
+                'text'       => 'Inventário de defensivos',
+                'icon_color' => 'green',
+                'url'  => 'pesticide_inventory_research',
+                'icon'        => 'fas fa-money-bill-wave',
+            ],  
 
         ],
     ],
