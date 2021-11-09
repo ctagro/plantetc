@@ -102,8 +102,6 @@ class AccountResearchController extends Controller
 
          $type_accounts= type_account::all();
 
-         dd($accounts);
-
  
     return view('finance.account_research.index', compact('accounts','accountings', 'grounds','type_accounts'));
     }
