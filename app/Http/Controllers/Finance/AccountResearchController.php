@@ -81,23 +81,28 @@ class AccountResearchController extends Controller
                         $prepareQuery = $prepareQuery . 'date'. '>="'. $valor. '" AND ';
                 if ($nome == "date_final")
                         $prepareQuery = $prepareQuery . 'date'. '<="'. $valor. '" AND ';
-            
             }
          }
+
+       $prepareQuery = $prepareQuery. 'origin'. '!="'. "P" . '" AND ';
    
          $query = substr($prepareQuery, 0 , -5);
 
+//         dd($query);
 
-         if ($query)
+ //        if ($query)
             $accounts = account::whereRaw($query)->orderBy('date')->get();
-         else
-            $accounts = account::where('origin', '=', "C")->orderBy('date')->get();
+//            $accounts = account::where('origin', '=', "C")->orderBy('date')->get();
+ //        else
+//            $accounts = account::where('origin', '=', "C")->orderBy('date')->get();
           
          $grounds = Ground::where('in_use', '=', "S")->get();
      
          $accountings = Accounting::where('in_use', '=', "S")->get();;
 
          $type_accounts= type_account::all();
+
+         dd($accounts);
 
  
     return view('finance.account_research.index', compact('accounts','accountings', 'grounds','type_accounts'));
