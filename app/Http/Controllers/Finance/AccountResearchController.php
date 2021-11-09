@@ -84,7 +84,7 @@ class AccountResearchController extends Controller
             }
          }
 
-       $prepareQuery = $prepareQuery. 'origin'. '!="'. "P" . '" AND ';
+       $prepareQuery = $prepareQuery. 'origin'. '!="'. "P" . '" AND ' .'origin'. '!="'. "A". '" AND ';
    
          $query = substr($prepareQuery, 0 , -5);
 
