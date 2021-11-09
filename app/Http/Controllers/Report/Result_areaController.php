@@ -119,7 +119,7 @@ class Result_areaController extends Controller
 
 // fazendo o balanço entre despesa e receita
 
-            for ($i=0 ; $i <= 5 ; $i++){
+            for ($i=0 ; $i < count($sums_account) ; $i++){
 
                 $sums[$i] = $sums_revenue[$i] - $sums_account[$i];
 
@@ -138,7 +138,7 @@ class Result_areaController extends Controller
             $names[2] = $temp_name;
             $sums[2] = $temp_sum;
      // -----------------------------------------
-     dd($names,$sums);
+     dd($names,$sums,count($sums));
 
             $results  =  array_combine($names,$sums);
 
