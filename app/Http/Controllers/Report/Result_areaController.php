@@ -138,11 +138,11 @@ class Result_areaController extends Controller
             $names[2] = $temp_name;
             $sums[2] = $temp_sum;
      // -----------------------------------------
-
+     dd($names,$sums);
 
             $results  =  array_combine($names,$sums);
 
-    //       dd($names,$sums,$results);
+         
 
 
       // dd($names,$sums,$results,$temp_name,$temp_sum);
