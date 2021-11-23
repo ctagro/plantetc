@@ -248,6 +248,13 @@ return [
             'url'  => 'site/profile/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
+
+        [
+         //   'text'       => 'Preços Ceasa',
+            'icon_color' => 'yellow',
+            'url'  => 'import',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         
     /*    [
             'text'        => 'Galeria de fotos',

@@ -300,9 +300,14 @@ Route::namespace('Inventory')->group(function () {
     Route::post('pesticide_inventory_research/research', 'Pesticide_inventoryResearchController@research')->name('pesticide_inventory_research.research');
     Route::get('pesticide_inventory_research', 'Pesticide_inventoryResearchController@consult')->name('pesticide_inventory_research.consult');
     Route::get('pesticide_inventory_research/index', 'Pesticide_inventoryResearchController@index')->name('pesticide_inventory_research.index');
-    
 
+});
 
+Route::namespace('Import')->group(function () {
 
+    Route::get('import','Price_ceasaController@import')->name('ceasa.import');
+    Route::post('store-import','Price_ceasaController@storeImport')->name('ceasa.storeImport');
+    Route::post('index','Price_ceasaController@index')->name('ceasa.index');
+    Route::get('import/{import}/edit', 'Price_ceasaController@edit')->name('ceasa.edit');
 
 });

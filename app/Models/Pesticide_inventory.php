@@ -59,7 +59,7 @@ class Pesticide_inventory extends Model
                 'date'              => $data['date'],
                 'type_product_id'   => $data['type_product_id'],
                 'provide_id'        => $data['provide_id'],
-                'pesticide_id'        => $data['pesticide_id'],
+                'pesticide_id'      => $data['pesticide_id'],
                 'entry'             => $data['entry'],
                 'exit'              => $data['exit'],
                 'balance'           => $data['balance'],
