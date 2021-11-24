@@ -255,6 +255,13 @@ return [
             'url'  => 'import',
             'icon' => 'fas fa-fw fa-user',
         ],
+
+        [
+            'text'       => 'Pesquisa Ceasa',
+            'icon_color' => 'green',
+            'url'  => '/ceasa_research',
+            'icon'        => 'fas fa-money-bill-wave',
+        ],
         
     /*    [
             'text'        => 'Galeria de fotos',

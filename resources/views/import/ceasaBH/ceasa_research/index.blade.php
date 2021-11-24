@@ -43,8 +43,8 @@
                           <div class="card">
                               <div class="card-header">
                                 <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/activity_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                                  Dados carregados do arquivo
-                                  <a href="{{ url('import') }}" class="float-right" >Voltar </a> 
+                                  Pesquisa de cotações do Ceasa
+                                  <a href="{{ url('/ceasa_research') }}" class="float-right" >Voltar </a> 
                               </div>
                           </div>
                       </div>
@@ -83,25 +83,25 @@
                      
                         <tr>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id  ])}}" >{{ $cotacao->date }}</a>
+                            {{ $cotacao->date }}
                           </td>
                           <td>
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ $cotacao->product}}</a>
+                            {{ $cotacao->product}}
                           </td>
                           <td>
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ $cotacao->embalagem}}</a>
+                            {{ $cotacao->embalagem}}
                           </td>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ number_format($cotacao->price_min, 2 , ',', '.')  }}</a>
+                            {{ number_format($cotacao->price_min, 2 , ',', '.')  }}
                           </td>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ number_format($cotacao->price_com, 2 , ',', '.')  }}</a>
+                            {{ number_format($cotacao->price_com, 2 , ',', '.')  }}
                           </td>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ number_format($cotacao->price_max, 2 , ',', '.')  }}</a>
+                            {{ number_format($cotacao->price_max, 2 , ',', '.')  }}
                           </td> 
                           <td>
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ $cotacao->situation}}</a>
+                            {{ $cotacao->situation}}
                           </td>   
                         </tr>
                       
@@ -113,7 +113,7 @@
     </div>
     <div class="card">
       <div class="card-header">
-          <a href="{{ url('import') }}" class="float-right" >Voltar </a> 
+          <a href="{{ url('/ceasa_research') }}" class="float-right" >Voltar </a> 
       </div>
     </div>
 </div>
