@@ -79,6 +79,7 @@ class CeasaResearchController extends Controller
         if ($query == False){
             $cotacoes = Price_ceasa_bh::get();
            // dd($cotacoes);
+           // dd($cotacoes);
             return view('import.ceasaBH.ceasa_research.index', compact('cotacoes'));    
         }
 
