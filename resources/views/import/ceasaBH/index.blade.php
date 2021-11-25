@@ -83,25 +83,25 @@
                      
                         <tr>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id  ])}}" >{{ $cotacao->date }}</a>
+                            {{ $cotacao->date }}
                           </td>
                           <td>
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ $cotacao->product}}</a>
+                            {{ $cotacao->product}}
                           </td>
                           <td>
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ $cotacao->embalagem}}</a>
+                            {{ $cotacao->embalagem}}
                           </td>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ number_format($cotacao->price_min, 2 , ',', '.')  }}</a>
+                            {{ number_format($cotacao->price_min, 2 , ',', '.')  }}
                           </td>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ number_format($cotacao->price_com, 2 , ',', '.')  }}</a>
+                            {{ number_format($cotacao->price_com, 2 , ',', '.')  }}
                           </td>
                           <td>  
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ number_format($cotacao->price_max, 2 , ',', '.')  }}</a>
+                            {{ number_format($cotacao->price_max, 2 , ',', '.')  }}
                           </td> 
                           <td>
-                            <a href= "{{ route('ceasa.edit' ,[ 'import' => $cotacao->id ])}}" >{{ $cotacao->situation}}</a>
+                            {{ $cotacao->situation}}
                           </td>   
                         </tr>
                       

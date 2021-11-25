@@ -250,7 +250,7 @@ return [
         ],
 
         [
-         //   'text'       => 'Preços Ceasa',
+            'text'       => 'Importar Ceasa',
             'icon_color' => 'yellow',
             'url'  => 'import',
             'icon' => 'fas fa-fw fa-user',
