@@ -107,6 +107,8 @@ class Result_areaController extends Controller
                 
 //  separando receita de despesa
 
+                  //  dd($query_account,$query_revenue);
+
                     if ($query_account){
                         $sums_account[] = DB::table('accounts')->whereRaw($query_account)->sum('amount');
                     }
@@ -117,11 +119,15 @@ class Result_areaController extends Controller
 
             }
 
+       //     dd($sums_account,$sums_revenue);
+
 // fazendo o balanço entre despesa e receita
 
             for ($i=0 ; $i < count($sums_account) ; $i++){
 
                 $sums[$i] = $sums_revenue[$i] - $sums_account[$i];
+
+         //       var_dump($sums[$i]);
 
             }
 
@@ -138,11 +144,11 @@ class Result_areaController extends Controller
             $names[2] = $temp_name;
             $sums[2] = $temp_sum;
      // -----------------------------------------
-   //  dd($names,$sums,count($sums));
+  // dd($names,$sums,count($sums));
 
             $results  =  array_combine($names,$sums);
 
-      // dd($names,$sums,$results,$temp_name,$temp_sum);
+  //     dd($names,$sums,$results,$temp_name,$temp_sum);
             
 
          $grounds = auth()->user()->ground()->get();

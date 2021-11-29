@@ -55,6 +55,11 @@ class Pesticide_entryController extends Controller
     
         $nr = $last['id'];
 
+       //dd($nr);
+
+      // dd($pesticide_entrys);
+
+
     
 
  //       if($nr>5):
@@ -90,7 +95,7 @@ class Pesticide_entryController extends Controller
 
         $user = auth()->user();
 
-        $pesticide_entrys = auth()->user()->pesticide_entry()->get();
+        $pesticide_entrys = Pesticide_entry::pesticide_entry()->get();
 
         $type_products= Type_product::all();
 

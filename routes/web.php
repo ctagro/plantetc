@@ -313,5 +313,6 @@ Route::namespace('Import')->group(function () {
     Route::post('ceasa_research/research', 'CeasaResearchController@research')->name('ceasa_research.research');
     Route::get('ceasa_research', 'CeasaResearchController@consult')->name('ceasa_research.consult');
     Route::get('ceasa_research/index', 'CeasaResearchController@index')->name('ceasa_research.index');
+    Route::post('ceasa_research/file', 'CeasaResearchController@file')->name('ceasa_research.file');
 
 });

@@ -71,13 +71,13 @@
                                     <td>
                                        <a>{{ $key }}</a>
                                     </td>
-                                @if( $key == "Receita de vendas" OR $key == "Outras Receitas" OR $key == "Comercialização")
-                                    <td class="text-sm">{{ number_format(($result), 2 , ',', '.')  }}</td>
-                                    <?php $balance = $balance + $result ?>
-                                @else
+       <!--                        @/if( $key == "Receita de vendas" OR $key == "Outras Receitas" OR $key == "Comercialização")
+                                    <td class="text-sm">{/{ number_format(($result), 2 , ',', '.')  }}</td>
+                                    </?php $balance = $balance + $result ?>
+                                @ else -->
                                     <td class="text-sm" >{{ number_format( $result, 2 , ',', '.')  }}</td>
-                                    <?php $balance = $balance - $result ?>
-                                @endif
+                                    <?php $balance = $balance + $result ?>
+                   <!--             @ endif -->
                                     <td class="text-sm" >{{ number_format($balance, 2 , ',', '.')  }}</td>
                                 </tr>
                             @endif
