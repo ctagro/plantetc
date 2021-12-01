@@ -32,6 +32,7 @@
 @section('content')
 
 
+
  <div class='table-responsive'>
 
     <div class="container">
@@ -47,6 +48,12 @@
             </div>
         </div>
     </div>  
+
+    @if(session('erro'))
+        <div class="alert alert-warning">
+        {{ session('erro') }}
+    </div>
+@endif
           
     <form  action="{{ route('ceasa.storeImport') }}" method="POST" enctype="multipart/form-data" class="col-12">
         @method('POST')

@@ -46,9 +46,18 @@ class Price_ceasaController extends Controller
         // Criar deste de consistência de leitura do arquivo
 
         $date = $request['date'];
-        $response = $this->priceCeasa_import->allData($request);
 
-       // dd($date);
+        $date_exist = Price_ceasa_bh::where('date', '=', $date)->get()->count();
+     
+
+        if( $date_exist > 0){
+        
+            return redirect()
+                        ->route('ceasa.import')
+                        ->with('erro', 'Esta data já foi importada!!! Verifique a data dos dados que quer baixar...');
+        }
+       
+        $response = $this->priceCeasa_import->allData($request);
 
         $cotacoes = Price_ceasa_bh::where('date', '=', $date)->orderBy('date')->get();           
        
