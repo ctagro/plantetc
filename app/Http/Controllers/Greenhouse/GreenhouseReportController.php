@@ -31,16 +31,11 @@ class GreenhouseReportController extends Controller
     {
 
         $user = auth()->user();
-
-      //  dd($user);
-
-
-
-  // $greenhouse_reports = auth()->user()->greenhouse_report()->get();
-
      
 
     $greenhouse_reports = Greenhouse_report::all();
+
+   // dd($greenhouse_reports);
  
 
         return view('greenhouse.greenhouse_report.index', ['greenhouse_reports' => $greenhouse_reports]);

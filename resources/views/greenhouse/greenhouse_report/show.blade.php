@@ -98,7 +98,7 @@
     </div>
       
              <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do relatório</button>
                   <a href="{{ url('/greenhouse_report') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
