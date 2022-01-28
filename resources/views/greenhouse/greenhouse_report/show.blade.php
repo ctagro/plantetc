@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Relatório da Estufa</title>
+    <title>Relatório Estufa</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -74,7 +74,7 @@
       <br>
 
         <div class="row">
-          <div class="bolder">Area</div>
+          <div class="bolder">Estufa</div>
         </div>
         <div class="row">
           <div class="form-control">{{ $greenhouse_report->ground->name}}</div>

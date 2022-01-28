@@ -19,6 +19,7 @@ class CreateGreenhouseReportsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('date');
             $table->unsignedBigInteger('worker_id')->nullable();// Relator -> worker 
+            $table->unsignedBigInteger('ground_id')->nullable();// Relator -> worker 
             $table->longtext('note');
             $table->string('image', 100)->nullable();
             $table->timestamps();

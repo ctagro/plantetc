@@ -44,7 +44,7 @@
 
             <div class="form-group">                   
                 <select name="ground_id"  id="ground_id" class="form-control">
-                    <option value="" disabled selected>Selecione a área...</option> 
+                    <option value="" disabled selected>Selecione a estufa...</option> 
                         @foreach($grounds as $ground)
                             
                             <p>{{$ground->id}}</p>
@@ -53,14 +53,14 @@
                         @endforeach
                 </select>
                 @if($errors->has('ground_id'))
-                    <h6 class="text-danger" >Selecione o nome da Área de plantio</h6> 
+                    <h6 class="text-danger" >Selecione o nome da Estufa</h6> 
                 @endif
             </div>
 
 
             <div class="form-group">     
                 
-                <label for="note">Observações</label>
+                <label for="note">Relatório</label>
          
         <!-- O Ckeditor parece que nao esta funcionando 
                  <div id="dvCenter">
