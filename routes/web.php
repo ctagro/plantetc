@@ -316,3 +316,14 @@ Route::namespace('Import')->group(function () {
     Route::post('ceasa_research/file', 'CeasaResearchController@file')->name('ceasa_research.file');
 
 });
+
+Route::namespace('greenhouse')->group(function () {
+    Route::get('greenhouse_report/create', 'GreenhouseReportController@create')->name('greenhouse_report.create');
+    Route::post('greenhouse_report/store', 'GreenhouseReportController@store')->name('greenhouse_report.store');
+    Route::get('greenhouse_report', 'GreenhouseReportController@index')->name('greenhouse_report.index')-> middleware('auth');
+    Route::post('greenhouse_report/{greenhouse_report}', 'GreenhouseReportController@show')->name('greenhouse_report.show');
+    Route::get('greenhouse_report/{greenhouse_report}/edit', 'GreenhouseReportController@edit')->name('greenhouse_report.edit');
+    Route::patch('greenhouse_report/{greenhouse_report}', 'GreenhouseReportController@update')->name('greenhouse_report.update');
+    Route::delete('greenhouse_report/{greenhouse_report}', 'GreenhouseReportController@destroy')->name('greenhouse_report.destroy');
+
+});

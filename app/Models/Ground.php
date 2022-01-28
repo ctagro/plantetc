@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
-use App\Models\Ground;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ground extends Model

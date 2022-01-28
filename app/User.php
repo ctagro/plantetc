@@ -30,6 +30,7 @@ Use App\Models\Fertilizer_inventory;
 Use App\Models\Fertilizer_entry;
 Use App\Models\Pesticide_inventory;
 Use App\Models\Pesticide_entry;
+Use App\Models\Greenhouse_report;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -191,5 +192,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(pesticide_entry::class);
     }
+
+    public function Greenhouse_report()
+    {
+        return $this->hasMany(greenhouse_report::class);
+    }
+
 
 }

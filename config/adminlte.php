@@ -465,7 +465,12 @@ return [
         'icon'    => 'fas fa-fw fa-share',
         'submenu' => [
 
+            [ 'text'       => 'Situação das estufas',
+            'icon_color' => 'cyan',
+            'url'        => '/greenhouse_report',
+            'icon'        => 'fas fa-calendar-plus', 
 
+            ],
     
             [ 'text'       => 'Resultado por área',
             'icon_color' => 'cyan',
