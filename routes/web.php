@@ -317,7 +317,7 @@ Route::namespace('Import')->group(function () {
 
 });
 
-Route::namespace('greenhouse')->group(function () {
+Route::namespace('Greenhouse')->group(function () {
     Route::get('greenhouse_report/create', 'GreenhouseReportController@create')->name('greenhouse_report.create');
     Route::post('greenhouse_report/store', 'GreenhouseReportController@store')->name('greenhouse_report.store');
     Route::get('greenhouse_report', 'GreenhouseReportController@index')->name('greenhouse_report.index')-> middleware('auth');
