@@ -70,8 +70,6 @@ public function storeAccounting(array $data): Array
 
     }
 
-
-
     public function user()
     {
         return $this->belongsTo(User::class);

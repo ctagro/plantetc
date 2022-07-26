@@ -78,7 +78,7 @@
                                     </td>
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->accounting->name }}</a>
-                                    </td>  
+                                    </td>   
                                     <td>
                                         <a href= "{{ route('account.edit' ,[ 'account' => $account->id ])}}" >{{ $account->ground->name}}</a>
                                     </td>

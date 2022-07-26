@@ -1,8 +1,0 @@
-date,product,embalagem,price_min,price_com,price_max,situation
-10/11/2021,"PIMENTAO AMARELO","KG          ",8.88,10,10,ME
-12/11/2021,"PIMENTAO AMARELO","KG          ",8.88,10,10,ME
-17/11/2021,"PIMENTAO AMARELO","KG          ",7.77,7.77,8.88,MFR
-19/11/2021,"PIMENTAO AMARELO","KG          ",7.77,7.77,8.88,ME
-19/11/2021,"PIMENTAO AMARELO","KG          ",7.77,7.77,8.88,ME
-22/11/2021,"PIMENTAO AMARELO","KG          ",7.77,7.77,8.88,ME
-24/11/2021,"PIMENTAO AMARELO","KG          ",5.55,6.66,8.88,MFR

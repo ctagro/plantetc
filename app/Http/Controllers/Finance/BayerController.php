@@ -79,8 +79,7 @@ class BayerController extends Controller
                 $extenstion = $request->image->extension(); // reguperar a extensao do arquivo de imagem
                 $nameFile = "{$name}.{$extenstion}"; // concatenando
                 $data['image'] = $nameFile;
-               //dd($data['image']);
-
+               //dd($data['image']); $upload = $request->file('image')->storeAs('bayers', $nameFile);
                $upload = $request->file('image')->storeAs('bayers', $nameFile);
             }
 

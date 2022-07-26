@@ -114,7 +114,7 @@ class CropController extends Controller
 
         return redirect()
                     ->back()
-                    ->with('error',  'Falha ao cadastrar o funcionário');
+                    ->with('error',  'Falha ao cadastrar a cultura');
 
     }
 
@@ -162,7 +162,7 @@ class CropController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Crop $crop)
+    public function update(Request $request, Crop $crop) 
     {
 
         if ($request['note'] == null){
