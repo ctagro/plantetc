@@ -32,9 +32,9 @@ class CashFlowController extends Controller
 
     //dd($user['id']);
 
-    if ($user['id']==1){
+    if ($user['id']<10){
    
-        $banks = auth()->user()->bank()->get();
+        $banks = Bank::all();
 
         $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
 
@@ -50,7 +50,8 @@ class CashFlowController extends Controller
 
         if($nr>5):
             $nr = $nr-5;
-            $cashFlows = auth()->user()->cashFlow()->where('id','>', $nr)->orderBy('date')->get();
+            $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
+          //  dd($cashFlows);
         else:  
             $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
         endif;

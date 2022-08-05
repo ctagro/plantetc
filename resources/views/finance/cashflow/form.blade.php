@@ -13,27 +13,28 @@
             </div>
    
             <div class="form-group row">
-                <input type="txt" name="description" value="{{old('description')}}" class="form-control py-3" placeholder="Descrição" >
+                <input type="txt" name="description" value="{{old('description')}}" class="form-control py-3" placeholder="Descrição da transação" >
                 @if($errors->has('description'))
-                    <h6 class="text-danger" >Digite a Descrição</h6> 
+                    <h6 class="text-danger" >Digite a Descrição da transação<object data="" type=""></object></h6> 
                 @endif
             </div>
 
 
             <div class="form-group row">
                 <select name="bank_id"  id="bank_id" class="form-control">
-            <option value="" disabled selected>Selecione o banco...</option> 
+            <option value="" disabled selected>Selecione o tipo de documento..</option> 
                 @foreach($banks as $bank)         
                     <p>{{$bank->id}}</p>
                     <option value="{{$bank->id}}">{{$bank->name}} </option>                
                 @endforeach
             </select>
             @if($errors->has('bank_id'))
-                <h6 class="text-danger" >Selecione o banco</h6> 
+                <h6 class="text-danger" >Selecione o tipo de documento</h6> 
             @endif
             </div>
 
             <div class="form-group row">
+                <h6 class="text-blue" >Crédito use (+), Débito use (-)</h6> 
             <input type="number" class="floatNumberField form-control py-3"  name="amount"  value="{{old('amount')}}" placeholder="0.00" step="0.01" >
                 @if($errors->has('amount'))
                     <h6 class="text-danger" >Digite o valor</h6> 

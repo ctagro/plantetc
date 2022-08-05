@@ -35,7 +35,7 @@
 
             <div class="form-group row">
                 <select name="bank_id"  id="bank_id" class="form-control">
-            <option value="" disabled selected>Selecione o banco...</option> 
+            <option value="" disabled selected>Selecione o tipo de documento...</option> 
                 @foreach($banks as $bank)         
                     <p>{{$bank->id}}</p>
                     <option value="{{$bank->id}}" {{ $bank->id == $cashFlow->bank_id ? 'selected' : ''}}>{{$bank->name}} </option>                

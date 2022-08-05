@@ -32,7 +32,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <label for="bank">Banco :</label>
+          <label for="bank">Documento :</label>
         <select name="bank_id"  id="bank_id" class="form-control">
                 <option selected="selected" value=""></option>
                 @foreach($banks as $bank)

@@ -18,7 +18,7 @@ class Cashflow_ReportController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
 
     /**
@@ -32,9 +32,9 @@ class Cashflow_ReportController extends Controller
         $user = auth()->user();
 
 
-            $cashFlows = CashFlow::all();
+        $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
     
-            $banks = auth()->user()->bank()->get();
+            $banks = Bank::all();
 
             return view('report.cashflow.index',compact('banks','cashFlows'));
 
@@ -47,11 +47,14 @@ class Cashflow_ReportController extends Controller
 
         $user = auth()->user();
 
-        if ($user['id']==1){
+        // Programei o limite de 
 
-        $cashFlows = CashFlow::all();
+
+        if ($user['id']<10){
+
+            $cashFlows = auth()->user()->cashFlow()->orderBy('date')->get();
    
-        $banks = auth()->user()->bank()->get();
+        $banks = Bank::all();
 
         return view('report.cashflow.research',compact('banks','cashFlows'));
         
@@ -70,9 +73,20 @@ class Cashflow_ReportController extends Controller
 
        $pesquisa = $request;
 
+       $user = auth()->user();
+      $user_id = $user['id'];
+     // DD($user_id);
+
         $termos = $request->only('description','bank_id','date_inicial', 'date_final' );
-        $prepareQuery = "";
+        if($user_id == 1) {
+            $prepareQuery = "";}
+        else{
+            $prepareQuery = 'user_id ' . ' = "' .  $user_id .  '" AND ';
+        }
+   
+    //    $prepareQuery = "";
         $query = "";
+      //  dd($prepareQuery);
 
        
         foreach ($termos as $nome => $valor) {
@@ -89,7 +103,7 @@ class Cashflow_ReportController extends Controller
                     $prepareQuery = $prepareQuery . 'date'. '<="'. $valor. '" AND ';
             }
          }
-   
+  // dd($prepareQuery);
          $query = substr($prepareQuery, 0 , -5);
 
          if ($query){
@@ -99,8 +113,6 @@ class Cashflow_ReportController extends Controller
          }
          
          $banks= Bank::all();
-
-
 
  
     return view('report.cashflow.index', compact('cashFlows','banks'));

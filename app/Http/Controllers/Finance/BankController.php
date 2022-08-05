@@ -25,7 +25,8 @@ class BankController extends Controller
     public function index()
     {
 
-   $banks = auth()->user()->bank()->get();
+        $banks = Bank::all();
+  // $banks = auth()->user()->bank()->get();
    // $banks = Bank::all();
 
    // dd($banks);

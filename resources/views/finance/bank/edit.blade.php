@@ -36,8 +36,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/bank_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                    Editar 
+                    <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/entry_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                    Editar tipo de documento do fluxo de caixa
                     <a class="float-right" href="/bank">Lista</a>
                 </div>
             </div>
