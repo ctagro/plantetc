@@ -50,6 +50,8 @@ class SaleResearchController extends Controller
 
         $type_accounts= type_account::all();
 
+
+
         return view('finance.sale_research.index',compact('sales','accounts','grounds','accountings','type_accounts','bayers','crops'));
     }
 
@@ -128,7 +130,7 @@ class SaleResearchController extends Controller
 
 
         
-        // dd($sales); 
+        dd($sales); 
 
 
     return view('finance.sale_research.index', compact('sales','crops','grounds','bayers','accounts'));

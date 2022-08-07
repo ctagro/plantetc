@@ -478,16 +478,16 @@ return [
             'icon'        => 'fas fa-calendar-plus', 
 
             ],
-
+/*
             [
                 'text'       => 'Fluxo de caixa',
                 'icon_color' => 'cyan',
                 'url'        => '/cash_flow',
                 'icon'        => 'fas fa-chart-line', 
             ],
-
+*/
             [
-                'text'       => 'Fluxo de Bancos',
+                'text'       => 'Fluxo de Caixa',
                 'icon_color' => 'cyan',
                 'url'        => '/cashflow',
                 'icon'        => 'fas fa-chart-line', 
@@ -588,7 +588,7 @@ return [
             ],
 
             [
-                'text'       => 'Bancos',
+                'text'       => 'FC - Tipo de documento',
                 'icon_color' => 'green',
                 'url'  => '/bank',
                 'icon'        => 'fas fa-money-bill-wave',
