@@ -10,16 +10,16 @@
 
             <div class="form-group">
 
-                <label for="name">Nome</label>
+                <label for="name">Tipo de documento</label>
                 <input type="text" name="name" value="{{old('name') ?? $bank->name }}" class="form-control">
                 @if($errors->has('name'))
-                        <h6 class="text-danger" >Digite a Nome</h6> 
+                        <h6 class="text-danger" >Digite a tipo de documento</h6> 
                 @endif
             </div>
 
             <div class="form-group">
 
-                <label for="note">Observações</label>    
+                <label for="note">Descrição</label>    
                     <input type="longtext" name="note" value="{{old('note') ?? $bank->note }}" rows="4" class="form-control">                            
                 </div>
 
