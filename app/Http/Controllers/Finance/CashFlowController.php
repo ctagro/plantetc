@@ -180,10 +180,12 @@ class CashFlowController extends Controller
 
 
         $user = auth()->user();
+        
+/// o menor que 10 é temporario a logica tem que ser melhorada
 
-        if ($user['id']==1){
+        if ($user['id']<10){
 
-        $banks = auth()->user()->bank()->get();
+        $banks = Bank::all();
 
       //  dd($cashFlow, $banks);
 
