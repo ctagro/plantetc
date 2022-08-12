@@ -130,7 +130,7 @@ class SaleResearchController extends Controller
 
 
         
-        dd($sales); 
+     //   dd($sales); 
 
 
     return view('finance.sale_research.index', compact('sales','crops','grounds','bayers','accounts'));
